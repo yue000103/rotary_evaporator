@@ -1,0 +1,13 @@
+system:
+    name: "机器人控制系统"
+    version: "1.0.0"
+
+logging:
+    level: INFO
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+devices:
+    robot:
+        config_file: "devices/robot.yaml"
+    xuanzheng:
+        config_file: "devices/xuanzheng.yaml"
