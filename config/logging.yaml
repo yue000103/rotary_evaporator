@@ -40,6 +40,12 @@ handlers:
     formatter: detailed
     level: DEBUG
 
+  yaml_control_file:
+    class: logging.FileHandler
+    filename: ../logs/yaml_control.log
+    formatter: detailed
+    level: DEBUG
+
 # 定义不同的 logger（日志记录器），用于区分不同模块的日志
 loggers:
   api_log:
@@ -59,6 +65,11 @@ loggers:
 
   service_control_log:
     handlers: [service_control_file, console]  # 服务控制日志，写入文件，并在控制台显示 WARNING+
+    level: DEBUG
+    propagate: no
+
+  yaml_control_log:
+    handlers: [ yaml_control_file, console ]  # 服务控制日志，写入文件，并在控制台显示 WARNING+
     level: DEBUG
     propagate: no
 

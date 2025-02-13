@@ -1,0 +1,9 @@
+2025-02-13 17:06:44,708 device_control_log INFO: Sending command: STATUS
+2025-02-13 17:06:44,708 device_control_log INFO: Response received: [Mock Response] STATUS 17:06:44
+2025-02-13 17:06:44,708 device_control_log INFO: Sending command: MOVE FORWARD 10
+2025-02-13 17:06:44,708 device_control_log INFO: Response received: [Mock Response] MOVE FORWARD 10 17:06:44
+2025-02-13 17:06:44,708 device_control_log INFO: Sending command: ROTATE 90
+2025-02-13 17:06:44,708 device_control_log INFO: Response received: [Mock Response] ROTATE 90 17:06:44
+2025-02-13 17:06:44,708 device_control_log INFO: Sending command: STOP
+2025-02-13 17:06:44,708 device_control_log INFO: Response received: [Mock Response] STOP 17:06:44
+2025-02-13 17:06:44,708 device_control_log INFO: Closing RobotController connection

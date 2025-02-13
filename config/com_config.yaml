@@ -1,1 +1,8 @@
-base_url: "https://192.168.1.20"
+base_urls:
+  default: "https://192.168.1.20"
+  api: "https://192.168.1.100"
+  device_control: "https://192.168.1.150"
+  service_control: "https://192.168.1.200"
+  xuanzheng: "https://192.168.1.20"
+  robot_com: "192.168.23.10"
+

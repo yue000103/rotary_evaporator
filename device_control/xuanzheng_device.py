@@ -2,8 +2,8 @@ from com_control.xuanzheng_com import ConnectionController
 
 
 class ProcessController:
-    def __init__(self, username, password, base_url="https://192.168.1.20", mock=False):
-        self.connection = ConnectionController(username, password, base_url, mock)
+    def __init__(self,mock=False):
+        self.connection = ConnectionController(mock)
 
     def get_info(self):
         return self.connection.send_request("/api/v1/info", method='GET')
@@ -34,11 +34,9 @@ class ProcessController:
 
 # 使用示例
 if __name__ == "__main__":
-    username = "rw"
-    password = "Sg3v2QtR"
 
     # 直接初始化 ProcessController，可选择 mock 模式
-    controller = ProcessController(username, password, mock=True)  # mock=True 开启模拟模式
+    controller = ProcessController(mock=True)  # mock=True 开启模拟模式
 
     # 获取信息（模拟模式下不会真正发送请求）
     print("设备信息：", controller.get_info())

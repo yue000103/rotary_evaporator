@@ -1,81 +1,51 @@
 import socket
 import time
-from typing import Optional
-from src.utils.logger import com_logger  # 确保正确导入 logger
+import logging
+from service_control.yaml_control.setup import get_base_url
+from service_control.logs_control.setup import com_logger
 
-class RobotCom:
-    def __init__(self, host: str = '192.168.23.10', port: int = 2000, mock: bool = False) -> None:
-        """
-        初始化 RobotCom 实例
 
-        :param host: 服务器绑定的地址，默认为 '192.168.23.10'
-        :param port: 服务器绑定的端口，默认为 2000
-        :param mock: 是否启用模拟模式，若为 True，则不实际连接
+class RobotConnection:
+    def __init__(self,mock=False):
         """
-        self.host = host
-        self.port = port
+        机器人通信控制
+        :param host: 机器人服务器 IP
+        :param port: 机器人服务器端口
+        :param mock: 是否启用 Mock 模式
+        """
+        self.host = get_base_url("robot_com")
+        self.port = 2000
         self.mock = mock
-        self.server: Optional[socket.socket] = None
-        self.is_running: bool = False
+        self.sock = None
 
-    def start_server(self) -> None:
-        """
-        启动服务器。如果 mock 为 True，则模拟服务器启动。
-        """
+        if not self.mock:
+            self._connect()
+
+        com_logger.info(f"RobotConnection initialized on {self.host}:{self.port}")
+
+    def _connect(self):
+        """ 初始化 TCP 连接 """
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.sock.connect((self.host, self.port))
+        com_logger.info("Connected to Robot Server")
+
+    def send_command(self, command):
+        """ 发送指令到机器人并接收响应 """
         if self.mock:
-            com_logger.info("Mock mode enabled. Server is not actually started.")
-            return
-
-        self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.server.bind((self.host, self.port))
-        self.server.listen(5)
-        self.is_running = True
-        com_logger.info(f"Server started at {self.host}:{self.port}")
+            com_logger.info(f"[Mock Mode] Sent: {command}")
+            return f"[Mock Response] {command} {time.strftime('%H:%M:%S', time.localtime())}"
 
         try:
-            while self.is_running:
-                conn, addr = self.server.accept()
-                com_logger.info(f"Connection established with {addr}")
-                self.handle_client(conn)
-        except KeyboardInterrupt:
-            com_logger.warning("Server shutting down due to keyboard interrupt.")
+            self.sock.sendall(command.encode("utf-8"))
+            response = self.sock.recv(1024).decode("utf-8")
+            com_logger.info(f"Received: {response}")
+            return response
         except Exception as e:
-            com_logger.error(f"Unexpected error: {e}")
-        finally:
-            self.stop_server()
+            com_logger.error(f"Error in communication: {e}")
+            return None
 
-    def handle_client(self, conn: socket.socket) -> None:
-        """
-        处理客户端连接
-
-        :param conn: 客户端 socket 对象
-        """
-        with conn:
-            while self.is_running:
-                try:
-                    data = conn.recv(1024)
-                    if not data:
-                        break
-                    received_message = data.decode()
-                    com_logger.info(f"Received: {received_message}")
-
-                    response = f"Hello from Python {time.strftime('%H:%M:%S', time.localtime())}"
-                    conn.send(response.encode('utf-8'))
-                    com_logger.info(f"Response sent: {response}")
-                except Exception as e:
-                    com_logger.error(f"Error during communication with client: {e}")
-                    break
-
-    def stop_server(self) -> None:
-        """
-        停止服务器，释放资源
-        """
-        self.is_running = False
-        if self.server:
-            self.server.close()
-            com_logger.info("Server stopped.")
-
-if __name__ == '__main__':
-    robot_com = RobotCom(mock=True)
-    robot_com.start_server()  # 不会实际连接，但会输出日志
-
+    def close(self):
+        """ 关闭连接 """
+        if self.sock:
+            self.sock.close()
+            com_logger.info("Robot Connection closed")
