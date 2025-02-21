@@ -1,2 +1,0 @@
-2025-02-12 11:33:56,875 - INFO - [Mock Mode] GET request to /api/v1/info with data: None
-2025-02-12 11:33:56,875 - INFO - [Mock Mode] PUT request to /api/v1/process with data: {'heating': {'set': 30, 'running': False}, 'cooling': {'set': 10, 'running': False}, 'vacuum': {'set': 500, 'vacuumValveOpen': False, 'aerateValvePulse': False}, 'rotation': {'set': 60, 'running': True}, 'lift': {'set': 0}, 'program': {'Type': 'Manual'}}

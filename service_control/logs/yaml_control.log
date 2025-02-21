@@ -1,5 +1,0 @@
-2025-02-13 16:47:02,677 yaml_control_log WARNING: Config file not found: D:/config/com_config.yaml. Using default values.
-2025-02-13 16:47:53,976 yaml_control_log WARNING: Config file not found: D:/config/com_config.yaml. Using default values.
-2025-02-13 16:48:22,852 yaml_control_log WARNING: Config file not found: D:\back\rotary_evaporator\service_control\yaml_control\config/com_config.yaml. Using default values.
-2025-02-13 16:48:34,993 yaml_control_log WARNING: Config file not found: D:\back\rotary_evaporator\service_control\yaml_control\..\config\com_config.yaml. Using default values.
-2025-02-13 16:48:48,885 yaml_control_log WARNING: Config file not found: D:\back\rotary_evaporator\service_control\yaml_control\../config/com_config.yaml. Using default values.

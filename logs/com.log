@@ -25,3 +25,13 @@
 2025-02-13 17:08:07,235 com_log INFO: Initialized ConnectionController with base_url: https://192.168.1.20
 2025-02-13 17:08:07,235 com_log INFO: [Mock Mode] GET request to https://192.168.1.20/api/v1/info with data: None
 2025-02-13 17:08:07,235 com_log INFO: [Mock Mode] PUT request to https://192.168.1.20/api/v1/process with data: {'heating': {'set': 30, 'running': False}, 'cooling': {'set': 10, 'running': False}, 'vacuum': {'set': 500, 'vacuumValveOpen': False, 'aerateValvePulse': False}, 'rotation': {'set': 60, 'running': True}, 'lift': {'set': 0}, 'program': {'Type': 'Manual'}}
+2025-02-15 13:45:46,836 com_log INFO: Initialized ConnectionController with base_url: https://192.168.1.20
+2025-02-15 13:46:44,454 com_log INFO: Initialized ConnectionController with base_url: https://192.168.1.20
+2025-02-15 13:47:47,839 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-02-15 13:48:14,440 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-02-15 13:49:45,760 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-02-15 13:50:14,218 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-02-15 13:50:42,366 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-02-15 13:50:59,442 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-02-15 13:51:31,183 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-02-15 13:52:26,472 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
