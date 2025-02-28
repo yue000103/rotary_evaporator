@@ -44,15 +44,16 @@ if __name__ == "__main__":
     print("设备信息：", controller.get_info())
 
     # 更改设备参数
-    heating = {"set": 30, "running": False}
-    cooling = {"set": 10, "running": False}
-    vacuum = {"set": 500, "vacuumValveOpen": False, "aerateValvePulse": False}
+    heating = {"set": 30, "running": True}
+    cooling = {"set": 10, "running": True}
+    vacuum = {"set": 500, "vacuumValveOpen": True, "aerateValvePulse": False}
     rotation = {"set": 60, "running": True}
     lift = {"set": 0}
-    globalStatus = {"running": False}
+    # globalStatus = {"running": False}
+    globalStatus = None
 
     response = controller.change_device_parameters(heating=heating, cooling=cooling, vacuum=vacuum, rotation=rotation,
-                                                   lift=lift,running=globalStatus["running"] )
+                                                   lift=lift,running=None)
     print("PUT请求响应：", response)
 
     controller.close()

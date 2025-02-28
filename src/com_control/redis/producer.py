@@ -13,7 +13,7 @@ def producer():
 
     count = 200
     while True:
-        message = f"Message {count} from Producer"
+        message = f"True"
 
         # 1. 发布到频道（pub/sub）
         r.publish(REDIS_CHANNEL, message)
