@@ -1,6 +1,6 @@
 import time
 import logging
-from pymodbus.client.sync import ModbusTcpClient
+from pymodbus.client import ModbusTcpClient
 from src.uilt.yaml_control.setup import get_base_url
 from src.uilt.logs_control.setup import com_logger
 
