@@ -4,7 +4,7 @@ import json
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-from src.uilt.logs_control.setup import com_logger
+# from src.uilt.logs_control.setup import com_logger
 from src.uilt.yaml_control.setup import get_base_url
 
 
@@ -24,7 +24,7 @@ class ConnectionController:
         credentials = f"{self.username}:{self.password}"
         self.encoded_credentials = base64.b64encode(credentials.encode()).decode()
 
-        com_logger.info(f"Initialized ConnectionController with base_url: {self.base_url}")
+        # com_logger.info(f"Initialized ConnectionController with base_url: {self.base_url}")
 
         if not self.mock:
             self.driver = self._initialize_driver()
@@ -44,7 +44,7 @@ class ConnectionController:
 
         if self.mock:
             log_message = f"[Mock Mode] {method} request to {get_url} with data: {data}"
-            com_logger.info(log_message)
+            # com_logger.info(log_message)
             return "Mock Response"
 
         if method == 'GET':

@@ -42,12 +42,13 @@ if __name__ == "__main__":
 
     # 获取信息（模拟模式下不会真正发送请求）
     print("设备信息：", controller.get_info())
+    # 隔个1分钟get一次
 
     # 更改设备参数
-    heating = {"set": 30, "running": True}
-    cooling = {"set": 10, "running": True}
-    vacuum = {"set": 500, "vacuumValveOpen": True, "aerateValvePulse": False}
-    rotation = {"set": 60, "running": True}
+    heating = {"set": 30, "running": False}
+    cooling = {"set": 10, "running": False}
+    vacuum = {"set": 500, "vacuumValveOpen": False, "aerateValvePulse": False}
+    rotation = {"set": 60, "running": False}
     lift = {"set": 0}
     # globalStatus = {"running": False}
     globalStatus = None

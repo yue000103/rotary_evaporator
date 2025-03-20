@@ -3,7 +3,7 @@
 #
 # 右键点击你想共享的文件夹 -> 选择 属性 -> 共享 标签 -> 点击 共享。
 # 确保网络发现和文件共享是开启的。
-# 获取该文件夹的共享路径（例如 \\192.168.1.100\shared_folder）。
+# 获取该文件夹的共享路径（例如 \\DESKTOP-5TA44U5\python_web）。
 import os
 
 
@@ -11,7 +11,7 @@ class LaserMarking:
     def __init__(self, shared_folder_path):
         """
         初始化 LaserMarking 类，设置共享文件夹路径。
-        :param shared_folder_path: 共享文件夹路径
+        :param shared_folder_path: 共享文件夹路径。
         """
         self.shared_folder_path = shared_folder_path
 
@@ -37,7 +37,7 @@ class LaserMarking:
 
 # 示例使用：
 if __name__ == "__main__":
-    shared_folder_path = r"\\192.168.1.100\shared_folder"  # 替换为实际共享文件夹的路径
+    shared_folder_path = r"\\192.168.1.3\python_web"  # 替换为实际共享文件夹的路径
     laser_marking = LaserMarking(shared_folder_path)
 
     # 写入数据

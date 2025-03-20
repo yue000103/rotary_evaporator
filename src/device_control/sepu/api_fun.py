@@ -2,75 +2,19 @@ import requests
 import json
 from datetime import datetime
 import time
-
+from src.com_control.sepu_com import SepuCom
 
 class ApiClient:
-    def __init__(self, base_url: str):
+    def __init__(self,):
         """
         初始化ApiClient实例，设置基本的API URL。
 
         参数:
         base_url (str): API的基本URL，例如 "http://localhost:5000"
         """
-        self.base_url = base_url
+        self.sepu_com = SepuCom()
         self.method_id = 0
 
-    def _send_post_request(self, endpoint: str, payload: dict) -> dict:
-        """
-        发送POST请求到指定的API接口。
-
-        参数:
-        endpoint (str): API的具体路径，如 "/status/init_device"
-        payload (dict): 请求负载，作为JSON传递
-
-        返回:
-        dict: 请求的响应数据
-        """
-        url = f"{self.base_url}{endpoint}"
-        response = requests.post(url, json=payload)
-
-        # 检查请求是否成功
-        if response.status_code == 200:
-            return response.json()  # 返回响应的JSON数据
-        else:
-            error_message = {
-                "status_code": response.status_code,
-                "error_message": response.text
-            }
-            try:
-                error_response = response.json()
-                error_message["detailed_error"] = json.dumps(error_response, indent=2)
-            except ValueError:
-                error_message["detailed_error"] = "无法解析错误响应的JSON内容。"
-            return error_message
-
-    def _send_get_request(self, endpoint: str) -> dict:
-        """
-        发送GET请求到指定的API接口。
-
-        参数:
-        endpoint (str): API的具体路径，如 "/method/only/operate"
-
-        返回:
-        dict: 请求的响应数据
-        """
-        url = f"{self.base_url}{endpoint}"
-        response = requests.get(url)
-
-        # 检查请求是否成功
-        if response.status_code == 200:
-            return response.json()  # 返回响应的JSON数据
-        else:
-            error_message = {
-                "status_code": response.status_code,
-                "error_message": response.text
-            }
-            try:
-                error_response = response.json()
-                error_message["detailed_error"] = json.dumps(error_response, indent=2)
-            except ValueError:
-                error_message["detailed_error"] = "无法解析错误响应的JSON内容。"
-            return error_message
 
     def init_device(self, use_mock: bool) -> dict:
         """
@@ -83,7 +27,7 @@ class ApiClient:
         dict: 接口返回的响应数据
         """
         payload = {"use_mock": use_mock}
-        return self._send_post_request("/status/init_device", payload)
+        return self.sepu_com.send_post_request("/status/init_device", payload)
 
     def get_device_status(self, status: str, type: str) -> dict:
         """
@@ -100,7 +44,7 @@ class ApiClient:
             "status": status,
             "type": type
         }
-        return self._send_post_request("/status/get_device_status", payload)
+        return self.sepu_com.send_post_request("/status/get_device_status", payload)
 
     def update_method(self, method_id: str, method: dict) -> dict:
         """
@@ -118,7 +62,7 @@ class ApiClient:
             "method_id": method_id
         }
         self.method_id = method_id
-        return self._send_post_request("/method/update/operate", payload)
+        return self.sepu_com.send_post_request("/method/update/operate", payload)
 
     def only_operate(self) -> dict:
         """
@@ -127,7 +71,7 @@ class ApiClient:
         返回:
         dict: 接口返回的响应数据
         """
-        return self._send_get_request("/method/only/operate")
+        return self.sepu_com.send_get_request("/method/only/operate")
 
     def get_curve(self, start_time: str) -> dict:
         """
@@ -142,7 +86,7 @@ class ApiClient:
         payload = {
             "start_time": start_time
         }
-        return self._send_post_request("/eluent_curve/get_curve", payload)
+        return self.sepu_com.send_post_request("/eluent_curve/get_curve", payload)
 
     def update_line_pause(self) -> dict:
         """
@@ -151,7 +95,7 @@ class ApiClient:
         返回:
         dict: 接口返回的响应数据
         """
-        return self._send_get_request("/eluent_curve/update_line_pause")
+        return self.sepu_com.send_get_request("/eluent_curve/update_line_pause")
 
     def update_line_terminate(self) -> dict:
         """
@@ -160,7 +104,7 @@ class ApiClient:
         返回:
         dict: 接口返回的响应数据
         """
-        return self._send_get_request("/eluent_curve/update_line_terminate")
+        return self.sepu_com.send_get_request("/eluent_curve/update_line_terminate")
 
     def save_experiment_data(self) -> dict:
         """
@@ -186,7 +130,7 @@ class ApiClient:
         #     "task_list": task_list,
         #     "vertical_data": vertical_data
         # }
-        return self._send_post_request("/experiment/save/experiment_data",payload)
+        return self.sepu_com.send_post_request("/experiment/save/experiment_data",payload)
 
     def get_line(self) -> dict:
         """
@@ -195,7 +139,7 @@ class ApiClient:
         返回:
         dict: 接口返回的响应数据
         """
-        return self._send_get_request("/eluent_curve/get_line")
+        return self.sepu_com.send_get_request("/eluent_curve/get_line")
 
     def get_current_time(self):
         """
@@ -222,7 +166,7 @@ class ApiClient:
             "task_list": task_list
         }
         print("payload",payload)
-        return self._send_post_request("/tubes/get_tube", payload)
+        return self.sepu_com.send_post_request("/tubes/get_tube", payload)
 
     def pause_tube(self) -> dict:
         """
@@ -231,7 +175,7 @@ class ApiClient:
         返回:
         dict: 接口返回的响应数据
         """
-        return self._send_post_request("/tubes/pause_tube", {})
+        return self.sepu_com.send_post_request("/tubes/pause_tube", {})
 
     def resume_tube(self) -> dict:
         """
@@ -240,7 +184,7 @@ class ApiClient:
         返回:
         dict: 接口返回的响应数据
         """
-        return self._send_post_request("/tubes/resume_tube", {})
+        return self.sepu_com.send_post_request("/tubes/resume_tube", {})
 
     def set_sample_valve(self) -> dict:
         """
@@ -255,7 +199,7 @@ class ApiClient:
         payload = {
 
         }
-        return self._send_post_request("/eluent_curve/set_sample_valve", payload)
+        return self.sepu_com.send_post_request("/eluent_curve/set_sample_valve", payload)
 
 
 
@@ -263,14 +207,14 @@ class ApiClient:
 
 def main():
     # 创建 ApiClient 实例
-    api_client = ApiClient("http://localhost:5000")
+    api_client = ApiClient()
 
     while True:
         print("\n请选择要执行的操作（输入数字）：")
         print("1. 初始化设备")
         print("2. 更新方法")
         print("3. 上传方法")
-        print("4. 获取 Line ")
+        print("4. 获取Line")
         print("5. 开始实验")
         print("11. 上样结束")
 

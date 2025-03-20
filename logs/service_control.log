@@ -1,0 +1,14 @@
+2025-03-19 10:58:44,911 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-19 10:58:44,911 service_control_log INFO: 步骤: 初始化设备, 状态: success, 消息: Device initialized
+2025-03-19 10:58:46,355 service_control_log INFO: 步骤: 机器人放色谱柱, 状态: success, 消息: Robot placed column 2
+2025-03-19 10:58:46,531 service_control_log INFO: 步骤: 机器人放试剂瓶, 状态: success, 消息: Robot placed reagent bottle 1
+2025-03-19 10:58:46,696 service_control_log INFO: 步骤: 冲洗色谱柱, 状态: success, 消息: 
+2025-03-19 10:58:46,850 service_control_log INFO: 步骤: 机器人进样, 状态: success, 消息: Robot injected 5mL of 二苯甲酮
+2025-03-19 10:58:47,005 service_control_log INFO: 步骤: 过柱（梯度洗脱）, 状态: success, 消息: Column operation started
+2025-03-19 10:58:47,170 service_control_log INFO: 步骤: 保存实验数据, 状态: success, 消息: Experiment data saved
+2025-03-19 10:58:47,313 service_control_log INFO: 步骤: 机器人旋蒸上样, 状态: success, 消息: Robot evaporated sample in bottle 1
+2025-03-19 10:58:47,459 service_control_log INFO: 步骤: 旋蒸运行, 状态: success, 消息: Evaporation process running
+2025-03-19 10:58:47,618 service_control_log INFO: 步骤: 收集装置清洗复位, 状态: success, 消息: Collector cleaned and reset
+2025-03-19 10:58:47,782 service_control_log INFO: 步骤: 机器人旋蒸下样, 状态: success, 消息: Robot collected evaporated sample from bottle 1
+2025-03-19 10:58:47,928 service_control_log INFO: 步骤: 机器人下样，样品入库, 状态: success, 消息: Robot stored sample from bottle 2
+2025-03-19 10:58:48,084 service_control_log INFO: 步骤: 终止实验, 状态: success, 消息: Experiment terminated
