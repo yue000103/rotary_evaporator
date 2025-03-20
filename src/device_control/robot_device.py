@@ -151,7 +151,6 @@ class RobotController:
         response = self.connection.send_command(command)
         return response
 
-    def
 
 
 # 使用示例
