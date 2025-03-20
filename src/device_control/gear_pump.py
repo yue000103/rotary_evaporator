@@ -19,16 +19,16 @@ class GearPump:
         self.REG_START_STOP = 99  # 泵启停 (bool)
 
 
-    def start_pump(self):
-        """ 启动蠕动泵 """
+    def start_pump(self,time_s):
 
+        #写时间
         self.plc.write_coil(self.REG_START_START, False)
         time.sleep(1)
         self.plc.write_coil(self.REG_START_START, True)
 
 
+
     def stop_pump(self):
-        """ 停止蠕动泵 """
         self.plc.write_coil(self.REG_START_STOP, False)
         time.sleep(1)
         self.plc.write_coil(self.REG_START_STOP, True)

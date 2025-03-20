@@ -40,7 +40,7 @@ class PeristalticPump:
 
     def set_speed(self, speed: int):
         """ 设置泵的转速 (RPM) """
-        if not (0 < speed <= 5000):  # 假设最大转速为 5000 RPM
+        if not (0 < speed <= 300):  # 假设最大转速为 5000 RPM
             device_control_logger.error("转速超出范围！有效范围: 1 - 5000 RPM")
             return
         success = self.plc.write_single_register(self.REG_SPEED, speed)

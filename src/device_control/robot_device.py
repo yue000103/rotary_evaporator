@@ -126,6 +126,13 @@ class RobotController:
         device_control_logger.info("Closing RobotController connection")
         self.connection.close()
 
+    def send_ok(self):
+        self.ensure_connection()
+        command = 'ok'
+        device_control_logger.info("Sending command: liquid_transfer_finish")
+        response = self.connection.send_command(command)
+        return response
+
 
 # 使用示例
 if __name__ == "__main__":
