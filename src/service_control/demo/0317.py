@@ -1,6 +1,6 @@
 import time
 import json
-from src.device_control import robot_controller
+from src.device_control import robot_controller,sepu_api,pump_sample,xuanzheng_controller,pump_device,gear_pump
 from src.uilt.logs_control.setup import service_control_logger
 
 class ApiClient:
@@ -14,6 +14,7 @@ class ApiClient:
         return result
 
     def init_device(self, flag):
+        sepu_api.init_device(flag)
         result = {"status": "success", "message": "Device initialized"}
         return self.log_and_return("初始化设备", result)
 
@@ -33,33 +34,92 @@ class ApiClient:
     def wash_column(self):
         result = ""
         # 以下代码用于方法更新和执行，仅供参考
-        # method = {...}  # 这里是色谱柱清洗参数
-        # method_id = "97"
-        # result = sepu_api.update_method(method_id, method)
-        # print("Update Method Result:", result)
-        # result = sepu_api.only_operate()
-        # print("Only Operate Result:", result)
-        # result = sepu_api.get_line()
-        # print("Get Line Result:", result)
-        # start_time = sepu_api.get_current_time()
-        # result = sepu_api.get_curve(start_time)
+        method = {
+            "samplingTime": 5,
+            "detectorWavelength": 258,
+            "equilibrationColumn": 1,
+            "speed": 100,
+            "totalFlowRate": 10,
+            "cleanList": [
+                {
+                    "module_id": 2,
+                    "liquid_volume": 20,
+                    "tube_id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                },
+                {
+                    "module_id": 1,
+                    "liquid_volume": 20,
+                    "tube_id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                }
+            ],
+            "cleaningCount": 2,
+            "cleaningSpeed": None,
+            "drainSpeed": None,
+            "isocratic": 0,
+            "methodName": "12",
+            "pressure": 1,
+            "pumpA": None,
+            "pumpB": None,
+            "pumpList": [
+                {"time": 0, "pumpB": 100, "pumpA": 0, "flowRate": 30},
+                {"time": 1, "pumpB": 100, "pumpA": 0, "flowRate": 30},
+                {"time": 2, "pumpB": 0, "pumpA": 100, "flowRate": 30},
+                {"time": 3, "pumpB": 0, "pumpA": 100, "flowRate": 30},
+                {"time": 4, "pumpB": 0, "pumpA": 100, "flowRate": 30},
+                {'time': 5, "pumpB": 0, "pumpA": 100, "flowRate": 30},
+            ],
+            "retainList": [
+                {
+                    "module_id": 1,
+                    "liquid_volume": 8,
+                    "tube_id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                },
+                {
+                    "module_id": 2,
+                    "liquid_volume": 8,
+                    "tube_id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                }
+            ],
+            "smiles": "4896",
+        }
+        method_id = "97"
+        result = sepu_api.update_method(method_id, method)
+        print("Update Method Result:", result)
+        result = sepu_api.only_operate()
+        print("Only Operate Result:", result)
+        result = sepu_api.get_line()
+        print("Get Line Result:", result)
+        start_time = sepu_api.get_current_time()
+        result = sepu_api.get_curve(start_time)
         return self.log_and_return("冲洗色谱柱", {"status": "success", "message": result})
 
     def inject_sample(self, volume):
         # 机器人执行进样操作
-        # pump_sample.inject(volume, 1, 3)
+        pump_sample.inject(volume, 1, 3)
         result = {"status": "success", "message": f"Robot injected {volume}mL"}
         return self.log_and_return("机器人进样", result)
 
     def start_column(self):
-        # result = sepu_api.set_sample_valve()
-        # print("Set Sample Valve Result:")
+        result = sepu_api.set_sample_valve()
+        print("Set Sample Valve Result:")
         result = {"status": "success", "message": "Column operation started"}
         return self.log_and_return("过柱（梯度洗脱）", result)
 
     def save_experiment_data(self):
-        # result = sepu_api.save_experiment_data()
-        # print("Save Experiment Data Result:", result)
+        result = sepu_api.save_experiment_data()
+        timestamp = time.strftime("%Y%m%d%H%M%S")
+        task_list = {
+            "method_id": int(sepu_api.method_id),
+            "module_id": 1,
+            "status": "abandon",
+            "task_id": int(timestamp),
+            "tube_list": [1, 2, 3, 4, 5, 6, 7, 8]
+        }
+
+        print("task_list", task_list)
+        result = sepu_api.get_tube(task_list)
+        print("Get Tube Result:")
+        print(json.dumps(result, indent=2))
         result = {"status": "success", "message": "Experiment data saved"}
         return self.log_and_return("保存实验数据", result)
 
@@ -73,23 +133,66 @@ class ApiClient:
         return self.log_and_return("机器人旋蒸上样", result)
 
     def run_vacuum(self):
-        # response = xuanzheng_controller.change_device_parameters(...)
-        # print("PUT请求响应：", response)
-        # xuanzheng_controller.close()
-        pass
+
+        # 获取信息（模拟模式下不会真正发送请求）
+        print("设备信息：", xuanzheng_controller.get_info())
+        # 隔个1分钟get一次
+        # 更改设备参数
+        heating = {"set": 30, "running": False}
+        cooling = {"set": 10, "running": False}
+        vacuum = {"set": 500, "vacuumValveOpen": True, "aerateValvePulse": False}
+        rotation = {"set": 60, "running": False}
+        lift = {"set": 0}
+        # globalStatus = {"running": False}
+        globalStatus = None
+
+        response = xuanzheng_controller.change_device_parameters(heating=heating, cooling=cooling, vacuum=vacuum,
+                                                       rotation=rotation,
+                                                       lift=lift, running=None)
+        print("PUT请求响应：", response)
+
+        xuanzheng_controller.close()
+
+
 
 
     def run_evaporation(self):
-        # 旋蒸设备运行
-        # response = xuanzheng_controller.change_device_parameters(...)
-        # print("PUT请求响应：", response)
-        # xuanzheng_controller.close()
+        # 获取信息（模拟模式下不会真正发送请求）
+        print("设备信息：", xuanzheng_controller.get_info())
+        # 隔个1分钟get一次
+        # 更改设备参数
+        heating = {"set": 30, "running": True}
+        cooling = {"set": 10, "running": True}
+        vacuum = {"set": 500, "vacuumValveOpen": True, "aerateValvePulse": False}
+        rotation = {"set": 60, "running": True}
+        lift = {"set": 0}
+        # globalStatus = {"running": False}
+        globalStatus = None
+
+        response = xuanzheng_controller.change_device_parameters(heating=heating, cooling=cooling, vacuum=vacuum,
+                                                                 rotation=rotation,
+                                                                 lift=lift, running=None)
+        print("PUT请求响应：", response)
+
+        xuanzheng_controller.close()
         result = {"status": "success", "message": "Evaporation process running"}
         return self.log_and_return("旋蒸运行", result)
 
     def clean_and_reset_collector(self):
-        # result = sepu_api.get_tube(task_list)
-        # print("Get Tube Result:", json.dumps(result, indent=2))
+        timestamp = time.strftime("%Y%m%d%H%M%S")
+        task_list = {
+            "method_id": int(sepu_api.method_id),
+            "module_id": 1,
+            "status": "clean",
+            "task_id": int(timestamp),
+            "tube_list": [1, 2, 3, 4, 5, 6, 7, 8]
+        }
+
+        print("task_list", task_list)
+        result = sepu_api.get_tube(task_list)
+        print("Get Tube Result:")
+        print(json.dumps(result, indent=2))
+
         result = {"status": "success", "message": "Collector cleaned and reset"}
         return self.log_and_return("收集装置清洗复位", result)
 
@@ -103,6 +206,7 @@ class ApiClient:
         return self.log_and_return("机器人下样，样品入库", result)
 
     def update_line_terminate(self):
+        sepu_api.update_line_terminate()
         result = {"status": "success", "message": "Experiment terminated"}
         return self.log_and_return("终止实验", result)
 
@@ -110,13 +214,19 @@ class ApiClient:
         robot_controller.send('ok')
 
     def peristaltic_pump_transfer_liquid(self):
+        pump_device.set_speed(500)
+        pump_device.start_pump()
         pass
-
+    def stop_peristaltic_pump(self):
+        pump_device.stop_pump()
     def robot_start_spray(self):
         robot_controller.start_spray()
 
         pass
     def start_gear_pump(self):
+        gear_pump.start_pump()
+        time.sleep(2)
+        gear_pump.stop_pump()
         pass
 
     def robot_liquid_transfer_finish(self):
@@ -136,37 +246,44 @@ def main():
         ("初始化设备", lambda: api_client.init_device(True)),
         ("放色谱柱", lambda: api_client.robot_start()),
         ("机器人放试剂瓶", lambda: api_client.robot_trasfer_flask(7,17)),
-        # ("冲洗色谱柱", lambda: api_client.wash_column()),
+        ("冲洗色谱柱", lambda: api_client.wash_column()),
         ("机器人拿针头", lambda: api_client.robot_start_liquid_transfer(1)),
-        # ("进样", lambda: api_client.inject_sample(30)),
+        ("进样", lambda: api_client.inject_sample(30)),
         ("机器人拿针头", lambda: api_client.robot_liquid_transfer_finish()),
 
-        # ("过柱（梯度洗脱）", lambda: api_client.start_column()),
-        # ("人工汇总、清洗", lambda: api_client.save_experiment_data()),
-        # ("机器人旋蒸上样（1000mL大瓶）", lambda: api_client.robot_trasfer_flask(3,4)),
-        # ("旋蒸抽真空", lambda: api_client.run_vacuum()),
-        # ("机器人旋蒸移走", lambda: api_client.robot_remove()),
+        ("过柱（梯度洗脱）", lambda: api_client.start_column()),
+        ("终止实验", lambda: api_client.update_line_terminate()),
+        ("人工汇总、清洗", lambda: api_client.save_experiment_data()),
+        ("机器人旋蒸上样（1000mL大瓶）", lambda: api_client.robot_trasfer_flask(3,4)),
+        ("旋蒸抽真空", lambda: api_client.run_vacuum()),
+        ("机器人旋蒸移走", lambda: api_client.robot_remove()),
         #
-        # ("旋蒸运行", lambda: api_client.run_evaporation()),
-        # ("收集装置清洗复位", lambda: api_client.clean_and_reset_collector()),
-        # ("机器人旋蒸下样", lambda: api_client.robot_trasfer_flask(4,5)),
+        ("旋蒸运行", lambda: api_client.run_evaporation()),
+        ("收集装置清洗复位", lambda: api_client.clean_and_reset_collector()),
+        ("机器人旋蒸下样", lambda: api_client.robot_trasfer_flask(4,5)),
         #
-        # ("机器人取样品小瓶（机器人）200mL 小瓶，放到转移工位", lambda: api_client.robot_trasfer_flask(5, 6)),
-        # ("机器人转移剩余物质到小瓶按蠕动泵行程控制", lambda: api_client.peristaltic_pump_transfer_liquid()),
-        #
-        # ("机器人清洗大瓶", lambda: api_client.robot_start_spray()),
-        # ("齿轮泵开始转动", lambda: api_client.start_gear_pump()),
-        # ("机器人转移剩余物质到小瓶", lambda: api_client.peristaltic_pump_transfer_liquid()),
-        #
-        # ("机器人清洗大瓶", lambda: api_client.robot_start_spray()),
-        # ("齿轮泵开始转动", lambda: api_client.start_gear_pump()),
-        # ("机器人转移剩余物质到小瓶", lambda: api_client.peristaltic_pump_transfer_liquid()),
+        ("机器人取样品小瓶（机器人）200mL 小瓶，放到转移工位", lambda: api_client.robot_trasfer_flask(5, 6)),
+        ("机器人转移剩余物质到小瓶按蠕动泵行程控制", lambda: api_client.peristaltic_pump_transfer_liquid()),
+        ("停止蠕动泵", lambda: api_client.stop_peristaltic_pump()),
 
-        # ("机器人清洗大瓶", lambda: api_client.robot_start_spray()),
-        # ("齿轮泵开始转动", lambda: api_client.start_gear_pump()),
-        # ("机器人转移剩余物质到小瓶", lambda: api_client.peristaltic_pump_transfer_liquid()),
         #
-        # ("机器人下样，样品入库", lambda: api_client.robot_store_sample(2)),
+        ("机器人清洗大瓶", lambda: api_client.robot_start_spray()),
+        ("齿轮泵开始转动", lambda: api_client.start_gear_pump()),
+        ("机器人转移剩余物质到小瓶", lambda: api_client.peristaltic_pump_transfer_liquid()),
+        ("停止蠕动泵", lambda: api_client.stop_peristaltic_pump()),
+
+        #
+        ("机器人清洗大瓶", lambda: api_client.robot_start_spray()),
+        ("齿轮泵开始转动", lambda: api_client.start_gear_pump()),
+        ("机器人转移剩余物质到小瓶", lambda: api_client.peristaltic_pump_transfer_liquid()),
+        ("停止蠕动泵", lambda: api_client.stop_peristaltic_pump()),
+
+        ("机器人清洗大瓶", lambda: api_client.robot_start_spray()),
+        ("齿轮泵开始转动", lambda: api_client.start_gear_pump()),
+        ("机器人转移剩余物质到小瓶", lambda: api_client.peristaltic_pump_transfer_liquid()),
+        ("停止蠕动泵", lambda: api_client.stop_peristaltic_pump()),
+
+        ("机器人下样，样品入库", lambda: api_client.robot_store_sample(2)),
         # ("终止实验", lambda: api_client.update_line_terminate()),
     ]
 

@@ -155,7 +155,7 @@ class ApiClient:
         task_list (list): 任务列表，包含多个任务对象，每个对象需要包含：
                           - method_id (int): 方法ID
                           - module_id (int): 模块ID
-                          - status (str): 任务状态
+                          - status (str): 任务状态 abandon、collect、clean
                           - task_id (int): 任务ID
                           - tube_list (list): 试管ID列表
 
