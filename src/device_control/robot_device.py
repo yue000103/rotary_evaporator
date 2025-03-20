@@ -133,6 +133,26 @@ class RobotController:
         response = self.connection.send_command(command)
         return response
 
+    def down_collect_needle(self):
+        command = 'ok'
+        device_control_logger.info("Sending command: liquid_transfer_finish")
+        response = self.connection.send_command(command)
+        return response
+
+    def rise_collect_needle(self):
+        command = 'ok'
+        device_control_logger.info("Sending command: liquid_transfer_finish")
+        response = self.connection.send_command(command)
+        return response
+
+    def robot_change_gripper(self):
+        command = 'ok'
+        device_control_logger.info("Sending command: liquid_transfer_finish")
+        response = self.connection.send_command(command)
+        return response
+
+    def
+
 
 # 使用示例
 if __name__ == "__main__":

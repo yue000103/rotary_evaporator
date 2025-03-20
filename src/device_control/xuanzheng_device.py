@@ -1,9 +1,13 @@
 from src.com_control.xuanzheng_com import ConnectionController
+from src.com_control.PLC_com import PLCConnection
 
 
 class ProcessController:
     def __init__(self,mock=False):
         self.connection = ConnectionController(mock)
+        self.plc = PLCConnection(mock=mock)
+        self.HEIGHT_ADDRESS = 99
+
 
     def get_info(self):
         return self.connection.send_request("/api/v1/info", method='GET')
@@ -32,6 +36,10 @@ class ProcessController:
 
     def close(self):
         self.connection.close()
+
+    def set_height(self,height):
+        self.plc.write_single_register(self.HEIGHT_ADDRESS, height)
+
 
 
 # 使用示例
