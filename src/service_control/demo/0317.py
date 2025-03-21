@@ -204,7 +204,7 @@ class ApiClient:
 
         xuanzheng_controller.close()
         result = {"status": "success", "message": "Evaporation process running"}
-        return self.log_and_return("旋蒸运行", result)
+        return self.log_and_return("停止悬蒸", result)
 
     def drain_valve_open(self):
         # 获取信息（模拟模式下不会真正发送请求）
@@ -226,7 +226,7 @@ class ApiClient:
 
         xuanzheng_controller.close()
         result = {"status": "success", "message": "Evaporation process running"}
-        return self.log_and_return("旋蒸运行", result)
+        return self.log_and_return("排空阀打开关闭", result)
 
     def clean_and_reset_collector(self):
         timestamp = time.strftime("%Y%m%d%H%M%S")
@@ -269,12 +269,12 @@ class ApiClient:
         pump_device.set_speed(500)
         pump_device.start_pump()
         result = {"status": "success", "message": "Start Peristaltic"}
-        return self.log_and_return("终止实验", result)
+        return self.log_and_return("机器人转移剩余物质到小瓶（蠕动泵）", result)
         pass
     def stop_peristaltic_pump(self):
         pump_device.stop_pump()
         result = {"status": "success", "message": "Stop Peristaltic"}
-        return self.log_and_return("终止实验", result)
+        return self.log_and_return("停止蠕动泵", result)
     def robot_start_spray(self):
         robot_controller.start_spray()
         result = {"status": "success", "message": "Stop Gear"}
@@ -352,12 +352,12 @@ def main():
         ("齿轮泵开始转动", lambda: api_client.start_gear_pump(2)),
         ("换夹具", lambda: robot_controller.robot_change_gripper()),
         ("机器人转移剩余物质到小瓶", lambda: api_client.peristaltic_pump_transfer_liquid()),
-        ("停止蠕动泵", lambda: api_client.stop_peristaltic_pump()),
+        # ("停止蠕动泵", lambda: api_client.stop_peristaltic_pump()),
 
         ("机器人清洗大瓶", lambda: api_client.robot_start_spray()),
         ("齿轮泵开始转动", lambda: api_client.start_gear_pump()),
         ("机器人转移剩余物质到小瓶", lambda: api_client.peristaltic_pump_transfer_liquid()),
-        ("停止蠕动泵", lambda: api_client.stop_peristaltic_pump()),
+        # ("停止蠕动泵", lambda: api_client.stop_peristaltic_pump()),
 
         ("机器人旋蒸上样（小瓶）", lambda: api_client.robot_trasfer_flask(3, 4)),
         ("旋蒸抽真空", lambda: api_client.run_vacuum()),
