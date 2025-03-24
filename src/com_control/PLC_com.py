@@ -23,6 +23,7 @@ class PLCConnection:
         """ 初始化 Modbus TCP 连接 """
         self.client = ModbusTcpClient(self.host, port=self.port)
         if self.client.connect():
+            print("Connected to PLC Server")
             com_logger.info("Connected to PLC Server")
         else:
             com_logger.error("Failed to connect to PLC Server")
@@ -129,29 +130,29 @@ if __name__ == '__main__':
     plc = PLCConnection(mock=False)
 
     # 读取保持寄存器
-    registers = plc.read_holding_registers(address=0, count=5)
-    if registers:
-        print(f"Read registers: {registers}")
-
-    # 写入单个保持寄存器
-    write_success = plc.write_single_register(address=1, value=100)
-    if write_success:
-        print("Successfully wrote value to register")
-
-    # 写入多个寄存器
-    write_multiple_success = plc.write_registers(address=2, values=[10, 20, 30])
-    if write_multiple_success:
-        print("Successfully wrote multiple values to registers")
-
-    # 写入单个线圈 (bool)
-    write_coil_success = plc.write_coil(address=5, value=True)
-    if write_coil_success:
-        print("Successfully wrote coil value")
-
-    # 读取线圈状态
-    coils = plc.read_coils(address=5, count=3)
-    if coils is not None:
-        print(f"Read coil values: {coils}")
-
-    # 关闭连接
-    plc.close()
+    # registers = plc.read_holding_registers(address=0, count=5)
+    # if registers:
+    #     print(f"Read registers: {registers}")
+    #
+    # # 写入单个保持寄存器
+    # write_success = plc.write_single_register(address=1, value=100)
+    # if write_success:
+    #     print("Successfully wrote value to register")
+    #
+    # # 写入多个寄存器
+    # write_multiple_success = plc.write_registers(address=2, values=[10, 20, 30])
+    # if write_multiple_success:
+    #     print("Successfully wrote multiple values to registers")
+    #
+    # # 写入单个线圈 (bool)
+    # write_coil_success = plc.write_coil(address=5, value=True)
+    # if write_coil_success:
+    #     print("Successfully wrote coil value")
+    #
+    # # 读取线圈状态
+    # coils = plc.read_coils(address=5, count=3)
+    # if coils is not None:
+    #     print(f"Read coil values: {coils}")
+    #
+    # # 关闭连接
+    # plc.close()

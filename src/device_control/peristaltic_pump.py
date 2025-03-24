@@ -15,10 +15,10 @@ class PeristalticPump:
         self.plc = PLCConnection(mock=mock)
 
         # 定义寄存器地址
-        self.REG_START_START = 99
-        self.REG_START_STOP = 99  # 泵启停 (bool)
-        self.REG_SPEED = 99  # 速度 (int, RPM)
-        self.REG_VOLUME = 99  # 体积 (real, mL)
+        self.REG_START_START = 300 # 泵启动
+        self.REG_START_STOP = 301  # 泵停 (bool)
+        self.REG_SPEED = 300  # 速度 (int, RPM)
+        self.REG_VOLUME = 305  # 体积 (real, mL)
 
     def start_pump(self):
         """ 启动蠕动泵 """
@@ -26,6 +26,10 @@ class PeristalticPump:
         self.plc.write_coil(self.REG_START_START, False)
         time.sleep(1)
         self.plc.write_coil(self.REG_START_START, True)
+        # time.sleep(1)
+        # self.plc.write_coil(self.REG_START_START, False)
+
+
 
 
     def stop_pump(self):
@@ -68,11 +72,11 @@ class PeristalticPump:
 
 
 if __name__ == '__main__':
-    pump = PeristalticPump(mock=True)  # 启用 Mock 模式测试
+    pump = PeristalticPump(mock=False)  # 启用 Mock 模式测试
+    # pump.set_speed(1200)  # 设定转速
 
     pump.start_pump()  # 启动泵
-    pump.set_speed(1200)  # 设定转速
-    pump.set_volume(500)  # 设定液体体积
-    pump.stop_pump()  # 停止泵
-
-    pump.close()  # 关闭连接
+    # pump.set_volume(500)  # 设定液体体积
+    # pump.stop_pump()  # 停止泵
+    #
+    # pump.close()  # 关闭连接

@@ -5,10 +5,11 @@ import logging
 logger = logging.getLogger("PUMP")
 
 class PumpSample:
-    def __init__(self, port='COM3', baud_rate=9600, timeout=1, mock=False):
+    def __init__(self, port='COM23', baud_rate=9600, timeout=3, mock=False):
         """
         泵控制类，支持真实和 Mock 模式
         :param port: 串口号
+
         :param baud_rate: 波特率
         :param timeout: 超时时间
         :param mock: 是否启用 Mock 模式
@@ -32,10 +33,15 @@ class PumpSample:
 
         if not self.mock:
             try:
+                print(f"--------------{self.mock}------------------")
                 self.ser = serial.Serial(port, baud_rate, timeout=timeout)
-                logger.info("UV检测器串口连接成功")
+                logger.info("注射泵串口连接成功")
+                print(f"注射泵串口连接成功")
+
             except Exception as e:
-                logger.error(f"无法连接到 UV 检测器串口: {e}")
+                print(f"无法连接到 注射泵串口: {e}--")
+
+                logger.error(f"无法连接到 注射泵串口: {e}")
                 raise e
         else:
             logger.info("Mock 模式启用，不连接串口")
@@ -46,8 +52,11 @@ class PumpSample:
         :param command: 要发送的命令
         :return: 设备的响应
         """
-        formatted_command = f"/{self.ID}{command}R\r\n"
+        formatted_command = f"/{self.ID}" + command + "R\r\n"
+
+        # formatted_command = f"/{self.ID}{command}R\r\n"
         logger.info(f"发送命令: {formatted_command.strip()}")
+        print(f"发送命令: {formatted_command.strip()}")
 
         if self.mock:
             response = f"[Mock Response] {command} OK".encode("utf-8")
@@ -60,7 +69,7 @@ class PumpSample:
 
     def initialization(self) -> bytes:
         """ 初始化泵 """
-        return self.send_command("ZR")
+        return self.send_command("Z")
 
     def ml_to_pulse(self, ml: float) -> int:
         """ 根据校准曲线计算所需的脉冲数 """
@@ -143,6 +152,9 @@ class PumpSample:
             self.check_state()
 
 if __name__ == '__main__':
-    ps = PumpSample(mock=True)  # 启用 Mock 模式
-    response = ps.inject(5000, 1, 3)
-    logger.info(f"Inject Response: {response}")
+    ps = PumpSample(mock=False)  # 启用 Mock 模式
+    response = ps.inject(1000, 1, 3)
+    # logger.info(f"Inject Response: {response}")
+    # ps.send_command('T')
+    # re = ps.initialization()
+    # print("re",response)

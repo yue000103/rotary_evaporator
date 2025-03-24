@@ -6,11 +6,17 @@ class ProcessController:
     def __init__(self,mock=False):
         self.connection = ConnectionController(mock)
         self.plc = PLCConnection(mock=mock)
-        self.HEIGHT_ADDRESS = 99
+        self.HEIGHT_ADDRESS = 502
 
 
     def get_info(self):
         return self.connection.send_request("/api/v1/info", method='GET')
+
+    def get_process(self):
+        return self.connection.send_request("/api/v1/process", method='GET')
+
+
+
 
     def change_device_parameters(self, heating=None, cooling=None, vacuum=None, rotation=None, lift=None, running=None):
         # self.get_info()
@@ -22,12 +28,13 @@ class ProcessController:
             data["cooling"] = {"set": cooling["set"], "running": cooling.get("running", False)}
         if vacuum is not None:
             data["vacuum"] = {"set": vacuum["set"], "vacuumValveOpen": vacuum.get("vacuumValveOpen", False),
+                              "aerateValveOpen": vacuum.get("aerateValveOpen", False),
                               "aerateValvePulse": vacuum.get("aerateValvePulse", False)}
         if rotation is not None:
             data["rotation"] = {"set": rotation["set"], "running": rotation.get("running", True)}
         if lift is not None:
             data["lift"] = {"set": lift["set"]}
-        data['program'] = {'Type': 'Manual'}
+        # data['program'] = {'Type': 'Manual'}
         if running is not None:
             data['globalStatus'] = {'running': running}
 
@@ -39,6 +46,14 @@ class ProcessController:
 
     def set_height(self,height):
         self.plc.write_single_register(self.HEIGHT_ADDRESS, height)
+        # pass
+        # self.plc.write_coil(self.HEIGHT_ADDRESS, True)
+
+    # def set_height_up(self):
+    #     # self.plc.write_single_register(self.HEIGHT_ADDRESS, height)
+    #     self.plc.write_coil(self.HEIGHT_ADDRESS, False)
+
+        #307
 
 
 
@@ -49,20 +64,21 @@ if __name__ == "__main__":
     controller = ProcessController(mock=False)  # mock=True 开启模拟模式
 
     # 获取信息（模拟模式下不会真正发送请求）
-    print("设备信息：", controller.get_info())
+    print("设备信息：", controller.get_process())
     # 隔个1分钟get一次
+    # controller.set_height(0)
 
-    # 更改设备参数
-    heating = {"set": 30, "running": False}
-    cooling = {"set": 10, "running": False}
-    vacuum = {"set": 500, "vacuumValveOpen": False, "aerateValvePulse": False}
-    rotation = {"set": 60, "running": False}
-    lift = {"set": 0}
-    # globalStatus = {"running": False}
-    globalStatus = None
-
-    response = controller.change_device_parameters(heating=heating, cooling=cooling, vacuum=vacuum, rotation=rotation,
-                                                   lift=lift,running=None)
-    print("PUT请求响应：", response)
+    # # 更改设备参数
+    # heating = {"set": 30, "running": False}
+    # cooling = {"set": 10, "running": False}
+    # vacuum = {"set": 500, "vacuumValveOpen": False, "aerateValveOpen": True,"aerateValvePulse":True}
+    # # rotation = {"set": 60, "running": False}
+    # lift = {"set": 0}
+    # # globalStatus = {"running": False}
+    # globalStatus = None
+    #
+    # response = controller.change_device_parameters(heating=None, cooling=None, vacuum=vacuum, rotation=None,
+    #                                                lift=lift,running=None)
+    # print("PUT请求响应：", response)
 
     controller.close()

@@ -151,6 +151,12 @@ class RobotController:
         response = self.connection.send_command(command)
         return response
 
+    def inject_sample_finish(self):
+        command = 'inject_sample_finish'
+        device_control_logger.info("Sending command: inject_sample_finish")
+        response = self.connection.send_command(command)
+        return response
+
 
 
 # 使用示例

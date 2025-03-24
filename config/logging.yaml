@@ -50,7 +50,7 @@ handlers:
 # 定义不同的 logger（日志记录器），用于区分不同模块的日志
 loggers:
   api_log:
-    handlers: [console, api_file]  # API 相关日志，同时写入文件和控制台
+    handlers: [api_file,console ]  # API 相关日志，同时写入文件和控制台
     level: DEBUG                   # 记录所有级别的日志
     propagate: no                  # 不向上级 logger 传递
 

@@ -9,7 +9,7 @@ def setup_logging(config_path="D:/project_python/rotary_evaporator/config/loggin
         base_path = os.path.dirname(__file__)
         config_path = os.path.join(base_path, '..', '..','..','..','config', 'logging.yaml')
 
-    print("config_path",config_path)
+    # print("config_path",config_path)
     if os.path.exists(config_path):
         with open(config_path, 'r') as file:
             config = yaml.safe_load(file)
@@ -19,7 +19,7 @@ def setup_logging(config_path="D:/project_python/rotary_evaporator/config/loggin
         print(f"Warning: Logging configuration file not found. Using default logging level: INFO")
 
 
-# setup_logging()
+setup_logging()
 
 # def get_logger(name):
 #     return logging.getLogger(name)

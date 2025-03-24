@@ -12,3 +12,192 @@
 2025-03-19 10:58:47,782 service_control_log INFO: 步骤: 机器人旋蒸下样, 状态: success, 消息: Robot collected evaporated sample from bottle 1
 2025-03-19 10:58:47,928 service_control_log INFO: 步骤: 机器人下样，样品入库, 状态: success, 消息: Robot stored sample from bottle 2
 2025-03-19 10:58:48,084 service_control_log INFO: 步骤: 终止实验, 状态: success, 消息: Experiment terminated
+2025-03-22 11:22:11,611 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 11:36:31,398 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 11:36:55,968 service_control_log INFO: 步骤: 过柱（梯度洗脱）, 状态: success, 消息: Column operation started
+2025-03-22 11:38:23,211 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 11:39:40,766 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 11:40:31,267 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 12:13:17,596 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 12:14:05,403 service_control_log INFO: 步骤: 旋蒸运行, 状态: success, 消息: Evaporation process running
+2025-03-22 12:14:42,311 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 12:14:45,964 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 12:21:24,932 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 12:23:11,915 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 12:23:37,960 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 12:23:52,113 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 12:24:14,811 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 12:24:51,816 service_control_log INFO: 步骤: 旋蒸运行, 状态: success, 消息: Evaporation process running
+2025-03-22 12:25:02,947 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 12:25:23,572 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 12:25:49,218 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 12:26:20,282 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 12:26:36,987 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 12:27:05,134 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 12:27:13,239 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 12:27:20,780 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 12:33:28,726 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 12:34:04,373 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 12:34:44,299 service_control_log INFO: 步骤: 旋蒸运行, 状态: success, 消息: Evaporation process running
+2025-03-22 12:35:02,429 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 12:40:05,733 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 12:40:32,863 service_control_log INFO: 步骤: 旋蒸运行, 状态: success, 消息: Evaporation process running
+2025-03-22 12:40:44,819 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 12:41:44,952 service_control_log INFO: 步骤: 终止实验, 状态: success, 消息: Start Gear
+2025-03-22 12:43:56,172 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 12:46:52,893 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 12:48:55,857 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 12:49:33,769 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 12:50:07,712 service_control_log INFO: 步骤: 机器人转移剩余物质到小瓶（蠕动泵）, 状态: success, 消息: Start Peristaltic
+2025-03-22 12:51:48,083 service_control_log INFO: 步骤: 终止实验, 状态: success, 消息: Start Gear
+2025-03-22 12:52:55,576 service_control_log INFO: 步骤: 机器人转移剩余物质到小瓶（蠕动泵）, 状态: success, 消息: Start Peristaltic
+2025-03-22 12:53:58,858 service_control_log INFO: 步骤: 终止实验, 状态: success, 消息: Start Gear
+2025-03-22 12:54:19,263 service_control_log INFO: 步骤: 机器人放色谱柱, 状态: success, 消息: Robot placed column 3
+2025-03-22 12:55:11,847 service_control_log INFO: 步骤: 机器人转移剩余物质到小瓶（蠕动泵）, 状态: success, 消息: Start Peristaltic
+2025-03-22 12:57:31,217 service_control_log INFO: 步骤: 旋蒸运行, 状态: success, 消息: Evaporation process running
+2025-03-22 12:58:17,954 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 12:58:43,116 service_control_log INFO: 步骤: 排空阀打开关闭, 状态: success, 消息: Evaporation process running
+2025-03-22 13:11:21,954 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 13:11:55,791 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 13:13:02,136 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 13:13:21,714 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 13:15:31,738 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 13:17:06,969 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 13:18:00,702 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 13:22:08,406 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 13:22:26,374 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 13:22:43,980 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 13:23:00,321 service_control_log INFO: 步骤: 机械臂开始, 状态: success, 消息: Robot start
+2025-03-22 13:23:02,743 service_control_log INFO: 步骤: 机器人放色谱柱, 状态: success, 消息: Robot placed column 7
+2025-03-22 13:25:36,156 service_control_log INFO: 步骤: 冲洗色谱柱, 状态: success, 消息: {'message': 'People Refilling tasks successfully', 'point': {}}
+2025-03-22 13:27:12,004 service_control_log INFO: 步骤: 机器人进样, 状态: success, 消息: Robot injected 30mL
+2025-03-22 13:27:33,239 service_control_log INFO: 步骤: 液体转移成功, 状态: success, 消息: Robot Transfer
+2025-03-22 13:37:08,992 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 13:37:25,934 service_control_log INFO: 步骤: 机械臂开始, 状态: success, 消息: Robot start
+2025-03-22 13:37:27,009 service_control_log INFO: 步骤: 机器人放色谱柱, 状态: success, 消息: Robot placed column 7
+2025-03-22 13:38:14,823 service_control_log INFO: 步骤: 冲洗色谱柱, 状态: success, 消息: {'message': 'People Refilling tasks successfully', 'point': {}}
+2025-03-22 13:39:01,166 service_control_log INFO: 步骤: 冲洗色谱柱, 状态: success, 消息: {'message': 'People Refilling tasks successfully', 'point': {}}
+2025-03-22 13:39:18,984 service_control_log INFO: 步骤: 机器人进样, 状态: success, 消息: Robot injected 30mL
+2025-03-22 13:39:39,139 service_control_log INFO: 步骤: 液体转移成功, 状态: success, 消息: Robot Transfer
+2025-03-22 13:39:48,317 service_control_log INFO: 步骤: 机器人进样, 状态: success, 消息: Robot injected 30mL
+2025-03-22 13:41:53,571 service_control_log INFO: 步骤: 过柱（梯度洗脱）, 状态: success, 消息: Column operation started
+2025-03-22 13:44:50,306 service_control_log INFO: 步骤: 终止实验, 状态: success, 消息: Experiment terminated
+2025-03-22 13:45:07,391 service_control_log INFO: 步骤: 保存实验数据, 状态: success, 消息: 实验数据已保存
+2025-03-22 13:47:07,876 service_control_log INFO: 步骤: 旋蒸运行, 状态: success, 消息: Evaporation process running
+2025-03-22 13:47:22,388 service_control_log INFO: 步骤: 收集装置清洗复位, 状态: success, 消息: Collector cleaned and reset
+2025-03-22 13:47:35,197 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 13:47:47,105 service_control_log INFO: 步骤: 排空阀打开关闭, 状态: success, 消息: Evaporation process running
+2025-03-22 13:49:30,544 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 13:50:03,386 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 13:50:54,263 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 13:52:26,037 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 13:53:08,057 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 14:07:00,964 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 14:07:07,579 service_control_log INFO: 步骤: 机械臂开始, 状态: success, 消息: Robot start
+2025-03-22 14:07:08,716 service_control_log INFO: 步骤: 机器人放色谱柱, 状态: success, 消息: Robot placed column 7
+2025-03-22 14:07:37,425 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 14:07:51,596 service_control_log INFO: 步骤: 机械臂开始, 状态: success, 消息: Robot start
+2025-03-22 14:07:52,835 service_control_log INFO: 步骤: 机器人放色谱柱, 状态: success, 消息: Robot placed column 7
+2025-03-22 14:08:58,392 service_control_log INFO: 步骤: 冲洗色谱柱, 状态: success, 消息: {'message': 'People Refilling tasks successfully', 'point': {}}
+2025-03-22 14:09:39,545 service_control_log INFO: 步骤: 机器人进样, 状态: success, 消息: Robot injected 30000mL
+2025-03-22 14:11:00,045 service_control_log INFO: 步骤: 液体转移成功, 状态: success, 消息: Robot Transfer
+2025-03-22 14:11:22,984 service_control_log INFO: 步骤: 过柱（梯度洗脱）, 状态: success, 消息: Column operation started
+2025-03-22 14:12:40,279 service_control_log INFO: 步骤: 终止实验, 状态: success, 消息: Experiment terminated
+2025-03-22 14:13:05,684 service_control_log INFO: 步骤: 保存实验数据, 状态: success, 消息: 实验数据已保存
+2025-03-22 14:15:34,216 service_control_log INFO: 步骤: 旋蒸运行, 状态: success, 消息: Evaporation process running
+2025-03-22 14:15:47,162 service_control_log INFO: 步骤: 收集装置清洗复位, 状态: success, 消息: Collector cleaned and reset
+2025-03-22 14:16:04,353 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 14:16:19,601 service_control_log INFO: 步骤: 排空阀打开关闭, 状态: success, 消息: Evaporation process running
+2025-03-22 14:18:45,822 service_control_log INFO: 步骤: 机器人转移剩余物质到小瓶（蠕动泵）, 状态: success, 消息: Start Peristaltic
+2025-03-22 14:19:58,914 service_control_log INFO: 步骤: 终止实验, 状态: success, 消息: Start Gear
+2025-03-22 14:20:17,907 service_control_log INFO: 步骤: 机器人转移剩余物质到小瓶（蠕动泵）, 状态: success, 消息: Start Peristaltic
+2025-03-22 14:20:42,287 service_control_log INFO: 步骤: 机器人转移剩余物质到小瓶（蠕动泵）, 状态: success, 消息: Start Peristaltic
+2025-03-22 14:21:21,822 service_control_log INFO: 步骤: 终止实验, 状态: success, 消息: Start Gear
+2025-03-22 14:21:37,148 service_control_log INFO: 步骤: 机器人转移剩余物质到小瓶（蠕动泵）, 状态: success, 消息: Start Peristaltic
+2025-03-22 14:23:12,761 service_control_log INFO: 步骤: 旋蒸运行, 状态: success, 消息: Evaporation process running
+2025-03-22 14:23:29,337 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 14:25:02,727 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 14:29:44,839 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 14:31:47,646 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 14:45:13,161 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 14:45:32,352 service_control_log INFO: 步骤: 旋蒸运行, 状态: success, 消息: Evaporation process running
+2025-03-22 14:46:02,850 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 14:46:13,594 service_control_log INFO: 步骤: 排空阀打开关闭, 状态: success, 消息: Evaporation process running
+2025-03-22 14:49:24,257 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 14:52:20,755 service_control_log INFO: 步骤: 机械臂开始, 状态: success, 消息: Robot start
+2025-03-22 14:52:22,077 service_control_log INFO: 步骤: 机器人放色谱柱, 状态: success, 消息: Robot placed column 7
+2025-03-22 14:58:41,236 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 14:59:30,152 service_control_log INFO: 步骤: 机械臂开始, 状态: success, 消息: Robot start
+2025-03-22 14:59:31,572 service_control_log INFO: 步骤: 机器人放色谱柱, 状态: success, 消息: Robot placed column 7
+2025-03-22 15:00:11,094 service_control_log INFO: 步骤: 冲洗色谱柱, 状态: success, 消息: {'message': 'People Refilling tasks successfully', 'point': {}}
+2025-03-22 15:00:42,572 service_control_log INFO: 步骤: 机器人进样, 状态: success, 消息: Robot injected 30000mL
+2025-03-22 15:02:40,866 service_control_log INFO: 步骤: 液体转移成功, 状态: success, 消息: Robot Transfer
+2025-03-22 15:03:12,957 service_control_log INFO: 步骤: 过柱（梯度洗脱）, 状态: success, 消息: Column operation started
+2025-03-22 15:06:42,038 service_control_log INFO: 步骤: 终止实验, 状态: success, 消息: Experiment terminated
+2025-03-22 15:07:02,425 service_control_log INFO: 步骤: 保存实验数据, 状态: success, 消息: 实验数据已保存
+2025-03-22 15:09:23,498 service_control_log INFO: 步骤: 旋蒸运行, 状态: success, 消息: Evaporation process running
+2025-03-22 15:09:35,449 service_control_log INFO: 步骤: 收集装置清洗复位, 状态: success, 消息: Collector cleaned and reset
+2025-03-22 15:09:43,950 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 15:09:51,414 service_control_log INFO: 步骤: 排空阀打开关闭, 状态: success, 消息: Evaporation process running
+2025-03-22 15:10:23,237 service_control_log INFO: 步骤: 机器人转移剩余物质到小瓶（蠕动泵）, 状态: success, 消息: Start Peristaltic
+2025-03-22 15:10:57,881 service_control_log INFO: 步骤: 终止实验, 状态: success, 消息: Start Gear
+2025-03-22 15:11:14,552 service_control_log INFO: 步骤: 机器人转移剩余物质到小瓶（蠕动泵）, 状态: success, 消息: Start Peristaltic
+2025-03-22 15:11:47,219 service_control_log INFO: 步骤: 终止实验, 状态: success, 消息: Start Gear
+2025-03-22 15:12:02,602 service_control_log INFO: 步骤: 机器人转移剩余物质到小瓶（蠕动泵）, 状态: success, 消息: Start Peristaltic
+2025-03-22 15:13:41,456 service_control_log INFO: 步骤: 旋蒸运行, 状态: success, 消息: Evaporation process running
+2025-03-22 15:18:10,130 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 15:18:32,018 service_control_log INFO: 步骤: 排空阀打开关闭, 状态: success, 消息: Evaporation process running
+2025-03-22 15:19:05,855 service_control_log INFO: 步骤: 排空阀打开关闭, 状态: success, 消息: Evaporation process running
+2025-03-22 15:20:18,591 service_control_log INFO: 步骤: 排空阀打开关闭, 状态: success, 消息: Evaporation process running
+2025-03-22 15:35:01,054 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 15:35:52,573 service_control_log INFO: 步骤: 机械臂开始, 状态: success, 消息: Robot start
+2025-03-22 15:35:53,938 service_control_log INFO: 步骤: 机器人放色谱柱, 状态: success, 消息: Robot placed column 7
+2025-03-22 15:42:19,928 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 15:42:32,116 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 15:43:05,949 service_control_log INFO: 步骤: 机械臂开始, 状态: success, 消息: Robot start
+2025-03-22 15:43:07,072 service_control_log INFO: 步骤: 机器人放色谱柱, 状态: success, 消息: Robot placed column 7
+2025-03-22 15:43:43,382 service_control_log INFO: 步骤: 冲洗色谱柱, 状态: success, 消息: {'message': 'People Refilling tasks successfully', 'point': {}}
+2025-03-22 15:44:20,680 service_control_log INFO: 步骤: 机器人进样, 状态: success, 消息: Robot injected 30000mL
+2025-03-22 15:45:39,546 service_control_log INFO: 步骤: 液体转移成功, 状态: success, 消息: Robot Transfer
+2025-03-22 15:45:55,841 service_control_log INFO: 步骤: 过柱（梯度洗脱）, 状态: success, 消息: Column operation started
+2025-03-22 15:48:36,848 service_control_log INFO: 步骤: 终止实验, 状态: success, 消息: Experiment terminated
+2025-03-22 15:48:58,727 service_control_log INFO: 步骤: 保存实验数据, 状态: success, 消息: 实验数据已保存
+2025-03-22 15:51:46,872 service_control_log INFO: 步骤: 旋蒸运行, 状态: success, 消息: Evaporation process running
+2025-03-22 15:52:00,295 service_control_log INFO: 步骤: 收集装置清洗复位, 状态: success, 消息: Collector cleaned and reset
+2025-03-22 15:54:34,340 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 15:54:44,458 service_control_log INFO: 步骤: 排空阀打开关闭, 状态: success, 消息: Evaporation process running
+2025-03-22 15:55:26,131 service_control_log INFO: 步骤: 机器人转移剩余物质到小瓶（蠕动泵）, 状态: success, 消息: Start Peristaltic
+2025-03-22 15:56:36,562 service_control_log INFO: 步骤: 终止实验, 状态: success, 消息: Start Gear
+2025-03-22 15:56:51,154 service_control_log INFO: 步骤: 机器人放色谱柱, 状态: success, 消息: Robot placed column 7
+2025-03-22 15:57:04,699 service_control_log INFO: 步骤: 机器人转移剩余物质到小瓶（蠕动泵）, 状态: success, 消息: Start Peristaltic
+2025-03-22 15:57:52,485 service_control_log INFO: 步骤: 终止实验, 状态: success, 消息: Start Gear
+2025-03-22 15:58:08,585 service_control_log INFO: 步骤: 机器人转移剩余物质到小瓶（蠕动泵）, 状态: success, 消息: Start Peristaltic
+2025-03-22 16:07:01,482 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:07:28,475 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:08:02,323 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:08:44,259 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:09:48,291 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:12:00,572 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:12:38,595 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:15:09,273 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:15:37,762 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:15:47,835 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:19:46,037 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:20:38,403 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:20:54,408 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:21:13,491 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:25:10,774 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:28:35,875 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:28:47,990 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:29:35,666 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:30:00,096 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:30:28,099 service_control_log INFO: 步骤: 机器人转移剩余物质到小瓶（蠕动泵）, 状态: success, 消息: Start Peristaltic
+2025-03-22 16:33:44,209 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-03-22 16:34:05,375 service_control_log INFO: 步骤: 机器人转移剩余物质到小瓶（蠕动泵）, 状态: success, 消息: Start Peristaltic
+2025-03-22 16:35:59,694 service_control_log INFO: 步骤: 终止实验, 状态: success, 消息: Start Gear
+2025-03-22 16:36:16,241 service_control_log INFO: 步骤: 机器人转移剩余物质到小瓶（蠕动泵）, 状态: success, 消息: Start Peristaltic
+2025-03-22 16:36:40,243 service_control_log INFO: 步骤: 终止实验, 状态: success, 消息: Start Gear
+2025-03-22 16:36:59,202 service_control_log INFO: 步骤: 机器人转移剩余物质到小瓶（蠕动泵）, 状态: success, 消息: Start Peristaltic
+2025-03-22 16:38:21,804 service_control_log INFO: 步骤: 旋蒸运行, 状态: success, 消息: Evaporation process running
+2025-03-22 16:38:46,308 service_control_log INFO: 步骤: 停止悬蒸, 状态: success, 消息: Evaporation process running
+2025-03-22 16:38:59,542 service_control_log INFO: 步骤: 排空阀打开关闭, 状态: success, 消息: Evaporation process running

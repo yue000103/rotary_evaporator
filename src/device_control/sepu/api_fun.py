@@ -201,8 +201,11 @@ class ApiClient:
         }
         return self.sepu_com.send_post_request("/eluent_curve/set_sample_valve", payload)
 
+    def update_line_start(self):
+        return self.sepu_com.send_get_request("/eluent_curve/update_line_start")
 
-
+    # def pause_expriment(self):
+    #     return self.sepu_com.send_get_request("/eluent_curve//update_line_pause")
 
 
 def main():
@@ -217,6 +220,7 @@ def main():
         print("4. 获取Line")
         print("5. 开始实验")
         print("11. 上样结束")
+
 
         print("6. 终止实验")
         print("7. 保存实验数据")

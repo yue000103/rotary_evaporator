@@ -1,0 +1,1137 @@
+2025-03-22 11:22:11,736 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 11:22:11,779 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.77.200', 49189)
+2025-03-22 11:22:11,794 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.77.200', 49190)
+2025-03-22 11:22:11,810 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.77.200', 49191)
+2025-03-22 11:36:31,535 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 11:36:31,567 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 50931)
+2025-03-22 11:36:31,571 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 50932)
+2025-03-22 11:36:31,576 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 50933)
+2025-03-22 11:37:16,038 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 11:37:16,039 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 11:37:16,039 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0xff 0x0
+2025-03-22 11:37:16,040 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 11:37:16,040 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 11:37:16,051 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 11:37:16,051 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0xff 0x0
+2025-03-22 11:37:16,052 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0xff 0x0
+2025-03-22 11:37:16,052 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 11:37:16,052 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 11:37:16,052 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 11:37:16,052 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 11:37:16,052 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 11:37:24,677 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 11:37:24,677 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 11:37:24,677 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0x0 0x0
+2025-03-22 11:37:24,677 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 11:37:24,678 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 11:37:24,688 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 11:37:24,688 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0x0 0x0
+2025-03-22 11:37:24,688 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0x0 0x0
+2025-03-22 11:37:24,688 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 11:37:24,688 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 11:37:24,688 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 11:37:24,689 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 11:37:24,689 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 11:40:31,491 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 11:40:31,526 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 50359)
+2025-03-22 11:40:31,531 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 50360)
+2025-03-22 11:40:31,536 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 50361)
+2025-03-22 12:13:19,399 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 53498)
+2025-03-22 12:13:19,525 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 12:13:40,612 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 53532)
+2025-03-22 12:13:40,618 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 53533)
+2025-03-22 12:13:40,625 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 53534)
+2025-03-22 12:14:28,379 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 12:14:28,379 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 12:14:28,379 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x7e
+2025-03-22 12:14:28,379 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 12:14:28,380 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 12:14:28,390 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 12:14:28,390 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x7e
+2025-03-22 12:14:28,390 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x7e
+2025-03-22 12:14:28,390 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 12:14:28,391 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 12:14:28,391 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 12:14:28,391 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 12:14:28,391 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 12:14:34,868 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 12:14:34,868 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 12:14:34,868 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 12:14:34,868 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 12:14:34,869 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 12:14:34,875 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 12:14:34,875 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 12:14:34,875 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 12:14:34,875 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 12:14:34,875 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 12:14:34,875 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 12:14:34,875 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 12:14:34,876 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 12:21:27,944 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54741)
+2025-03-22 12:21:28,046 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 12:21:28,077 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54747)
+2025-03-22 12:21:28,103 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54748)
+2025-03-22 12:21:28,109 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54750)
+2025-03-22 12:23:14,524 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54858)
+2025-03-22 12:23:14,612 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 12:23:35,700 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54893)
+2025-03-22 12:23:35,730 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54894)
+2025-03-22 12:23:35,762 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54895)
+2025-03-22 12:24:17,608 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54962)
+2025-03-22 12:24:17,731 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 12:24:38,811 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54998)
+2025-03-22 12:24:38,842 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54999)
+2025-03-22 12:24:38,872 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55000)
+2025-03-22 12:25:26,135 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55072)
+2025-03-22 12:25:26,257 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 12:25:47,326 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55099)
+2025-03-22 12:25:47,357 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55100)
+2025-03-22 12:25:47,371 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55101)
+2025-03-22 12:26:22,057 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55143)
+2025-03-22 12:26:22,182 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 12:26:38,801 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55172)
+2025-03-22 12:26:38,906 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 12:26:59,998 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55192)
+2025-03-22 12:27:00,005 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55193)
+2025-03-22 12:27:00,013 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55194)
+2025-03-22 12:33:30,557 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 56375)
+2025-03-22 12:33:30,634 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 12:33:51,711 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 56416)
+2025-03-22 12:33:51,743 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 56417)
+2025-03-22 12:33:51,774 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 56418)
+2025-03-22 12:34:06,108 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 56450)
+2025-03-22 12:34:06,225 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 12:34:27,284 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 56484)
+2025-03-22 12:34:27,309 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 56485)
+2025-03-22 12:34:27,338 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 56486)
+2025-03-22 12:40:07,554 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 57489)
+2025-03-22 12:40:07,664 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 12:40:28,734 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 57567)
+2025-03-22 12:40:28,738 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 57568)
+2025-03-22 12:40:28,759 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 57569)
+2025-03-22 12:41:44,945 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 12:41:44,946 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 12:41:44,946 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 12:41:44,946 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 12:41:44,947 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 12:41:44,951 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 12:41:44,951 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 12:41:44,951 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 12:41:44,951 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 12:41:44,952 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 12:41:44,952 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 12:41:44,952 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 12:41:44,952 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 12:43:58,153 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 57944)
+2025-03-22 12:43:58,270 PUMP INFO: 注射泵串口连接成功
+2025-03-22 12:43:58,337 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 57950)
+2025-03-22 12:43:58,352 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 57951)
+2025-03-22 12:43:58,368 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 57954)
+2025-03-22 12:46:54,712 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 58239)
+2025-03-22 12:46:54,790 PUMP INFO: 注射泵串口连接成功
+2025-03-22 12:46:54,837 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 58244)
+2025-03-22 12:46:54,852 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 58245)
+2025-03-22 12:46:54,867 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 58246)
+2025-03-22 12:48:57,567 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 58426)
+2025-03-22 12:48:57,661 PUMP INFO: 注射泵串口连接成功
+2025-03-22 12:49:18,745 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 58464)
+2025-03-22 12:49:18,760 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 58465)
+2025-03-22 12:49:18,769 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 58466)
+2025-03-22 12:49:35,508 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 58498)
+2025-03-22 12:49:35,590 PUMP INFO: 注射泵串口连接成功
+2025-03-22 12:49:38,662 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 58510)
+2025-03-22 12:49:38,678 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 58511)
+2025-03-22 12:49:38,693 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 58512)
+2025-03-22 12:50:06,702 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 12:50:06,704 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 12:50:06,704 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 12:50:06,704 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 12:50:06,704 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 12:50:06,707 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 12:50:06,707 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 12:50:06,707 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 12:50:06,707 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 12:50:06,707 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 12:50:06,707 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 12:50:06,707 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 12:50:06,707 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 12:50:07,708 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 12:50:07,708 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 12:50:07,708 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 12:50:07,708 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 12:50:07,709 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 12:50:07,711 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 12:50:07,711 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 12:50:07,711 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 12:50:07,711 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 12:50:07,711 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 12:50:07,712 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 12:50:07,712 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 12:50:07,712 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 12:51:48,078 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 12:51:48,079 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 12:51:48,079 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 12:51:48,079 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 12:51:48,079 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 12:51:48,082 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 12:51:48,082 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 12:51:48,083 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 12:51:48,083 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 12:51:48,083 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 12:51:48,083 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 12:51:48,083 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 12:51:48,083 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 12:52:54,565 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 12:52:54,566 pymodbus.logging DEBUG: Running transaction 3
+2025-03-22 12:52:54,566 pymodbus.logging DEBUG: SEND: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 12:52:54,566 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 12:52:54,566 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 12:52:54,568 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 12:52:54,568 pymodbus.logging DEBUG: RECV: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 12:52:54,568 pymodbus.logging DEBUG: Processing: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 12:52:54,569 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 12:52:54,569 pymodbus.logging DEBUG: Adding transaction 3
+2025-03-22 12:52:54,569 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 12:52:54,569 pymodbus.logging DEBUG: Getting transaction 3
+2025-03-22 12:52:54,569 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 12:52:55,571 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 12:52:55,571 pymodbus.logging DEBUG: Running transaction 4
+2025-03-22 12:52:55,571 pymodbus.logging DEBUG: SEND: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 12:52:55,571 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 12:52:55,572 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 12:52:55,574 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 12:52:55,574 pymodbus.logging DEBUG: RECV: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 12:52:55,574 pymodbus.logging DEBUG: Processing: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 12:52:55,575 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 12:52:55,575 pymodbus.logging DEBUG: Adding transaction 4
+2025-03-22 12:52:55,575 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 12:52:55,575 pymodbus.logging DEBUG: Getting transaction 4
+2025-03-22 12:52:55,575 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 12:53:58,853 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 12:53:58,854 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 12:53:58,854 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 12:53:58,854 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 12:53:58,854 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 12:53:58,857 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 12:53:58,857 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 12:53:58,857 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 12:53:58,857 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 12:53:58,857 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 12:53:58,857 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 12:53:58,858 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 12:53:58,858 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 12:55:10,839 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 12:55:10,839 pymodbus.logging DEBUG: Running transaction 5
+2025-03-22 12:55:10,839 pymodbus.logging DEBUG: SEND: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 12:55:10,839 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 12:55:10,840 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 12:55:10,842 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 12:55:10,842 pymodbus.logging DEBUG: RECV: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 12:55:10,842 pymodbus.logging DEBUG: Processing: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 12:55:10,843 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 12:55:10,843 pymodbus.logging DEBUG: Adding transaction 5
+2025-03-22 12:55:10,843 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 12:55:10,843 pymodbus.logging DEBUG: Getting transaction 5
+2025-03-22 12:55:10,843 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 12:55:11,844 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 12:55:11,844 pymodbus.logging DEBUG: Running transaction 6
+2025-03-22 12:55:11,844 pymodbus.logging DEBUG: SEND: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 12:55:11,844 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 12:55:11,844 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 12:55:11,847 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 12:55:11,847 pymodbus.logging DEBUG: RECV: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 12:55:11,847 pymodbus.logging DEBUG: Processing: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 12:55:11,847 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 12:55:11,847 pymodbus.logging DEBUG: Adding transaction 6
+2025-03-22 12:55:11,847 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 12:55:11,847 pymodbus.logging DEBUG: Getting transaction 6
+2025-03-22 12:55:11,847 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 12:57:35,415 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 12:57:35,415 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 12:57:35,415 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x7e
+2025-03-22 12:57:35,415 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 12:57:35,416 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 12:57:35,418 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 12:57:35,418 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x7e
+2025-03-22 12:57:35,418 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x7e
+2025-03-22 12:57:35,418 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 12:57:35,419 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 12:57:35,419 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 12:57:35,419 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 12:57:35,419 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 12:58:08,107 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 12:58:08,108 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 12:58:08,108 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 12:58:08,108 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 12:58:08,108 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 12:58:08,110 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 12:58:08,111 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 12:58:08,111 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 12:58:08,111 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 12:58:08,111 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 12:58:08,111 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 12:58:08,111 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 12:58:08,111 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 13:17:07,171 PUMP INFO: 注射泵串口连接成功
+2025-03-22 13:17:07,209 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 53584)
+2025-03-22 13:17:07,225 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 53585)
+2025-03-22 13:17:07,241 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 53586)
+2025-03-22 13:21:06,416 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54007)
+2025-03-22 13:21:06,552 PUMP INFO: 注射泵串口连接成功
+2025-03-22 13:21:06,593 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54011)
+2025-03-22 13:21:06,599 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54012)
+2025-03-22 13:21:06,623 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54013)
+2025-03-22 13:22:29,164 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54076)
+2025-03-22 13:22:29,289 PUMP INFO: 注射泵串口连接成功
+2025-03-22 13:22:46,514 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54102)
+2025-03-22 13:22:46,614 PUMP INFO: 注射泵串口连接成功
+2025-03-22 13:22:46,666 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54108)
+2025-03-22 13:22:46,712 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54109)
+2025-03-22 13:22:46,719 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54110)
+2025-03-22 13:27:11,935 PUMP INFO: 发送命令: /1IV1000A2031M5000OV1000A0M3000IR
+2025-03-22 13:37:10,824 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54819)
+2025-03-22 13:37:10,914 PUMP INFO: 注射泵串口连接成功
+2025-03-22 13:37:10,942 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54823)
+2025-03-22 13:37:10,947 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54824)
+2025-03-22 13:37:10,960 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 54825)
+2025-03-22 13:39:18,915 PUMP INFO: 发送命令: /1IV1000A2031M5000OV1000A0M3000IR
+2025-03-22 13:39:48,259 PUMP INFO: 发送命令: /1IV1000A2031M5000OV1000A0M3000IR
+2025-03-22 13:44:54,260 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 13:44:54,261 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 13:44:54,261 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0xff 0x0
+2025-03-22 13:44:54,261 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 13:44:54,262 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 13:44:54,264 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 13:44:54,264 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0xff 0x0
+2025-03-22 13:44:54,264 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0xff 0x0
+2025-03-22 13:44:54,264 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 13:44:54,264 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 13:44:54,265 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 13:44:54,265 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 13:44:54,265 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 13:45:52,318 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 13:45:52,319 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 13:45:52,319 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0x0 0x0
+2025-03-22 13:45:52,319 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 13:45:52,319 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 13:45:52,322 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 13:45:52,322 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0x0 0x0
+2025-03-22 13:45:52,322 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0x0 0x0
+2025-03-22 13:45:52,322 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 13:45:52,323 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 13:45:52,323 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 13:45:52,323 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 13:45:52,323 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 13:47:14,597 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 13:47:14,597 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 13:47:14,598 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x1a
+2025-03-22 13:47:14,598 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 13:47:14,598 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 13:47:14,604 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 13:47:14,605 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x1a
+2025-03-22 13:47:14,605 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x1a
+2025-03-22 13:47:14,605 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 13:47:14,605 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 13:47:14,605 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 13:47:14,605 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 13:47:14,605 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 13:47:30,698 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 13:47:30,699 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 13:47:30,699 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 13:47:30,699 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 13:47:30,699 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 13:47:30,702 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 13:47:30,702 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 13:47:30,702 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 13:47:30,702 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 13:47:30,702 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 13:47:30,702 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 13:47:30,703 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 13:47:30,703 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 13:49:32,333 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55528)
+2025-03-22 13:49:32,444 PUMP INFO: 注射泵串口连接成功
+2025-03-22 13:49:53,507 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55550)
+2025-03-22 13:49:53,512 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55551)
+2025-03-22 13:49:53,529 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55552)
+2025-03-22 13:50:05,212 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55573)
+2025-03-22 13:50:05,336 PUMP INFO: 注射泵串口连接成功
+2025-03-22 13:50:26,393 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55600)
+2025-03-22 13:50:26,398 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55601)
+2025-03-22 13:50:26,402 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55602)
+2025-03-22 13:50:56,037 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55625)
+2025-03-22 13:50:56,132 PUMP INFO: 注射泵串口连接成功
+2025-03-22 13:51:17,210 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55651)
+2025-03-22 13:51:17,241 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55652)
+2025-03-22 13:51:17,272 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55653)
+2025-03-22 13:52:27,814 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55722)
+2025-03-22 13:52:27,918 PUMP INFO: 注射泵串口连接成功
+2025-03-22 13:52:48,985 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55744)
+2025-03-22 13:52:49,021 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55745)
+2025-03-22 13:52:49,027 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55746)
+2025-03-22 13:53:09,829 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55772)
+2025-03-22 13:53:09,929 PUMP INFO: 注射泵串口连接成功
+2025-03-22 13:53:31,024 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55793)
+2025-03-22 13:53:31,046 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55794)
+2025-03-22 13:53:31,052 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 55795)
+2025-03-22 14:07:02,821 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 63978)
+2025-03-22 14:07:02,893 PUMP INFO: 注射泵串口连接成功
+2025-03-22 14:07:02,919 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 63983)
+2025-03-22 14:07:02,944 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 63984)
+2025-03-22 14:07:02,975 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 63985)
+2025-03-22 14:07:39,219 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 64017)
+2025-03-22 14:07:39,336 PUMP INFO: 注射泵串口连接成功
+2025-03-22 14:07:39,371 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 64022)
+2025-03-22 14:07:39,377 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 64023)
+2025-03-22 14:07:39,383 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 64024)
+2025-03-22 14:09:39,423 PUMP INFO: 发送命令: /1IgV1000A11000M5000OV1000A0IG2V1000A5001M5000OV1000A2000M3000IR
+2025-03-22 14:12:56,008 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 14:12:56,008 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 14:12:56,009 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0xff 0x0
+2025-03-22 14:12:56,009 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 14:12:56,009 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 14:12:56,011 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 14:12:56,013 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0xff 0x0
+2025-03-22 14:12:56,013 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0xff 0x0
+2025-03-22 14:12:56,013 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 14:12:56,013 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 14:12:56,013 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 14:12:56,013 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 14:12:56,013 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 14:14:14,530 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 14:14:14,531 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 14:14:14,531 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0x0 0x0
+2025-03-22 14:14:14,531 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 14:14:14,532 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 14:14:14,535 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 14:14:14,535 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0x0 0x0
+2025-03-22 14:14:14,535 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0x0 0x0
+2025-03-22 14:14:14,535 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 14:14:14,535 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 14:14:14,536 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 14:14:14,536 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 14:14:14,536 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 14:15:38,462 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 14:15:38,462 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 14:15:38,462 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x1a
+2025-03-22 14:15:38,464 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 14:15:38,464 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 14:15:38,467 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 14:15:38,467 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x1a
+2025-03-22 14:15:38,467 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x1a
+2025-03-22 14:15:38,467 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 14:15:38,467 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 14:15:38,467 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 14:15:38,467 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 14:15:38,467 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 14:15:59,772 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 14:15:59,773 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 14:15:59,773 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 14:15:59,773 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 14:15:59,773 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 14:15:59,776 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 14:15:59,776 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 14:15:59,776 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 14:15:59,776 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 14:15:59,776 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 14:15:59,776 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 14:15:59,777 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 14:15:59,777 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 14:18:44,805 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 14:18:44,806 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 14:18:44,806 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 14:18:44,806 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 14:18:44,806 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 14:18:44,815 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 14:18:44,815 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 14:18:44,815 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 14:18:44,816 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 14:18:44,816 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 14:18:44,816 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 14:18:44,816 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 14:18:44,816 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 14:18:45,817 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 14:18:45,817 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 14:18:45,818 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 14:18:45,818 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 14:18:45,818 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 14:18:45,821 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 14:18:45,821 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 14:18:45,821 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 14:18:45,821 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 14:18:45,822 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 14:18:45,822 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 14:18:45,822 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 14:18:45,822 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 14:19:58,909 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 14:19:58,910 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 14:19:58,910 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 14:19:58,910 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 14:19:58,911 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 14:19:58,913 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 14:19:58,913 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 14:19:58,914 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 14:19:58,914 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 14:19:58,914 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 14:19:58,914 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 14:19:58,914 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 14:19:58,914 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 14:20:16,897 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 14:20:16,897 pymodbus.logging DEBUG: Running transaction 3
+2025-03-22 14:20:16,897 pymodbus.logging DEBUG: SEND: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 14:20:16,897 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 14:20:16,898 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 14:20:16,900 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 14:20:16,900 pymodbus.logging DEBUG: RECV: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 14:20:16,900 pymodbus.logging DEBUG: Processing: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 14:20:16,900 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 14:20:16,900 pymodbus.logging DEBUG: Adding transaction 3
+2025-03-22 14:20:16,900 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 14:20:16,901 pymodbus.logging DEBUG: Getting transaction 3
+2025-03-22 14:20:16,901 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 14:20:17,902 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 14:20:17,902 pymodbus.logging DEBUG: Running transaction 4
+2025-03-22 14:20:17,902 pymodbus.logging DEBUG: SEND: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 14:20:17,902 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 14:20:17,903 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 14:20:17,906 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 14:20:17,906 pymodbus.logging DEBUG: RECV: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 14:20:17,907 pymodbus.logging DEBUG: Processing: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 14:20:17,907 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 14:20:17,907 pymodbus.logging DEBUG: Adding transaction 4
+2025-03-22 14:20:17,907 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 14:20:17,907 pymodbus.logging DEBUG: Getting transaction 4
+2025-03-22 14:20:17,907 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 14:20:41,277 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 14:20:41,277 pymodbus.logging DEBUG: Running transaction 5
+2025-03-22 14:20:41,277 pymodbus.logging DEBUG: SEND: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 14:20:41,277 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 14:20:41,278 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 14:20:41,281 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 14:20:41,281 pymodbus.logging DEBUG: RECV: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 14:20:41,281 pymodbus.logging DEBUG: Processing: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 14:20:41,281 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 14:20:41,281 pymodbus.logging DEBUG: Adding transaction 5
+2025-03-22 14:20:41,281 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 14:20:41,281 pymodbus.logging DEBUG: Getting transaction 5
+2025-03-22 14:20:41,281 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 14:20:42,282 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 14:20:42,282 pymodbus.logging DEBUG: Running transaction 6
+2025-03-22 14:20:42,283 pymodbus.logging DEBUG: SEND: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 14:20:42,283 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 14:20:42,283 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 14:20:42,286 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 14:20:42,287 pymodbus.logging DEBUG: RECV: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 14:20:42,287 pymodbus.logging DEBUG: Processing: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 14:20:42,287 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 14:20:42,287 pymodbus.logging DEBUG: Adding transaction 6
+2025-03-22 14:20:42,287 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 14:20:42,287 pymodbus.logging DEBUG: Getting transaction 6
+2025-03-22 14:20:42,287 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 14:21:21,815 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 14:21:21,816 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 14:21:21,816 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 14:21:21,817 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 14:21:21,817 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 14:21:21,820 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 14:21:21,821 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 14:21:21,821 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 14:21:21,821 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 14:21:21,821 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 14:21:21,821 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 14:21:21,821 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 14:21:21,821 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 14:21:36,126 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 14:21:36,127 pymodbus.logging DEBUG: Running transaction 7
+2025-03-22 14:21:36,127 pymodbus.logging DEBUG: SEND: 0x0 0x7 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 14:21:36,127 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 14:21:36,128 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 14:21:36,131 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 14:21:36,131 pymodbus.logging DEBUG: RECV: 0x0 0x7 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 14:21:36,132 pymodbus.logging DEBUG: Processing: 0x0 0x7 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 14:21:36,132 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 14:21:36,132 pymodbus.logging DEBUG: Adding transaction 7
+2025-03-22 14:21:36,132 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 14:21:36,132 pymodbus.logging DEBUG: Getting transaction 7
+2025-03-22 14:21:36,132 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 14:21:37,132 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 14:21:37,132 pymodbus.logging DEBUG: Running transaction 8
+2025-03-22 14:21:37,132 pymodbus.logging DEBUG: SEND: 0x0 0x8 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 14:21:37,132 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 14:21:37,134 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 14:21:37,147 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 14:21:37,147 pymodbus.logging DEBUG: RECV: 0x0 0x8 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 14:21:37,147 pymodbus.logging DEBUG: Processing: 0x0 0x8 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 14:21:37,147 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 14:21:37,147 pymodbus.logging DEBUG: Adding transaction 8
+2025-03-22 14:21:37,147 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 14:21:37,147 pymodbus.logging DEBUG: Getting transaction 8
+2025-03-22 14:21:37,148 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 14:23:17,217 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 14:23:17,217 pymodbus.logging DEBUG: Running transaction 3
+2025-03-22 14:23:17,217 pymodbus.logging DEBUG: SEND: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x7e
+2025-03-22 14:23:17,217 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 14:23:17,217 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 14:23:17,221 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 14:23:17,221 pymodbus.logging DEBUG: RECV: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x7e
+2025-03-22 14:23:17,221 pymodbus.logging DEBUG: Processing: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x7e
+2025-03-22 14:23:17,221 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 14:23:17,221 pymodbus.logging DEBUG: Adding transaction 3
+2025-03-22 14:23:17,221 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 14:23:17,222 pymodbus.logging DEBUG: Getting transaction 3
+2025-03-22 14:23:17,222 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 14:23:24,915 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 14:23:24,915 pymodbus.logging DEBUG: Running transaction 4
+2025-03-22 14:23:24,916 pymodbus.logging DEBUG: SEND: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 14:23:24,916 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 14:23:24,918 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 14:23:24,920 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 14:23:24,920 pymodbus.logging DEBUG: RECV: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 14:23:24,920 pymodbus.logging DEBUG: Processing: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 14:23:24,920 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 14:23:24,920 pymodbus.logging DEBUG: Adding transaction 4
+2025-03-22 14:23:24,920 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 14:23:24,920 pymodbus.logging DEBUG: Getting transaction 4
+2025-03-22 14:23:24,920 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 14:45:15,032 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 65385)
+2025-03-22 14:45:15,162 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 14:49:26,283 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 49202)
+2025-03-22 14:49:26,363 PUMP INFO: 注射泵串口连接成功
+2025-03-22 14:49:26,387 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 49206)
+2025-03-22 14:49:26,403 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 49207)
+2025-03-22 14:49:26,410 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 49208)
+2025-03-22 14:58:43,098 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 49883)
+2025-03-22 14:58:43,204 PUMP INFO: 注射泵串口连接成功
+2025-03-22 14:58:43,251 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 49888)
+2025-03-22 14:58:43,255 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 49889)
+2025-03-22 14:58:43,260 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 49890)
+2025-03-22 15:00:42,380 PUMP INFO: 发送命令: /1IgV1000A11000M5000OV1000A0IG2V1000A5001M5000OV1000A2000M3000IR
+2025-03-22 15:06:48,737 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 15:06:48,738 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 15:06:48,738 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0xff 0x0
+2025-03-22 15:06:48,738 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:06:48,738 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:06:48,742 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:06:48,743 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0xff 0x0
+2025-03-22 15:06:48,743 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0xff 0x0
+2025-03-22 15:06:48,743 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:06:48,743 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 15:06:48,743 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:06:48,743 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 15:06:48,743 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:08:33,688 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:08:33,688 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 15:08:33,688 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0x0 0x0
+2025-03-22 15:08:33,688 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:08:33,689 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:08:33,692 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:08:33,692 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0x0 0x0
+2025-03-22 15:08:33,692 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0x0 0x0
+2025-03-22 15:08:33,692 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:08:33,692 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 15:08:33,692 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:08:33,692 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 15:08:33,693 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:09:28,995 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 15:09:28,995 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 15:09:28,995 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x1a
+2025-03-22 15:09:28,995 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:09:28,996 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:09:28,998 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:09:28,998 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x1a
+2025-03-22 15:09:28,998 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x1a
+2025-03-22 15:09:28,998 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 15:09:28,998 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 15:09:28,999 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:09:28,999 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 15:09:28,999 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:09:39,775 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:09:39,775 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 15:09:39,775 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 15:09:39,775 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:09:39,776 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:09:39,778 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:09:39,778 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 15:09:39,778 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 15:09:39,778 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 15:09:39,779 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 15:09:39,779 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:09:39,779 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 15:09:39,779 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:10:22,215 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 15:10:22,215 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 15:10:22,215 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:10:22,215 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:10:22,215 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:10:22,230 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:10:22,230 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:10:22,230 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:10:22,231 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:10:22,231 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 15:10:22,231 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:10:22,231 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 15:10:22,231 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:10:23,232 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:10:23,232 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 15:10:23,232 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:10:23,232 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:10:23,232 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:10:23,235 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:10:23,235 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:10:23,235 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:10:23,235 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:10:23,235 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 15:10:23,235 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:10:23,235 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 15:10:23,235 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:10:57,877 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 15:10:57,877 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 15:10:57,877 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 15:10:57,877 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:10:57,877 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:10:57,880 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:10:57,881 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 15:10:57,881 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 15:10:57,881 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:10:57,881 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 15:10:57,881 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:10:57,881 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 15:10:57,881 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:11:13,543 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:11:13,543 pymodbus.logging DEBUG: Running transaction 3
+2025-03-22 15:11:13,543 pymodbus.logging DEBUG: SEND: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:11:13,543 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:11:13,543 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:11:13,546 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:11:13,546 pymodbus.logging DEBUG: RECV: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:11:13,546 pymodbus.logging DEBUG: Processing: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:11:13,546 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:11:13,546 pymodbus.logging DEBUG: Adding transaction 3
+2025-03-22 15:11:13,546 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:11:13,546 pymodbus.logging DEBUG: Getting transaction 3
+2025-03-22 15:11:13,546 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:11:14,548 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:11:14,548 pymodbus.logging DEBUG: Running transaction 4
+2025-03-22 15:11:14,548 pymodbus.logging DEBUG: SEND: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:11:14,548 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:11:14,549 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:11:14,551 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:11:14,551 pymodbus.logging DEBUG: RECV: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:11:14,551 pymodbus.logging DEBUG: Processing: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:11:14,551 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:11:14,551 pymodbus.logging DEBUG: Adding transaction 4
+2025-03-22 15:11:14,551 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:11:14,551 pymodbus.logging DEBUG: Getting transaction 4
+2025-03-22 15:11:14,551 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:11:47,214 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:11:47,215 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 15:11:47,215 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 15:11:47,215 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:11:47,215 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:11:47,218 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:11:47,218 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 15:11:47,218 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 15:11:47,219 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:11:47,219 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 15:11:47,219 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:11:47,219 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 15:11:47,219 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:12:01,590 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:12:01,590 pymodbus.logging DEBUG: Running transaction 5
+2025-03-22 15:12:01,591 pymodbus.logging DEBUG: SEND: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:12:01,591 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:12:01,591 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:12:01,595 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:12:01,595 pymodbus.logging DEBUG: RECV: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:12:01,595 pymodbus.logging DEBUG: Processing: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:12:01,595 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:12:01,595 pymodbus.logging DEBUG: Adding transaction 5
+2025-03-22 15:12:01,596 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:12:01,596 pymodbus.logging DEBUG: Getting transaction 5
+2025-03-22 15:12:01,596 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:12:02,597 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:12:02,597 pymodbus.logging DEBUG: Running transaction 6
+2025-03-22 15:12:02,597 pymodbus.logging DEBUG: SEND: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:12:02,597 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:12:02,597 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:12:02,601 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:12:02,602 pymodbus.logging DEBUG: RECV: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:12:02,602 pymodbus.logging DEBUG: Processing: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:12:02,602 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:12:02,602 pymodbus.logging DEBUG: Adding transaction 6
+2025-03-22 15:12:02,602 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:12:02,602 pymodbus.logging DEBUG: Getting transaction 6
+2025-03-22 15:12:02,602 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:14:12,013 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:14:12,014 pymodbus.logging DEBUG: Running transaction 3
+2025-03-22 15:14:12,014 pymodbus.logging DEBUG: SEND: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x7e
+2025-03-22 15:14:12,014 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:14:12,014 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:14:12,021 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:14:12,021 pymodbus.logging DEBUG: RECV: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x7e
+2025-03-22 15:14:12,022 pymodbus.logging DEBUG: Processing: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x7e
+2025-03-22 15:14:12,022 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 15:14:12,022 pymodbus.logging DEBUG: Adding transaction 3
+2025-03-22 15:14:12,022 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:14:12,022 pymodbus.logging DEBUG: Getting transaction 3
+2025-03-22 15:14:12,022 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:18:03,832 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:18:03,832 pymodbus.logging DEBUG: Running transaction 4
+2025-03-22 15:18:03,833 pymodbus.logging DEBUG: SEND: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 15:18:03,833 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:18:03,833 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:18:03,835 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:18:03,835 pymodbus.logging DEBUG: RECV: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 15:18:03,836 pymodbus.logging DEBUG: Processing: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 15:18:03,836 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 15:18:03,836 pymodbus.logging DEBUG: Adding transaction 4
+2025-03-22 15:18:03,836 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:18:03,836 pymodbus.logging DEBUG: Getting transaction 4
+2025-03-22 15:18:03,836 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:35:03,019 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 51519)
+2025-03-22 15:35:03,104 PUMP INFO: 注射泵串口连接成功
+2025-03-22 15:35:03,152 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 51523)
+2025-03-22 15:35:03,168 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 51525)
+2025-03-22 15:35:03,199 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 51526)
+2025-03-22 15:42:21,811 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 51952)
+2025-03-22 15:42:21,904 PUMP INFO: 注射泵串口连接成功
+2025-03-22 15:42:33,970 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 51971)
+2025-03-22 15:42:34,067 PUMP INFO: 注射泵串口连接成功
+2025-03-22 15:42:34,108 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 51976)
+2025-03-22 15:42:34,138 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 51977)
+2025-03-22 15:42:34,185 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 51979)
+2025-03-22 15:44:20,482 PUMP INFO: 发送命令: /1IgV1000A11000M5000OV1000A0IG2V1000A5001M5000OV1000A2000M3000IR
+2025-03-22 15:48:44,113 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 15:48:44,113 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 15:48:44,113 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0xff 0x0
+2025-03-22 15:48:44,113 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:48:44,114 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:48:44,118 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:48:44,118 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0xff 0x0
+2025-03-22 15:48:44,118 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0xff 0x0
+2025-03-22 15:48:44,118 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:48:44,118 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 15:48:44,118 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:48:44,118 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 15:48:44,118 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:50:54,951 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:50:54,952 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 15:50:54,952 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0x0 0x0
+2025-03-22 15:50:54,952 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:50:54,953 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:50:54,955 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:50:54,955 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0x0 0x0
+2025-03-22 15:50:54,955 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x33 0x0 0x0
+2025-03-22 15:50:54,955 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:50:54,956 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 15:50:54,956 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:50:54,956 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 15:50:54,956 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:51:52,571 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 15:51:52,573 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 15:51:52,573 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x1a
+2025-03-22 15:51:52,574 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:51:52,574 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:51:52,576 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:51:52,576 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x1a
+2025-03-22 15:51:52,577 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x1a
+2025-03-22 15:51:52,577 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 15:51:52,577 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 15:51:52,577 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:51:52,577 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 15:51:52,577 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:54:31,430 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:54:31,430 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 15:54:31,430 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 15:54:31,431 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:54:31,431 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:54:31,433 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:54:31,433 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 15:54:31,433 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 15:54:31,434 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 15:54:31,434 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 15:54:31,434 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:54:31,434 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 15:54:31,434 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:55:25,121 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 15:55:25,121 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 15:55:25,121 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:55:25,121 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:55:25,122 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:55:25,124 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:55:25,124 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:55:25,125 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:55:25,125 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:55:25,125 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 15:55:25,125 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:55:25,125 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 15:55:25,125 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:55:26,127 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:55:26,127 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 15:55:26,128 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:55:26,128 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:55:26,128 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:55:26,130 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:55:26,130 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:55:26,130 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:55:26,130 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:55:26,130 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 15:55:26,130 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:55:26,130 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 15:55:26,130 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:56:36,556 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 15:56:36,557 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 15:56:36,557 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 15:56:36,557 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:56:36,558 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:56:36,561 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:56:36,561 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 15:56:36,561 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 15:56:36,561 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:56:36,561 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 15:56:36,561 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:56:36,562 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 15:56:36,562 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:57:03,686 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:57:03,687 pymodbus.logging DEBUG: Running transaction 3
+2025-03-22 15:57:03,687 pymodbus.logging DEBUG: SEND: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:57:03,687 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:57:03,688 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:57:03,690 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:57:03,690 pymodbus.logging DEBUG: RECV: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:57:03,690 pymodbus.logging DEBUG: Processing: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:57:03,690 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:57:03,690 pymodbus.logging DEBUG: Adding transaction 3
+2025-03-22 15:57:03,690 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:57:03,691 pymodbus.logging DEBUG: Getting transaction 3
+2025-03-22 15:57:03,691 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:57:04,692 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:57:04,692 pymodbus.logging DEBUG: Running transaction 4
+2025-03-22 15:57:04,692 pymodbus.logging DEBUG: SEND: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:57:04,692 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:57:04,693 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:57:04,698 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:57:04,698 pymodbus.logging DEBUG: RECV: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:57:04,698 pymodbus.logging DEBUG: Processing: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:57:04,698 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:57:04,699 pymodbus.logging DEBUG: Adding transaction 4
+2025-03-22 15:57:04,699 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:57:04,699 pymodbus.logging DEBUG: Getting transaction 4
+2025-03-22 15:57:04,699 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:57:52,480 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:57:52,481 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 15:57:52,481 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 15:57:52,481 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:57:52,482 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:57:52,484 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:57:52,484 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 15:57:52,484 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 15:57:52,484 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:57:52,485 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 15:57:52,485 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:57:52,485 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 15:57:52,485 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:58:07,575 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:58:07,575 pymodbus.logging DEBUG: Running transaction 5
+2025-03-22 15:58:07,576 pymodbus.logging DEBUG: SEND: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:58:07,576 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:58:07,578 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:58:07,580 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:58:07,580 pymodbus.logging DEBUG: RECV: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:58:07,580 pymodbus.logging DEBUG: Processing: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 15:58:07,580 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:58:07,580 pymodbus.logging DEBUG: Adding transaction 5
+2025-03-22 15:58:07,580 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:58:07,580 pymodbus.logging DEBUG: Getting transaction 5
+2025-03-22 15:58:07,580 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 15:58:08,581 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 15:58:08,581 pymodbus.logging DEBUG: Running transaction 6
+2025-03-22 15:58:08,581 pymodbus.logging DEBUG: SEND: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:58:08,581 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 15:58:08,582 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 15:58:08,584 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 15:58:08,584 pymodbus.logging DEBUG: RECV: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:58:08,584 pymodbus.logging DEBUG: Processing: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 15:58:08,584 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 15:58:08,584 pymodbus.logging DEBUG: Adding transaction 6
+2025-03-22 15:58:08,584 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 15:58:08,585 pymodbus.logging DEBUG: Getting transaction 6
+2025-03-22 15:58:08,585 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 16:20:29,615 pymodbus.logging ERROR: Connection to (192.168.1.99, 502) failed: [WinError 10065] 套接字操作尝试一个无法连接的主机。
+2025-03-22 16:20:29,784 PUMP ERROR: 无法连接到 注射泵串口: could not open port 'COM23': FileNotFoundError(2, '系统找不到指定的文件。', None, 2)
+2025-03-22 16:27:50,126 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 60152)
+2025-03-22 16:27:50,281 PUMP ERROR: 无法连接到 注射泵串口: could not open port 'COM23': FileNotFoundError(2, '系统找不到指定的文件。', None, 2)
+2025-03-22 16:28:37,859 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 60176)
+2025-03-22 16:28:37,923 PUMP ERROR: 无法连接到 注射泵串口: could not open port 'COM23': FileNotFoundError(2, '系统找不到指定的文件。', None, 2)
+2025-03-22 16:28:50,050 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 60199)
+2025-03-22 16:28:50,114 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 16:28:50,142 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 60204)
+2025-03-22 16:28:50,146 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 60205)
+2025-03-22 16:28:50,150 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 60206)
+2025-03-22 16:29:37,284 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 60259)
+2025-03-22 16:29:37,363 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 16:30:01,653 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 60281)
+2025-03-22 16:30:01,735 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 16:30:01,770 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 60287)
+2025-03-22 16:30:01,776 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 60288)
+2025-03-22 16:30:01,796 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 60289)
+2025-03-22 16:30:27,088 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 16:30:27,088 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 16:30:27,089 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 16:30:27,089 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 16:30:27,089 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 16:30:27,092 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 16:30:27,092 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 16:30:27,093 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 16:30:27,093 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 16:30:27,093 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 16:30:27,093 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 16:30:27,093 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 16:30:27,093 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 16:30:28,093 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 16:30:28,094 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 16:30:28,094 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 16:30:28,094 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 16:30:28,094 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 16:30:28,098 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 16:30:28,098 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 16:30:28,098 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 16:30:28,098 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 16:30:28,098 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 16:30:28,099 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 16:30:28,099 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 16:30:28,099 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 16:33:46,008 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 60342)
+2025-03-22 16:33:46,089 PUMP INFO: Mock 模式启用，不连接串口
+2025-03-22 16:33:46,122 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 60347)
+2025-03-22 16:33:46,125 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 60348)
+2025-03-22 16:33:46,129 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.1.5', 60349)
+2025-03-22 16:34:04,339 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 16:34:04,339 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 16:34:04,339 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 16:34:04,340 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 16:34:04,340 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 16:34:04,356 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 16:34:04,356 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 16:34:04,356 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 16:34:04,356 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 16:34:04,356 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 16:34:04,356 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 16:34:04,356 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 16:34:04,356 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 16:34:05,357 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 16:34:05,357 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 16:34:05,357 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 16:34:05,357 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 16:34:05,358 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 16:34:05,374 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 16:34:05,374 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 16:34:05,374 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 16:34:05,374 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 16:34:05,374 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 16:34:05,374 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 16:34:05,375 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 16:34:05,375 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 16:35:59,683 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 16:35:59,684 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 16:35:59,684 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 16:35:59,684 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 16:35:59,684 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 16:35:59,694 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 16:35:59,694 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 16:35:59,694 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 16:35:59,694 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 16:35:59,694 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 16:35:59,694 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 16:35:59,694 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 16:35:59,694 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 16:36:15,219 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 16:36:15,220 pymodbus.logging DEBUG: Running transaction 3
+2025-03-22 16:36:15,220 pymodbus.logging DEBUG: SEND: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 16:36:15,220 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 16:36:15,220 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 16:36:15,229 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 16:36:15,229 pymodbus.logging DEBUG: RECV: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 16:36:15,229 pymodbus.logging DEBUG: Processing: 0x0 0x3 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 16:36:15,229 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 16:36:15,229 pymodbus.logging DEBUG: Adding transaction 3
+2025-03-22 16:36:15,229 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 16:36:15,229 pymodbus.logging DEBUG: Getting transaction 3
+2025-03-22 16:36:15,229 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 16:36:16,230 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 16:36:16,230 pymodbus.logging DEBUG: Running transaction 4
+2025-03-22 16:36:16,230 pymodbus.logging DEBUG: SEND: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 16:36:16,230 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 16:36:16,230 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 16:36:16,240 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 16:36:16,240 pymodbus.logging DEBUG: RECV: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 16:36:16,240 pymodbus.logging DEBUG: Processing: 0x0 0x4 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 16:36:16,240 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 16:36:16,240 pymodbus.logging DEBUG: Adding transaction 4
+2025-03-22 16:36:16,240 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 16:36:16,240 pymodbus.logging DEBUG: Getting transaction 4
+2025-03-22 16:36:16,241 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 16:36:40,233 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 16:36:40,233 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 16:36:40,233 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 16:36:40,233 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 16:36:40,233 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 16:36:40,243 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 16:36:40,243 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 16:36:40,243 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x32 0xff 0x0
+2025-03-22 16:36:40,243 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 16:36:40,243 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 16:36:40,243 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 16:36:40,243 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 16:36:40,243 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 16:36:58,178 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 16:36:58,178 pymodbus.logging DEBUG: Running transaction 5
+2025-03-22 16:36:58,178 pymodbus.logging DEBUG: SEND: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 16:36:58,178 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 16:36:58,179 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 16:36:58,189 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 16:36:58,189 pymodbus.logging DEBUG: RECV: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 16:36:58,189 pymodbus.logging DEBUG: Processing: 0x0 0x5 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0x0 0x0
+2025-03-22 16:36:58,189 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 16:36:58,189 pymodbus.logging DEBUG: Adding transaction 5
+2025-03-22 16:36:58,189 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 16:36:58,189 pymodbus.logging DEBUG: Getting transaction 5
+2025-03-22 16:36:58,189 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 16:36:59,190 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 16:36:59,190 pymodbus.logging DEBUG: Running transaction 6
+2025-03-22 16:36:59,190 pymodbus.logging DEBUG: SEND: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 16:36:59,190 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 16:36:59,191 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 16:36:59,201 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 16:36:59,201 pymodbus.logging DEBUG: RECV: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 16:36:59,201 pymodbus.logging DEBUG: Processing: 0x0 0x6 0x0 0x0 0x0 0x6 0x0 0x5 0x1 0x2c 0xff 0x0
+2025-03-22 16:36:59,201 pymodbus.logging DEBUG: Factory Response[WriteSingleCoilResponse': 5]
+2025-03-22 16:36:59,202 pymodbus.logging DEBUG: Adding transaction 6
+2025-03-22 16:36:59,202 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 16:36:59,202 pymodbus.logging DEBUG: Getting transaction 6
+2025-03-22 16:36:59,202 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 16:38:24,323 pymodbus.logging DEBUG: Current transaction state - IDLE
+2025-03-22 16:38:24,323 pymodbus.logging DEBUG: Running transaction 1
+2025-03-22 16:38:24,323 pymodbus.logging DEBUG: SEND: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x7e
+2025-03-22 16:38:24,323 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 16:38:24,324 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 16:38:24,341 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 16:38:24,341 pymodbus.logging DEBUG: RECV: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x7e
+2025-03-22 16:38:24,341 pymodbus.logging DEBUG: Processing: 0x0 0x1 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x4 0x7e
+2025-03-22 16:38:24,341 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 16:38:24,341 pymodbus.logging DEBUG: Adding transaction 1
+2025-03-22 16:38:24,341 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 16:38:24,341 pymodbus.logging DEBUG: Getting transaction 1
+2025-03-22 16:38:24,342 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"
+2025-03-22 16:38:43,587 pymodbus.logging DEBUG: Current transaction state - TRANSACTION_COMPLETE
+2025-03-22 16:38:43,587 pymodbus.logging DEBUG: Running transaction 2
+2025-03-22 16:38:43,587 pymodbus.logging DEBUG: SEND: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 16:38:43,587 pymodbus.logging DEBUG: New Transaction state "SENDING"
+2025-03-22 16:38:43,588 pymodbus.logging DEBUG: Changing transaction state from "SENDING" to "WAITING FOR REPLY"
+2025-03-22 16:38:43,597 pymodbus.logging DEBUG: Changing transaction state from "WAITING FOR REPLY" to "PROCESSING REPLY"
+2025-03-22 16:38:43,597 pymodbus.logging DEBUG: RECV: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 16:38:43,597 pymodbus.logging DEBUG: Processing: 0x0 0x2 0x0 0x0 0x0 0x6 0x0 0x6 0x1 0xf6 0x0 0x0
+2025-03-22 16:38:43,597 pymodbus.logging DEBUG: Factory Response[WriteSingleRegisterResponse': 6]
+2025-03-22 16:38:43,598 pymodbus.logging DEBUG: Adding transaction 2
+2025-03-22 16:38:43,598 pymodbus.logging DEBUG: Very short frame (NO MBAP):  wait for more data
+2025-03-22 16:38:43,598 pymodbus.logging DEBUG: Getting transaction 2
+2025-03-22 16:38:43,598 pymodbus.logging DEBUG: Changing transaction state from "PROCESSING REPLY" to "TRANSACTION_COMPLETE"

@@ -25,13 +25,19 @@ class RobotConnection:
 
     def _start_server(self):
         """ 初始化 TCP 服务器 """
-        self.client_socket = socket.socket()
-        self.client_socket.connect((self.host,self.port))  # 绑定要监听的端口
+        # self.client_socket = socket.socket()
+        # self.client_socket.connect((self.host,self.port))  # 绑定要监听的端口
         # print("self.host",self.host)
         # print("self.port",self.port)
-        print("self.server_socket",self.server_socket)
-        com_logger.info(f"Server started at {self.host}:{self.port}, waiting for connection...")
-
+        # print("self.server_socket",self.server_socket)
+        # com_logger.info(f"Server started at {self.host}:{self.port}, waiting for connection...")
+        try:
+            self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            server_address = ('192.168.1.91', 1024)
+            self.client_socket.connect(server_address)
+            print("成功链接")
+        except Exception as e:
+            print("robot_com",e)
 
     def accept_client(self):
         """ 等待客户端连接 """
@@ -54,14 +60,15 @@ class RobotConnection:
             return f"[Mock Response] {command} {time.strftime('%H:%M:%S', time.localtime())}"
 
         try:
-            self.client_socket.send(command.encode("utf-8"))
+            print("self.client_socket",self.client_socket)
+            self.client_socket.sendall(command.encode("utf-8"))
             print("command；",command)
             # response = self.client_socket.recv(1024).decode("utf-8")
-            response = self.client_socket.recv(1024)
-            print("response: ",response)
+            # response = self.client_socket.recv(1024)
+            # print("response: ",response)
 
-            com_logger.info(f"Received: {response}")
-            return response
+            # com_logger.info(f"Received: {response}")
+            # return response
 
         except Exception as e:
             com_logger.error(f"Error in communication: {e}")
@@ -81,7 +88,7 @@ class RobotConnection:
 
 if __name__ == "__main__":
     robot = RobotConnection()
-    while True:
-        robot.accept_client()
-
-        robot.send_command('start')
+    # while True:
+    #     robot.accept_client()
+    #
+    #     robot.send_command('start')
