@@ -7,4 +7,5 @@ base_urls:
   robot_com: "192.168.125.230"
   sepu_com: "http://localhost:5000"
   plc_com: "192.168.1.99"
+  opentrons: "192.168.1.208"
 

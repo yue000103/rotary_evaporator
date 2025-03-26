@@ -112,7 +112,9 @@ class ApiClient:
     def save_experiment_data(self, module_id, tube_list):
         def execute_task():
             result = sepu_api.save_experiment_data()
+            print(result)
             timestamp = time.strftime("%Y%m%d%H%M%S")
+
             task_list = {
                 "method_id": int(sepu_api.method_id),
                 "module_id": module_id,  # 由用户输入
