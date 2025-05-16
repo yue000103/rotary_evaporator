@@ -72,8 +72,8 @@ class RobotController:
         """ 停止机器人 """
         # self.ensure_connection()
 
-        command = 'start'
-        device_control_logger.info("Sending command: start")
+        command = 'ok'
+        device_control_logger.info("Sending command: ok")
         response = self.connection.send_command(command)
 
 
@@ -152,7 +152,7 @@ class RobotController:
         return response
 
     def inject_sample_finish(self):
-        command = 'inject_sample_finish'
+        command = 'ok'
         device_control_logger.info("Sending command: inject_sample_finish")
         response = self.connection.send_command(command)
         return response

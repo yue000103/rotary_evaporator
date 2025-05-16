@@ -44,8 +44,23 @@ class ProcessController:
     def close(self):
         self.connection.close()
 
-    def set_height(self,height):
-        self.plc.write_single_register(self.HEIGHT_ADDRESS, height)
+    def set_height(self,volume):
+        #1000 500 100 50
+        if volume == 1000:
+            self.plc.write_single_register(self.HEIGHT_ADDRESS, 1050)
+
+        elif volume == 500:
+            self.plc.write_single_register(self.HEIGHT_ADDRESS, 1150)
+        elif volume == 100:
+            self.plc.write_single_register(self.HEIGHT_ADDRESS, 1332)
+        elif volume == 50:
+            self.plc.write_single_register(self.HEIGHT_ADDRESS, 1417)
+        elif volume == 0:
+            self.plc.write_single_register(self.HEIGHT_ADDRESS, 0)
+
+
+
+
         # pass
         # self.plc.write_coil(self.HEIGHT_ADDRESS, True)
 
@@ -74,11 +89,22 @@ if __name__ == "__main__":
     # vacuum = {"set": 500, "vacuumValveOpen": False, "aerateValveOpen": True,"aerateValvePulse":True}
     # # rotation = {"set": 60, "running": False}
     # lift = {"set": 0}
-    # # globalStatus = {"running": False}
+    # globalStatus = {"running": True}
+
+    heating = None
+    cooling = None
+    vacuum = {"set": 150, "vacuumValveOpen": False, "aerateValveOpen": False}
+    rotation = None
+    lift = {"set": 0}
+    globalStatus = None
+
+    # response = xuanzheng_controller.change_device_parameters(heating=heating, cooling=cooling, vacuum=vacuum,
+    #                                                          rotation=rotation,
+    #                                                          lift=lift, running=None)
     # globalStatus = None
     #
-    # response = controller.change_device_parameters(heating=None, cooling=None, vacuum=vacuum, rotation=None,
-    #                                                lift=lift,running=None)
+    response = controller.change_device_parameters(heating=None, cooling=None, vacuum=vacuum, rotation=None,
+                                                   lift=None,running=False)
     # print("PUT请求响应：", response)
 
     controller.close()

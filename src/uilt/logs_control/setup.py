@@ -19,7 +19,7 @@ def setup_logging(config_path="D:/project_python/rotary_evaporator/config/loggin
         print(f"Warning: Logging configuration file not found. Using default logging level: INFO")
 
 
-setup_logging()
+# setup_logging()
 
 # def get_logger(name):
 #     return logging.getLogger(name)

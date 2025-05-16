@@ -18,6 +18,8 @@ class DraggablePoint(QGraphicsEllipseItem):
         self.setPos(x, y)
         self.elution_curve = []
         self.flowRate = 40
+        self.sampling_time = 0
+        self.total_flow_rate = 0
 
     def get_coordinates(self):
         """ 获取点的时间和流速信息 """
@@ -33,7 +35,7 @@ class ExperimentDialog(QDialog):
         super().__init__()
 
         self.setWindowTitle("实验设置")
-        self.resize(600, 450)
+        self.resize(800, 600)
 
         # 布局
         layout = QVBoxLayout()
@@ -81,7 +83,7 @@ class ExperimentDialog(QDialog):
         layout.addWidget(self.total_time_input)
 
         layout.addWidget(self.total_flow_label)
-        layout.addWidget(self.total_time_input)
+        layout.addWidget(self.total_flow_input)
 
         layout.addWidget(self.time_label)
         layout.addWidget(self.time_input)
@@ -133,6 +135,8 @@ class ExperimentDialog(QDialog):
         self.scene.addItem(point)
         self.points.append(point)
 
+
+
         self.redraw_points_and_lines()
 
     def update_x_max(self):
@@ -180,7 +184,8 @@ class ExperimentDialog(QDialog):
         """ 确认实验点，输出格式化数据，并关闭窗口 """
         self.redraw_points_and_lines()  # 确保点连接正确
         self.elution_curve = [point.get_coordinates() for point in sorted(self.points, key=lambda p: p.x())]
-
+        self.sampling_time = int(self.total_time_input.text())
+        self.total_flow_rate = int(self.total_flow_input.text())
         self.accept()  # 关闭窗口
 
 

@@ -16,6 +16,7 @@ class ApiClient:
         self.method_id = 0
 
 
+
     def init_device(self, use_mock: bool) -> dict:
         """
         调用 /status/init_device 接口初始化设备状态。

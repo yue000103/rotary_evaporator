@@ -15,6 +15,9 @@ from PyQt5.QtWidgets import (
 from src.service_control.sepu.experiment_graph import ExperimentDialog
 from src.service_control.sepu.curve_graph import PlotWithInputs
 from src.device_control.sepu.api_fun import ApiClient
+
+
+
 class SepuService:
     def __init__(self):
         self.elution_curve = [
@@ -45,7 +48,9 @@ class SepuService:
 
     ]
         self.sampling_time = 20
+        self.total_flow_rate = 20
         self.sepu_api = ApiClient()
+        self.method_id = '97'
 
 
     def get_elution_curve(self):
@@ -57,18 +62,22 @@ class SepuService:
         dialog = ExperimentDialog()
         if dialog.exec_() == QDialog.Accepted:  # 仅在用户点击确认后返回数据
             self.elution_curve = dialog.elution_curve
+            self.sampling_time = dialog.sampling_time
+            self.total_flow_rate = dialog.total_flow_rate
 
         return []  # 若未确认，返回空列表
 
     def write_params(self):
         # 读取 JSON 文件
-        file_path = r"D:\back\rotary_evaporator\src\service_control\params.json"  # 确保路径正确
+        file_path = r'D:\project_python\rotary_evaporator\src\service_control\params.json'
         with open(file_path, "r", encoding="utf-8") as file:
             data = json.load(file)
 
         # 更新 pumpList
         if "method" in data:
             data["method"]["pumpList"] = self.elution_curve
+            data["method"]["totalFlowRate"] = self.total_flow_rate
+            data["method"]["samplingTime"] = self.sampling_time
         else:
             print("Error: 'method' key not found in JSON file.")
 
@@ -80,44 +89,137 @@ class SepuService:
 
     def get_experiment_data(self):
         result = self.sepu_api.save_experiment_data()
-        print(result)
+        self.vertical_data = result["vertical_data"]
+        self.curve_data = result["curve_data"]
 
+        print(result)
 
     def select_retain_tubes(self):
         """ 打开 PlotWithInputs 窗口，获取 tube_entries """
-        self.get_experiment_data()
-        app = QApplication.instance()
-        if app is None:
-            app = QApplication(sys.argv)
 
-        window = PlotWithInputs(self.curve_data, self.vertical_data, self.sampling_time)
-        window.show()
+        try:
+            self.get_experiment_data()
+            print("self.curve_data",self.curve_data)
+            print("self.vertical_data",self.vertical_data)
+            print("self.sampling_time",self.sampling_time)
 
-        # **执行事件循环，直到窗口关闭**
-        app.exec_()
+            app = QApplication.instance()
+            if app is None:
+                app = QApplication(sys.argv)
 
-        # **窗口关闭后，获取 tube_entries**
-        tube = window.return_tube()
+            window = PlotWithInputs(self.curve_data, self.vertical_data, self.sampling_time)
+            window.show()
 
-        def execute_task():
+            # 执行事件循环，直到窗口关闭
+            app.exec_()
+
+            # 窗口关闭后，获取 tube_entries
+            tube = window.return_tube()
+            # [{'module_id': 1, 'tube_list': [2, 3, 4]}, {'module_id': 2, 'tube_list': [4, 5, 6]}]
+
+            print("tube",tube)
+            self.retain_tube_list = tube
+            self.find_clean_tubes()
+
+
+            for tube_info in tube:
+                timestamp = time.strftime("%Y%m%d%H%M%S")
+                module_id = tube_info.get('module_id')
+                tube_list = tube_info.get('tube_list')
+
+                task_list = {
+                    "method_id": int(self.sepu_api.method_id),
+                    "module_id": int(module_id),  # 假设从 sepu_api 获取 module_id
+                    "status": "retain",
+                    "task_id": int(timestamp),
+                    "tube_list": tube_list
+                }
+
+                print("任务列表:", task_list)
+                result = self.sepu_api.get_tube(task_list)
+                print("获取试管结果:")
+                print(json.dumps(result, indent=2))
+                time.sleep(1)
+
+            return tube
+        except Exception as e:
+            print(f"发生错误: {e}")
+
+
+    def find_clean_tubes(self):
+        # 参数配置
+        file_path = r'D:\project_python\rotary_evaporator\src\service_control\params.json'
+
+        # 加载 JSON 文件
+        with open(file_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+
+        retain_list = data.get("method", {}).get("retainList", [])
+
+        # 构造 module_id -> 排除 tube_list 的字典
+        exclude_dict = {item['module_id']: set(item['tube_list']) for item in self.retain_tube_list}
+
+        # 处理 retainList，排除指定 tube
+        result = []
+        for retain in retain_list:
+            module_id = retain['module_id']
+            original_tubes = set(retain['tube_id'])
+            exclude_tubes = exclude_dict.get(module_id, set())
+            remaining_tubes = sorted(original_tubes - exclude_tubes)
+            result.append({
+                'module_id': module_id,
+                'tube_list': remaining_tubes
+            })
+        self.clean_tube_list = result
+        # 输出结果
+        print(json.dumps(result, indent=4, ensure_ascii=False))
+
+    def excute_clean_tubes(self):
+        for tube_info in self.clean_tube_list:
             timestamp = time.strftime("%Y%m%d%H%M%S")
+            module_id = tube_info.get('module_id')
+            tube_list = tube_info.get('tube_list')
 
             task_list = {
                 "method_id": int(self.sepu_api.method_id),
-                "module_id": module_id,  # 由用户输入
+                "module_id": int(module_id),  # 假设从 sepu_api 获取 module_id
                 "status": "retain",
                 "task_id": int(timestamp),
-                "tube_list": tube_list,  # 由用户输入
+                "tube_list": tube_list
             }
 
             print("任务列表:", task_list)
             result = self.sepu_api.get_tube(task_list)
             print("获取试管结果:")
             print(json.dumps(result, indent=2))
+            time.sleep(1)
 
-        threading_cut = threading.Thread(target=execute_task)
-        threading_cut.start()
-        print("-------- 选中的 tubes --------", tube)
+        print("-------- 清洗的 tubes --------", self.clean_tube_list)
+
+
+    def wash_column(self):
+        self.get_elution_curve()
+        self.write_params()
+
+        # 参数配置
+        file_path = r'D:\project_python\rotary_evaporator\src\service_control\params.json'
+
+        # 加载 JSON 文件
+        with open(file_path, 'r', encoding='utf-8') as f:
+            method = json.load(f)
+        print(method["method"])
+        result = self.sepu_api.update_method(self.method_id, method["method"])
+        print("Update Method Result:", result)
+
+        result = self.sepu_api.only_operate()
+        print("Only Operate Result:", result)
+
+        result = self.sepu_api.get_line()
+        print("Get Line Result:", result)
+        start_time = self.sepu_api.get_current_time()
+        result = self.sepu_api.get_curve(start_time)
+        return result
+
 
 
 if __name__ == '__main__':

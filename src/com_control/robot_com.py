@@ -14,10 +14,9 @@ class RobotConnection:
         :param mock: 是否启用 Mock 模式
         """
         self.host = '192.168.1.91'
-        self.port = 1024  # 服务器端口号
+        self.port = 2000  # 服务器端口号
         self.mock = mock
         self.server_socket = None
-        self.client_socket = None
         self.client_address = None
         if mock is False:
             self._start_server()
@@ -25,51 +24,38 @@ class RobotConnection:
 
     def _start_server(self):
         """ 初始化 TCP 服务器 """
-        # self.client_socket = socket.socket()
-        # self.client_socket.connect((self.host,self.port))  # 绑定要监听的端口
-        # print("self.host",self.host)
-        # print("self.port",self.port)
-        # print("self.server_socket",self.server_socket)
-        # com_logger.info(f"Server started at {self.host}:{self.port}, waiting for connection...")
-        try:
-            self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            server_address = ('192.168.1.91', 1024)
-            self.client_socket.connect(server_address)
-            print("成功链接")
-        except Exception as e:
-            print("robot_com",e)
+        max_retries = 2  # 最大重试次数
+        retry_count = 0  # 当前重试计数
 
-    def accept_client(self):
-        """ 等待客户端连接 """
-        if self.mock is True:
-            print("is mock")
-        try:
+        while retry_count <= max_retries:
+            try:
+                self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                self.server_socket.connect((self.host, self.port))
+                print("robot_com: 成功链接")
+                break  # 连接成功时退出循环
+            except Exception as e:
+                print("robot_com:", e)
+                if retry_count < max_retries:
+                    retry_count += 1
+                    print(f"连接失败，正在尝试第 {retry_count} 次重连...")
+                else:
+                    print("已达到最大重试次数，停止连接")
+                    break  # 达到最大重试次数时退出循环
 
-            self.client_socket, self.client_address = self.server_socket.accept()
-
-            com_logger.info(f"Client connected from {self.client_address}")
-        except Exception as e:
-
-            com_logger.error(f"Client connection error: {e}")
 
 
     def send_command(self, command):
         """ 发送指令到机器人并接收响应 """
         if self.mock:
             com_logger.info(f"[Mock Mode] Sent: {command}")
+            print(f"command:{command}")
+            time.sleep(1)
             return f"[Mock Response] {command} {time.strftime('%H:%M:%S', time.localtime())}"
 
         try:
-            print("self.client_socket",self.client_socket)
-            self.client_socket.sendall(command.encode("utf-8"))
+            print("self.server_socket",self.server_socket)
+            self.server_socket.sendall((command + "\n").encode())
             print("command；",command)
-            # response = self.client_socket.recv(1024).decode("utf-8")
-            # response = self.client_socket.recv(1024)
-            # print("response: ",response)
-
-            # com_logger.info(f"Received: {response}")
-            # return response
-
         except Exception as e:
             com_logger.error(f"Error in communication: {e}")
             return None
@@ -77,12 +63,31 @@ class RobotConnection:
     def close(self):
         """ 关闭连接 """
         try:
-            if self.client_socket:
-                self.client_socket.close()
+            if self.server_socket:
+                self.server_socket.close()
                 com_logger.info("Client connection closed")
 
         except Exception as e:
             com_logger.error(f"Error closing connection: {e}")
+
+    def wait_for_target(self, expected):
+        print(f"⏳ 等待确认回复：{expected}")
+
+        if self.mock:
+            time.sleep(2)
+            return "Sample"
+
+        while True:
+            try:
+                reply = self.server_socket.recv(1024).decode().strip()
+                print("📥 收到回复：", reply)
+                if expected in reply:
+                    print(f"✅ 收到确认：{expected}")
+                    # input("🟢 已收到确认，按回车继续发送下一条...")
+                    return expected
+            except Exception as e:
+                print(f"⚠ 接收出错：{e}")
+                time.sleep(1)
 
 
 

@@ -5,7 +5,7 @@ import logging
 logger = logging.getLogger("PUMP")
 
 class PumpSample:
-    def __init__(self, port='COM23', baud_rate=9600, timeout=3, mock=False):
+    def  __init__(self, port='COM23', baud_rate=9600, timeout=3, mock=False):
         """
         泵控制类，支持真实和 Mock 模式
         :param port: 串口号
@@ -91,18 +91,18 @@ class PumpSample:
         out_speed = 1000
 
         if inject_cycles > 0:
-            inject_cycles -= 1
+            # inject_cycles -= 1
             command = (
-                f'{self.SAMPLE_INLET_1}gV{in_speed}A{self.MAX_PULSE}'
-                f'M{self.WAITING_TIME}{self.SAMPLE_OUTLET_3}V{out_speed}A0'
-                f'{self.SAMPLE_INLET_1}G{inject_cycles}'
-                f'V{in_speed}A{last_time_pulse + self.AIR_GAP_PULSE}M{self.WAITING_TIME}'
-                f'{self.SAMPLE_OUTLET_3}V{out_speed}A{self.AIR_GAP_PULSE}M3000{self.SHORT_PORT}'
+            f'{self.SAMPLE_INLET_1}gV{in_speed}A{self.MAX_PULSE}'
+            f'M{self.WAITING_TIME}{self.SAMPLE_OUTLET_3}V{out_speed}A0M{self.WAITING_TIME}'
+            f'{self.SAMPLE_INLET_1}G{inject_cycles}'
+            f'V{in_speed}A{last_time_pulse + self.AIR_GAP_PULSE}M{self.WAITING_TIME}'
+            f'{self.SAMPLE_OUTLET_3}V{out_speed}A{self.AIR_GAP_PULSE}M{self.WAITING_TIME}{self.SHORT_PORT}'
             )
         else:
             command = (
                 f'{self.SAMPLE_INLET_1}V{in_speed}A{last_time_pulse + self.AIR_GAP_PULSE}'
-                f'M{self.WAITING_TIME}{self.SAMPLE_OUTLET_3}V{out_speed}A0M3000{self.SHORT_PORT}'
+                f'M{self.WAITING_TIME}{self.SAMPLE_OUTLET_3}V{out_speed}A0M{self.WAITING_TIME}{self.SHORT_PORT}'
             )
 
         return self.send_command(command)
@@ -153,8 +153,8 @@ class PumpSample:
 
 if __name__ == '__main__':
     ps = PumpSample(mock=False)  # 启用 Mock 模式
-    response = ps.inject(1000, 1, 3)
-    # logger.info(f"Inject Response: {response}")
-    # ps.send_command('T')
-    # re = ps.initialization()
-    # print("re",response)
+    # response = ps.inject(10000, 1, 3)
+    # print(f"Inject Response: {response}")
+    # ps.send_command('I')
+    re = ps.initialization()
+    print("re",re)

@@ -1,10 +1,10 @@
 {
     "method": {
-        "samplingTime": 5,
+        "samplingTime": 20,
         "detectorWavelength": 258,
         "equilibrationColumn": 1,
         "speed": 100,
-        "totalFlowRate": 10,
+        "totalFlowRate": 40,
         "cleanList": [
             {
                 "module_id": 2,
@@ -40,55 +40,43 @@
             }
         ],
         "cleaningCount": 2,
-        "cleaningSpeed": "None",
-        "drainSpeed": "None",
+        "cleaningSpeed": null,
+        "drainSpeed": null,
         "isocratic": 0,
         "methodName": "12",
         "pressure": 1,
-        "pumpA": "None",
-        "pumpB": "None",
+        "pumpA": null,
+        "pumpB": null,
         "pumpList": [
             {
                 "time": 0,
-                "pumpB": 100,
-                "pumpA": 0,
-                "flowRate": 20
-            },
-            {
-                "time": 1,
-                "pumpB": 100,
-                "pumpA": 0,
-                "flowRate": 20
-            },
-            {
-                "time": 2,
-                "pumpB": 0,
-                "pumpA": 100,
-                "flowRate": 20
-            },
-            {
-                "time": 3,
-                "pumpB": 0,
-                "pumpA": 100,
-                "flowRate": 20
-            },
-            {
-                "time": 4,
-                "pumpB": 0,
-                "pumpA": 100,
-                "flowRate": 20
+                "pumpB": 95,
+                "pumpA": 5,
+                "flowRate": 40
             },
             {
                 "time": 5,
-                "pumpB": 0,
-                "pumpA": 100,
-                "flowRate": 20
+                "pumpB": 95,
+                "pumpA": 5,
+                "flowRate": 40
+            },
+            {
+                "time": 5,
+                "pumpB": 95,
+                "pumpA": 5,
+                "flowRate": 40
+            },
+            {
+                "time": 20,
+                "pumpB": 95,
+                "pumpA": 5,
+                "flowRate": 40
             }
         ],
         "retainList": [
             {
                 "module_id": 1,
-                "liquid_volume": 30,
+                "liquid_volume": 20,
                 "tube_id": [
                     1,
                     2,
@@ -104,7 +92,7 @@
             },
             {
                 "module_id": 2,
-                "liquid_volume": 30,
+                "liquid_volume": 20,
                 "tube_id": [
                     1,
                     2,

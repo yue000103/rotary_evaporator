@@ -17,6 +17,8 @@ class GearPump:
         # 定义寄存器地址
         self.REG_START_START = 306
         self.REG_START_STOP = 306  # 泵启停 (bool)
+        self.REG_TIME_S = 102  # 泵启停 (bool)
+
 
 
     def start_pump(self,time_s):
@@ -25,6 +27,8 @@ class GearPump:
         # self.plc.write_coil(self.REG_START_START, False)
         # time.sleep(1)
         self.plc.write_coil(self.REG_START_START, True)
+        self.plc.write_dint_register(self.REG_TIME_S, time_s)
+
 
 
 

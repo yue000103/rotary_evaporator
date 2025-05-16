@@ -2,6 +2,7 @@ import logging
 from pymodbus.client import ModbusTcpClient
 from src.uilt.yaml_control.setup import get_base_url
 from src.uilt.logs_control.setup import com_logger
+import struct
 
 class PLCConnection:
     def __init__(self, mock=False):
@@ -124,6 +125,36 @@ class PLCConnection:
         if self.client:
             self.client.close()
             com_logger.info("PLC Connection closed")
+
+    def float_to_registers(self, value):
+        # 使用 IEEE 754 将浮点数转换为 4 字节
+        packed = struct.pack(">f", value)
+        # 将 4 字节转换为两个 16 位整数
+        registers = struct.unpack(">HH", packed)
+        return registers
+
+    def split_dint(self,value):
+        # 将32位DINT拆分为高16位和低16位
+        high = (value >> 16) & 0xFFFF  # 右移16位取高16位
+        low = value & 0xFFFF  # 低16位
+        return high, low
+
+    def write_dint_register(self, address, value):
+        high, low = self.split_dint(value)
+        registers = [low, high]
+
+        if self.mock:
+            mock_values = registers
+            com_logger.info(f"[Mock Mode] Writing {registers}  from address {address}: {mock_values}")
+            return mock_values
+
+        # 写入寄存器（假设起始地址为40001）
+        response = self.client.write_registers(address=address, values=registers, unit=1)
+
+        if response.isError():
+            print("写入失败:", response)
+        else:
+            print("写入成功！")
 
 if __name__ == '__main__':
     # 创建 PLC 连接实例

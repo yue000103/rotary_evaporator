@@ -25,7 +25,7 @@ class PlotWithInputs(QWidget):
         # 输入框布局
         input_layout = QHBoxLayout()
         self.module_input = QLineEdit()
-        self.module_input.setPlaceholderText("输入 method_id")
+        self.module_input.setPlaceholderText("输入 module_id_id")
 
         self.tube_input = QLineEdit()
         self.tube_input.setPlaceholderText("输入 tube_list (逗号分隔)")
@@ -53,17 +53,17 @@ class PlotWithInputs(QWidget):
         self.setLayout(layout)
 
     def add_tube_entry(self):
-        """ 记录输入的 method_id 和 tube_list """
-        method_id = self.module_input.text().strip()
+        """ 记录输入的 module_id 和 tube_list """
+        module_id = self.module_input.text().strip()
         tube_list = self.tube_input.text().strip()
 
-        if method_id and tube_list:
+        if module_id and tube_list:
             try:
                 # **转换 tube_list 为整数列表**
                 tube_list_int = [int(x.strip()) for x in tube_list.split(",") if x.strip().isdigit()]
-                entry = {"method_id": int(method_id), "tube_list": tube_list_int}
+                entry = {"module_id": int(module_id), "tube_list": tube_list_int}
                 self.tube_entries.append(entry)
-                self.display_area.append(f"Method ID: {method_id}, Tube List: {tube_list_int}")
+                self.display_area.append(f"Method ID: {module_id}, Tube List: {tube_list_int}")
 
                 # 清空输入框
                 self.module_input.clear()
@@ -102,14 +102,18 @@ class PlotWithInputs(QWidget):
 
         ax.plot(times_interp, values_interp, label="Smoothed Curve", color="blue")
 
+
+
         # 画垂线，并调整字体大小和位置以增强可见性
         for v in self.vertical_data:
             t_start = (datetime.datetime.strptime(v["time_start"], "%H:%M:%S") - start_time).total_seconds()
             t_end = (datetime.datetime.strptime(v["time_end"], "%H:%M:%S") - start_time).total_seconds()
             mid_time = (t_start + t_end) / 2
 
-            ax.vlines(x=t_start, ymin=y_min, ymax=y_max, color="red", linestyle="--", linewidth=1.5)  # **动态调整垂线**
-            ax.text(mid_time, y_max * 1.05, f'Tube {v["tube"]}',
+            # print(t_start,t_end)
+
+            ax.vlines(x=t_start, ymin=0, ymax=y_max, color="red", linestyle="--", linewidth=1.5)  # **动态调整垂线**
+            ax.text(mid_time, y_max, f'{int(v["module_index"]+1)} - {int(v["tube_index"]+1)}',
                     horizontalalignment='center', verticalalignment='bottom',
                     fontsize=12, color='red', fontweight='bold')
 
@@ -129,24 +133,9 @@ class PlotWithInputs(QWidget):
 
 # 启动应用
 if __name__ == "__main__":
-    curve_data = [
-        {"time": "0:00:00", "value": 0.00126}, {"time": "0:00:01", "value": -0.00059},
-        {"time": "0:00:02", "value": 0.01536}, {"time": "0:00:03", "value": 0.04066},
-        {"time": "0:00:04", "value": 0.03933}, {"time": "0:00:05", "value": 0.0325},
-        {"time": "0:00:06", "value": 0.04187}, {"time": "0:00:07", "value": 0.0463},
-        {"time": "0:00:08", "value": 0.04318}, {"time": "0:00:09", "value": 0.03885},
-        {"time": "0:00:10", "value": 0.03691}, {"time": "0:00:11", "value": 0.04046}
-    ]
+    curve_data =  [{'time': '0:00:00', 'value': 50.0}, {'time': '0:00:01', 'value': 50.0}, {'time': '0:00:02', 'value': 50.0}, {'time': '0:00:03', 'value': 50.0}, {'time': '0:00:04', 'value': 50.0}, {'time': '0:00:05', 'value': 50.0}, {'time': '0:00:06', 'value': 50.0}, {'time': '0:00:07', 'value': 50.0}, {'time': '0:00:08', 'value': 50.0}, {'time': '0:00:09', 'value': 50.0}, {'time': '0:00:10', 'value': 50.0}, {'time': '0:00:11', 'value': 50.0}, {'time': '0:00:12', 'value': 50.0}, {'time': '0:00:13', 'value': 50.0}, {'time': '0:00:14', 'value': 50.0}, {'time': '0:00:15', 'value': 50.0}, {'time': '0:00:16', 'value': 50.0}, {'time': '0:00:17', 'value': 50.0}, {'time': '0:00:00', 'value': 50.0}, {'time': '0:00:01', 'value': 50.0}, {'time': '0:00:02', 'value': 50.0}, {'time': '0:00:03', 'value': 50.0}, {'time': '0:00:04', 'value': 50.0}, {'time': '0:00:05', 'value': 50.0}, {'time': '0:00:06', 'value': 50.0}, {'time': '0:00:07', 'value': 50.0}, {'time': '0:00:08', 'value': 50.0}, {'time': '0:00:09', 'value': 50.0}, {'time': '0:00:10', 'value': 50.0}, {'time': '0:00:11', 'value': 50.0}, {'time': '0:00:12', 'value': 50.0}, {'time': '0:00:13', 'value': 50.0}, {'time': '0:00:14', 'value': 50.0}, {'time': '0:00:15', 'value': 50.0}, {'time': '0:00:16', 'value': 50.0}, {'time': '0:00:17', 'value': 50.0}, {'time': '0:00:18', 'value': 50.0}, {'time': '0:00:19', 'value': 50.0}, {'time': '0:00:20', 'value': 50.0}, {'time': '0:00:21', 'value': 50.0}, {'time': '0:00:22', 'value': 50.0}, {'time': '0:00:23', 'value': 50.0}, {'time': '0:00:24', 'value': 50.0}, {'time': '0:00:25', 'value': 50.0}, {'time': '0:00:26', 'value': 50.0}, {'time': '0:00:27', 'value': 50.0}, {'time': '0:00:28', 'value': 50.0}, {'time': '0:00:29', 'value': 50.0}, {'time': '0:00:30', 'value': 50.0}, {'time': '0:00:31', 'value': 50.0}, {'time': '0:00:32', 'value': 50.0}, {'time': '0:00:33', 'value': 50.0}, {'time': '0:00:34', 'value': 50.0}, {'time': '0:00:35', 'value': 50.0}, {'time': '0:00:36', 'value': 50.0}, {'time': '0:00:37', 'value': 50.0}, {'time': '0:00:38', 'value': 50.0}, {'time': '0:00:39', 'value': 50.0}, {'time': '0:00:40', 'value': 50.0}, {'time': '0:00:41', 'value': 50.0}, {'time': '0:00:42', 'value': 50.0}, {'time': '0:00:43', 'value': 50.0}, {'time': '0:00:44', 'value': 50.0}, {'time': '0:00:45', 'value': 50.0}, {'time': '0:00:46', 'value': 50.0}, {'time': '0:00:47', 'value': 50.0}, {'time': '0:00:48', 'value': 50.0}, {'time': '0:00:49', 'value': 50.0}, {'time': '0:00:50', 'value': 50.0}, {'time': '0:00:51', 'value': 50.0}, {'time': '0:00:52', 'value': 50.0}, {'time': '0:00:53', 'value': 50.0}, {'time': '0:00:54', 'value': 50.0}, {'time': '0:00:55', 'value': 50.0}, {'time': '0:00:56', 'value': 50.0}, {'time': '0:00:57', 'value': 50.0}, {'time': '0:00:58', 'value': 50.0}, {'time': '0:00:59', 'value': 50.0}, {'time': '0:01:00', 'value': 50.0}, {'time': '0:01:01', 'value': 50.0}, {'time': '0:01:02', 'value': 50.0}, {'time': '0:01:03', 'value': 50.0}, {'time': '0:01:04', 'value': 50.0}, {'time': '0:01:05', 'value': 50.0}, {'time': '0:01:06', 'value': 50.0}, {'time': '0:01:07', 'value': 50.0}, {'time': '0:01:08', 'value': 50.0}, {'time': '0:01:09', 'value': 50.0}, {'time': '0:01:10', 'value': 50.0}, {'time': '0:01:11', 'value': 50.0}, {'time': '0:01:12', 'value': 50.0}, {'time': '0:01:13', 'value': 50.0}, {'time': '0:01:14', 'value': 50.0}, {'time': '0:01:15', 'value': 50.0}, {'time': '0:01:16', 'value': 50.0}, {'time': '0:01:17', 'value': 50.0}, {'time': '0:01:18', 'value': 50.0}, {'time': '0:01:19', 'value': 50.0}, {'time': '0:01:20', 'value': 50.0}, {'time': '0:01:21', 'value': 50.0}, {'time': '0:01:22', 'value': 50.0}, {'time': '0:01:23', 'value': 50.0}, {'time': '0:01:24', 'value': 50.0}, {'time': '0:01:25', 'value': 50.0}, {'time': '0:01:26', 'value': 50.0}, {'time': '0:01:27', 'value': 50.0}]
 
-    vertical_data = [
-        {"time_start": "00:00:00", "time_end": "0:00:10", "tube": 1.0},
-        {"time_start": "0:00:10", "time_end": "0:00:17", "tube": 2.0},
-        {"time_start": "0:00:17", "time_end": "0:00:27", "tube": 3.0},
-        {"time_start": "0:00:27", "time_end": "0:00:36", "tube": 4.0},
-        {"time_start": "0:00:36", "time_end": "0:00:45", "tube": 5.0},
-        {"time_start": "0:00:45", "time_end": "0:01:45", "tube": 6.0}
-
-    ]
+    vertical_data = [{'module_index': 0.0, "time_start": "00:00:00", "time_end": "0:00:10", 'tube_index': 0.0}, {'module_index': 0.0, "time_start": "0:00:10", "time_end": "0:00:17", 'tube_index': 1.0}, {'module_index': 0.0, "time_start": "0:00:17", "time_end": "0:00:27", 'tube_index': 2.0}, {'module_index': 0.0, 'time_end': '0:00:37', 'time_start': '0:00:27', 'tube_index': 3.0}, {'module_index': 0.0, "time_start": "0:00:27", "time_end": "0:00:36", 'tube_index': 4.0}, {'module_index': 0.0, "time_start": "0:00:36", "time_end": "0:00:45", 'tube_index': 5.0}, {'module_index': 0.0, "time_start": "0:00:45", "time_end": "0:01:45", 'tube_index': 6.0}]
 
     sampling_time = 20  # 20分钟
 
