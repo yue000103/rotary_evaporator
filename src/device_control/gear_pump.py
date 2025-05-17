@@ -18,6 +18,7 @@ class GearPump:
         self.REG_START_START = 306
         self.REG_START_STOP = 306  # 泵启停 (bool)
         self.REG_TIME_S = 102  # 泵启停 (bool)
+        self.PUMP_FINISH = 316
 
 
 
@@ -28,6 +29,14 @@ class GearPump:
         # time.sleep(1)
         self.plc.write_coil(self.REG_START_START, True)
         self.plc.write_dint_register(self.REG_TIME_S, time_s)
+        time.sleep(2)
+        self.pump_finish_async()
+
+    def pump_finish_async(self):
+        while True:
+            done = self.plc.read_coils(self.PUMP_FINISH)[0]
+            if done:
+                return True
 
 
 

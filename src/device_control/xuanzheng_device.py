@@ -1,3 +1,5 @@
+import time
+
 from src.com_control.xuanzheng_com import ConnectionController
 from src.com_control.PLC_com import PLCConnection
 
@@ -7,6 +9,11 @@ class ProcessController:
         self.connection = ConnectionController(mock)
         self.plc = PLCConnection(mock=mock)
         self.HEIGHT_ADDRESS = 502
+        self.AUTO_SET = 500
+        self.AUTO_FINISH = 501
+        self.WASTE_LIQUID = 323
+        self.WASTE_LIQUID_FINISH = 333
+
 
 
     def get_info(self):
@@ -58,7 +65,32 @@ class ProcessController:
         elif volume == 0:
             self.plc.write_single_register(self.HEIGHT_ADDRESS, 0)
 
+        time.sleep(3)
+        self.height_finish_async()
 
+
+    def set_auto_set_height(self,flag:bool):
+        self.plc.write_coil(self.AUTO_SET,flag)
+
+    def height_finish_async(self):
+        while True:
+            done = self.plc.read_coils(self.AUTO_FINISH,1)[0]
+            if done:
+                return True
+    def start_waste_liquid(self):
+        self.plc.write_coil(self.WASTE_LIQUID, True)
+        time.sleep(1)
+        self.plc.write_coil(self.WASTE_LIQUID, False)
+        time.sleep(2)
+        self.waste_finish_async()
+
+    def waste_finish_async(self):
+        while True:
+            done = self.plc.read_coils(self.WASTE_LIQUID_FINISH)[0]
+            # print(done)
+            if done:
+                return True
+            time.sleep(1)
 
 
         # pass
@@ -91,20 +123,21 @@ if __name__ == "__main__":
     # lift = {"set": 0}
     # globalStatus = {"running": True}
 
-    heating = None
-    cooling = None
-    vacuum = {"set": 150, "vacuumValveOpen": False, "aerateValveOpen": False}
-    rotation = None
-    lift = {"set": 0}
-    globalStatus = None
+    # heating = None
+    # cooling = None
+    # vacuum = {"set": 150, "vacuumValveOpen": False, "aerateValveOpen": False}
+    # rotation = None
+    # lift = {"set": 0}
+    # globalStatus = None
 
     # response = xuanzheng_controller.change_device_parameters(heating=heating, cooling=cooling, vacuum=vacuum,
     #                                                          rotation=rotation,
     #                                                          lift=lift, running=None)
     # globalStatus = None
     #
-    response = controller.change_device_parameters(heating=None, cooling=None, vacuum=vacuum, rotation=None,
-                                                   lift=None,running=False)
+    # response = controller.change_device_parameters(heating=None, cooling=None, vacuum=vacuum, rotation=None,
+    #                                                lift=None,running=False)
     # print("PUT请求响应：", response)
 
-    controller.close()
+    # controller.close()
+    controller.waste_finish_async()

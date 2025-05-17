@@ -348,7 +348,7 @@ def main():
     bottle_id_map = {1: "1000mL", 2: "200mL"}  # 按照位置分配瓶子大小
 
     steps = {
-        # 1: ("初始化设备", lambda: api_client.init_device(False)),
+        1: ("设置自动调高度", lambda: xuanzheng_controller.set_auto_set_height(True)),
         2: ("机械臂开始", lambda: api_client.robot_start()),
         # 3: ("机器人放试剂瓶", lambda: api_client.robot_trasfer_flask(7, 17)),
         4: ("冲洗色谱柱", lambda: api_client.wash_column()),
@@ -357,6 +357,8 @@ def main():
         7: ("机器人拿针头去清洗", lambda: api_client.robot_liquid_transfer_finish()),
         8: ("进样", lambda: api_client.inject_sample(30000)),
         9: ("机器人拿走针头", lambda: robot_controller.robot_change_gripper()),
+        50:("开始加洗针液体", lambda: pump_device.start_washing_liquid()),
+        51: ("开始废弃洗针液体", lambda: pump_device.start_waste_liquid()),
 
         10: ("继续实验",lambda: sepu_api.update_line_start()),
         11: ("过柱（梯度洗脱）", lambda: api_client.start_column()),
@@ -408,7 +410,7 @@ def main():
         45: ("机器人旋蒸下样", lambda: robot_controller.robot_change_gripper()),
         46: ("排空阀打开关闭", lambda: api_client.drain_valve_open()),
         47: ("机器人旋蒸下样", lambda: robot_controller.robot_change_gripper()),
-
+        60: ("开始废弃旋蒸废液", lambda: xuanzheng_controller.start_waste_liquid())
     }
 
     step_num = None

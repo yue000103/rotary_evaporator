@@ -19,6 +19,12 @@ class PeristalticPump:
         self.REG_START_STOP = 301  # 泵停 (bool)
         self.REG_SPEED = 300  # 速度 (int, RPM)
         self.REG_VOLUME = 305  # 体积 (real, mL)
+        self.PUMP_FINISH = 310
+        self.WASHING_LIQUID_START = 320
+        self.WASHING_LIQUID_STOP = 330
+        self.WASTE_LIQUID_START = 321
+        self.WASTE_LIQUID_STOP = 331
+
 
     def start_pump(self):
         """ 启动蠕动泵 """
@@ -28,10 +34,14 @@ class PeristalticPump:
         self.plc.write_coil(self.REG_START_START, True)
         # time.sleep(1)
         # self.plc.write_coil(self.REG_START_START, False)
+        time.sleep(2)
+        self.transfer_finish_async()
 
-
-
-
+    def transfer_finish_async(self):
+        while True:
+            done = self.plc.read_coils(self.PUMP_FINISH)[0]
+            if done:
+                return True
     def stop_pump(self):
         """ 停止蠕动泵 """
         self.plc.write_coil(self.REG_START_STOP, False)
@@ -40,36 +50,31 @@ class PeristalticPump:
         time.sleep(1)
         self.plc.write_coil(self.REG_START_STOP, False)
 
+    def start_washing_liquid(self):
+        self.plc.write_coil(self.WASHING_LIQUID_START, True)
+        time.sleep(1)
+        self.plc.write_coil(self.WASHING_LIQUID_START, False)
+        time.sleep(2)
+        self.washing_liquid_finish_async()
 
+    def washing_liquid_finish_async(self):
+        while True:
+            done = self.plc.read_coils(self.WASHING_LIQUID_STOP)[0]
+            if done:
+                return True
 
-    def set_speed(self, speed: int):
-        """ 设置泵的转速 (RPM) """
-        if not (0 < speed <= 300):  # 假设最大转速为 5000 RPM
-            device_control_logger.error("转速超出范围！有效范围: 1 - 5000 RPM")
-            return
-        success = self.plc.write_single_register(self.REG_SPEED, speed)
-        if success:
-            device_control_logger.info(f"蠕动泵速度设定为 {speed} RPM")
-        else:
-            device_control_logger.error("设置速度失败")
+    def start_waste_liquid(self):
+        self.plc.write_coil(self.WASTE_LIQUID_START, True)
+        time.sleep(1)
+        self.plc.write_coil(self.WASTE_LIQUID_START, False)
+        time.sleep(2)
+        self.waste_liquid_finish_async()
 
-    def set_volume(self, volume_ml: float):
-        """ 设置泵的液体体积 (mL) """
-        if volume_ml <= 0:
-            device_control_logger.error("液体体积必须大于 0")
-            return
-        volume_int = int(volume_ml * 100)  # 假设 PLC 以 0.01 mL 为单位存储
-        success = self.plc.write_single_register(self.REG_VOLUME, volume_int)
-        if success:
-            device_control_logger.info(f"蠕动泵设定液体体积为 {volume_ml} mL")
-        else:
-            device_control_logger.error("设置液体体积失败")
-
-    def close(self):
-        """ 关闭 PLC 连接 """
-        self.plc.close()
-        device_control_logger.info("蠕动泵连接已关闭")
-
+    def waste_liquid_finish_async(self):
+        while True:
+            done = self.plc.read_coils(self.WASTE_LIQUID_STOP)[0]
+            if done:
+                return True
 
 if __name__ == '__main__':
     pump = PeristalticPump(mock=False)  # 启用 Mock 模式测试

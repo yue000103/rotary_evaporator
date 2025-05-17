@@ -10,10 +10,10 @@ from src.device_control.sepu.api_fun import ApiClient
 sepu_api = ApiClient()
 
 from src.device_control.pump_sample import PumpSample
-pump_sample = PumpSample(mock=MOCK)
+pump_sample = PumpSample(mock=True)
 
 from src.device_control.robot_control.robot_device import RobotController
-robot_controller = RobotController(mock=MOCK)
+robot_controller = RobotController(mock=True)
 
 from src.device_control.peristaltic_pump import PeristalticPump
 
