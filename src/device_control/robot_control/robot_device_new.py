@@ -1,4 +1,4 @@
-# from src.com_control.robot_com import RobotConnection
+from src.com_control.robot_com import RobotConnection
 from src.uilt.logs_control.setup import device_control_logger
 import threading
 import time
@@ -7,81 +7,12 @@ import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 class RobotController:
-    def __init__(self, mock=False):
+    def __init__(self, mock):
         """
             机器人设备控制
             :param mock: 是否启用 Mock 模式
         """
-        # self.connection = RobotConnection(mock)
-        self.sock = None
-        self.recv_msg = ""
-        self.lock = threading.Lock()
-        self.ip = '192.168.1.91'
-        self.port = 2000
-
-        self.connect()
-
-
-    def connect(self):
-        while True:
-            print("--------------------------")
-            try:
-                self.sock = socket.socket()
-                self.sock.connect((self.ip, self.port))
-                print(f"✅ 已连接到 ABB 控制器 ({self.ip}:{self.port})")
-                threading.Thread(target=self.recv_thread, daemon=True).start()
-                return
-            except Exception as e:
-                print(f"❌ 连接失败：{e}，重试中...")
-                time.sleep(2)
-
-    def recv_thread(self):
-        print('recv thread start')
-        buffer = ""
-        while True:
-            try:
-                data = self.sock.recv(1024)
-                if data:
-                    print(f'{data=}')
-                    buffer += data.decode()
-                    if "\n" in buffer:
-                        lines = buffer.split("\n")
-                        buffer = lines[-1]
-                        for line in lines[:-1]:
-                            msg = line.strip()
-                            if msg:
-                                print(f"📥 接收：{msg}")
-                                with self.lock:
-                                    self.recv_msg = bytes.decode(msg)
-                    else:
-                        print(f"📥 接收：{data}")
-                        with self.lock:
-                            self.recv_msg = bytes.decode(data)
-            except:
-                print("⚠️ 接收线程异常")
-                break
-
-    def wait_for_response(self,expect, timeout_s=10):
-        print(f'{expect} expected with timeout {timeout_s}s')
-        timeout = time.time() + timeout_s
-        while time.time() < timeout:
-            with self.lock:
-                if self.recv_msg == expect:
-                    print(f"✅ 已收到确认：{expect}")
-                    self.recv_msg = ''
-                    return True
-                elif self.recv_msg:
-                    print(f'message: {self.recv_msg} received')
-
-            time.sleep(0.1)
-        print(f"❌ 超时未收到：{expect}")
-        raise TimeoutError(f"❌ 超时未收到：{expect}")
-
-    def sync(self,command):
-        self.wait_for_response(command + "_finish")
-
-    def check(self,command):
-        self.wait_for_response(command + "ok")
+        self.connection = RobotConnection(mock)
 
     def _execute_scenario(self, cmd_full, expected_response):
         """
@@ -92,14 +23,14 @@ class RobotController:
         """
         try:
             # 发送指令并记录操作
-            self.sock.sendall((cmd_full + "\n").encode())
+            self.connection.send_command(cmd_full)
             print(f"📤 Command Sent: {cmd_full}")
 
-            result = self.wait_for_response(cmd_full + "ok")
+            self.connection.wait_for_response(cmd_full + "ok")
 
             print("开始执行------")
 
-            result = self.wait_for_response(cmd_full + "_finish", 120)
+            self.connection.wait_for_response(cmd_full + "_finish", 10)
 
             # # 等待预期响应并记录交互过程
             # device_control_logger.info(f"⏳ Waiting for: {expected_response}")
@@ -110,7 +41,7 @@ class RobotController:
             # status = "✅ SUCCESS" if result else "❌ FAILURE"
             # device_control_logger.info(f"{status} ✅ {command} → {expected_response}")
 
-            return result
+            return True
         except Exception as e:
             device_control_logger.error(f"⚠️ Scenario Failed: {str(e)}")
             return False

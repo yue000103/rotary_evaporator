@@ -24,7 +24,7 @@ class PumpSample:
             "port_2": {"suction": 4, "dispense": 3},
             "port_3": {"suction": 4, "dispense": 3},
         }
-        self.CALIBRATION_CURVE = {"k": 1, "b": 1}
+        self.CALIBRATION_CURVE = {"k":2200, "b": 0}
         self.MAX_PULSE = 11000
         self.AIR_GAP_PULSE = 2000
         self.LIQUID_PULSE = 2000
@@ -82,9 +82,11 @@ class PumpSample:
         except socket.timeout:
             raise TimeoutError("Read timeout")
 
-    def initialization(self) -> bytes:
+    def initialization(self):
         """ 初始化泵 """
-        return self.send_command("Z")
+        self.send_command("Z")
+        self.send_command('I')
+        # return self.send_command("Z")
 
     def ml_to_pulse(self, ml: float) -> int:
         """ 根据校准曲线计算所需的脉冲数 """
@@ -173,10 +175,10 @@ class PumpSample:
 
 if __name__ == '__main__':
     ps = PumpSample(mock=False)  # 启用 Mock 模式
-    # response = ps.inject(8000, 1, 3)
+    response = ps.inject(2, 1, 3)
     # print(f"Inject Response: {response}")
     # ps.sync()
-    ps.send_command('I')
+    # ps.send_command('I')
     # re = ps.initialization()
     # print("re",re)
     # ps.check_state()

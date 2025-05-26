@@ -44,6 +44,7 @@ class TaskController:
 async def run_lab(task_ctrl: TaskController):
     try:
         await task_ctrl.wait_if_paused()
+        print("开始实验 ------ ")
         robot_controller.install_column(column_id)
         robot_controller.transfer_to_collect(bottle_id)
 

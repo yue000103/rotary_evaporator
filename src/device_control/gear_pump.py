@@ -27,6 +27,7 @@ class GearPump:
         #写时间
         # self.plc.write_coil(self.REG_START_START, False)
         # time.sleep(1)
+        time_s = time_s * 1000
         self.plc.write_coil(self.REG_START_START, True)
 
         self.plc.write_dint_register(self.REG_TIME_S, time_s)

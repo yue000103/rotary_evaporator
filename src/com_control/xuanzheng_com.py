@@ -8,7 +8,7 @@ from src.uilt.logs_control.setup import com_logger
 from src.uilt.yaml_control.setup import get_base_url
 import threading
 import time
-
+from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException
 
 
 class ConnectionController:
@@ -76,7 +76,7 @@ class ConnectionController:
         print(chrome_options)
         return webdriver.Chrome(options=chrome_options)
 
-    def send_request(self, endpoint, method='GET', data=None):
+    def _send_request(self, endpoint, method='GET', data=None):
         """ 发送 HTTP 请求 """
         get_url = f"https://{self.username}:{self.password}@{self.base_url}{endpoint}"  # 组合 URL
         put_url = f"https://{self.base_url}{endpoint}"
@@ -110,6 +110,46 @@ class ConnectionController:
             com_logger.info(json.dumps(data))
             print("put",json.dumps(data))
 
+            return self.driver.execute_script(script)
+
+
+    def send_request(self, endpoint, method='GET', data=None):
+        get_url = f"https://{self.username}:{self.password}@{self.base_url}{endpoint}"
+        put_url = f"https://{self.base_url}{endpoint}"
+
+        if self.mock:
+            log_message = f"[Mock Mode] {method} request to {get_url} with data: {data}"
+            com_logger.info(log_message)
+            return "Mock Response"
+
+        if method == 'GET':
+            for attempt in range(3):  # 最多重试3次
+                try:
+                    self.driver.get(get_url)
+                    # 每次都重新查找元素，避免 stale
+                    body = self.driver.find_element("tag name", "body")
+                    page_text = body.text
+                    com_logger.info(page_text)
+                    return page_text
+                except (StaleElementReferenceException, NoSuchElementException) as e:
+                    print(f"第 {attempt + 1} 次尝试失败: {e}, 正在重试...")
+                    time.sleep(1)
+
+            raise RuntimeError("多次重试后仍未成功获取页面内容")
+
+        elif method == 'PUT':
+            script = f'''
+            return fetch("https://192.168.1.20/api/v1/process", {{
+              method: 'PUT',
+              headers: {{
+                'Content-Type': 'application/json',
+                'Authorization': 'Basic {self.encoded_credentials}'
+              }},
+              body: JSON.stringify({json.dumps(data)})
+            }}).then(response => response.text());
+            '''
+            com_logger.info(json.dumps(data))
+            print("put", json.dumps(data))
             return self.driver.execute_script(script)
 
     def close(self):
