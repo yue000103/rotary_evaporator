@@ -169,6 +169,14 @@ class ApiClient:
         print("payload",payload)
         return self.sepu_com.send_post_request("/tubes/get_tube", payload)
 
+    def get_tube_status(self):
+        '''
+        ture: 表示执行结束
+        false：表示还有任务在执行
+        :return:
+        '''
+        return self.sepu_com.send_get_request("/tubes/get_tube_status")
+
     def pause_tube(self) -> dict:
         """
         调用 /tubes/pause_tube 接口暂停管路任务。

@@ -20,6 +20,8 @@ from src.device_control.sepu.api_fun import ApiClient
 
 class SepuService:
     def __init__(self):
+        service_control_logger.info('开始执行 __init__ 函数')
+
         self.elution_curve = [
                 {"time": 0, "pumpB": 100, "pumpA": 0, "flowRate": 20},
                 {"time": 1, "pumpB": 100, "pumpA": 0, "flowRate": 20},
@@ -52,8 +54,12 @@ class SepuService:
         self.sepu_api = ApiClient()
         self.method_id = '97'
 
+        service_control_logger.info('结束执行 __init__ 函数')
 
     def get_elution_curve(self):
+
+        service_control_logger.info('开始执行 get_elution_curve 函数')
+
         """ 调用交互窗口获取洗脱曲线数据 """
         app = QApplication.instance()  # 获取现有 QApplication 实例
         if not app:
@@ -65,9 +71,14 @@ class SepuService:
             self.sampling_time = dialog.sampling_time
             self.total_flow_rate = dialog.total_flow_rate
 
+        service_control_logger.info('结束执行 get_elution_curve 函数')
+
+
         return []  # 若未确认，返回空列表
 
     def write_params(self):
+        service_control_logger.info('开始执行 write_params 函数')
+
         # 读取 JSON 文件
         file_path = r'D:\project_python\rotary_evaporator\src\service_control\params.json'
         with open(file_path, "r", encoding="utf-8") as file:
@@ -87,36 +98,45 @@ class SepuService:
 
         print("更新后的 pumpList 已成功写入 params.json")
 
+        service_control_logger.info('结束执行 write_params 函数')
+
     def get_experiment_data(self):
+        service_control_logger.info('开始执行 get_experiment_data 函数')
+
         result = self.sepu_api.save_experiment_data()
         self.vertical_data = result["vertical_data"]
         self.curve_data = result["curve_data"]
 
         print(result)
 
-    def select_retain_tubes(self):
+        service_control_logger.info('结束执行 get_experiment_data 函数')
+
+    def select_retain_tubes(self,retain_tube):
+        service_control_logger.info('开始执行 select_retain_tubes 函数')
+
         """ 打开 PlotWithInputs 窗口，获取 tube_entries """
 
         try:
-            self.get_experiment_data()
-            print("self.curve_data",self.curve_data)
-            print("self.vertical_data",self.vertical_data)
-            print("self.sampling_time",self.sampling_time)
-
-            app = QApplication.instance()
-            if app is None:
-                app = QApplication(sys.argv)
-
-            window = PlotWithInputs(self.curve_data, self.vertical_data, self.sampling_time)
-            window.show()
-
-            # 执行事件循环，直到窗口关闭
-            app.exec_()
-
-            # 窗口关闭后，获取 tube_entries
-            tube = window.return_tube()
-            # [{'module_id': 1, 'tube_list': [2, 3, 4]}, {'module_id': 2, 'tube_list': [4, 5, 6]}]
-
+            # self.get_experiment_data()
+            # print("self.curve_data",self.curve_data)
+            # print("self.vertical_data",self.vertical_data)
+            # print("self.sampling_time",self.sampling_time)
+            #
+            # app = QApplication.instance()
+            # if app is None:
+            #     app = QApplication(sys.argv)
+            #
+            # window = PlotWithInputs(self.curve_data, self.vertical_data, self.sampling_time)
+            # window.show()
+            #
+            # # 执行事件循环，直到窗口关闭
+            # app.exec_()
+            #
+            # # 窗口关闭后，获取 tube_entries
+            # tube = window.return_tube()
+            # tube = [{'module_id': 1, 'tube_list': [2, 3, 4]}, {'module_id': 2, 'tube_list': [4, 5, 6,7,8,9,10]}]
+            # tube = [{'module_id': 1, 'tube_list': [2, 3, 4]}]
+            tube = retain_tube
             print("tube",tube)
             self.retain_tube_list = tube
             self.find_clean_tubes()
@@ -141,12 +161,25 @@ class SepuService:
                 print(json.dumps(result, indent=2))
                 time.sleep(1)
 
-            return tube
+            while True:
+                time.sleep(2)
+                result = self.sepu_api.get_tube_status()
+                print("result",result)
+                if result["status"] == True:
+                    return
+
+
+
+            # return tube
         except Exception as e:
             print(f"发生错误: {e}")
 
+            service_control_logger.info('结束执行 select_retain_tubes 函数')
 
     def find_clean_tubes(self):
+
+        service_control_logger.info('开始执行 find_clean_tubes 函数')
+
         # 参数配置
         file_path = r'D:\project_python\rotary_evaporator\src\service_control\params.json'
 
@@ -174,7 +207,11 @@ class SepuService:
         # 输出结果
         print(json.dumps(result, indent=4, ensure_ascii=False))
 
+        service_control_logger.info('结束执行 find_clean_tubes 函数')
+
     def excute_clean_tubes(self):
+        service_control_logger.info('开始执行 excute_clean_tubes 函数')
+
         for tube_info in self.clean_tube_list:
             timestamp = time.strftime("%Y%m%d%H%M%S")
             module_id = tube_info.get('module_id')
@@ -196,10 +233,14 @@ class SepuService:
 
         print("-------- 清洗的 tubes --------", self.clean_tube_list)
 
+        service_control_logger.info('结束执行 excute_clean_tubes 函数')
 
-    def wash_column(self):
-        self.get_elution_curve()
-        self.write_params()
+    def wash_column(self,wash_time):
+
+        service_control_logger.info('开始执行 wash_column 函数')
+
+        # self.get_elution_curve()
+        # self.write_params()
 
         # 参数配置
         file_path = r'D:\project_python\rotary_evaporator\src\service_control\params.json'
@@ -218,10 +259,98 @@ class SepuService:
         print("Get Line Result:", result)
         start_time = self.sepu_api.get_current_time()
         result = self.sepu_api.get_curve(start_time)
+        time.sleep(wash_time)
+
+        service_control_logger.info('结束执行 wash_column 函数')
         return result
 
+    def update_line_pause(self):
+        service_control_logger.info('开始执行 update_line_pause 函数')
 
+        self.sepu_api.update_line_pause()
+        time.sleep(5)
+
+        service_control_logger.info('结束执行 update_line_pause 函数')
+
+    def update_line_start(self):
+
+        service_control_logger.info('开始执行 update_line_start 函数')
+
+        self.sepu_api.update_line_start()
+        time.sleep(2)
+
+        service_control_logger.info('结束执行 update_line_start 函数')
+
+    def update_line_terminate(self):
+        service_control_logger.info('开始执行 update_line_terminate 函数')
+
+        self.sepu_api.update_line_terminate()
+        time.sleep(5)
+
+        service_control_logger.info('结束执行 update_line_terminate 函数')
+
+    def start_column(self,experiment_time_min):
+        service_control_logger.info('开始执行 start_column 函数')
+
+        self.sepu_api.set_sample_valve()
+        self.update_line_start()
+        time.sleep(experiment_time_min*60)
+
+        service_control_logger.info('结束执行 start_column 函数')
+
+    def save_experiment_data(self,clean_tube):
+        service_control_logger.info('开始执行 save_experiment_data 函数')
+
+
+        # tube = [{'module_id': 1, 'tube_list': [1,2,3,4]}]
+        tube = clean_tube
+
+        service_control_logger.info('结束执行 save_experiment_data 函数')
+        # def execute_task(self):
+        service_control_logger.info('开始执行 execute_task 函数')
+
+        result = self.sepu_api.save_experiment_data()
+        print(result)
+
+        for tube_info in tube:
+            timestamp = time.strftime("%Y%m%d%H%M%S")
+            module_id = tube_info.get('module_id')
+            tube_list = tube_info.get('tube_list')
+
+
+            task_list = {
+                "method_id": int(self.sepu_api.method_id),
+                "module_id": module_id,  # 由用户输入
+                "status": "clean",
+                "task_id": int(timestamp),
+                "tube_list": tube_list,  # 由用户输入
+            }
+
+            print("任务列表:", task_list)
+            result = self.sepu_api.get_tube(task_list)
+            print("获取试管结果:")
+            print(json.dumps(result, indent=2))
+            time.sleep(1)
+
+            # threading_cut = threading.Thread(target=execute_task)
+            # threading_cut.start()
+        result = {"status": "success", "message": "实验数据已保存"}
 
 if __name__ == '__main__':
     sepu = SepuService()
+    sepu.wash_column(10)
+    sepu.update_line_pause()
+
+    time.sleep(5)
+
+    sepu.update_line_start()
+    time.sleep(5)
+
+    sepu.start_column()
+
+    sepu.update_line_terminate()
+
     sepu.select_retain_tubes()
+    service_control_logger.info('结束执行 execute_task 函数')
+
+    sepu.save_experiment_data()

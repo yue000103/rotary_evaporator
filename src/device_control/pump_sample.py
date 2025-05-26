@@ -1,11 +1,11 @@
-import serial
+import socket
 import time
 import logging
 
 logger = logging.getLogger("PUMP")
 
 class PumpSample:
-    def  __init__(self, port='COM23', baud_rate=9600, timeout=3, mock=False):
+    def  __init__(self, host='192.168.1.207', port=4196, baud_rate=9600, timeout=3, mock=False):
         """
         泵控制类，支持真实和 Mock 模式
         :param port: 串口号
@@ -30,11 +30,16 @@ class PumpSample:
         self.LIQUID_PULSE = 2000
         self.WAITING_TIME = 5000
         self.busy_flag = True
+        self.host = host
+        self.port = port
 
         if not self.mock:
             try:
                 print(f"--------------{self.mock}------------------")
-                self.ser = serial.Serial(port, baud_rate, timeout=timeout)
+                self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                self.sock.settimeout(5)
+                self.sock.connect((self.host, self.port))
+
                 logger.info("注射泵串口连接成功")
                 print(f"注射泵串口连接成功")
 
@@ -63,9 +68,19 @@ class PumpSample:
             logger.info(f"Mock 模式返回: {response}")
             return response
 
-        self.ser.write(formatted_command.encode("utf-8"))
-        response = self.ser.readline()
+        self.sock.sendall(formatted_command.encode("utf-8"))
+        response = self._read_response()
         return response
+
+    def _read_response(self, timeout=1):
+        """带超时的响应读取"""
+        try:
+            response = self.sock.recv(16)
+            if not response:
+                raise ConnectionError("Empty response")
+            return response
+        except socket.timeout:
+            raise TimeoutError("Read timeout")
 
     def initialization(self) -> bytes:
         """ 初始化泵 """
@@ -105,12 +120,14 @@ class PumpSample:
                 f'M{self.WAITING_TIME}{self.SAMPLE_OUTLET_3}V{out_speed}A0M{self.WAITING_TIME}{self.SHORT_PORT}'
             )
 
+
         return self.send_command(command)
 
     def check_state(self):
         """ 查看泵的状态，并更新 busy_flag """
         re = self.send_command("Q")
         re_lst = list(re)
+        print("re_lst",re_lst)
 
         if len(re_lst) < 4:
             logger.error("Unexpected response format")
@@ -150,11 +167,16 @@ class PumpSample:
         while self.busy_flag:
             time.sleep(0.5)
             self.check_state()
+        self.send_command('I')
+        time.sleep(1)
+        print("进样完毕")
 
 if __name__ == '__main__':
     ps = PumpSample(mock=False)  # 启用 Mock 模式
-    # response = ps.inject(10000, 1, 3)
+    # response = ps.inject(8000, 1, 3)
     # print(f"Inject Response: {response}")
-    # ps.send_command('I')
-    re = ps.initialization()
-    print("re",re)
+    # ps.sync()
+    ps.send_command('I')
+    # re = ps.initialization()
+    # print("re",re)
+    # ps.check_state()

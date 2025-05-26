@@ -1,7 +1,9 @@
-from src.com_control.robot_com import RobotConnection
+# from src.com_control.robot_com import RobotConnection
 from src.uilt.logs_control.setup import device_control_logger
 import threading
 import time
+import socket
+import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 class RobotController:
@@ -10,10 +12,78 @@ class RobotController:
             机器人设备控制
             :param mock: 是否启用 Mock 模式
         """
-        self.connection = RobotConnection(mock)
+        # self.connection = RobotConnection(mock)
+        self.sock = None
+        self.recv_msg = ""
+        self.lock = threading.Lock()
+        self.ip = '192.168.1.91'
+        self.port = 2000
+
+        self.connect()
 
 
-    def _execute_scenario(self, command, expected_response):
+    def connect(self):
+        while True:
+            print("--------------------------")
+            try:
+                self.sock = socket.socket()
+                self.sock.connect((self.ip, self.port))
+                print(f"✅ 已连接到 ABB 控制器 ({self.ip}:{self.port})")
+                threading.Thread(target=self.recv_thread, daemon=True).start()
+                return
+            except Exception as e:
+                print(f"❌ 连接失败：{e}，重试中...")
+                time.sleep(2)
+
+    def recv_thread(self):
+        print('recv thread start')
+        buffer = ""
+        while True:
+            try:
+                data = self.sock.recv(1024)
+                if data:
+                    print(f'{data=}')
+                    buffer += data.decode()
+                    if "\n" in buffer:
+                        lines = buffer.split("\n")
+                        buffer = lines[-1]
+                        for line in lines[:-1]:
+                            msg = line.strip()
+                            if msg:
+                                print(f"📥 接收：{msg}")
+                                with self.lock:
+                                    self.recv_msg = bytes.decode(msg)
+                    else:
+                        print(f"📥 接收：{data}")
+                        with self.lock:
+                            self.recv_msg = bytes.decode(data)
+            except:
+                print("⚠️ 接收线程异常")
+                break
+
+    def wait_for_response(self,expect, timeout_s=10):
+        print(f'{expect} expected with timeout {timeout_s}s')
+        timeout = time.time() + timeout_s
+        while time.time() < timeout:
+            with self.lock:
+                if self.recv_msg == expect:
+                    print(f"✅ 已收到确认：{expect}")
+                    self.recv_msg = ''
+                    return True
+                elif self.recv_msg:
+                    print(f'message: {self.recv_msg} received')
+
+            time.sleep(0.1)
+        print(f"❌ 超时未收到：{expect}")
+        raise TimeoutError(f"❌ 超时未收到：{expect}")
+
+    def sync(self,command):
+        self.wait_for_response(command + "_finish")
+
+    def check(self,command):
+        self.wait_for_response(command + "ok")
+
+    def _execute_scenario(self, cmd_full, expected_response):
         """
         核心场景执行器（通用逻辑封装）
         :param command: 待发送的指令内容
@@ -22,143 +92,197 @@ class RobotController:
         """
         try:
             # 发送指令并记录操作
-            self.connection.send_command(command)
-            device_control_logger.info(f"📤 Command Sent: {command}")
+            self.sock.sendall((cmd_full + "\n").encode())
+            print(f"📤 Command Sent: {cmd_full}")
 
-            # 等待预期响应并记录交互过程
-            device_control_logger.info(f"⏳ Waiting for: {expected_response}")
-            actual_response = self.connection.wait_for_target(expected_response)
+            result = self.wait_for_response(cmd_full + "ok")
 
-            # 结果判定与日志输出
-            result = (actual_response == expected_response)
-            status = "✅ SUCCESS" if result else "❌ FAILURE"
-            device_control_logger.info(f"{status} ✅ {command} → {expected_response}")
+            print("开始执行------")
+
+            result = self.wait_for_response(cmd_full + "_finish", 120)
+
+            # # 等待预期响应并记录交互过程
+            # device_control_logger.info(f"⏳ Waiting for: {expected_response}")
+            # actual_response = self.wait_for_target(expected_response)
+
+            # # 结果判定与日志输出
+            # result = (actual_response == expected_response)
+            # status = "✅ SUCCESS" if result else "❌ FAILURE"
+            # device_control_logger.info(f"{status} ✅ {command} → {expected_response}")
 
             return result
         except Exception as e:
             device_control_logger.error(f"⚠️ Scenario Failed: {str(e)}")
             return False
 
-    def await_sample_loading_ready(self,command):
+    def install_column(self,column_id):
         """等待样本加载准备就绪
             传入参数的含义：
                 第一位：取哪根色谱柱  1-6 顺时针
-                第二位：上样瓶  1-9
-                第三位：大瓶的位置  1，2
-                第四位：小瓶的位置 1-6
         """
+        command = f"task_scara_zhuzi1_py({column_id})"
+        return self._execute_scenario(command, "task_scara_zhuzi1_py_finish")
+
+    def uninstall_column(self,column_id):
+        command = f"task_scara_zhuzi2_py({column_id})"
         return self._execute_scenario(command, "Sample loading ready")
 
-    def trigger_clean_sequence(self):
-        """触发清洁流程初始化"""
-        return self._execute_scenario("sample_ok", "clean ready")
-
-    def proceed_to_evaporation_stage(self):
-        """推进至旋转蒸发阶段"""
-        return self._execute_scenario("clean_ok", "ABB Reached Rotary Evaporator")
-
-    def confirm_vacuum_prepared(self):
-        """确认真空系统就绪"""
-        return self._execute_scenario("Vacuum_ok", "wait_pc")
-
-    def finalize_rotation_process(self):
-        """完成旋转蒸发流程"""
-        return self._execute_scenario("Rotary evaporation completed", "wait_pc")
+    def transfer_to_collect(self,bottle_id):
+        command = f"task_flask_move_py(7,1)"
+        self._execute_scenario(command, "task_flask_move_py(7,1)_finish")
+        command = f"task_flask_move_py(17,0)"
+        self._execute_scenario(command, "task_flask_move_py(17,0)_finish")
+        command = f"task_scara_get_tool()"
+        self._execute_scenario(command, "task_scara_get_tool()_finish")
+        command = f"task_scara_sample_py(3,1)"
+        self._execute_scenario(command, "task_scara_sample_py(3,1)_finish")
 
 
+    def to_clean_needle(self):
+        command = f"sample_ok"
+        self._execute_scenario(command, "sample_ok_finish")
 
-    def reset_vacuum_system(self):
-        """重置真空系统状态"""
-        return self._execute_scenario("Vacuum reset", "clean ready")
+        command = f"task_scara_clean_py(1)"
+        self._execute_scenario(command, "Sample loading ready")
 
-    def ready_clean(self):
-        """完成旋转蒸发流程"""
-        return self._execute_scenario("clean_ok", "wait_pc")
+    def task_scara_put_tool(self):
+        command = f"clean_ok"
+        self._execute_scenario(command, "clean_ok_finish")
 
-    def input_numeric_command_2(self):
-        """输入数值指令3"""
-        return self._execute_scenario("2", "Liquid transfer ready")
 
-    def reconfirm_vacuum_reset(self):
-        """二次确认真空重置状态"""
-        return self._execute_scenario("Vacuum reset", "clean ready")
+        command = f"task_scara_put_tool(1)"
+        self._execute_scenario(command, "task_scara_put_tool(1)_finish")
 
-    def initiate_liquid_transfer(self):
-        """启动液体转移流程"""
-        return self._execute_scenario("clean_ok", "Liquid transfer ready")
 
-    def complete_transfer_process(self):
-        """完成液体转移闭环"""
-        return self._execute_scenario("Liquid transfer ok", "clean ready")
+    def collect_to_xuanzheng(self,bottle_id):
+        command = f"task_flask_move_py(17,1)"
+        self._execute_scenario(command, "task_flask_move_py(17,1)_finish")
+        command = f"task_Rotary_Evaporator_put_py()"
+        self._execute_scenario(command, "task_Rotary_Evaporator_put_py()_finish")
 
-    def ready_liquid_transfer(self):
-        """完成液体转移闭环"""
-        return self._execute_scenario("Liquid transfer ok", "ABB Reached Rotary Evaporator")
+    def robot_to_home(self):
+        command = f"Vacuum_ok"
+        self._execute_scenario(command, "Vacuum_ok_finish")
 
-    def revert_to_loading_state(self):
-        """恢复至样本加载初始状态"""
-        return self._execute_scenario("clean_ok", "Sample loading ready")
+    def transfer_to_clean(self):
+        command = f"task_flask_move_py(15,0)"
+        self._execute_scenario(command, "task_flask_move_py(15,0)_finish")
 
-    def finalize_last(self):
-        """完成完整清洁工作循环"""
-        return self._execute_scenario("Vacuum reset", "finish")
+    def task_shake_the_flask_py(self):
+        command = "task_shake_the_flask_py()"
+        self._execute_scenario(command, "task_shake_the_flask_py()_finish")
 
-    def validate_empty_command_flow(self):
-        """验证空指令序列的稳定性"""
-        return self._execute_scenario("", "Sample loading ready")
+    def get_penlin_needle(self):
+        command = "task_abb_clean_py()"
+        self._execute_scenario(command, "task_abb_clean_py()_finish")
+        pass
+
+    def abb_clean_ok(self):
+        command = f"abb_clean_ok"
+        self._execute_scenario(command, "abb_clean_ok_finish")
+
+    def clean_to_home(self):
+        command = f"task_flask_move_py(15,1)"
+        self._execute_scenario(command, "task_flask_move_py(15,1)_finish")
+
+    def get_transfer_needle(self):
+        command = f"task_transfer_flask_liquid_py()"
+        self._execute_scenario(command, "task_transfer_flask_liquid_py()_finish")
+        pass
+
+    def transfer_finish_flag(self):
+        command = f"Liquid_transfer_ok"
+        self._execute_scenario(command, "Liquid_transfer_ok_finish")
+
+    def scara_to_home(self):
+        command = f"task_scara_filling_liquid_ok()"
+        self._execute_scenario(command, "task_scara_filling_liquid_ok()_finish")
+
+
+
+    def clean_to_xuanzheng(self):
+        command = f"task_flask_move_py(16,1)"
+        self._execute_scenario(command, "task_flask_move_py(16,1)_finish")
+        command = f"task_Rotary_Evaporator_put_py()"
+        self._execute_scenario(command, "task_Rotary_Evaporator_put_py()_finish")
+        pass
+
+    def xuanzheng_to_warehouse(self):
+        command = f"task_flask_move_py(9,0)"
+        self._execute_scenario(command, "task_flask_move_py(9,0)_finish")
+        pass
+
+    def get_xuanzheng(self):
+        command = f"task_Rotary_Evaporator_get_py()"
+        self._execute_scenario(command, "task_Rotary_Evaporator_get_py()_finish")
+
+    def get_big_bottle(self):
+        command = f"task_flask_move_py(15,1)"
+        self._execute_scenario(command, "task_flask_move_py(15,1)_finish")
+        command = f"task_flask_move_py(7,0)"
+        self._execute_scenario(command, "task_flask_move_py(7,0)_finish")
+        command = f"task_scara_zhuzi2_py(1)"
+        self._execute_scenario(command, "task_scara_zhuzi2_py(1)_finish")
+
+    def small_big_to_clean(self):
+        command = f"task_flask_move_py(1,1)"
+        self._execute_scenario(command, "task_flask_move_py(1,1)_finish")
+        command = f"task_flask_move_py(16,0)"
+        self._execute_scenario(command, "task_flask_move_py(16,0)_finish")
 
 
 if __name__ == '__main__':
-    controller = RobotController(mock=False)
-
-    # 新增手动输入功能
-    def manual_input():
-        """手动输入命令并验证响应"""
-        command = input("请输入要发送的指令：")  # 第一步改为手动输入
-        return controller.await_sample_loading_ready(command)
-
-
-
-    # 核心工作流程（第一条为手动输入）
-    execution_flow = [
-        manual_input,
-        controller.trigger_clean_sequence,
-        controller.proceed_to_evaporation_stage,
-        controller.confirm_vacuum_prepared,
-        controller.finalize_rotation_process,
-        controller.reset_vacuum_system,
-        controller.ready_clean,
-        controller.input_numeric_command_2,
-        controller.complete_transfer_process,
-        controller.initiate_liquid_transfer,
-
-        controller.complete_transfer_process,
-        controller.initiate_liquid_transfer,
-
-        controller.ready_liquid_transfer,
-        controller.confirm_vacuum_prepared,
-        controller.finalize_rotation_process,
-        controller.finalize_last
-    ]
-
-    results = {}
-    for step_idx, step_func in enumerate(execution_flow, 1):
-        try:
-            # 执行当前步骤
-            result = step_func()
-            results[f"Step {step_idx}"] = result
-
-            if not result:
-                print(f"\n⚠️ 执行失败于步骤 {step_idx}")
-                break
-
-        except Exception as e:
-            print(f"\n⚠️ 步骤 {step_idx} 异常终止")
-            print(f"错误详情: {str(e)}")
-            results[f"Step {step_idx}"] = False
-            break
-
-    print("\nExecution Summary:")
-    for step, result in results.items():
-        status = "✅ Passed" if result else "❌ Failed"
-        print(f"{step}: {status}")
+    pass
+    # controller = RobotController(mock=False)
+    #
+    # # 新增手动输入功能
+    # def manual_input():
+    #     """手动输入命令并验证响应"""
+    #     command = input("请输入要发送的指令：")  # 第一步改为手动输入
+    #     return controller.await_sample_loading_ready(command)
+    #
+    #
+    #
+    # # 核心工作流程（第一条为手动输入）
+    # execution_flow = [
+    #     manual_input,
+    #     controller.trigger_clean_sequence,
+    #     controller.proceed_to_evaporation_stage,
+    #     controller.confirm_vacuum_prepared,
+    #     controller.finalize_rotation_process,
+    #     controller.reset_vacuum_system,
+    #     controller.ready_clean,
+    #     controller.input_numeric_command_2,
+    #     controller.complete_transfer_process,
+    #     controller.initiate_liquid_transfer,
+    #
+    #     controller.complete_transfer_process,
+    #     controller.initiate_liquid_transfer,
+    #
+    #     controller.ready_liquid_transfer,
+    #     controller.confirm_vacuum_prepared,
+    #     controller.finalize_rotation_process,
+    #     controller.finalize_last
+    # ]
+    #
+    # results = {}
+    # for step_idx, step_func in enumerate(execution_flow, 1):
+    #     try:
+    #         # 执行当前步骤
+    #         result = step_func()
+    #         results[f"Step {step_idx}"] = result
+    #
+    #         if not result:
+    #             print(f"\n⚠️ 执行失败于步骤 {step_idx}")
+    #             break
+    #
+    #     except Exception as e:
+    #         print(f"\n⚠️ 步骤 {step_idx} 异常终止")
+    #         print(f"错误详情: {str(e)}")
+    #         results[f"Step {step_idx}"] = False
+    #         break
+    #
+    # print("\nExecution Summary:")
+    # for step, result in results.items():
+    #     status = "✅ Passed" if result else "❌ Failed"
+    #     print(f"{step}: {status}")

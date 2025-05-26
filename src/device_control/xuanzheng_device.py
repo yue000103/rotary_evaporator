@@ -2,9 +2,10 @@ import time
 
 from src.com_control.xuanzheng_com import ConnectionController
 from src.com_control.PLC_com import PLCConnection
+import json
 
 
-class ProcessController:
+class XuanZHengController:
     def __init__(self,mock=False):
         self.connection = ConnectionController(mock)
         self.plc = PLCConnection(mock=mock)
@@ -22,7 +23,37 @@ class ProcessController:
     def get_process(self):
         return self.connection.send_request("/api/v1/process", method='GET')
 
+    def xuanzheng_sync(self):
+        """轮询获取旋蒸当前状态，直到运行结束"""
 
+        try:
+            while True:
+                raw_result = self.get_process()  # 假设该方法返回的是你提供的 JSON 状态
+                print("当前状态：", raw_result)
+
+                if isinstance(raw_result, str):
+                    try:
+                        result = json.loads(raw_result)
+                    except json.JSONDecodeError as e:
+                        print(f"JSON 解析失败: {e}")
+                        break
+                elif isinstance(raw_result, dict):
+                    result = raw_result
+                else:
+                    print("未知的返回类型，既不是 str 也不是 dict，退出")
+                    break
+
+                # 取出 globalStatus.running，如果为 False，则表示任务完成，退出循环
+                is_running = result.get("globalStatus", {}).get("running", False)
+                if not is_running:
+                    print("设备运行已结束，退出轮询。")
+                    break
+
+                time.sleep(2)
+        except Exception as e:
+            print(f"xuanzheng_sync 轮询过程中发生异常: {e}")
+        finally:
+            print("结束执行 xuanzheng_sync 函数")
 
 
     def change_device_parameters(self, heating=None, cooling=None, vacuum=None, rotation=None, lift=None, running=None):
@@ -53,6 +84,7 @@ class ProcessController:
 
     def set_height(self,volume):
         #1000 500 100 50
+        self.plc.write_coil(self.AUTO_SET,True)
         if volume == 1000:
             self.plc.write_single_register(self.HEIGHT_ADDRESS, 1050)
 
@@ -74,6 +106,7 @@ class ProcessController:
 
     def height_finish_async(self):
         while True:
+            print("-----------height_finish_async----------")
             done = self.plc.read_coils(self.AUTO_FINISH,1)[0]
             if done:
                 return True
@@ -102,16 +135,77 @@ class ProcessController:
 
         #307
 
+    def run_vacuum(self):
+        heating = None
+        cooling = None
+        vacuum = {"set": 150, "vacuumValveOpen": True, "aerateValveOpen": False}
+        rotation = None
+        lift = {"set": 0}
+        globalStatus = None
 
+        response = self.change_device_parameters(heating=heating, cooling=cooling, vacuum=vacuum,
+                                                                 rotation=rotation,
+                                                                 lift=lift, running=None)
+        print("PUT请求响应：", response)
+
+        time.sleep(10)
+
+        self.stop_vacuum()
+
+    def stop_vacuum(self):
+        heating = None
+        cooling = None
+        vacuum = {"set": 150, "vacuumValveOpen": False, "aerateValveOpen": False}
+        rotation = None
+        lift = {"set": 0}
+        globalStatus = None
+
+        response = self.change_device_parameters(heating=heating, cooling=cooling, vacuum=vacuum,
+                                                                 rotation=rotation,
+                                                                 lift=lift, running=None)
+        print("PUT请求响应：", response)
+
+    def run_evaporation(self):
+        running = True
+        # globalStatus = None
+
+        response = self.change_device_parameters(heating=None, cooling=None, vacuum=None,
+                                                                  rotation=None,
+                                                                 lift=None, running=running)
+        time.sleep(10)
+
+        print("PUT请求响应：", response)
+
+
+    def stop_evaporation(self):
+        running = False
+        # globalStatus = None
+
+        response = self.change_device_parameters(heating=None, cooling=None, vacuum=None,
+                                                                 rotation=None,
+                                                                 lift=None, running=running)
+        print("PUT请求响应：", response)
+
+    def drain_valve_open(self):
+        vacuum = {"set": 150, "vacuumValveOpen": False, "aerateValveOpen": True, "aerateValvePulse": False}
+
+        # globalStatus = None
+
+        response = self.change_device_parameters(heating=None, cooling=None, vacuum=vacuum,
+                                                                 rotation=None,
+                                                                 lift=None, running=None)
+        print("PUT请求响应：", response)
+        time.sleep(5)
 
 # 使用示例
 if __name__ == "__main__":
 
     # 直接初始化 ProcessController，可选择 mock 模式
-    controller = ProcessController(mock=False)  # mock=True 开启模拟模式
+    controller = XuanZHengController(mock=False)  # mock=True 开启模拟模式
+    # controller.xuanzheng_sync()
 
     # 获取信息（模拟模式下不会真正发送请求）
-    print("设备信息：", controller.get_process())
+    # print("设备信息：", controller.get_process())
     # 隔个1分钟get一次
     # controller.set_height(0)
 
@@ -140,4 +234,11 @@ if __name__ == "__main__":
     # print("PUT请求响应：", response)
 
     # controller.close()
-    controller.waste_finish_async()
+    # controller.waste_finish_async()
+    controller.run_evaporation()
+    controller.xuanzheng_sync()
+
+    # controller.set_auto_set_height(True)
+    #
+    # controller.set_height(0)
+    # print("----------------")

@@ -2,6 +2,7 @@ import socket
 import time
 import logging
 from unittest import mock
+import threading
 
 from src.uilt.yaml_control.setup import get_base_url
 from src.uilt.logs_control.setup import com_logger
@@ -18,6 +19,8 @@ class RobotConnection:
         self.mock = mock
         self.server_socket = None
         self.client_address = None
+
+
         if mock is False:
             self._start_server()
         com_logger.info(f"RobotConnection initialized on {self.host}:{self.port}")

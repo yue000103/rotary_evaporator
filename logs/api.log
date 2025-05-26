@@ -16852,3 +16852,999 @@
 2025-03-28 11:46:06,353 matplotlib.font_manager DEBUG: findfont: score(FontEntry(fname='C:\\Windows\\Fonts\\lucon.ttf', name='Lucida Console', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
 2025-03-28 11:46:06,353 matplotlib.font_manager DEBUG: findfont: score(FontEntry(fname='C:\\Windows\\Fonts\\CALIFR.TTF', name='Californian FB', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
 2025-03-28 11:46:06,353 matplotlib.font_manager DEBUG: findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=12.0 to DejaVu Sans ('C:\\Users\\sinaz\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000.
+2025-05-23 15:17:21,317 matplotlib.font_manager DEBUG: Using fontManager instance from C:\Users\sinaz\.matplotlib\fontlist-v390.json
+2025-05-23 15:17:22,743 selenium.webdriver.common.selenium_manager DEBUG: Selenium Manager binary found at: C:\Users\sinaz\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2025-05-23 15:17:22,743 selenium.webdriver.common.selenium_manager DEBUG: Executing process: C:\Users\sinaz\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --language-binding python --output json
+2025-05-23 15:17:24,323 selenium.webdriver.common.selenium_manager DEBUG: Sending stats to Plausible: Props { browser: "chrome", browser_version: "", os: "windows", arch: "amd64", lang: "python", selenium_version: "4.28" }
+2025-05-23 15:17:24,323 selenium.webdriver.common.selenium_manager DEBUG: chromedriver not found in PATH
+2025-05-23 15:17:24,323 selenium.webdriver.common.selenium_manager DEBUG: chrome detected at C:\Users\sinaz\AppData\Local\Google\Chrome\Application\chrome.exe
+2025-05-23 15:17:24,323 selenium.webdriver.common.selenium_manager DEBUG: Running command: wmic datafile where name='C:\\Users\\sinaz\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2025-05-23 15:17:24,324 selenium.webdriver.common.selenium_manager DEBUG: Output: "\r\r\n\r\r\nVersion=131.0.6778.70\r\r\n\r\r\n\r\r\n\r"
+2025-05-23 15:17:24,324 selenium.webdriver.common.selenium_manager DEBUG: Detected browser: chrome 131.0.6778.70
+2025-05-23 15:17:24,324 selenium.webdriver.common.selenium_manager DEBUG: Discovering versions from https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json
+2025-05-23 15:17:24,324 selenium.webdriver.common.selenium_manager DEBUG: Required driver: chromedriver 131.0.6778.264
+2025-05-23 15:17:24,324 selenium.webdriver.common.selenium_manager DEBUG: chromedriver 131.0.6778.264 already in the cache
+2025-05-23 15:17:24,324 selenium.webdriver.common.selenium_manager DEBUG: Driver path: C:\Users\sinaz\.cache\selenium\chromedriver\win64\131.0.6778.264\chromedriver.exe
+2025-05-23 15:17:24,324 selenium.webdriver.common.selenium_manager DEBUG: Browser path: C:\Users\sinaz\AppData\Local\Google\Chrome\Application\chrome.exe
+2025-05-23 15:17:24,351 selenium.webdriver.common.service DEBUG: Started executable: `C:\Users\sinaz\.cache\selenium\chromedriver\win64\131.0.6778.264\chromedriver.exe` in a child process with pid: 41476 using 0 to output -3
+2025-05-23 15:17:24,890 selenium.webdriver.remote.remote_connection DEBUG: POST http://localhost:51372/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'browserVersion': None, 'goog:chromeOptions': {'extensions': [], 'binary': 'C:\\Users\\sinaz\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe', 'args': ['--ignore-certificate-errors']}}}}
+2025-05-23 15:17:24,890 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:51372
+2025-05-23 15:17:25,656 urllib3.connectionpool DEBUG: http://localhost:51372 "POST /session HTTP/1.1" 200 0
+2025-05-23 15:17:25,656 selenium.webdriver.remote.remote_connection DEBUG: Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"131.0.6778.70","chrome":{"chromedriverVersion":"131.0.6778.264 (2d05e31515360f4da764174f7c448b33e36da871-refs/branch-heads/6778@{#4323})","userDataDir":"C:\\Users\\sinaz\\AppData\\Local\\Temp\\scoped_dir41476_423148491"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:51384"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"1990814bd2d99bc6cfaeafb256d3dd94"}} | headers=HTTPHeaderDict({'Content-Length': '882', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-23 15:17:25,656 selenium.webdriver.remote.remote_connection DEBUG: Finished Request
+2025-05-23 15:17:25,657 selenium.webdriver.remote.remote_connection DEBUG: POST http://localhost:51372/session/1990814bd2d99bc6cfaeafb256d3dd94/url {'url': 'https://rw:Sg3v2QtR@192.168.1.20/api/v1/process'}
+2025-05-23 15:17:25,691 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.77.152', 51393)
+2025-05-23 15:17:25,885 PUMP INFO: Mock 模式启用，不连接串口
+2025-05-23 15:17:26,069 urllib3.connectionpool DEBUG: http://localhost:51372 "POST /session/1990814bd2d99bc6cfaeafb256d3dd94/url HTTP/1.1" 200 0
+2025-05-23 15:17:26,069 selenium.webdriver.remote.remote_connection DEBUG: Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-23 15:17:26,069 selenium.webdriver.remote.remote_connection DEBUG: Finished Request
+2025-05-23 15:17:26,069 selenium.webdriver.remote.remote_connection DEBUG: POST http://localhost:51372/session/1990814bd2d99bc6cfaeafb256d3dd94/element {'using': 'tag name', 'value': 'body'}
+2025-05-23 15:17:26,095 urllib3.connectionpool DEBUG: http://localhost:51372 "POST /session/1990814bd2d99bc6cfaeafb256d3dd94/element HTTP/1.1" 200 0
+2025-05-23 15:17:26,095 selenium.webdriver.remote.remote_connection DEBUG: Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.EBADF16F0DCA9EA03BBAF5DBFA7C522A.d.9BB0D6ABB46FDB877199E7C463E1DAA0.e.4"}} | headers=HTTPHeaderDict({'Content-Length': '125', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-23 15:17:26,095 selenium.webdriver.remote.remote_connection DEBUG: Finished Request
+2025-05-23 15:17:26,095 selenium.webdriver.remote.remote_connection DEBUG: GET http://localhost:51372/session/1990814bd2d99bc6cfaeafb256d3dd94/element/f.EBADF16F0DCA9EA03BBAF5DBFA7C522A.d.9BB0D6ABB46FDB877199E7C463E1DAA0.e.4/text {}
+2025-05-23 15:17:26,104 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.77.152', 51399)
+2025-05-23 15:17:26,110 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.77.152', 51400)
+2025-05-23 15:17:26,117 urllib3.connectionpool DEBUG: http://localhost:51372 "GET /session/1990814bd2d99bc6cfaeafb256d3dd94/element/f.EBADF16F0DCA9EA03BBAF5DBFA7C522A.d.9BB0D6ABB46FDB877199E7C463E1DAA0.e.4/text HTTP/1.1" 200 0
+2025-05-23 15:17:26,117 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.77.152', 51401)
+2025-05-23 15:17:26,117 selenium.webdriver.remote.remote_connection DEBUG: Remote response: status=200 | data={"value":"{\"cooling\":{\"act\":24.390000,\"set\":-5,\"running\":false},\"vacuum\":{\"act\":1000.400000,\"set\":1000.400000,\"aerateValveOpen\":true,\"aerateValvePulse\":false,\"vacuumValveOpen\":false,\"vaporTemp\":24.060000,\"autoDestIn\":24.040001,\"autoDestOut\":23.879999,\"powerPercentAct\":0,\"autoDryValve\":false,\"running\":false},\"rotation\":{\"act\":0,\"set\":140,\"running\":false},\"lift\":{\"act\":0,\"set\":181,\"limit\":181},\"program\":{\"type\":\"AutoDest\",\"endVacuum\":100,\"flaskSize\":2},\"globalStatus\":{\"timeStamp\":\"2025-05-23T08:35:21Z\",\"runId\":146,\"onHold\":false,\"foamActive\":false,\"currentError\":0,\"running\":false}}"} | headers=HTTPHeaderDict({'Content-Length': '662', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-23 15:17:26,117 selenium.webdriver.remote.remote_connection DEBUG: Finished Request
+2025-05-23 15:17:26,138 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:17:28,172 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /tubes/get_tube HTTP/1.1" 200 25
+2025-05-23 15:17:31,136 selenium.webdriver.remote.remote_connection DEBUG: POST http://localhost:51372/session/1990814bd2d99bc6cfaeafb256d3dd94/url {'url': 'https://rw:Sg3v2QtR@192.168.1.20/api/v1/process'}
+2025-05-23 15:17:31,176 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:17:31,253 urllib3.connectionpool DEBUG: http://localhost:51372 "POST /session/1990814bd2d99bc6cfaeafb256d3dd94/url HTTP/1.1" 200 0
+2025-05-23 15:17:31,253 selenium.webdriver.remote.remote_connection DEBUG: Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-23 15:17:31,253 selenium.webdriver.remote.remote_connection DEBUG: Finished Request
+2025-05-23 15:17:31,253 selenium.webdriver.remote.remote_connection DEBUG: POST http://localhost:51372/session/1990814bd2d99bc6cfaeafb256d3dd94/element {'using': 'tag name', 'value': 'body'}
+2025-05-23 15:17:31,278 urllib3.connectionpool DEBUG: http://localhost:51372 "POST /session/1990814bd2d99bc6cfaeafb256d3dd94/element HTTP/1.1" 200 0
+2025-05-23 15:17:31,278 selenium.webdriver.remote.remote_connection DEBUG: Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.EBADF16F0DCA9EA03BBAF5DBFA7C522A.d.4D554A4A6BFC2B595BE36A25739C303F.e.8"}} | headers=HTTPHeaderDict({'Content-Length': '125', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-23 15:17:31,278 selenium.webdriver.remote.remote_connection DEBUG: Finished Request
+2025-05-23 15:17:31,278 selenium.webdriver.remote.remote_connection DEBUG: GET http://localhost:51372/session/1990814bd2d99bc6cfaeafb256d3dd94/element/f.EBADF16F0DCA9EA03BBAF5DBFA7C522A.d.4D554A4A6BFC2B595BE36A25739C303F.e.8/text {}
+2025-05-23 15:17:31,293 urllib3.connectionpool DEBUG: http://localhost:51372 "GET /session/1990814bd2d99bc6cfaeafb256d3dd94/element/f.EBADF16F0DCA9EA03BBAF5DBFA7C522A.d.4D554A4A6BFC2B595BE36A25739C303F.e.8/text HTTP/1.1" 200 0
+2025-05-23 15:17:31,293 selenium.webdriver.remote.remote_connection DEBUG: Remote response: status=200 | data={"value":"{\"cooling\":{\"act\":24.390000,\"set\":-5,\"running\":false},\"vacuum\":{\"act\":1000.400000,\"set\":1000.400000,\"aerateValveOpen\":true,\"aerateValvePulse\":false,\"vacuumValveOpen\":false,\"vaporTemp\":24.060000,\"autoDestIn\":24.040001,\"autoDestOut\":23.879999,\"powerPercentAct\":0,\"autoDryValve\":false,\"running\":false},\"rotation\":{\"act\":0,\"set\":140,\"running\":false},\"lift\":{\"act\":0,\"set\":181,\"limit\":181},\"program\":{\"type\":\"AutoDest\",\"endVacuum\":100,\"flaskSize\":2},\"globalStatus\":{\"timeStamp\":\"2025-05-23T08:35:26Z\",\"runId\":146,\"onHold\":false,\"foamActive\":false,\"currentError\":0,\"running\":false}}"} | headers=HTTPHeaderDict({'Content-Length': '662', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-23 15:17:31,293 selenium.webdriver.remote.remote_connection DEBUG: Finished Request
+2025-05-23 15:17:33,223 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:20:24,772 matplotlib.font_manager DEBUG: Using fontManager instance from C:\Users\sinaz\.matplotlib\fontlist-v390.json
+2025-05-23 15:20:25,439 selenium.webdriver.common.selenium_manager DEBUG: Selenium Manager binary found at: C:\Users\sinaz\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2025-05-23 15:20:25,439 selenium.webdriver.common.selenium_manager DEBUG: Executing process: C:\Users\sinaz\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --language-binding python --output json
+2025-05-23 15:20:26,063 selenium.webdriver.common.selenium_manager DEBUG: chromedriver not found in PATH
+2025-05-23 15:20:26,063 selenium.webdriver.common.selenium_manager DEBUG: chrome detected at C:\Users\sinaz\AppData\Local\Google\Chrome\Application\chrome.exe
+2025-05-23 15:20:26,063 selenium.webdriver.common.selenium_manager DEBUG: Running command: wmic datafile where name='C:\\Users\\sinaz\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2025-05-23 15:20:26,063 selenium.webdriver.common.selenium_manager DEBUG: Output: "\r\r\n\r\r\nVersion=131.0.6778.70\r\r\n\r\r\n\r\r\n\r"
+2025-05-23 15:20:26,063 selenium.webdriver.common.selenium_manager DEBUG: Detected browser: chrome 131.0.6778.70
+2025-05-23 15:20:26,063 selenium.webdriver.common.selenium_manager DEBUG: Required driver: chromedriver 131.0.6778.264
+2025-05-23 15:20:26,063 selenium.webdriver.common.selenium_manager DEBUG: chromedriver 131.0.6778.264 already in the cache
+2025-05-23 15:20:26,063 selenium.webdriver.common.selenium_manager DEBUG: Driver path: C:\Users\sinaz\.cache\selenium\chromedriver\win64\131.0.6778.264\chromedriver.exe
+2025-05-23 15:20:26,063 selenium.webdriver.common.selenium_manager DEBUG: Browser path: C:\Users\sinaz\AppData\Local\Google\Chrome\Application\chrome.exe
+2025-05-23 15:20:26,074 selenium.webdriver.common.service DEBUG: Started executable: `C:\Users\sinaz\.cache\selenium\chromedriver\win64\131.0.6778.264\chromedriver.exe` in a child process with pid: 44748 using 0 to output -3
+2025-05-23 15:20:26,593 selenium.webdriver.remote.remote_connection DEBUG: POST http://localhost:57465/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'browserVersion': None, 'goog:chromeOptions': {'extensions': [], 'binary': 'C:\\Users\\sinaz\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe', 'args': ['--ignore-certificate-errors']}}}}
+2025-05-23 15:20:26,594 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:57465
+2025-05-23 15:20:27,359 urllib3.connectionpool DEBUG: http://localhost:57465 "POST /session HTTP/1.1" 200 0
+2025-05-23 15:20:27,359 selenium.webdriver.remote.remote_connection DEBUG: Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"131.0.6778.70","chrome":{"chromedriverVersion":"131.0.6778.264 (2d05e31515360f4da764174f7c448b33e36da871-refs/branch-heads/6778@{#4323})","userDataDir":"C:\\Users\\sinaz\\AppData\\Local\\Temp\\scoped_dir44748_396334583"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:57470"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"211ad70d8c6e9fca5410f510931ee9df"}} | headers=HTTPHeaderDict({'Content-Length': '882', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-23 15:20:27,359 selenium.webdriver.remote.remote_connection DEBUG: Finished Request
+2025-05-23 15:20:27,360 selenium.webdriver.remote.remote_connection DEBUG: POST http://localhost:57465/session/211ad70d8c6e9fca5410f510931ee9df/url {'url': 'https://rw:Sg3v2QtR@192.168.1.20/api/v1/process'}
+2025-05-23 15:20:27,365 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.77.152', 57475)
+2025-05-23 15:20:27,557 PUMP INFO: Mock 模式启用，不连接串口
+2025-05-23 15:20:27,571 urllib3.connectionpool DEBUG: http://localhost:57465 "POST /session/211ad70d8c6e9fca5410f510931ee9df/url HTTP/1.1" 200 0
+2025-05-23 15:20:27,571 selenium.webdriver.remote.remote_connection DEBUG: Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-23 15:20:27,572 selenium.webdriver.remote.remote_connection DEBUG: Finished Request
+2025-05-23 15:20:27,572 selenium.webdriver.remote.remote_connection DEBUG: POST http://localhost:57465/session/211ad70d8c6e9fca5410f510931ee9df/element {'using': 'tag name', 'value': 'body'}
+2025-05-23 15:20:27,672 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.77.152', 57483)
+2025-05-23 15:20:27,683 urllib3.connectionpool DEBUG: http://localhost:57465 "POST /session/211ad70d8c6e9fca5410f510931ee9df/element HTTP/1.1" 200 0
+2025-05-23 15:20:27,683 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.77.152', 57484)
+2025-05-23 15:20:27,683 selenium.webdriver.remote.remote_connection DEBUG: Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.0AC9BBD59015DF1FB5E198DD006B0481.d.E5DB84F28B243E8561C7682E66779DC7.e.4"}} | headers=HTTPHeaderDict({'Content-Length': '125', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-23 15:20:27,683 selenium.webdriver.remote.remote_connection DEBUG: Finished Request
+2025-05-23 15:20:27,684 selenium.webdriver.remote.remote_connection DEBUG: GET http://localhost:57465/session/211ad70d8c6e9fca5410f510931ee9df/element/f.0AC9BBD59015DF1FB5E198DD006B0481.d.E5DB84F28B243E8561C7682E66779DC7.e.4/text {}
+2025-05-23 15:20:27,694 pymodbus.logging DEBUG: Connection to Modbus server established. Socket ('192.168.77.152', 57485)
+2025-05-23 15:20:27,699 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:20:27,706 urllib3.connectionpool DEBUG: http://localhost:57465 "GET /session/211ad70d8c6e9fca5410f510931ee9df/element/f.0AC9BBD59015DF1FB5E198DD006B0481.d.E5DB84F28B243E8561C7682E66779DC7.e.4/text HTTP/1.1" 200 0
+2025-05-23 15:20:27,706 selenium.webdriver.remote.remote_connection DEBUG: Remote response: status=200 | data={"value":"{\"cooling\":{\"act\":24.390000,\"set\":-5,\"running\":false},\"vacuum\":{\"act\":1000.400000,\"set\":1000.400000,\"aerateValveOpen\":true,\"aerateValvePulse\":false,\"vacuumValveOpen\":false,\"vaporTemp\":24.090000,\"autoDestIn\":24.070000,\"autoDestOut\":23.879999,\"powerPercentAct\":0,\"autoDryValve\":false,\"running\":false},\"rotation\":{\"act\":0,\"set\":140,\"running\":false},\"lift\":{\"act\":0,\"set\":181,\"limit\":181},\"program\":{\"type\":\"AutoDest\",\"endVacuum\":100,\"flaskSize\":2},\"globalStatus\":{\"timeStamp\":\"2025-05-23T08:38:23Z\",\"runId\":146,\"onHold\":false,\"foamActive\":false,\"currentError\":0,\"running\":false}}"} | headers=HTTPHeaderDict({'Content-Length': '662', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-05-23 15:20:27,706 selenium.webdriver.remote.remote_connection DEBUG: Finished Request
+2025-05-23 15:20:29,744 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:22:16,210 matplotlib.font_manager DEBUG: Using fontManager instance from C:\Users\sinaz\.matplotlib\fontlist-v390.json
+2025-05-23 15:22:17,036 PUMP INFO: Mock 模式启用，不连接串口
+2025-05-23 15:22:17,106 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:22:19,152 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:23:11,024 matplotlib.font_manager DEBUG: Using fontManager instance from C:\Users\sinaz\.matplotlib\fontlist-v390.json
+2025-05-23 15:23:11,948 PUMP INFO: Mock 模式启用，不连接串口
+2025-05-23 15:23:12,030 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:23:14,088 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:32:02,466 matplotlib.font_manager DEBUG: Using fontManager instance from C:\Users\sinaz\.matplotlib\fontlist-v390.json
+2025-05-23 15:32:03,399 PUMP INFO: Mock 模式启用，不连接串口
+2025-05-23 15:32:03,480 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:32:05,534 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:33:41,456 matplotlib.font_manager DEBUG: Using fontManager instance from C:\Users\sinaz\.matplotlib\fontlist-v390.json
+2025-05-23 15:33:42,180 PUMP INFO: Mock 模式启用，不连接串口
+2025-05-23 15:33:42,246 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:33:44,290 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:33:46,292 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:33:48,326 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:33:50,329 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:33:52,372 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:33:54,375 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:33:56,410 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:33:58,413 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:34:00,459 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:34:02,462 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:34:04,504 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:34:06,507 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:34:08,559 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:34:10,562 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:34:12,602 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:34:14,606 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:34:16,648 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:34:18,652 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:34:20,696 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:34:22,701 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:34:24,738 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:34:26,741 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:34:28,798 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:34:30,803 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:34:32,841 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:34:34,844 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:34:36,899 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:34:38,902 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:34:40,943 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:34:42,946 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:34:44,988 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:34:46,993 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:34:49,038 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:34:51,042 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:34:53,081 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:34:55,085 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:34:57,135 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:34:59,137 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:35:01,188 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:35:03,191 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:35:05,235 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:35:07,238 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:35:09,273 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:35:11,275 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:35:13,322 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:35:15,324 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:35:17,366 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:35:19,369 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:35:21,402 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:35:23,405 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:35:25,450 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:35:27,453 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:35:29,499 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:35:31,501 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:35:33,545 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:35:35,548 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:35:37,595 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:35:39,598 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:35:41,644 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:35:43,648 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:35:45,687 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:35:47,690 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:35:49,721 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:35:51,724 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:35:53,766 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:35:55,769 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:35:57,810 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:35:59,813 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:36:01,864 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:36:03,868 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:36:05,920 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:36:07,923 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:36:09,975 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:36:11,980 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:36:14,008 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:36:16,010 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:36:18,062 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:36:20,066 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:36:22,107 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:36:24,110 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:36:26,160 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:36:28,164 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:36:30,215 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:36:32,218 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:36:34,262 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:36:36,265 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:36:38,296 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:36:40,299 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:36:42,349 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:36:44,351 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:36:46,397 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:36:48,400 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:36:50,442 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:36:52,445 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:36:54,494 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:36:56,496 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:36:58,541 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:37:00,543 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:37:02,591 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:37:04,594 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:37:06,634 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:37:08,637 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:37:10,678 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:37:12,681 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:37:14,724 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:37:16,729 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:37:18,766 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:37:20,769 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:37:22,811 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:37:24,814 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:37:26,860 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:37:28,862 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:37:30,912 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:37:32,914 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:37:34,957 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:37:36,961 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:37:38,994 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:37:40,997 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:37:43,038 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:37:45,043 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:37:47,080 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:37:49,083 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:37:51,128 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:37:53,131 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:37:55,170 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:37:57,172 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:37:59,211 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:38:01,214 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:38:03,264 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:38:05,267 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:38:07,315 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:38:09,318 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:38:11,366 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:38:13,369 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:38:15,411 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:38:17,414 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:38:19,460 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:38:21,464 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:38:23,503 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:38:25,505 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:38:27,534 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:38:29,536 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:38:31,576 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:38:33,580 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:38:35,626 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:38:37,629 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:38:39,677 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:38:41,680 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:38:43,719 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:38:45,722 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:38:47,764 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:38:49,767 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:38:51,818 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:38:53,820 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:38:55,855 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:38:57,859 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:38:59,898 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:39:01,902 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:39:03,941 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:39:05,944 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:39:07,982 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:39:09,985 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:39:12,029 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:39:14,031 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:39:16,082 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:39:18,085 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:39:20,120 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:39:22,124 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:39:24,152 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:39:26,154 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:39:28,194 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:39:30,198 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:39:32,239 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:39:34,242 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:39:36,288 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:39:38,291 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:39:40,339 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:39:42,341 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:39:44,379 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:39:46,382 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:39:48,418 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:39:50,420 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:39:52,462 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:39:54,464 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:39:56,512 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:39:58,513 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:40:00,551 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:40:02,555 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:40:04,596 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:40:06,598 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:40:08,633 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:40:10,636 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:40:12,685 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:40:14,688 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:40:16,742 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:40:18,745 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:40:20,790 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:40:22,793 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:40:24,830 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:40:26,845 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:40:28,873 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:40:30,875 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:40:32,915 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:40:34,917 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:40:36,957 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:40:38,960 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:40:40,997 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:40:43,001 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:40:45,038 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:40:47,040 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:40:49,089 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:40:51,091 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:40:53,138 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:40:55,140 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:40:57,185 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:40:59,188 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:41:01,228 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:41:03,230 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:41:05,277 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:41:07,280 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:41:09,318 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:41:11,343 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:41:13,372 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:41:15,374 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:41:35,497 matplotlib.font_manager DEBUG: Using fontManager instance from C:\Users\sinaz\.matplotlib\fontlist-v390.json
+2025-05-23 15:41:36,340 PUMP INFO: Mock 模式启用，不连接串口
+2025-05-23 15:41:36,439 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:41:38,490 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:41:40,494 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:41:42,545 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:41:44,548 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:41:46,603 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:41:48,606 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:41:50,651 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:41:52,653 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:41:54,692 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:41:56,695 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:41:58,738 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:42:00,742 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:42:02,785 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:42:04,787 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:42:06,842 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:42:08,844 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:42:10,876 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:42:12,879 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:42:14,920 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:42:16,922 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:42:18,966 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:42:20,970 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:42:23,019 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:42:25,023 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:42:27,055 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:42:29,059 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:42:31,112 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:42:33,117 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:42:35,165 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:42:37,169 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:42:39,212 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:42:41,218 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:42:43,264 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:42:45,272 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:42:47,314 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:42:49,319 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:42:51,359 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:42:53,364 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:42:55,407 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:42:57,410 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:42:59,449 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:43:01,454 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:43:03,492 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:43:05,495 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:43:07,540 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:43:09,542 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:43:11,577 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:43:13,580 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:43:15,634 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:43:17,636 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:43:19,681 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:43:21,685 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:43:23,740 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:43:25,743 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:43:27,792 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:43:29,795 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:43:31,841 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:43:33,843 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:43:35,896 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:43:37,900 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:43:39,943 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:43:41,946 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:43:44,000 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:43:46,003 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:43:48,056 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:43:50,060 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:43:52,114 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:43:54,118 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:43:56,160 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:43:58,162 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:44:00,200 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:44:02,203 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:44:04,248 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:44:06,250 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:44:08,339 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:44:10,342 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:44:12,374 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:44:14,378 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:44:16,431 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:44:18,434 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:44:20,486 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:44:22,489 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:44:24,533 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:44:26,536 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:44:28,578 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:44:30,582 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:44:32,621 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:44:34,623 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:44:36,672 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:44:38,677 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:44:40,731 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:44:42,733 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:44:44,780 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:44:46,784 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:44:48,831 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:44:50,833 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:44:52,869 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:44:54,872 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:44:56,920 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:44:58,923 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:45:00,959 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:45:02,964 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:45:05,013 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:45:07,016 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:45:09,051 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:45:11,054 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:45:13,105 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:45:15,107 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:45:17,146 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:45:19,149 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:45:21,197 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:45:23,200 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:45:25,247 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:45:27,249 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:45:29,302 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:45:31,306 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:45:33,352 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:45:35,355 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:45:37,395 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:45:39,398 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:45:41,439 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:45:43,442 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:45:45,499 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 15:45:47,502 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:45:49,548 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:45:50,133 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:45:52,181 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:45:54,183 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:45:56,236 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:45:58,239 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:46:00,281 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:46:02,284 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:46:04,328 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:46:06,331 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:46:08,366 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:46:10,368 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:46:12,409 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:46:14,412 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:46:16,470 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:46:18,472 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:46:20,529 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:46:22,532 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:46:24,587 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:46:26,590 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:46:28,645 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:46:30,648 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:46:32,704 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:46:34,707 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:46:36,744 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:46:38,747 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:46:40,795 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:46:42,797 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:46:44,847 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:46:46,850 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:46:48,904 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:46:50,907 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:46:52,953 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:46:54,956 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:46:57,012 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:46:59,015 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:47:01,074 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:47:03,077 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:47:05,134 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:47:07,138 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:47:09,174 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:47:11,178 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:47:13,218 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:47:15,221 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:47:17,273 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:47:19,276 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:47:21,332 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:47:23,334 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:47:25,387 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:47:27,390 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:47:29,448 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:47:31,451 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:47:33,508 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:47:35,513 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:47:37,567 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:47:39,570 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:47:41,604 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:47:43,608 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:47:45,652 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:47:47,654 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:47:49,712 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 15:47:51,715 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:53:06,895 matplotlib.font_manager DEBUG: Using fontManager instance from C:\Users\sinaz\.matplotlib\fontlist-v390.json
+2025-05-23 15:53:07,717 PUMP INFO: Mock 模式启用，不连接串口
+2025-05-23 15:55:04,793 matplotlib.font_manager DEBUG: Using fontManager instance from C:\Users\sinaz\.matplotlib\fontlist-v390.json
+2025-05-23 15:55:05,572 PUMP INFO: Mock 模式启用，不连接串口
+2025-05-23 15:57:16,906 matplotlib.font_manager DEBUG: Using fontManager instance from C:\Users\sinaz\.matplotlib\fontlist-v390.json
+2025-05-23 15:57:17,737 PUMP INFO: Mock 模式启用，不连接串口
+2025-05-23 15:57:17,809 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:57:19,879 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /method/update/operate HTTP/1.1" 200 3
+2025-05-23 15:57:19,882 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:57:25,001 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /method/only/operate HTTP/1.1" 200 26
+2025-05-23 15:57:25,004 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:57:27,056 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/get_line HTTP/1.1" 200 264
+2025-05-23 15:57:27,059 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:57:29,115 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /eluent_curve/get_curve HTTP/1.1" 200 61
+2025-05-23 15:59:29,119 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:59:31,199 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/update_line_pause HTTP/1.1" 200 37
+2025-05-23 15:59:41,203 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:59:43,332 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/update_line_start HTTP/1.1" 200 37
+2025-05-23 15:59:53,335 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:59:55,390 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /eluent_curve/set_sample_valve HTTP/1.1" 200 49
+2025-05-23 15:59:55,392 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 15:59:57,437 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/update_line_start HTTP/1.1" 200 37
+2025-05-23 16:02:09,025 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:02:11,072 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /tubes/get_tube HTTP/1.1" 200 25
+2025-05-23 16:02:14,080 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:02:16,116 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:02:18,119 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:02:20,182 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:02:22,184 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:02:24,241 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:02:26,244 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:02:28,284 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:02:30,286 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:02:32,344 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:02:34,346 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:02:36,392 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:02:38,396 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:02:40,444 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:02:42,447 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:02:44,492 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:02:46,494 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:02:48,542 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:02:50,545 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:02:52,576 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:02:54,580 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:02:56,629 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:02:58,633 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:03:00,682 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:03:02,684 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:03:04,712 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:03:06,715 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:03:08,768 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:03:10,771 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:03:12,814 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:03:14,816 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:03:16,863 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:03:18,866 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:03:20,899 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:03:22,903 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:03:24,947 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:03:26,950 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:03:29,002 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:03:31,006 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:03:33,052 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:03:35,055 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:03:37,109 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:03:39,112 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:03:41,164 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:03:43,166 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:03:45,212 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:03:47,216 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:03:49,263 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:03:51,267 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:03:53,311 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:03:55,316 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:03:57,367 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:03:59,371 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:04:01,426 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:04:03,433 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:04:05,471 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:04:07,476 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:04:09,520 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:04:11,523 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:04:13,583 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:04:15,585 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:04:17,636 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:04:19,638 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:04:21,691 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:04:23,695 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:04:25,721 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:04:27,724 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:04:29,765 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:04:31,768 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:04:33,826 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:04:35,829 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:04:37,885 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:04:39,889 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:04:41,951 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:04:43,954 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:04:46,000 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:04:48,003 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:04:50,052 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:04:52,055 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:04:54,100 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:04:56,103 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:04:58,160 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:05:00,164 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:05:02,202 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:05:04,206 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:05:06,262 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:05:08,266 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:05:10,315 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:05:12,318 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:05:14,368 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:05:16,373 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:05:18,424 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:05:20,429 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:05:22,487 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:05:24,490 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:05:26,522 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:05:28,528 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:05:30,581 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:05:32,586 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:05:34,628 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:05:36,633 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:05:38,668 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:05:40,672 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:05:42,709 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:05:44,712 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:05:46,759 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:05:48,763 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:05:50,814 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:05:52,818 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:05:54,855 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:05:56,860 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:05:58,909 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:06:00,914 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:06:02,966 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:06:04,970 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:06:07,030 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:06:09,034 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:06:11,087 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:06:13,092 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:06:15,129 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:06:17,132 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:06:19,179 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:06:21,182 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:06:23,224 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:06:25,228 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:06:27,274 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:06:29,277 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:06:31,315 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:06:33,318 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:06:35,370 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:06:37,373 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:06:39,421 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:06:41,425 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:06:43,478 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:06:45,481 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:06:47,518 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:06:49,521 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:06:51,562 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:14:31,011 matplotlib.font_manager DEBUG: Using fontManager instance from C:\Users\sinaz\.matplotlib\fontlist-v390.json
+2025-05-23 16:14:31,520 PUMP INFO: Mock 模式启用，不连接串口
+2025-05-23 16:14:31,563 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:14:33,621 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /method/update/operate HTTP/1.1" 200 3
+2025-05-23 16:14:33,622 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:14:35,673 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /method/only/operate HTTP/1.1" 200 26
+2025-05-23 16:14:35,675 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:14:37,717 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/get_line HTTP/1.1" 200 264
+2025-05-23 16:14:37,718 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:14:39,747 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /eluent_curve/get_curve HTTP/1.1" 200 61
+2025-05-23 16:16:39,749 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:16:41,808 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/update_line_pause HTTP/1.1" 200 37
+2025-05-23 16:16:51,811 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:16:53,846 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/update_line_start HTTP/1.1" 200 37
+2025-05-23 16:17:03,849 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:17:05,900 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /eluent_curve/set_sample_valve HTTP/1.1" 200 49
+2025-05-23 16:17:05,901 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:17:07,933 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/update_line_start HTTP/1.1" 200 37
+2025-05-23 16:18:38,330 matplotlib.font_manager DEBUG: Using fontManager instance from C:\Users\sinaz\.matplotlib\fontlist-v390.json
+2025-05-23 16:18:38,894 PUMP INFO: Mock 模式启用，不连接串口
+2025-05-23 16:18:38,942 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:18:40,994 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /method/update/operate HTTP/1.1" 200 3
+2025-05-23 16:18:40,995 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:18:43,060 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /method/only/operate HTTP/1.1" 200 26
+2025-05-23 16:18:43,062 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:18:45,091 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/get_line HTTP/1.1" 200 264
+2025-05-23 16:18:45,094 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:18:47,130 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /eluent_curve/get_curve HTTP/1.1" 200 61
+2025-05-23 16:20:47,133 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:20:49,212 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/update_line_pause HTTP/1.1" 200 37
+2025-05-23 16:20:59,214 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:21:01,263 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/update_line_start HTTP/1.1" 200 37
+2025-05-23 16:21:11,266 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:21:13,307 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /eluent_curve/set_sample_valve HTTP/1.1" 200 49
+2025-05-23 16:21:13,309 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:21:15,338 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/update_line_start HTTP/1.1" 200 37
+2025-05-23 16:27:32,779 matplotlib.font_manager DEBUG: Using fontManager instance from C:\Users\sinaz\.matplotlib\fontlist-v390.json
+2025-05-23 16:27:33,302 PUMP INFO: Mock 模式启用，不连接串口
+2025-05-23 16:27:33,367 PUMP INFO: 注射泵串口连接成功
+2025-05-23 16:27:33,370 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:27:35,406 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /method/update/operate HTTP/1.1" 200 3
+2025-05-23 16:27:35,407 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:27:37,491 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /method/only/operate HTTP/1.1" 200 26
+2025-05-23 16:27:37,492 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:27:39,528 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/get_line HTTP/1.1" 200 264
+2025-05-23 16:27:39,529 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:27:41,569 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /eluent_curve/get_curve HTTP/1.1" 200 61
+2025-05-23 16:27:51,570 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:27:53,759 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/update_line_pause HTTP/1.1" 200 37
+2025-05-23 16:28:03,761 PUMP INFO: 发送命令: /1IV1000A10001M5000OV1000A0M5000IR
+2025-05-23 16:28:03,826 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:03,855 PUMP INFO: 发送命令: /1ZR
+2025-05-23 16:28:03,889 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:04,419 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:04,945 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:05,501 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:06,029 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:06,564 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:07,091 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:07,619 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:08,147 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:08,680 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:09,213 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:09,742 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:10,269 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:10,795 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:11,330 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:11,883 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:12,411 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:12,937 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:13,465 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:13,995 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:14,527 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:15,054 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:28:15,085 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:28:17,134 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/update_line_start HTTP/1.1" 200 37
+2025-05-23 16:28:27,136 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:28:29,180 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /eluent_curve/set_sample_valve HTTP/1.1" 200 49
+2025-05-23 16:28:29,182 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:28:31,217 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/update_line_start HTTP/1.1" 200 37
+2025-05-23 16:35:19,851 matplotlib.font_manager DEBUG: Using fontManager instance from C:\Users\sinaz\.matplotlib\fontlist-v390.json
+2025-05-23 16:35:20,355 PUMP INFO: Mock 模式启用，不连接串口
+2025-05-23 16:35:20,424 PUMP INFO: 注射泵串口连接成功
+2025-05-23 16:35:20,428 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:35:22,463 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /method/update/operate HTTP/1.1" 200 3
+2025-05-23 16:35:22,465 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:35:24,529 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /method/only/operate HTTP/1.1" 200 26
+2025-05-23 16:35:24,530 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:35:26,574 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/get_line HTTP/1.1" 200 264
+2025-05-23 16:35:26,576 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:35:28,617 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /eluent_curve/get_curve HTTP/1.1" 200 61
+2025-05-23 16:35:38,619 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:35:40,685 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/update_line_pause HTTP/1.1" 200 37
+2025-05-23 16:35:50,687 PUMP INFO: 发送命令: /1IV1000A10001M5000OV1000A0M5000IR
+2025-05-23 16:35:50,744 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:35:51,272 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:35:51,801 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:35:52,330 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:35:52,858 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:35:53,391 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:35:53,918 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:35:54,446 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:35:54,987 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:35:55,516 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:35:56,044 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:35:56,574 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:35:57,102 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:35:57,629 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:35:58,158 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:35:58,687 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:35:59,232 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:35:59,758 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:00,286 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:00,816 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:01,344 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:01,873 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:02,400 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:02,933 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:03,460 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:03,988 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:04,517 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:05,047 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:05,576 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:06,111 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:06,637 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:07,164 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:07,694 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:08,223 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:08,752 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:09,279 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:09,808 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:10,333 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:10,860 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:11,388 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:11,917 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:12,450 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:12,977 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:13,503 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:14,031 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:14,563 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:15,090 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:15,617 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:16,143 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:16,673 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:17,200 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:17,727 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:18,254 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:18,792 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:19,322 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:19,852 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:20,379 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:20,906 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:21,441 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:21,971 PUMP INFO: 发送命令: /1QR
+2025-05-23 16:36:21,999 PUMP INFO: 发送命令: /1IR
+2025-05-23 16:36:23,027 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:36:25,069 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/update_line_start HTTP/1.1" 200 37
+2025-05-23 16:36:35,073 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:36:37,107 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /eluent_curve/set_sample_valve HTTP/1.1" 200 49
+2025-05-23 16:36:37,109 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:36:39,138 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/update_line_start HTTP/1.1" 200 37
+2025-05-23 16:38:44,142 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:38:46,182 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /eluent_curve/update_line_terminate HTTP/1.1" 200 37
+2025-05-23 16:38:51,185 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:38:53,227 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /tubes/get_tube HTTP/1.1" 200 25
+2025-05-23 16:38:56,230 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:38:58,267 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:39:00,269 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:39:02,305 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:39:04,307 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:39:06,344 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:39:08,347 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:39:10,381 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:39:12,383 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:39:14,419 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:39:16,421 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:39:18,461 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:39:20,463 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:39:22,501 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:39:24,503 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:39:26,541 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:39:28,542 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:39:30,579 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:39:32,581 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:39:34,631 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:39:36,633 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:39:38,667 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:39:40,670 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:39:42,718 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:39:44,719 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:39:46,773 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:39:48,776 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:39:50,807 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:39:52,810 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:39:54,848 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:39:56,849 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:39:58,895 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:40:00,896 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:40:02,946 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:40:04,947 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:40:06,990 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:40:08,992 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:40:11,036 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:40:13,038 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:40:15,081 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:40:17,083 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:40:19,126 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:40:21,127 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:40:23,167 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:40:25,169 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:40:27,225 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:40:29,226 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:40:31,253 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:40:33,256 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:40:35,306 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:40:37,308 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:40:39,346 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:40:41,349 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:40:43,407 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:40:45,408 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:40:47,463 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:40:49,465 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:40:51,512 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:40:53,513 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:40:55,559 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:40:57,561 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:40:59,615 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:41:01,616 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:41:03,668 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:41:05,670 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:41:07,709 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:41:09,711 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:41:11,747 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:41:13,750 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:41:15,799 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:41:17,801 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:41:19,847 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:41:21,849 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:41:23,899 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:41:25,901 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:41:27,934 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:41:29,936 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:41:31,972 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:41:33,974 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:41:36,018 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:41:38,019 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:41:40,066 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:41:42,069 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:41:44,110 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:41:46,112 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:41:48,154 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:41:50,156 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:41:52,192 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:41:54,193 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:41:56,248 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:41:58,250 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:42:00,294 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:42:02,296 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:42:04,330 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:42:06,332 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:42:08,370 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:42:10,371 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:42:12,414 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:42:14,416 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:42:16,453 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:42:18,456 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:42:20,494 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:42:22,496 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:42:24,545 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:42:26,547 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:42:28,589 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:42:30,590 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:42:32,637 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:42:34,639 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:42:36,677 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:42:38,680 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:42:40,719 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:42:42,719 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:42:44,750 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:42:46,752 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:42:48,799 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:42:50,803 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:42:52,838 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:42:54,840 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:42:56,881 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:42:58,884 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:43:00,920 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:43:02,921 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:43:04,971 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:43:06,973 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:43:09,012 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:43:11,013 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:43:13,056 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:43:15,058 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:43:17,099 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:43:19,101 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:43:21,158 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:43:23,162 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:43:25,210 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:43:27,211 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:43:29,255 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:43:31,258 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:43:33,302 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:43:35,303 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:43:37,338 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:43:39,340 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:43:41,374 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 17
+2025-05-23 16:43:43,376 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:43:45,419 urllib3.connectionpool DEBUG: http://localhost:5000 "GET /tubes/get_tube_status HTTP/1.1" 200 16
+2025-05-23 16:45:58,368 matplotlib.font_manager DEBUG: Using fontManager instance from C:\Users\sinaz\.matplotlib\fontlist-v390.json
+2025-05-23 16:45:58,891 PUMP INFO: Mock 模式启用，不连接串口
+2025-05-23 16:45:58,942 PUMP INFO: 注射泵串口连接成功
+2025-05-23 16:45:58,945 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:46:00,987 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /experiment/save/experiment_data HTTP/1.1" 422 190
+2025-05-23 16:46:00,989 urllib3.connectionpool DEBUG: Starting new HTTP connection (1): localhost:5000
+2025-05-23 16:46:03,023 urllib3.connectionpool DEBUG: http://localhost:5000 "POST /tubes/get_tube HTTP/1.1" 200 25

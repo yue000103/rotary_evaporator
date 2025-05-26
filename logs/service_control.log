@@ -234,3 +234,116 @@
 2025-03-28 11:45:56,235 service_control_log DEBUG: TEST: This is a debug log for service control.
 2025-03-28 11:46:32,929 service_control_log INFO: 步骤: 人选择保留的试管, 状态: success, 消息: [{'module_id': 1, 'tube_list': [1, 2, 3]}, {'module_id': 2, 'tube_list': [1, 3, 4]}]
 2025-03-28 11:47:02,505 service_control_log INFO: 步骤: 收集装置清洗复位, 状态: success, 消息: Collector cleaned and reset
+2025-05-23 15:17:20,883 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-05-23 15:17:26,118 service_control_log INFO: 开始执行 __init__ 函数
+2025-05-23 15:17:26,119 service_control_log INFO: 结束执行 __init__ 函数
+2025-05-23 15:17:26,119 service_control_log INFO: 开始执行 select_retain_tubes 函数
+2025-05-23 15:17:26,119 service_control_log INFO: 开始执行 find_clean_tubes 函数
+2025-05-23 15:17:26,133 service_control_log INFO: 结束执行 find_clean_tubes 函数
+2025-05-23 15:17:33,223 service_control_log INFO: 结束执行 execute_task 函数
+2025-05-23 15:20:24,663 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-05-23 15:20:27,694 service_control_log INFO: 开始执行 __init__ 函数
+2025-05-23 15:20:27,694 service_control_log INFO: 结束执行 __init__ 函数
+2025-05-23 15:22:16,085 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-05-23 15:22:17,103 service_control_log INFO: 开始执行 __init__ 函数
+2025-05-23 15:22:17,103 service_control_log INFO: 结束执行 __init__ 函数
+2025-05-23 15:23:10,899 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-05-23 15:23:12,027 service_control_log INFO: 开始执行 __init__ 函数
+2025-05-23 15:23:12,027 service_control_log INFO: 结束执行 __init__ 函数
+2025-05-23 15:32:02,348 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-05-23 15:32:03,477 service_control_log INFO: 开始执行 __init__ 函数
+2025-05-23 15:32:03,477 service_control_log INFO: 结束执行 __init__ 函数
+2025-05-23 15:33:41,353 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-05-23 15:33:42,243 service_control_log INFO: 开始执行 __init__ 函数
+2025-05-23 15:33:42,243 service_control_log INFO: 结束执行 __init__ 函数
+2025-05-23 15:41:35,392 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-05-23 15:41:36,433 service_control_log INFO: 开始执行 __init__ 函数
+2025-05-23 15:41:36,433 service_control_log INFO: 结束执行 __init__ 函数
+2025-05-23 15:53:06,784 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-05-23 15:53:07,787 service_control_log INFO: 开始执行 __init__ 函数
+2025-05-23 15:53:07,787 service_control_log INFO: 结束执行 __init__ 函数
+2025-05-23 15:53:07,787 service_control_log INFO: 开始执行 wash_column 函数
+2025-05-23 15:53:07,787 service_control_log INFO: 开始执行 get_elution_curve 函数
+2025-05-23 15:55:04,678 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-05-23 15:55:05,633 service_control_log INFO: 开始执行 __init__ 函数
+2025-05-23 15:55:05,633 service_control_log INFO: 结束执行 __init__ 函数
+2025-05-23 15:55:05,633 service_control_log INFO: 开始执行 wash_column 函数
+2025-05-23 15:55:05,633 service_control_log INFO: 开始执行 get_elution_curve 函数
+2025-05-23 15:57:16,804 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-05-23 15:57:17,805 service_control_log INFO: 开始执行 __init__ 函数
+2025-05-23 15:57:17,805 service_control_log INFO: 结束执行 __init__ 函数
+2025-05-23 15:57:17,805 service_control_log INFO: 开始执行 wash_column 函数
+2025-05-23 15:59:29,117 service_control_log INFO: 结束执行 wash_column 函数
+2025-05-23 15:59:29,118 service_control_log INFO: 开始执行 update_line_pause 函数
+2025-05-23 15:59:36,200 service_control_log INFO: 结束执行 update_line_pause 函数
+2025-05-23 15:59:41,201 service_control_log INFO: 开始执行 update_line_start 函数
+2025-05-23 15:59:48,334 service_control_log INFO: 结束执行 update_line_start 函数
+2025-05-23 15:59:53,334 service_control_log INFO: 开始执行 start_column 函数
+2025-05-23 15:59:55,391 service_control_log INFO: 开始执行 update_line_start 函数
+2025-05-23 16:00:02,439 service_control_log INFO: 结束执行 update_line_start 函数
+2025-05-23 16:02:09,023 service_control_log INFO: 结束执行 start_column 函数
+2025-05-23 16:02:09,023 service_control_log INFO: 开始执行 select_retain_tubes 函数
+2025-05-23 16:02:09,023 service_control_log INFO: 开始执行 find_clean_tubes 函数
+2025-05-23 16:02:09,024 service_control_log INFO: 结束执行 find_clean_tubes 函数
+2025-05-23 16:14:30,933 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-05-23 16:14:31,561 service_control_log INFO: 开始执行 __init__ 函数
+2025-05-23 16:14:31,561 service_control_log INFO: 结束执行 __init__ 函数
+2025-05-23 16:14:31,561 service_control_log INFO: 开始执行 wash_column 函数
+2025-05-23 16:16:39,748 service_control_log INFO: 结束执行 wash_column 函数
+2025-05-23 16:16:39,748 service_control_log INFO: 开始执行 update_line_pause 函数
+2025-05-23 16:16:46,809 service_control_log INFO: 结束执行 update_line_pause 函数
+2025-05-23 16:16:51,810 service_control_log INFO: 开始执行 update_line_start 函数
+2025-05-23 16:16:58,847 service_control_log INFO: 结束执行 update_line_start 函数
+2025-05-23 16:17:03,848 service_control_log INFO: 开始执行 start_column 函数
+2025-05-23 16:17:05,900 service_control_log INFO: 开始执行 update_line_start 函数
+2025-05-23 16:17:12,934 service_control_log INFO: 结束执行 update_line_start 函数
+2025-05-23 16:18:38,247 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-05-23 16:18:38,940 service_control_log INFO: 开始执行 __init__ 函数
+2025-05-23 16:18:38,940 service_control_log INFO: 结束执行 __init__ 函数
+2025-05-23 16:18:38,940 service_control_log INFO: 开始执行 wash_column 函数
+2025-05-23 16:20:47,132 service_control_log INFO: 结束执行 wash_column 函数
+2025-05-23 16:20:47,132 service_control_log INFO: 开始执行 update_line_pause 函数
+2025-05-23 16:20:54,213 service_control_log INFO: 结束执行 update_line_pause 函数
+2025-05-23 16:20:59,214 service_control_log INFO: 开始执行 update_line_start 函数
+2025-05-23 16:21:06,265 service_control_log INFO: 结束执行 update_line_start 函数
+2025-05-23 16:21:11,265 service_control_log INFO: 开始执行 start_column 函数
+2025-05-23 16:21:13,308 service_control_log INFO: 开始执行 update_line_start 函数
+2025-05-23 16:21:20,339 service_control_log INFO: 结束执行 update_line_start 函数
+2025-05-23 16:27:32,699 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-05-23 16:27:33,347 service_control_log INFO: 开始执行 __init__ 函数
+2025-05-23 16:27:33,347 service_control_log INFO: 结束执行 __init__ 函数
+2025-05-23 16:27:33,367 service_control_log INFO: 开始执行 wash_column 函数
+2025-05-23 16:27:51,570 service_control_log INFO: 结束执行 wash_column 函数
+2025-05-23 16:27:51,570 service_control_log INFO: 开始执行 update_line_pause 函数
+2025-05-23 16:27:58,761 service_control_log INFO: 结束执行 update_line_pause 函数
+2025-05-23 16:28:15,084 service_control_log INFO: 开始执行 update_line_start 函数
+2025-05-23 16:28:22,135 service_control_log INFO: 结束执行 update_line_start 函数
+2025-05-23 16:28:27,135 service_control_log INFO: 开始执行 start_column 函数
+2025-05-23 16:28:29,181 service_control_log INFO: 开始执行 update_line_start 函数
+2025-05-23 16:28:36,218 service_control_log INFO: 结束执行 update_line_start 函数
+2025-05-23 16:35:19,778 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-05-23 16:35:20,402 service_control_log INFO: 开始执行 __init__ 函数
+2025-05-23 16:35:20,403 service_control_log INFO: 结束执行 __init__ 函数
+2025-05-23 16:35:20,424 service_control_log INFO: 开始执行 wash_column 函数
+2025-05-23 16:35:38,618 service_control_log INFO: 结束执行 wash_column 函数
+2025-05-23 16:35:38,618 service_control_log INFO: 开始执行 update_line_pause 函数
+2025-05-23 16:35:45,686 service_control_log INFO: 结束执行 update_line_pause 函数
+2025-05-23 16:36:23,026 service_control_log INFO: 开始执行 update_line_start 函数
+2025-05-23 16:36:30,071 service_control_log INFO: 结束执行 update_line_start 函数
+2025-05-23 16:36:35,071 service_control_log INFO: 开始执行 start_column 函数
+2025-05-23 16:36:37,108 service_control_log INFO: 开始执行 update_line_start 函数
+2025-05-23 16:36:44,140 service_control_log INFO: 结束执行 update_line_start 函数
+2025-05-23 16:38:44,140 service_control_log INFO: 结束执行 start_column 函数
+2025-05-23 16:38:44,140 service_control_log INFO: 开始执行 update_line_terminate 函数
+2025-05-23 16:38:51,183 service_control_log INFO: 结束执行 update_line_terminate 函数
+2025-05-23 16:38:51,183 service_control_log INFO: 开始执行 select_retain_tubes 函数
+2025-05-23 16:38:51,183 service_control_log INFO: 开始执行 find_clean_tubes 函数
+2025-05-23 16:38:51,184 service_control_log INFO: 结束执行 find_clean_tubes 函数
+2025-05-23 16:43:45,420 service_control_log INFO: 开始执行 save_experiment_data 函数
+2025-05-23 16:43:45,420 service_control_log INFO: 结束执行 save_experiment_data 函数
+2025-05-23 16:45:58,295 service_control_log DEBUG: TEST: This is a debug log for service control.
+2025-05-23 16:45:58,939 service_control_log INFO: 开始执行 __init__ 函数
+2025-05-23 16:45:58,939 service_control_log INFO: 结束执行 __init__ 函数
+2025-05-23 16:45:58,942 service_control_log INFO: 开始执行 save_experiment_data 函数
+2025-05-23 16:45:58,942 service_control_log INFO: 结束执行 save_experiment_data 函数
+2025-05-23 16:45:58,942 service_control_log INFO: 开始执行 execute_task 函数

@@ -25,6 +25,7 @@ class InjectHeight:
         # self.plc.write_coil(self.REG_START_START, False)
         # time.sleep(1)
         self.plc.write_coil(self.REG_START_START, True)
+        time.sleep(1)
 
 
 
@@ -34,6 +35,8 @@ class InjectHeight:
         # self.plc.write_coil(self.REG_START_STOP, True)
         # time.sleep(1)
         self.plc.write_coil(self.REG_START_START, False)
+        time.sleep(1)
+
 
 
 

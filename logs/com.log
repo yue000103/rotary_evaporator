@@ -6292,3 +6292,109 @@ Stacktrace:
 2025-03-28 11:45:56,482 com_log INFO: PLCConnection initialized on 192.168.1.99:502
 2025-03-28 11:45:56,482 com_log INFO: PLCConnection initialized on 192.168.1.99:502
 2025-03-28 11:45:56,483 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:17:22,741 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-05-23 15:17:25,657 com_log INFO: Heartbeat thread started
+2025-05-23 15:17:25,691 com_log INFO: Connected to PLC Server
+2025-05-23 15:17:25,691 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:17:26,096 com_log INFO: RobotConnection initialized on 192.168.1.91:2000
+2025-05-23 15:17:26,104 com_log INFO: Connected to PLC Server
+2025-05-23 15:17:26,104 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:17:26,110 com_log INFO: Connected to PLC Server
+2025-05-23 15:17:26,110 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:17:26,117 com_log INFO: Connected to PLC Server
+2025-05-23 15:17:26,118 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:17:26,118 com_log INFO: {"cooling":{"act":24.390000,"set":-5,"running":false},"vacuum":{"act":1000.400000,"set":1000.400000,"aerateValveOpen":true,"aerateValvePulse":false,"vacuumValveOpen":false,"vaporTemp":24.060000,"autoDestIn":24.040001,"autoDestOut":23.879999,"powerPercentAct":0,"autoDryValve":false,"running":false},"rotation":{"act":0,"set":140,"running":false},"lift":{"act":0,"set":181,"limit":181},"program":{"type":"AutoDest","endVacuum":100,"flaskSize":2},"globalStatus":{"timeStamp":"2025-05-23T08:35:21Z","runId":146,"onHold":false,"foamActive":false,"currentError":0,"running":false}}
+2025-05-23 15:17:26,119 com_log DEBUG: Heartbeat received: {"cooling":{"act":24.390000,"set":-5,"running":fal...
+2025-05-23 15:17:31,293 com_log INFO: {"cooling":{"act":24.390000,"set":-5,"running":false},"vacuum":{"act":1000.400000,"set":1000.400000,"aerateValveOpen":true,"aerateValvePulse":false,"vacuumValveOpen":false,"vaporTemp":24.060000,"autoDestIn":24.040001,"autoDestOut":23.879999,"powerPercentAct":0,"autoDryValve":false,"running":false},"rotation":{"act":0,"set":140,"running":false},"lift":{"act":0,"set":181,"limit":181},"program":{"type":"AutoDest","endVacuum":100,"flaskSize":2},"globalStatus":{"timeStamp":"2025-05-23T08:35:26Z","runId":146,"onHold":false,"foamActive":false,"currentError":0,"running":false}}
+2025-05-23 15:17:31,293 com_log DEBUG: Heartbeat received: {"cooling":{"act":24.390000,"set":-5,"running":fal...
+2025-05-23 15:20:25,438 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-05-23 15:20:27,361 com_log INFO: Heartbeat thread started
+2025-05-23 15:20:27,366 com_log INFO: Connected to PLC Server
+2025-05-23 15:20:27,366 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:20:27,665 com_log INFO: RobotConnection initialized on 192.168.1.91:2000
+2025-05-23 15:20:27,672 com_log INFO: Connected to PLC Server
+2025-05-23 15:20:27,673 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:20:27,683 com_log INFO: Connected to PLC Server
+2025-05-23 15:20:27,683 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:20:27,694 com_log INFO: Connected to PLC Server
+2025-05-23 15:20:27,694 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:20:27,706 com_log INFO: {"cooling":{"act":24.390000,"set":-5,"running":false},"vacuum":{"act":1000.400000,"set":1000.400000,"aerateValveOpen":true,"aerateValvePulse":false,"vacuumValveOpen":false,"vaporTemp":24.090000,"autoDestIn":24.070000,"autoDestOut":23.879999,"powerPercentAct":0,"autoDryValve":false,"running":false},"rotation":{"act":0,"set":140,"running":false},"lift":{"act":0,"set":181,"limit":181},"program":{"type":"AutoDest","endVacuum":100,"flaskSize":2},"globalStatus":{"timeStamp":"2025-05-23T08:38:23Z","runId":146,"onHold":false,"foamActive":false,"currentError":0,"running":false}}
+2025-05-23 15:20:27,706 com_log DEBUG: Heartbeat received: {"cooling":{"act":24.390000,"set":-5,"running":fal...
+2025-05-23 15:22:16,934 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-05-23 15:22:16,934 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:22:17,100 com_log INFO: RobotConnection initialized on 192.168.1.91:2000
+2025-05-23 15:22:17,101 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:22:17,102 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:22:17,103 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:23:11,822 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-05-23 15:23:11,822 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:23:12,023 com_log INFO: RobotConnection initialized on 192.168.1.91:2000
+2025-05-23 15:23:12,024 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:23:12,025 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:23:12,025 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:32:03,278 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-05-23 15:32:03,280 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:32:03,474 com_log INFO: RobotConnection initialized on 192.168.1.91:2000
+2025-05-23 15:32:03,474 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:32:03,476 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:32:03,477 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:33:42,087 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-05-23 15:33:42,088 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:33:42,241 com_log INFO: RobotConnection initialized on 192.168.1.91:2000
+2025-05-23 15:33:42,241 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:33:42,242 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:33:42,243 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:41:36,199 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-05-23 15:41:36,200 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:41:36,428 com_log INFO: RobotConnection initialized on 192.168.1.91:2000
+2025-05-23 15:41:36,430 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:41:36,431 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:41:36,432 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:53:07,616 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-05-23 15:53:07,616 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:53:07,783 com_log INFO: RobotConnection initialized on 192.168.1.91:2000
+2025-05-23 15:53:07,785 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:53:07,786 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:53:07,787 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:55:05,479 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-05-23 15:55:05,479 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:55:05,631 com_log INFO: RobotConnection initialized on 192.168.1.91:2000
+2025-05-23 15:55:05,631 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:55:05,632 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:55:05,633 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:57:17,636 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-05-23 15:57:17,636 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:57:17,802 com_log INFO: RobotConnection initialized on 192.168.1.91:2000
+2025-05-23 15:57:17,803 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:57:17,804 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 15:57:17,805 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:14:31,459 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-05-23 16:14:31,459 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:14:31,559 com_log INFO: RobotConnection initialized on 192.168.1.91:2000
+2025-05-23 16:14:31,560 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:14:31,560 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:14:31,561 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:18:38,827 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-05-23 16:18:38,827 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:18:38,938 com_log INFO: RobotConnection initialized on 192.168.1.91:2000
+2025-05-23 16:18:38,939 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:18:38,939 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:18:38,940 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:27:33,237 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-05-23 16:27:33,237 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:27:33,345 com_log INFO: RobotConnection initialized on 192.168.1.91:2000
+2025-05-23 16:27:33,345 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:27:33,346 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:27:33,347 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:35:20,293 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-05-23 16:35:20,293 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:35:20,401 com_log INFO: RobotConnection initialized on 192.168.1.91:2000
+2025-05-23 16:35:20,401 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:35:20,402 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:35:20,402 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:45:58,831 com_log INFO: Initialized ConnectionController with base_url: 192.168.1.20
+2025-05-23 16:45:58,831 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:45:58,938 com_log INFO: RobotConnection initialized on 192.168.1.91:2000
+2025-05-23 16:45:58,938 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:45:58,939 com_log INFO: PLCConnection initialized on 192.168.1.99:502
+2025-05-23 16:45:58,939 com_log INFO: PLCConnection initialized on 192.168.1.99:502

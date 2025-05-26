@@ -69,7 +69,7 @@ class ConnectionController:
         chrome_options = Options()
         print("--------------2-------------------")
 
-        # chrome_options.add_argument("--headless")  # 无界面模式
+        chrome_options.add_argument("--headless")  # 无界面模式
         print("--------------3-------------------")
 
         chrome_options.add_argument("--ignore-certificate-errors")
