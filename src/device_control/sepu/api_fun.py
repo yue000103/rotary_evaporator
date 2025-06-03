@@ -217,6 +217,16 @@ class ApiClient:
     #     return self.sepu_com.send_get_request("/eluent_curve//update_line_pause")
 
 
+    def set_start_tube(self,tube_id,module_id)-> dict:
+        payload = {
+            "detector_zeroing": True,
+            "pump_pressure_zeroing":True,
+            "tube_id":tube_id,
+            "module_id":module_id,
+        }
+        return self.sepu_com.send_post_request("/eluent_curve/init", payload)
+
+
 def main():
     # 创建 ApiClient 实例
     api_client = ApiClient()

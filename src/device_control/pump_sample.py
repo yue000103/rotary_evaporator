@@ -61,7 +61,7 @@ class PumpSample:
 
         # formatted_command = f"/{self.ID}{command}R\r\n"
         logger.info(f"发送命令: {formatted_command.strip()}")
-        print(f"发送命令: {formatted_command.strip()}")
+        # print(f"发送命令: {formatted_command.strip()}")
 
         if self.mock:
             response = f"[Mock Response] {command} OK".encode("utf-8")
@@ -129,7 +129,7 @@ class PumpSample:
         """ 查看泵的状态，并更新 busy_flag """
         re = self.send_command("Q")
         re_lst = list(re)
-        print("re_lst",re_lst)
+        # print("re_lst",re_lst)
 
         if len(re_lst) < 4:
             logger.error("Unexpected response format")

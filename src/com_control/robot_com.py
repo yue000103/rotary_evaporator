@@ -4,7 +4,7 @@ import time
 
 
 class RobotConnection:
-    def __init__(self, ip="192.168.1.91", port=2000, mock=True):
+    def __init__(self, ip="192.168.1.91", port=2000, mock=False):
         self.ip = ip
         self.port = port
         self.mock = mock
@@ -19,7 +19,7 @@ class RobotConnection:
         while True:
             try:
                 self.sock = socket.socket()
-                self.sock.connect((self.ip, self.port))
+                self.sock.connect(("192.168.1.91", 2000))
                 print(f"✅ 已连接到 ABB 控制器 ({self.ip}:{self.port})")
                 threading.Thread(target=self.recv_thread, daemon=True).start()
                 return

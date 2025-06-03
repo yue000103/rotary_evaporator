@@ -26,11 +26,11 @@ class RobotController:
             self.connection.send_command(cmd_full)
             print(f"📤 Command Sent: {cmd_full}")
 
-            self.connection.wait_for_response(cmd_full + "ok")
+            self.connection.wait_for_response(cmd_full + "ok", 20)
 
             print("开始执行------")
 
-            self.connection.wait_for_response(cmd_full + "_finish", 10)
+            self.connection.wait_for_response(cmd_full + "_finish", 120)
 
             # # 等待预期响应并记录交互过程
             # device_control_logger.info(f"⏳ Waiting for: {expected_response}")

@@ -306,7 +306,7 @@ if __name__ == "__main__":
     # controller.xuanzheng_sync()
 
     # 获取信息（模拟模式下不会真正发送请求）
-    print("设备信息：", controller.get_process())
+    # print("设备信息：", controller.get_process())
 
     # controller.change_device_parameters(
     #     program={"type": "AutoDest", "flaskSize": 1}
@@ -345,7 +345,7 @@ if __name__ == "__main__":
     # controller.run_evaporation()
     # controller.xuanzheng_sync()
     # controller.set_height(0)
-    # controller.start_waste_liquid()
+    controller.start_waste_liquid()
 
     # controller.set_auto_set_height(True)
     #

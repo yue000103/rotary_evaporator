@@ -139,7 +139,7 @@ class SepuService:
             tube = retain_tube
             print("tube",tube)
             self.retain_tube_list = tube
-            self.find_clean_tubes()
+            # self.find_clean_tubes()
 
 
             for tube_info in tube:
@@ -164,7 +164,7 @@ class SepuService:
             while True:
                 time.sleep(2)
                 result = self.sepu_api.get_tube_status()
-                print("result",result)
+                print(f"收集液体:",result)
                 if result["status"] == True:
                     return
 
@@ -335,6 +335,9 @@ class SepuService:
             # threading_cut = threading.Thread(target=execute_task)
             # threading_cut.start()
         result = {"status": "success", "message": "实验数据已保存"}
+
+    def set_start_tube(self,tube_id,module_id):
+        self.sepu_api.set_start_tube(tube_id,module_id)
 
 if __name__ == '__main__':
     sepu = SepuService()

@@ -27,10 +27,10 @@ class GearPump:
         #写时间
         # self.plc.write_coil(self.REG_START_START, False)
         # time.sleep(1)
-        time_s = time_s * 1000
+        time_ms = time_s * 1000
         self.plc.write_coil(self.REG_START_START, True)
 
-        self.plc.write_dint_register(self.REG_TIME_S, time_s)
+        self.plc.write_dint_register(self.REG_TIME_S, time_ms)
 
         time.sleep(2)
         self.pump_finish_async()
@@ -57,9 +57,9 @@ class GearPump:
 
 
 if __name__ == '__main__':
-    pump = GearPump(mock=True)  # 启用 Mock 模式测试
+    pump = GearPump(mock=False)  # 启用 Mock 模式测试
 
-    pump.start_pump()  # 启动泵
+    pump.start_pump(3)  # 启动泵
 
-    pump.stop_pump()  # 停止泵
+    # pump.stop_pump()  # 停止泵
 
