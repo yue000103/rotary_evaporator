@@ -80,7 +80,7 @@ if __name__ == '__main__':
     pump = PeristalticPump(mock=False)  # 启用 Mock 模式测试
     # pump.set_speed(1200)  # 设定转速
 
-    pump.start_pump()  # 启动泵
+    pump.start_waste_liquid()  # 启动泵
     # pump.set_volume(500)  # 设定液体体积
     # pump.stop_pump()  # 停止泵
     #

@@ -160,11 +160,12 @@ class XuanZHengController:
             if done:
                 return True
     def start_waste_liquid(self):
+        print("start waste_liquid")
         self.plc.write_coil(self.WASTE_LIQUID, True)
         time.sleep(1)
         self.plc.write_coil(self.WASTE_LIQUID, False)
         time.sleep(2)
-        self.waste_finish_async()
+        # self.waste_finish_async()
 
     def waste_finish_async(self):
         while True:
@@ -297,6 +298,12 @@ class XuanZHengController:
         print("test_3 start")
         time.sleep(3)
         print("test_3 end")
+
+    def test_4(self):
+        print("test_4 start")
+        time.sleep(3)
+        print("test_4 end")
+
 
 # 使用示例
 if __name__ == "__main__":

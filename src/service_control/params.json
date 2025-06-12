@@ -4,7 +4,7 @@
         "detectorWavelength": 258,
         "equilibrationColumn": 1,
         "speed": 100,
-        "totalFlowRate": 20,
+        "totalFlowRate": 35,
         "cleanList": [
             {
                 "module_id": 2,
@@ -39,7 +39,7 @@
                 ]
             }
         ],
-        "cleaningCount": 2,
+        "cleaningCount": 0,
         "cleaningSpeed": null,
         "drainSpeed": null,
         "isocratic": 0,
@@ -52,31 +52,31 @@
                 "time": 0,
                 "pumpB": 95,
                 "pumpA": 5,
-                "flowRate": 20
+                "flowRate": 35
             },
             {
                 "time": 5,
                 "pumpB": 95,
                 "pumpA": 5,
-                "flowRate": 20
+                "flowRate": 35
             },
             {
                 "time": 5,
                 "pumpB": 95,
                 "pumpA": 5,
-                "flowRate": 20
+                "flowRate": 35
             },
             {
                 "time": 20,
                 "pumpB": 95,
                 "pumpA": 5,
-                "flowRate": 20
+                "flowRate": 35
             }
         ],
         "retainList": [
             {
                 "module_id": 1,
-                "liquid_volume": 20,
+                "liquid_volume": 30,
                 "tube_id": [
                     1,
                     2,
@@ -92,7 +92,7 @@
             },
             {
                 "module_id": 2,
-                "liquid_volume": 20,
+                "liquid_volume": 30,
                 "tube_id": [
                     1,
                     2,

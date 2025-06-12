@@ -44,7 +44,7 @@ class RobotController:
             return True
         except Exception as e:
             device_control_logger.error(f"⚠️ Scenario Failed: {str(e)}")
-            return False
+            raise
 
     def install_column(self,column_id):
         """等待样本加载准备就绪
@@ -58,14 +58,14 @@ class RobotController:
         command = f"task_scara_zhuzi2_py({column_id})"
         return self._execute_scenario(command, "Sample loading ready")
 
-    def transfer_to_collect(self,bottle_id):
+    def transfer_to_collect(self,bottle_id,sample_id):
         command = f"task_flask_move_py(7,1)"
         self._execute_scenario(command, "task_flask_move_py(7,1)_finish")
         command = f"task_flask_move_py(17,0)"
         self._execute_scenario(command, "task_flask_move_py(17,0)_finish")
         command = f"task_scara_get_tool()"
         self._execute_scenario(command, "task_scara_get_tool()_finish")
-        command = f"task_scara_sample_py(3,1)"
+        command = f"task_scara_sample_py(3,{sample_id})"
         self._execute_scenario(command, "task_scara_sample_py(3,1)_finish")
 
 
@@ -152,8 +152,7 @@ class RobotController:
         self._execute_scenario(command, "task_flask_move_py(15,1)_finish")
         command = f"task_flask_move_py(7,0)"
         self._execute_scenario(command, "task_flask_move_py(7,0)_finish")
-        command = f"task_scara_zhuzi2_py(1)"
-        self._execute_scenario(command, "task_scara_zhuzi2_py(1)_finish")
+
 
     def small_big_to_clean(self):
         command = f"task_flask_move_py(1,1)"
@@ -164,7 +163,9 @@ class RobotController:
 
 if __name__ == '__main__':
     pass
-    # controller = RobotController(mock=False)
+    controller = RobotController(mock=False)
+    # controller.install_column(6)
+    controller.uninstall_column(6)
     #
     # # 新增手动输入功能
     # def manual_input():

@@ -299,18 +299,18 @@ class SepuService:
         service_control_logger.info('结束执行 start_column 函数')
 
     def save_experiment_data(self,clean_tube):
-        service_control_logger.info('开始执行 save_experiment_data 函数')
-
-
-        # tube = [{'module_id': 1, 'tube_list': [1,2,3,4]}]
+        # service_control_logger.info('开始执行 save_experiment_data 函数')
+        #
+        #
+        # # tube = [{'module_id': 1, 'tube_list': [1,2,3,4]}]
         tube = clean_tube
-
-        service_control_logger.info('结束执行 save_experiment_data 函数')
-        # def execute_task(self):
-        service_control_logger.info('开始执行 execute_task 函数')
-
-        result = self.sepu_api.save_experiment_data()
-        print(result)
+        #
+        # service_control_logger.info('结束执行 save_experiment_data 函数')
+        # # def execute_task(self):
+        # service_control_logger.info('开始执行 execute_task 函数')
+        #
+        # result = self.sepu_api.save_experiment_data()
+        # print(result)
 
         for tube_info in tube:
             timestamp = time.strftime("%Y%m%d%H%M%S")
@@ -321,7 +321,7 @@ class SepuService:
             task_list = {
                 "method_id": int(self.sepu_api.method_id),
                 "module_id": module_id,  # 由用户输入
-                "status": "clean",
+                "status": "abandon",
                 "task_id": int(timestamp),
                 "tube_list": tube_list,  # 由用户输入
             }
