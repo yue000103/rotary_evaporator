@@ -159,10 +159,15 @@ class RobotController:
         command = f"task_flask_move_py(16,0)"
         self._execute_scenario(command, "task_flask_move_py(16,0)_finish")
 
+    def small_put_clean(self):
+        command = f"task_flask_move_py(16,0)"
+        self._execute_scenario(command, "task_flask_move_py(16,0)_finish")
 
 if __name__ == '__main__':
-    pass
     controller = RobotController(mock=False)
+    controller.get_xuanzheng()
+    controller.robot_to_home()
+    controller.small_put_clean()
     # controller.install_column(6)
     #
     # # 新增手动输入功能

@@ -141,12 +141,13 @@ class XuanZHengController:
             )
         elif volume == 0:
             self.plc.write_single_register(self.HEIGHT_ADDRESS, 0)
-
+        time.sleep(1)
         self.plc.write_coil(self.AUTO_SET,True)
 
 
         time.sleep(3)
         self.height_finish_async()
+        time.sleep(1)
         self.plc.write_coil(self.AUTO_SET,False)
 
 
@@ -158,6 +159,7 @@ class XuanZHengController:
         while True:
             print("-----------height_finish_async----------")
             done = self.plc.read_coils(self.AUTO_FINISH,1)[0]
+            time.sleep(1)
             if done:
                 return True
     def start_waste_liquid(self):
