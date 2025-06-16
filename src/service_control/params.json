@@ -5,6 +5,7 @@
         "equilibrationColumn": 1,
         "speed": 100,
         "totalFlowRate": 35,
+        "equilibrationTime": 5,
         "cleanList": [
             {
                 "module_id": 2,
@@ -39,7 +40,7 @@
                 ]
             }
         ],
-        "cleaningCount": 0,
+        "cleaningCount": 1,
         "cleaningSpeed": null,
         "drainSpeed": null,
         "isocratic": 0,

@@ -58,15 +58,15 @@ class RobotController:
         command = f"task_scara_zhuzi2_py({column_id})"
         return self._execute_scenario(command, "Sample loading ready")
 
-    def transfer_to_collect(self,bottle_id,sample_id):
-        command = f"task_flask_move_py(7,1)"
-        self._execute_scenario(command, "task_flask_move_py(7,1)_finish")
+    def transfer_to_collect(self,position_id,sample_id):
+        command = f"task_flask_move_py({position_id},1)"
+        self._execute_scenario(command, f"task_flask_move_py({position_id},1)_finish")
         command = f"task_flask_move_py(17,0)"
         self._execute_scenario(command, "task_flask_move_py(17,0)_finish")
         command = f"task_scara_get_tool()"
         self._execute_scenario(command, "task_scara_get_tool()_finish")
-        command = f"task_scara_sample_py(3,{sample_id})"
-        self._execute_scenario(command, "task_scara_sample_py(3,1)_finish")
+        command = f"task_scara_sample_py({sample_id},1)"
+        self._execute_scenario(command, f"task_scara_sample_py({sample_id},1)_finish")
 
 
     def to_clean_needle(self):
@@ -119,7 +119,6 @@ class RobotController:
     def get_transfer_needle(self):
         command = f"task_transfer_flask_liquid_py()"
         self._execute_scenario(command, "task_transfer_flask_liquid_py()_finish")
-        pass
 
     def transfer_finish_flag(self):
         command = f"Liquid_transfer_ok"
@@ -138,25 +137,25 @@ class RobotController:
         self._execute_scenario(command, "task_Rotary_Evaporator_put_py()_finish")
         pass
 
-    def xuanzheng_to_warehouse(self):
-        command = f"task_flask_move_py(9,0)"
-        self._execute_scenario(command, "task_flask_move_py(9,0)_finish")
+    def xuanzheng_to_warehouse(self, position_id):
+        command = f"task_flask_move_py({position_id},0)"
+        self._execute_scenario(command, f"task_flask_move_py({position_id},0)_finish")
         pass
 
     def get_xuanzheng(self):
         command = f"task_Rotary_Evaporator_get_py()"
         self._execute_scenario(command, "task_Rotary_Evaporator_get_py()_finish")
 
-    def get_big_bottle(self):
+    def get_big_bottle(self, position_id):
         command = f"task_flask_move_py(15,1)"
         self._execute_scenario(command, "task_flask_move_py(15,1)_finish")
-        command = f"task_flask_move_py(7,0)"
+        command = f"task_flask_move_py({position_id},0)"
         self._execute_scenario(command, "task_flask_move_py(7,0)_finish")
 
 
-    def small_big_to_clean(self):
-        command = f"task_flask_move_py(1,1)"
-        self._execute_scenario(command, "task_flask_move_py(1,1)_finish")
+    def small_big_to_clean(self,position_id):
+        command = f"task_flask_move_py({position_id},1)"
+        self._execute_scenario(command, f"task_flask_move_py({position_id},1)_finish")
         command = f"task_flask_move_py(16,0)"
         self._execute_scenario(command, "task_flask_move_py(16,0)_finish")
 
@@ -165,7 +164,6 @@ if __name__ == '__main__':
     pass
     controller = RobotController(mock=False)
     # controller.install_column(6)
-    controller.uninstall_column(6)
     #
     # # 新增手动输入功能
     # def manual_input():

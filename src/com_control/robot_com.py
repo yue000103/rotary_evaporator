@@ -56,6 +56,9 @@ class RobotConnection:
         self.sock.sendall((cmd + "\n").encode())
 
     def wait_for_response(self, expect, timeout_s=10):
+        if self.mock:
+            print(f"[MOCK] wait_for_response: {expect}")
+            return
         timeout = time.time() + timeout_s
         while time.time() < timeout:
             with self.lock:

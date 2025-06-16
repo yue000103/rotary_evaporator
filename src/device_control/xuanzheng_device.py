@@ -14,6 +14,7 @@ class XuanZHengController:
         self.AUTO_FINISH = 501
         self.WASTE_LIQUID = 323
         self.WASTE_LIQUID_FINISH = 333
+        self.mock = mock
 
 
 
@@ -247,6 +248,10 @@ class XuanZHengController:
         """
         启动抽真空，直到 vacuum.act 小于阈值（默认400）后停止。
         """
+        if self.mock:
+            print(f"✅ 真空值已低于 {threshold}，停止抽真空")
+
+            return
         print("🌀 开始抽真空")
         self.run_vacuum()
 
@@ -268,6 +273,10 @@ class XuanZHengController:
         """
         打开排气阀，直到 vacuum.act 大于阈值（默认900）后等待5秒。
         """
+        if self.mock:
+            print(f"✅ 真空值已高于 {threshold}，等待 5 秒")
+
+            return
         print("💨 打开排气阀")
         self.drain_valve_open()
 

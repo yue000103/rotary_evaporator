@@ -85,7 +85,8 @@ class PumpSample:
     def initialization(self):
         """ 初始化泵 """
         self.send_command("Z")
-        self.send_command('I')
+        self.sync()
+        self.send_command(self.SHORT_PORT)
         # return self.send_command("Z")
 
     def ml_to_pulse(self, ml: float) -> int:
@@ -165,13 +166,14 @@ class PumpSample:
 
     def sync(self):
         """ 等待泵空闲 """
+        if self.mock:
+            return
         self.check_state()
         while self.busy_flag:
             time.sleep(0.5)
             self.check_state()
         self.send_command('I')
         time.sleep(1)
-        print("进样完毕")
 
 if __name__ == '__main__':
     ps = PumpSample(mock=False)  # 启用 Mock 模式

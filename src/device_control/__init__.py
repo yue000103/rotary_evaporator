@@ -3,7 +3,7 @@ MOCK = False
 
 from src.device_control.xuanzheng_device import XuanZHengController
 
-xuanzheng_controller = XuanZHengController(mock=False)  # mock=True 开启模拟模式
+xuanzheng_controller = XuanZHengController(mock=MOCK)  # mock=True 开启模拟模式
 
 
 from src.device_control.sepu.api_fun import ApiClient

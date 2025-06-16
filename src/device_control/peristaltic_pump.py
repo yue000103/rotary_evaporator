@@ -68,7 +68,7 @@ class PeristalticPump:
         time.sleep(1)
         self.plc.write_coil(self.WASTE_LIQUID_START, False)
         time.sleep(2)
-        self.waste_liquid_finish_async()
+        # self.waste_liquid_finish_async()
 
     def waste_liquid_finish_async(self):
         while True:

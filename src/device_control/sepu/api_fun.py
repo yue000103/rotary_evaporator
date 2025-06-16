@@ -2,7 +2,11 @@ import requests
 import json
 from datetime import datetime
 import time
+
+from sympy import Number
+
 from src.com_control.sepu_com import SepuCom
+
 
 class ApiClient:
     def __init__(self,):
@@ -14,8 +18,22 @@ class ApiClient:
         """
         self.sepu_com = SepuCom()
         self.method_id = 0
+        self._counter = 0
+        self.current_experiment_id = None
+        self.method_start_time = None
+        self.method_end_time = None
 
 
+    def get_current_time(self):
+        """
+        获取当前时间，格式为 YYYY-MM-DD HH:MM:SS
+        """
+        return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    def generate_experiment_id(self):
+        self._counter += 1
+        timestamp = int(time.time() * 1000)
+        self.current_experiment_id =  f"{timestamp}{self._counter}"
 
     def init_device(self, use_mock: bool) -> dict:
         """
@@ -105,6 +123,8 @@ class ApiClient:
         返回:
         dict: 接口返回的响应数据
         """
+        self.method_end_time = self.get_current_time()
+
         return self.sepu_com.send_get_request("/eluent_curve/update_line_terminate")
 
     def save_experiment_data(self) -> dict:
@@ -122,16 +142,37 @@ class ApiClient:
         返回:
         dict: 接口返回的响应数据
         """
-        payload={}
-        # payload = {
-        #     "curve_data": curve_data,
-        #     "experiment_id": experiment_id,
-        #     "method_id": method_id,
-        #     "sampling_time": sampling_time,
-        #     "task_list": task_list,
-        #     "vertical_data": vertical_data
-        # }
+        self.generate_experiment_id()
+        payload = {
+            "experiment_id": int(self.current_experiment_id),
+        }
         return self.sepu_com.send_post_request("/experiment/save/experiment_data",payload)
+
+    def save_execution_method(
+        self,
+    ) -> dict:
+        """
+        调用 /save/execution_data 保存执行方法数据。
+
+        参数:
+        experiment_id (int): 实验ID
+        method_id (int): 方法ID
+        method_start_time (str): 方法开始时间
+        method_end_time (str): 方法结束时间
+        error_codes (list): 错误码列表
+
+        返回:
+        dict: 接口返回的响应数据
+        """
+        payload = {
+            "experiment_id": int(self.current_experiment_id),
+            "method_id": int(self.method_id),
+            "method_start_time": self.method_start_time,
+            "method_end_time": self.method_end_time,
+            "error_codes": []
+        }
+        print("payload", payload)
+        return self.sepu_com.send_post_request("/save/execution_data", payload)
 
     def get_line(self) -> dict:
         """
@@ -142,11 +183,7 @@ class ApiClient:
         """
         return self.sepu_com.send_get_request("/eluent_curve/get_line")
 
-    def get_current_time(self):
-        """
-        获取当前时间，格式为 YYYY-MM-DD HH:MM:SS
-        """
-        return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
 
     def get_tube(self, task_list:dict) -> dict:
         """
@@ -226,6 +263,64 @@ class ApiClient:
         }
         return self.sepu_com.send_post_request("/eluent_curve/init", payload)
 
+    def get_task_list_by_peak_id(self, peak_id: int) -> dict:
+        """
+        调用 /get_task_list_by_peak_id 获取指定peak_id的任务列表。
+
+        参数:
+        peak_id (int): 峰ID
+
+        返回:
+        dict: 接口返回的响应数据
+        """
+        payload = {"peak_id": peak_id}
+        return self.sepu_com.send_post_request("/eluent_curve/get_task_list_by_peak_id", payload)
+
+    def get_abandon_tube_tasks(self) -> dict:
+        """
+        调用 /get_abandon_tube_tasks 获取被放弃的试管任务。
+
+        返回:
+        dict: 接口返回的响应数据
+        """
+        return self.sepu_com.send_get_request("/eluent_curve/get_abandon_tube_tasks")
+
+
+    def update_prep_chrom_params(self, params: dict) -> dict:
+        """
+        调用 /update_prep_chrom_params 更新制备色谱参数。
+
+        参数:
+        params (dict): 需要更新的参数
+
+        返回:
+        dict: 接口返回的响应数据
+        """
+        return self.sepu_com.send_post_request("/eluent_curve/update_prep_chrom_params", params)
+
+    def column_equilibration(self,time_min) -> dict:
+        """
+        调用 /equilibration 开始柱平衡。
+
+        参数:
+        params (dict): 平衡参数
+
+        返回:
+        dict: 接口返回的响应数据
+        """
+        self.method_start_time = self.get_current_time()
+
+        payload = {"time": time_min}
+        return self.sepu_com.send_post_request("/column/equilibration",payload)
+
+    def stop_column_equilibration(self) -> dict:
+        """
+        调用 /equilibration/stop 停止柱平衡。
+
+        返回:
+        dict: 接口返回的响应数据
+        """
+        return self.sepu_com.send_get_request("/column/equilibration/stop")
 
 def main():
     # 创建 ApiClient 实例
@@ -377,4 +472,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+
+    # main()
+    api_client = ApiClient()
+    api_client.get_task_list_by_peak_id(1)
