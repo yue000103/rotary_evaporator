@@ -24,13 +24,17 @@ class XuanZHengController:
     def get_process(self):
         return self.connection.send_request("/api/v1/process", method='GET')
 
-    def xuanzheng_sync(self):
+    def xuanzheng_sync(self, timeout_min=2):
         """轮询获取旋蒸当前状态，等待其先运行再结束"""
 
         has_started = False  # 标志位：是否检测到旋蒸运行开始
-
+        timeout = timeout_min * 60
+        start_time = time.time()
         try:
             while True:
+                if time.time() - start_time > timeout:
+                    print(f"⏰ 超过超时时间 {timeout_min} 分钟，退出轮询。")
+                    break
                 raw_result = self.get_process()
                 print("当前状态：", raw_result)
 

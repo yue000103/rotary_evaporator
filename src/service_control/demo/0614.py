@@ -70,22 +70,12 @@ class TaskController:
         self._pause.set()
 
 
-async def xuanzheng_sync_until_finish(task_ctrl: TaskController):
-    while True:
-        await task_ctrl.wait_if_paused()
-        result = xuanzheng_controller.get_process()
-        print("旋蒸状态:", result)
-        if result.get("globalStatus", {}).get("running") is False:
-            break
-        await asyncio.sleep(2)
-
-
 k = 0
 
 
 async def run_lab(task_ctrl: TaskController, params_1: dict,big_bottle_volume,small_bottle_volume,column_id,wash_time_min,
                   experiment_time_min,sample_id,penlin_time_s,peak_number,small_position_id,big_position_id,warehouse_id,
-                  sample_volume):
+                  sample_volume, xuanzheng_timeout_min):
     try:
         await task_ctrl.wait_if_paused()
 
@@ -135,10 +125,11 @@ async def run_lab(task_ctrl: TaskController, params_1: dict,big_bottle_volume,sm
             await asyncio.gather(sepu_clean)
             return
         inject_height.up_height()
+        sepu_clean = asyncio.create_task(asyncio.to_thread(sepu_api.save_experiment_data))
+
 
         print(f"{datetime.datetime.now()}🧪 7. 收集转移到旋蒸")
         robot_controller.collect_to_xuanzheng(bottle_id)
-        sepu_clean = asyncio.create_task(asyncio.to_thread(sepu_api.save_experiment_data))
 
         print(f"{datetime.datetime.now()}💨 8. 旋蒸开始")
         xuanzheng_controller.vacuum_until_below_threshold()
@@ -147,7 +138,7 @@ async def run_lab(task_ctrl: TaskController, params_1: dict,big_bottle_volume,sm
         xuanzheng_controller.run_evaporation()
         small_big_to_clean = asyncio.create_task(asyncio.to_thread(robot_controller.small_big_to_clean,small_position_id))
 
-        xuanzheng_controller.xuanzheng_sync()
+        xuanzheng_controller.xuanzheng_sync(xuanzheng_timeout_min)
         xuanzheng_controller.set_height(0)
 
 
@@ -181,10 +172,13 @@ async def run_lab(task_ctrl: TaskController, params_1: dict,big_bottle_volume,sm
             robot_controller.robot_to_home()
             xuanzheng_controller.set_height(small_bottle_volume)
             xuanzheng_controller.run_evaporation()
-            xuanzheng_controller.xuanzheng_sync()
+            xuanzheng_controller.xuanzheng_sync(xuanzheng_timeout_min)
             xuanzheng_controller.set_height(0)
-            robot_controller.small_big_to_clean(small_position_id)
             xuanzheng_controller.start_waste_liquid()
+            robot_controller.get_xuanzheng()
+            robot_controller.robot_to_home()
+            robot_controller.small_put_clean()
+
 
         for i in range(2):
             print(f"🧽 11-{i+1}. 清洗轮次")
@@ -211,7 +205,7 @@ async def run_lab(task_ctrl: TaskController, params_1: dict,big_bottle_volume,sm
 
         xuanzheng_controller.set_height(small_bottle_volume)
         xuanzheng_controller.run_evaporation()
-        xuanzheng_controller.xuanzheng_sync()
+        xuanzheng_controller.xuanzheng_sync(xuanzheng_timeout_min)
         xuanzheng_controller.set_height(0)
 
         print(f"{datetime.datetime.now()}📦 14. 入库操作")
@@ -239,76 +233,80 @@ async def run_lab(task_ctrl: TaskController, params_1: dict,big_bottle_volume,sm
 
 
 async def main():
-    robot_controller.get_xuanzheng()
-    robot_controller.robot_to_home()
-    robot_controller.small_put_clean()
-    # params_list = [
-    #     # {
-    #     #     "params": {
-    #     #         "start_ratio": 100.0,
-    #     #         "end_ratio": 95.0,
-    #     #         "n1_volumes": 2.0,
-    #     #         "gradient_rate": 0.2,
-    #     #         "peak_threshold": 0.1,
-    #     #         "column_volume": 34.0,
-    #     #         "sg_window": 21,
-    #     #         "sg_order": 3,
-    #     #         "baseline_window": 180,
-    #     #         "k_factor": 10.0
-    #     #     },
-    #     #     "big_bottle_volume": 1000,
-    #     #     "small_bottle_volume": 100,
-    #     #     "column_id": 3,
-    #     #     "wash_time_min": 4,
-    #     #     "experiment_time_min": 20,
-    #     #     "sample_id": 1,
-    #     #     "sample_volume":5,
-    #     #     "penlin_time_s": 3,
-    #     #     "peak_number": 1,
-    #     #     "small_position_id": 1,
-    #     #     "big_position_id": 7,
-    #     #     "warehouse_id": 9
-    #     # },
-    #
-    #     {
-    #          "params": {
-    #              "start_ratio" : 95,
-    #             "end_ratio" : 66,
-    #             "n1_volumes" : 2,
-    #             "gradient_rate" : 2.5,
-    #             "peak_threshold" : 0.1,
-    #             "column_volume" : 34,  # 真实柱体积
-    #             "sg_window" : 21,  # 增大平滑窗口，适应更宽的峰q
-    #             "sg_order" : 3,
-    #             "baseline_window" : 180,  # 增大基线窗口
-    #             "k_factor": 10  # 调整阈值系数，提高检测灵敏度
-    #         },
-    #         "big_bottle_volume": 1000,
-    #         "small_bottle_volume": 50,
-    #         "column_id": 4,
-    #         "wash_time_min": 2,
-    #         "experiment_time_min": 20,
-    #         "sample_id": 2,
-    #         "sample_volume": 5,
-    #
-    #         "penlin_time_s": 3,
-    #         "peak_number": 1,
-    #         "small_position_id": 2,
-    #         "big_position_id": 7,
-    #         "warehouse_id": 10
-    #     }
-    #
-    # ]
-    # i = 0
-    # for params  in params_list:
-    #     print(f"开始第{i+1}次实验")
-    #     print(f"传入参数为{params}")
-    #     task_ctrl = TaskController()
-    #     await run_lab(task_ctrl=task_ctrl, params_1=params["params"],big_bottle_volume=params["big_bottle_volume"],small_bottle_volume=params["small_bottle_volume"]
-    #                   ,column_id=params["column_id"],wash_time_min=params["wash_time_min"],experiment_time_min=params["experiment_time_min"]
-    #                   ,sample_id=params["sample_id"],penlin_time_s=params["penlin_time_s"],peak_number=params["peak_number"],small_position_id=params["small_position_id"]
-    #                   ,big_position_id=params["big_position_id"],warehouse_id=params["warehouse_id"],sample_volume= params["sample_volume"])
-    #
+    # robot_controller.get_xuanzheng()
+    # robot_controller.robot_to_home()
+    # robot_controller.small_put_clean()
+    params_list = [
+        {
+            "params": {
+                "start_ratio": 100.0,
+                "end_ratio": 95.0,
+                "n1_volumes": 2.0,
+                "gradient_rate": 0.2,
+                "peak_threshold": 0.1,
+                "column_volume": 34.0,
+                "sg_window": 21,
+                "sg_order": 3,
+                "baseline_window": 180,
+                "k_factor": 10.0
+            },
+            "big_bottle_volume": 1000,
+            "small_bottle_volume": 100,
+            "column_id": 3,
+            "wash_time_min": 1,
+            "experiment_time_min": 10,
+            "sample_id": 1,
+            "sample_volume":5,
+            "penlin_time_s": 3,
+            "peak_number": 1,
+            "small_position_id": 1,
+            "big_position_id": 7,
+            "warehouse_id": 9,
+            "xuanzheng_timeout_min":20
+        },
+
+        {
+             "params": {
+                 "start_ratio" : 95,
+                "end_ratio" : 66,
+                "n1_volumes" : 2,
+                "gradient_rate" : 2.5,
+                "peak_threshold" : 0.1,
+                "column_volume" : 34,  # 真实柱体积
+                "sg_window" : 21,  # 增大平滑窗口，适应更宽的峰q
+                "sg_order" : 3,
+                "baseline_window" : 180,  # 增大基线窗口
+                "k_factor": 10  # 调整阈值系数，提高检测灵敏度
+            },
+            "big_bottle_volume": 1000,
+            "small_bottle_volume": 50,
+            "column_id": 4,
+            "wash_time_min": 1,
+            "experiment_time_min": 10,
+            "sample_id": 2,
+            "sample_volume": 5,
+
+            "penlin_time_s": 3,
+            "peak_number": 1,
+            "small_position_id": 2,
+            "big_position_id": 7,
+            "warehouse_id": 10,
+            "xuanzheng_timeout_min": 20
+
+        }
+
+    ]
+    i = 0
+    for params  in params_list:
+        print(f"开始第{i+1}次实验")
+        print(f"传入参数为{params}")
+        task_ctrl = TaskController()
+        await run_lab(task_ctrl=task_ctrl, params_1=params["params"],big_bottle_volume=params["big_bottle_volume"],small_bottle_volume=params["small_bottle_volume"]
+                      ,column_id=params["column_id"],wash_time_min=params["wash_time_min"],experiment_time_min=params["experiment_time_min"]
+                      ,sample_id=params["sample_id"],penlin_time_s=params["penlin_time_s"],peak_number=params["peak_number"],small_position_id=params["small_position_id"]
+                      ,big_position_id=params["big_position_id"],warehouse_id=params["warehouse_id"],sample_volume= params["sample_volume"]
+                      ,xuanzheng_timeout_min=params["xuanzheng_timeout_min"])
+
 
 if __name__ == "__main__":
     asyncio.run(main())

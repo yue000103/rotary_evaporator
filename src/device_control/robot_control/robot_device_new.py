@@ -12,7 +12,7 @@ class RobotController:
             机器人设备控制
             :param mock: 是否启用 Mock 模式
         """
-        self.connection = RobotConnection(mock)
+        self.connection = RobotConnection(mock=mock)
 
     def _execute_scenario(self, cmd_full, expected_response):
         """

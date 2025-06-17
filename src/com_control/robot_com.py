@@ -11,6 +11,7 @@ class RobotConnection:
         self.sock = None
         self.recv_msg = ""
         self.lock = threading.Lock()
+        print("self.mock",self.mock)
 
         if not self.mock:
             self.connect()

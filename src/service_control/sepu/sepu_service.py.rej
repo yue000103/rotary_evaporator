@@ -1,0 +1,10 @@
+diff a/src/service_control/sepu/sepu_service.py b/src/service_control/sepu/sepu_service.py	(rejected hunks)
+@@ -202,7 +202,7 @@
+         self.write_params()
+ 
+         # 参数配置
+-        file_path = r'D:\project_python\rotary_evaporator\src\service_control\params.json'
++        file_path = r'D:\back\rotary_evaporator\src\service_control\params.json'
+ 
+         # 加载 JSON 文件
+         with open(file_path, 'r', encoding='utf-8') as f:
