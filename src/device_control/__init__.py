@@ -1,4 +1,4 @@
-MOCK = True
+MOCK = False
 
 
 from src.device_control.xuanzheng_device import XuanZHengController

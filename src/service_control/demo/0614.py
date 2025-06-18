@@ -90,12 +90,13 @@ async def run_lab(task_ctrl: TaskController, params_1: dict,big_bottle_volume,sm
         time.sleep(20)
         task_wash_colum = asyncio.create_task(asyncio.to_thread(sepu_api.wash_column,wash_time_min,experiment_time_min))
 
-        await asyncio.to_thread(robot_controller.transfer_to_collect,big_position_id,sample_id)
+        robot_controller.transfer_to_collect(big_position_id,sample_id)
 
         print(f"{datetime.datetime.now()}🧼 2. 润柱")
         await asyncio.gather(task_wash_colum)
 
         print(f"{datetime.datetime.now()}💉 3. 进样")
+        robot_controller.into_smaple(sample_id)
         await asyncio.gather(task_pump_init)
         response = pump_sample.inject(sample_volume, 1, 3)
         print(f"Inject Response: {response}")
@@ -123,6 +124,9 @@ async def run_lab(task_ctrl: TaskController, params_1: dict,big_bottle_volume,sm
             print("无峰出现，清空试管")
             sepu_clean = asyncio.create_task(asyncio.to_thread(sepu_api.save_experiment_data))
             await asyncio.gather(sepu_clean)
+            robot_controller.uninstall_column(column_id)
+            inject_height.up_height()
+            robot_controller.collect_to_start(big_position_id)
             return
         inject_height.up_height()
         sepu_clean = asyncio.create_task(asyncio.to_thread(sepu_api.save_experiment_data))
@@ -233,37 +237,35 @@ async def run_lab(task_ctrl: TaskController, params_1: dict,big_bottle_volume,sm
 
 
 async def main():
-    # robot_controller.get_xuanzheng()
-    # robot_controller.robot_to_home()
-    # robot_controller.small_put_clean()
+
     params_list = [
-        {
-            "params": {
-                "start_ratio": 100.0,
-                "end_ratio": 95.0,
-                "n1_volumes": 2.0,
-                "gradient_rate": 0.2,
-                "peak_threshold": 0.1,
-                "column_volume": 34.0,
-                "sg_window": 21,
-                "sg_order": 3,
-                "baseline_window": 180,
-                "k_factor": 10.0
-            },
-            "big_bottle_volume": 1000,
-            "small_bottle_volume": 100,
-            "column_id": 3,
-            "wash_time_min": 1,
-            "experiment_time_min": 10,
-            "sample_id": 1,
-            "sample_volume":5,
-            "penlin_time_s": 3,
-            "peak_number": 1,
-            "small_position_id": 1,
-            "big_position_id": 7,
-            "warehouse_id": 9,
-            "xuanzheng_timeout_min":20
-        },
+        # {
+        #     "params": {
+        #         "start_ratio": 100.0,
+        #         "end_ratio": 95.0,
+        #         "n1_volumes": 2.0,
+        #         "gradient_rate": 0.2,
+        #         "peak_threshold": 0.1,
+        #         "column_volume": 34.0,
+        #         "sg_window": 21,
+        #         "sg_order": 3,
+        #         "baseline_window": 180,
+        #         "k_factor": 10.0
+        #     },
+        #     "big_bottle_volume": 1000,
+        #     "small_bottle_volume": 100,
+        #     "column_id": 5,
+        #     "wash_time_min": 0.5,
+        #     "experiment_time_min": 15,
+        #     "sample_id": 1,
+        #     "sample_volume": 5,
+        #     "penlin_time_s": 3,
+        #     "peak_number": 2,
+        #     "small_position_id": 1,
+        #     "big_position_id": 7,
+        #     "warehouse_id": 9,
+        #     "xuanzheng_timeout_min":20
+        # },
 
         {
              "params": {
@@ -280,14 +282,13 @@ async def main():
             },
             "big_bottle_volume": 1000,
             "small_bottle_volume": 50,
-            "column_id": 4,
-            "wash_time_min": 1,
-            "experiment_time_min": 10,
+            "column_id": 3,
+            "wash_time_min": 3,
+            "experiment_time_min": 15,
             "sample_id": 2,
             "sample_volume": 5,
-
             "penlin_time_s": 3,
-            "peak_number": 1,
+            "peak_number": 2,
             "small_position_id": 2,
             "big_position_id": 7,
             "warehouse_id": 10,
@@ -310,6 +311,9 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+    # robot_controller.get_xuanzheng()
+    # robot_controller.robot_to_home()
+    # robot_controller.small_put_clean()
 
 
 

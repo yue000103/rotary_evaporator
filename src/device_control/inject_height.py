@@ -1,7 +1,7 @@
 import logging
 import time
 
-from src.com_control.PLC_com import PLCConnection
+from src.com_control import plc
 from src.uilt.logs_control.setup import device_control_logger
 
 
@@ -12,7 +12,8 @@ class InjectHeight:
         :param mock: 是否启用 Mock 模式
         """
         self.mock = mock
-        self.plc = PLCConnection(mock=mock)
+        self.plc = plc
+        self.plc.mock = mock  # 设置 PLC 通信是否为 Mock 模式
 
         # 定义寄存器地址
         self.REG_START_START = 307

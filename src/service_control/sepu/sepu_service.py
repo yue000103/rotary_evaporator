@@ -242,10 +242,10 @@ class SepuService:
         # 参数配置
 
         # D3
-        # file_path = r'D:\project_python\rotary_evaporator\src\service_control\params.json'
+        file_path = r'D:\project_python\rotary_evaporator\src\service_control\params.json'
 
         # D2
-        file_path = r'D:\back\rotary_evaporator\src\service_control\params.json'
+        # file_path = r'D:\back\rotary_evaporator\src\service_control\params.json'
         # 加载 JSON 文件
         with open(file_path, 'r', encoding='utf-8') as f:
             method = json.load(f)

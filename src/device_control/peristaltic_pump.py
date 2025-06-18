@@ -1,7 +1,7 @@
 import logging
 import time
 
-from src.com_control.PLC_com import PLCConnection
+from src.com_control import plc
 from src.uilt.logs_control.setup import device_control_logger
 
 
@@ -12,8 +12,8 @@ class PeristalticPump:
         :param mock: 是否启用 Mock 模式
         """
         self.mock = mock
-        self.plc = PLCConnection(mock=mock)
-
+        self.plc = plc
+        self.plc.mock = mock  # 设置 PLC 通信是否为 Mock 模式
         # 定义寄存器地址
         self.REG_START_START = 300 # 泵启动
         self.REG_START_STOP = 301  # 泵停 (bool)
@@ -42,6 +42,7 @@ class PeristalticPump:
             done = self.plc.read_coils(self.PUMP_FINISH)[0]
             if done:
                 return True
+            time.sleep(2)
     def stop_pump(self):
         """ 停止蠕动泵 """
         self.plc.write_coil(self.REG_START_STOP, False)
@@ -62,6 +63,7 @@ class PeristalticPump:
             done = self.plc.read_coils(self.WASHING_LIQUID_STOP)[0]
             if done:
                 return True
+            time.sleep(2)
 
     def start_waste_liquid(self):
         self.plc.write_coil(self.WASTE_LIQUID_START, True)
@@ -75,12 +77,13 @@ class PeristalticPump:
             done = self.plc.read_coils(self.WASTE_LIQUID_STOP)[0]
             if done:
                 return True
+            time.sleep(2)
 
 if __name__ == '__main__':
     pump = PeristalticPump(mock=False)  # 启用 Mock 模式测试
     # pump.set_speed(1200)  # 设定转速
 
-    pump.start_waste_liquid()  # 启动泵
+    # pump.start_waste_liquid()  # 启动泵
     # pump.set_volume(500)  # 设定液体体积
     # pump.stop_pump()  # 停止泵
     #

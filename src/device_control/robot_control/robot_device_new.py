@@ -11,6 +11,7 @@ class RobotController:
         """
             机器人设备控制
             :param mock: 是否启用 Mock 模式
+            1 是抬起来  0是放下
         """
         self.connection = RobotConnection(mock=mock)
 
@@ -65,9 +66,18 @@ class RobotController:
         self._execute_scenario(command, "task_flask_move_py(17,0)_finish")
         command = f"task_scara_get_tool()"
         self._execute_scenario(command, "task_scara_get_tool()_finish")
+        # command = f"task_scara_sample_py({sample_id},1)"
+        # self._execute_scenario(command, f"task_scara_sample_py({sample_id},1)_finish")
+
+    def collect_to_start(self,position_id):
+        command = f"task_flask_move_py(17,1)"
+        self._execute_scenario(command, "task_flask_move_py(17,1)_finish")
+        command = f"task_flask_move_py({position_id},0)"
+        self._execute_scenario(command, f"task_flask_move_py({position_id},0)_finish")
+
+    def into_smaple(self,sample_id):
         command = f"task_scara_sample_py({sample_id},1)"
         self._execute_scenario(command, f"task_scara_sample_py({sample_id},1)_finish")
-
 
     def to_clean_needle(self):
         command = f"sample_ok"

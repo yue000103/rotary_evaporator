@@ -1,14 +1,15 @@
 import time
 
 from src.com_control.xuanzheng_com import ConnectionController
-from src.com_control.PLC_com import PLCConnection
+from src.com_control import plc
 import json
 
 
 class XuanZHengController:
     def __init__(self,mock=False):
         self.connection = ConnectionController(mock)
-        self.plc = PLCConnection(mock=mock)
+        self.plc = plc
+        self.plc.mock = mock  # 设置 PLC 通信是否为 Mock 模式
         self.HEIGHT_ADDRESS = 502
         self.AUTO_SET = 500
         self.AUTO_FINISH = 501
@@ -34,6 +35,7 @@ class XuanZHengController:
             while True:
                 if time.time() - start_time > timeout:
                     print(f"⏰ 超过超时时间 {timeout_min} 分钟，退出轮询。")
+                    self.stop_evaporation()
                     break
                 raw_result = self.get_process()
                 print("当前状态：", raw_result)
@@ -146,6 +148,7 @@ class XuanZHengController:
         elif volume == 0:
             self.plc.write_single_register(self.HEIGHT_ADDRESS, 0)
         time.sleep(1)
+
         self.plc.write_coil(self.AUTO_SET,True)
 
 
@@ -163,7 +166,7 @@ class XuanZHengController:
         while True:
             print("-----------height_finish_async----------")
             done = self.plc.read_coils(self.AUTO_FINISH,1)[0]
-            time.sleep(1)
+            time.sleep(2)
             if done:
                 return True
     def start_waste_liquid(self):

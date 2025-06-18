@@ -3,20 +3,54 @@ from pymodbus.client import ModbusTcpClient
 from src.uilt.yaml_control.setup import get_base_url
 from src.uilt.logs_control.setup import com_logger
 import struct
+import threading
+
+
+
 
 class PLCConnection:
-    def __init__(self, mock=False):
+
+    @staticmethod
+    def synchronized(func):
+        def wrapper(self, *args, **kwargs):
+            with self.lock:
+                return func(self, *args, **kwargs)
+        return wrapper  # 需要返回 wrapper 函数
+
+    @staticmethod
+    def retry(max_attempts=3):
+        def decorator(func):
+            def wrapper(self, *args, **kwargs):
+                attempts = 0
+                while attempts < max_attempts:
+                    try:
+                        return func(self, *args, **kwargs)
+                    except Exception as e:
+                        attempts += 1
+                        if attempts == max_attempts:
+                            com_logger.error(f"Final attempt failed for {func.__name__}: {e}")
+                            raise
+                        com_logger.warning(f"Attempt {attempts} failed for {func.__name__}: {e}. Retrying...")
+                return None
+            return wrapper
+        return decorator
+
+    def __init__(self):
         """
         PLC 通信控制
         :param mock: 是否启用 Mock 模式
         """
         self.host = get_base_url("plc_com")
         self.port = 502  # Modbus TCP 默认端口
-        self.mock = mock
-        self.client = None
+        self.mock = False
+        self.client:ModbusTcpClient|None = None
+        self.lock = threading.Lock()
 
         if not self.mock:
             self._connect()
+
+    # 加锁装饰器
+
 
         com_logger.info(f"PLCConnection initialized on {self.host}:{self.port}")
 
@@ -29,6 +63,7 @@ class PLCConnection:
         else:
             com_logger.error("Failed to connect to PLC Server")
 
+    @synchronized
     def read_holding_registers(self, address, count):
         """ 读取保持寄存器的值 """
         if self.mock:
@@ -47,6 +82,7 @@ class PLCConnection:
             com_logger.error(f"Error in communication: {e}")
             return None
 
+    @synchronized
     def write_single_register(self, address, value):
         """ 写入单个保持寄存器的值 """
         if self.mock:
@@ -65,6 +101,7 @@ class PLCConnection:
             com_logger.error(f"Error in communication: {e}")
             return False
 
+    @synchronized
     def write_registers(self, address, values):
         """ 写入多个保持寄存器 """
         if self.mock:
@@ -83,6 +120,7 @@ class PLCConnection:
             com_logger.error(f"Error in communication: {e}")
             return False
 
+    @synchronized
     def write_coil(self, address, value):
         """ 写入单个线圈 (布尔值) """
         if self.mock:
@@ -101,6 +139,7 @@ class PLCConnection:
             com_logger.error(f"Error in communication: {e}")
             return False
 
+    @synchronized
     def read_coils(self, address, count=1):
         """ 读取线圈 (布尔值) """
         if self.mock:
@@ -139,6 +178,7 @@ class PLCConnection:
         low = value & 0xFFFF  # 低16位
         return high, low
 
+    @synchronized
     def write_dint_register(self, address, value):
         high, low = self.split_dint(value)
         registers = [low, high]
