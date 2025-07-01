@@ -3,6 +3,8 @@ import sys
 
 from datetime import datetime
 import time
+import ast
+
 import threading
 
 from PIL.ImagePalette import sepia
@@ -135,13 +137,27 @@ class SepuService:
         # tube = window.return_tube()
         # tube = [{'module_id': 1, 'tube_list': [2, 3, 4]}, {'module_id': 2, 'tube_list': [4, 5, 6,7,8,9,10]}]
         # tube = [{'module_id': 1, 'tube_list': [2, 3, 4]}]
-        retain_tube = self.sepu_api.get_task_list_by_peak_id(peak_id)
+        retain_tube = self.sepu_api.get_task_list_by_peak_width(peak_id)
         print("select_retain_tubes 函数开始执行",retain_tube)
         tube = retain_tube["retain_tubes"]
-        print("tube",tube)
+        # while True:
+        #     try:
+        #         tube_input = input(
+        #             "请输入峰数据（如：[{'module_id': 1, 'tube_list': [2, 3, 4]}, {'module_id': 2, 'tube_list': [4, 5, 6, 7, 8, 9, 10]}]）：")
+        #         tube = ast.literal_eval(tube_input)
+        #         print("你输入的tube数据：", tube)
+        #
+        #         if input("按Enter键继续收集峰数据..., 输入 exit 重新输入") == 'exit':
+        #             continue
+        #         break
+        #     except Exception as e:
+        #         print("输入错误，请重新输入正确的格式！")
+
+
         if len(tube) == 0:
             return 600
-        self.retain_tube_list = tube
+        # self.sepu_api.get_module_dict(tube)
+        # self.retain_tube_list = tube
         # self.find_clean_tubes()
 
 
@@ -171,7 +187,71 @@ class SepuService:
                 return 0
             time.sleep(2)
 
+    def select_retain_tubes_by_id(self, peak_id):
+        service_control_logger.info('开始执行 select_retain_tubes 函数')
 
+        """ 打开 PlotWithInputs 窗口，获取 tube_entries """
+
+        # self.get_experiment_data()
+        # print("self.curve_data",self.curve_data)
+        # print("self.vertical_data",self.vertical_data)
+        # print("self.sampling_time",self.sampling_time)
+        #
+        # app = QApplication.instance()
+        # if app is None:
+        #     app = QApplication(sys.argv)
+        #
+        # window = PlotWithInputs(self.curve_data, self.vertical_data, self.sampling_time)
+        # window.show()
+        #
+        # # 执行事件循环，直到窗口关闭
+        # app.exec_()
+        #
+        # # 窗口关闭后，获取 tube_entries
+        # tube = window.return_tube()
+        # tube = [{'module_id': 1, 'tube_list': [2, 3, 4]}, {'module_id': 2, 'tube_list': [4, 5, 6,7,8,9,10]}]
+        # tube = [{'module_id': 1, 'tube_list': [2, 3, 4]}]
+        retain_tube = self.sepu_api.get_task_list_by_peak_id(peak_id)
+        print("select_retain_tubes 函数开始执行", retain_tube)
+        tube = retain_tube["retain_tubes"]
+        print("tube", tube)
+        if len(tube) == 0:
+            return 600
+        self.retain_tube_list = tube
+        # self.find_clean_tubes()
+
+        for tube_info in tube:
+            timestamp = time.strftime("%Y%m%d%H%M%S")
+            module_id = tube_info.get('module_id')
+            tube_list = tube_info.get('tube_list')
+
+            task_list = {
+                "method_id": int(self.sepu_api.method_id),
+                "module_id": int(module_id),  # 假设从 sepu_api 获取 module_id
+                "status": "retain",
+                "task_id": int(timestamp),
+                "tube_list": tube_list
+            }
+
+            print("任务列表:", task_list)
+            result = self.sepu_api.get_tube(task_list)
+            print("获取试管结果:")
+            print(json.dumps(result, indent=2))
+            time.sleep(10)
+
+        while True:
+            result = self.sepu_api.get_tube_status()
+            print(f"收集液体:", result)
+            if result["status"] == True:
+                return 0
+            time.sleep(2)
+
+    def get_peaks_num(self):
+        peak = self.sepu_api.get_peaks_num()
+        peaks_num = int(peak.get("peaks_num"))
+        if not peaks_num:
+            return 0
+        return peaks_num
 
     def find_clean_tubes(self):
 
@@ -328,7 +408,14 @@ class SepuService:
         clean_tube = self.sepu_api.get_abandon_tube_tasks()
 
         print("clean_tube",clean_tube)
-        tube = clean_tube["retain_tubes"]
+        # tube = clean_tube["retain_tubes"]
+
+        if "retain_tubes" in clean_tube:
+            tube = clean_tube["retain_tubes"]
+        else:
+            tube_input = input("未检测到retain_tubes，请手动输入tube（格式如：[{'module_id':1,'tube_list':[1,2,3]}]）：")
+            tube = json.loads(tube_input)
+
         #
         # service_control_logger.info('结束执行 save_experiment_data 函数')
         # # def execute_task(self):
@@ -365,7 +452,6 @@ class SepuService:
 
             # threading_cut = threading.Thread(target=execute_task)
             # threading_cut.start()
-        result = {"status": "success", "message": "实验数据已保存"}
 
     def set_start_tube(self,tube_id,module_id):
         self.sepu_api.set_start_tube(tube_id,module_id)
@@ -373,21 +459,29 @@ class SepuService:
         start_time = self.sepu_api.get_current_time()
         result = self.sepu_api.get_curve(start_time)
 
+    def get_detected_peaks(self):
+        return self.sepu_api.get_detected_peaks()
+
 if __name__ == '__main__':
     sepu = SepuService()
-    sepu.wash_column(10)
-    sepu.update_line_pause()
+    # print(sepu.get_detected_peaks())
+    # sepu.update_line_start()
+    tube = [{'module_id': 1, 'tube_list': [1,2,3,4]},{'module_id': 2, 'tube_list': [1,2,3,4]}]
+    sepu.sepu_api.get_module_dict(tube)
 
-    time.sleep(5)
-
-    sepu.update_line_start()
-    time.sleep(5)
-
-    sepu.start_column()
-
-    sepu.update_line_terminate()
-
-    sepu.select_retain_tubes()
-    service_control_logger.info('结束执行 execute_task 函数')
-
-    sepu.save_experiment_data()
+    # sepu.wash_column(10)
+    # sepu.update_line_pause()
+    #
+    # time.sleep(5)
+    #
+    # sepu.update_line_start()
+    # time.sleep(5)
+    #
+    # sepu.start_column()
+    #
+    # sepu.update_line_terminate()
+    #
+    # sepu.select_retain_tubes()
+    # service_control_logger.info('结束执行 execute_task 函数')
+    #
+    # sepu.save_experiment_data()

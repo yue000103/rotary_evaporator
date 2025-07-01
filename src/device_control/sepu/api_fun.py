@@ -172,7 +172,7 @@ class ApiClient:
             "error_codes": []
         }
         print("payload", payload)
-        return self.sepu_com.send_post_request("/save/execution_data", payload)
+        return self.sepu_com.send_post_request("/experiment/save/execution_data", payload)
 
     def get_line(self) -> dict:
         """
@@ -263,9 +263,9 @@ class ApiClient:
         }
         return self.sepu_com.send_post_request("/eluent_curve/init", payload)
 
-    def get_task_list_by_peak_id(self, peak_id: int) -> dict:
+    def get_task_list_by_peak_width(self, peak_id: int) -> dict:
         """
-        调用 /get_task_list_by_peak_id 获取指定peak_id的任务列表。
+        调用 /get_task_list_by_peak_width 获取指定peak_id的任务列表。
 
         参数:
         peak_id (int): 峰ID
@@ -274,7 +274,7 @@ class ApiClient:
         dict: 接口返回的响应数据
         """
         payload = {"peak_id": peak_id}
-        return self.sepu_com.send_post_request("/eluent_curve/get_task_list_by_peak_id", payload)
+        return self.sepu_com.send_post_request("/eluent_curve/get_task_list_by_peak_width", payload)
 
     def get_abandon_tube_tasks(self) -> dict:
         """
@@ -321,6 +321,48 @@ class ApiClient:
         dict: 接口返回的响应数据
         """
         return self.sepu_com.send_get_request("/column/equilibration/stop")
+
+    def get_task_list_by_peak_id(self, peak_id: int) -> dict:
+        """
+        调用 /get_task_list_by_peak_id 获取指定 peak_id 的任务列表。
+
+        参数:
+        peak_id (int): 峰 ID
+
+        返回:
+        dict: 接口返回的响应数据
+        """
+        payload = {"peak_id": peak_id}
+        return self.sepu_com.send_post_request("/eluent_curve/get_task_list_by_peak_id", payload)
+
+    def get_peaks_num(self) -> dict:
+        """
+        调用 /get_peaks_num 获取峰的数量。
+
+        返回:
+        dict: 接口返回的响应数据
+        """
+        return self.sepu_com.send_get_request("/eluent_curve/get_peaks_num")
+
+    def get_module_dict(self, module_dict) -> dict:
+        """
+        调用 /get_module_dict 获取模块字典。
+
+        返回:
+        dict: 接口返回的响应数据
+        """
+        payload = {"module_dict": module_dict}
+
+        return self.sepu_com.send_post_request("/eluent_curve/get_module_dict",payload)
+
+    def get_detected_peaks(self) -> dict:
+        """
+        调用 /get_detected_peaks 获取峰表。
+
+        返回:
+        dict: 接口返回的响应数据
+        """
+        return self.sepu_com.send_post_request("/eluent_curve/get_detected_peaks", {})
 
 def main():
     # 创建 ApiClient 实例
@@ -475,4 +517,5 @@ if __name__ == "__main__":
 
     # main()
     api_client = ApiClient()
-    api_client.get_task_list_by_peak_id(1)
+    # start_time = ""
+    api_client.save_experiment_data()

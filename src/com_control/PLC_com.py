@@ -47,6 +47,7 @@ class PLCConnection:
         self.lock = threading.Lock()
 
         if not self.mock:
+            print("正在连接到 PLC 控制器...")
             self._connect()
 
     # 加锁装饰器

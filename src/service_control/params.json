@@ -1,7 +1,7 @@
 {
     "method": {
-        "samplingTime": 15,
-        "detectorWavelength": 258,
+        "samplingTime": 20,
+        "detectorWavelength": 254,
         "equilibrationColumn": 1,
         "speed": 100,
         "totalFlowRate": 35,
@@ -77,7 +77,7 @@
         "retainList": [
             {
                 "module_id": 1,
-                "liquid_volume": 30,
+                "liquid_volume": 35,
                 "tube_id": [
                     1,
                     2,
@@ -93,7 +93,7 @@
             },
             {
                 "module_id": 2,
-                "liquid_volume": 30,
+                "liquid_volume": 35,
                 "tube_id": [
                     1,
                     2,

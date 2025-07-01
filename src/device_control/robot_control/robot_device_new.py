@@ -6,6 +6,48 @@ import socket
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+import functools
+
+def scenario_exception_handler(func):
+    @functools.wraps(func)
+    def wrapper(self, cmd_full, expected_response, *args, **kwargs):
+        retry_count = 3
+        while True:
+            try:
+                return func(self, cmd_full, expected_response, *args, **kwargs)
+            except TimeoutError as e:
+                err_msg = str(e)
+                # 只处理特定超时
+                if f"超时未收到" in err_msg:
+                    # 检查是否断链
+                    if hasattr(self.connection, "is_connected") and not self.connection.is_connected():
+                        print("⚠️ 检测到断链，正在尝试重连...")
+                        for _ in range(retry_count):
+                            try:
+                                self.connection.connect()
+                                print("✅ 重连成功")
+                            except Exception as re:
+                                print(f"重连失败: {re}")
+                                time.sleep(1)
+                        print("❌ 重连3次失败，抛出异常")
+                        raise
+                    # 没断链，用户选择
+                    print(f"❌ 超时未收到：{expected_response}")
+                    print("请选择：1.继续（跳过此步） 2.重新执行 3.结束实验")
+                    choice = input("输入选项（1/2/3）：").strip()
+                    if choice == "1":
+                        print("⏭️ 跳过此方法")
+                        return False
+                    elif choice == "2":
+                        print("🔄 重新执行此方法")
+                        return func(self, cmd_full, expected_response, *args, **kwargs)
+                    else:
+                        print("🛑 结束实验，抛出异常")
+                        raise
+                else:
+                    raise
+    return wrapper
+
 class RobotController:
     def __init__(self, mock):
         """
@@ -15,6 +57,7 @@ class RobotController:
         """
         self.connection = RobotConnection(mock=mock)
 
+    @scenario_exception_handler
     def _execute_scenario(self, cmd_full, expected_response):
         """
         核心场景执行器（通用逻辑封装）
@@ -22,30 +65,15 @@ class RobotController:
         :param expected_response: 期望的响应内容
         :return: 布尔值（操作是否成功）
         """
-        try:
-            # 发送指令并记录操作
-            self.connection.send_command(cmd_full)
-            print(f"📤 Command Sent: {cmd_full}")
+        time.sleep(3)
+        # 发送指令并记录操作
+        self.connection.send_command(cmd_full)
+        print(f"📤 Command Sent: {cmd_full}")
+        self.connection.wait_for_response(cmd_full + "ok", 20)
+        print("开始执行------")
+        self.connection.wait_for_response(cmd_full + "_finish", 120)
 
-            self.connection.wait_for_response(cmd_full + "ok", 20)
 
-            print("开始执行------")
-
-            self.connection.wait_for_response(cmd_full + "_finish", 120)
-
-            # # 等待预期响应并记录交互过程
-            # device_control_logger.info(f"⏳ Waiting for: {expected_response}")
-            # actual_response = self.wait_for_target(expected_response)
-
-            # # 结果判定与日志输出
-            # result = (actual_response == expected_response)
-            # status = "✅ SUCCESS" if result else "❌ FAILURE"
-            # device_control_logger.info(f"{status} ✅ {command} → {expected_response}")
-
-            return True
-        except Exception as e:
-            device_control_logger.error(f"⚠️ Scenario Failed: {str(e)}")
-            raise
 
     def install_column(self,column_id):
         """等待样本加载准备就绪
@@ -64,8 +92,7 @@ class RobotController:
         self._execute_scenario(command, f"task_flask_move_py({position_id},1)_finish")
         command = f"task_flask_move_py(17,0)"
         self._execute_scenario(command, "task_flask_move_py(17,0)_finish")
-        command = f"task_scara_get_tool()"
-        self._execute_scenario(command, "task_scara_get_tool()_finish")
+
         # command = f"task_scara_sample_py({sample_id},1)"
         # self._execute_scenario(command, f"task_scara_sample_py({sample_id},1)_finish")
 
@@ -76,21 +103,20 @@ class RobotController:
         self._execute_scenario(command, f"task_flask_move_py({position_id},0)_finish")
 
     def into_smaple(self,sample_id):
+        command = f"task_scara_get_tool()"
+        self._execute_scenario(command, "task_scara_get_tool()_finish")
         command = f"task_scara_sample_py({sample_id},1)"
         self._execute_scenario(command, f"task_scara_sample_py({sample_id},1)_finish")
 
     def to_clean_needle(self):
         command = f"sample_ok"
         self._execute_scenario(command, "sample_ok_finish")
-
         command = f"task_scara_clean_py(1)"
         self._execute_scenario(command, "Sample loading ready")
 
     def task_scara_put_tool(self):
         command = f"clean_ok"
         self._execute_scenario(command, "clean_ok_finish")
-
-
         command = f"task_scara_put_tool(1)"
         self._execute_scenario(command, "task_scara_put_tool(1)_finish")
 
@@ -116,7 +142,6 @@ class RobotController:
     def get_penlin_needle(self):
         command = "task_abb_clean_py()"
         self._execute_scenario(command, "task_abb_clean_py()_finish")
-        pass
 
     def abb_clean_ok(self):
         command = f"abb_clean_ok"
@@ -148,6 +173,9 @@ class RobotController:
         pass
 
     def xuanzheng_to_warehouse(self, position_id):
+        if position_id > 14:
+            input("输入位置不正确，请清空 14 号位置，输入enter继续")
+            position_id = 14
         command = f"task_flask_move_py({position_id},0)"
         self._execute_scenario(command, f"task_flask_move_py({position_id},0)_finish")
         pass
@@ -164,6 +192,9 @@ class RobotController:
 
 
     def small_big_to_clean(self,position_id):
+        if position_id > 6:
+            input("输入位置不正确，请将小瓶放到 6 号位置，输入enter继续")
+            position_id = 6
         command = f"task_flask_move_py({position_id},1)"
         self._execute_scenario(command, f"task_flask_move_py({position_id},1)_finish")
         command = f"task_flask_move_py(16,0)"
@@ -173,11 +204,36 @@ class RobotController:
         command = f"task_flask_move_py(16,0)"
         self._execute_scenario(command, "task_flask_move_py(16,0)_finish")
 
+
+    def clean_to_collect(self):
+        command = f"task_flask_move_py(15,1)"
+        self._execute_scenario(command, "task_flask_move_py(15,1)_finish")
+        command = f"task_flask_move_py(17,0)"
+        self._execute_scenario(command, "task_flask_move_py(17,0)_finish")
+
+
+
+    def close(self):
+        """
+        关闭连接
+        """
+        self.connection.close()
+        print("🔌 Connection Closed")
+
 if __name__ == '__main__':
     controller = RobotController(mock=False)
-    controller.get_xuanzheng()
-    controller.robot_to_home()
-    controller.small_put_clean()
+    # command = f"task_scara_put_tool(1)"
+    # controller._execute_scenario(command, "task_scara_put_tool(1)")
+    controller.install_column(4)
+    time.sleep(25)
+    controller.uninstall_column(4)
+    controller.install_column(6)
+    time.sleep(25)
+    controller.uninstall_column(6)
+
+
+
+
     # controller.install_column(6)
     #
     # # 新增手动输入功能

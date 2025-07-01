@@ -136,7 +136,7 @@ class XuanZHengController:
                 program={"type": "AutoDest", "flaskSize": 1}
             )
         elif volume == 100:
-            self.plc.write_single_register(self.HEIGHT_ADDRESS, 1332)
+            self.plc.write_single_register(self.HEIGHT_ADDRESS, 1400)
             self.change_device_parameters(
                 program={"type": "AutoDest", "flaskSize": 1}
             )
@@ -328,6 +328,8 @@ if __name__ == "__main__":
 
     # 直接初始化 ProcessController，可选择 mock 模式
     controller = XuanZHengController(mock=False)  # mock=True 开启模拟模式
+    controller.get_info()
+    # controller.
     # controller.xuanzheng_sync()
 
     # 获取信息（模拟模式下不会真正发送请求）
@@ -370,7 +372,8 @@ if __name__ == "__main__":
     # controller.run_evaporation()
     # controller.xuanzheng_sync()
     # controller.set_height(0)
-    controller.start_waste_liquid()
+    # controller.vacuum_until_below_threshold()
+    # controller.start_waste_liquid()
 
     # controller.set_auto_set_height(True)
     #

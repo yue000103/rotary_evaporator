@@ -34,6 +34,7 @@ class ConnectionController:
 
 
         if not self.mock:
+            print("正在连接到 Xuanzheng 控制器...")
             self.driver = self._initialize_driver()
             self._start_heartbeat()  # 自动启动心跳
 
@@ -64,17 +65,30 @@ class ConnectionController:
                 time.sleep(0.1)
 
     def _initialize_driver(self):
-        print("--------------1-------------------")
+        try:
+            print("--------------1-------------------")
+            chrome_options = Options()
+            print("--------------2-------------------")
 
-        chrome_options = Options()
-        print("--------------2-------------------")
+            # 添加必要的Chrome选项
+            # chrome_options.add_argument("--headless")  # 无界面模式
+            chrome_options.add_argument("--ignore-certificate-errors")  # 忽略证书错误
+            chrome_options.add_argument("--ignore-ssl-errors")  # 忽略SSL错误
+            chrome_options.add_argument("--no-sandbox")  # 禁用沙箱
+            chrome_options.add_argument("--disable-dev-shm-usage")  # 禁用/dev/shm使用
+            chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])  # 禁用日志
 
-        chrome_options.add_argument("--headless")  # 无界面模式
-        print("--------------3-------------------")
+            print("--------------3-------------------")
+            print(chrome_options)
 
-        chrome_options.add_argument("--ignore-certificate-errors")
-        print(chrome_options)
-        return webdriver.Chrome(options=chrome_options)
+            # 创建Chrome WebDriver实例
+            driver = webdriver.Chrome(options=chrome_options)
+
+            print("--------------4-------------------")
+            return driver
+        except Exception as e:
+            com_logger.error(f"Failed to initialize Chrome driver: {str(e)}")
+            raise
 
     def _send_request(self, endpoint, method='GET', data=None):
         """ 发送 HTTP 请求 """

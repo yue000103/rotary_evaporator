@@ -28,7 +28,7 @@ class PumpSample:
         self.MAX_PULSE = 11000
         self.AIR_GAP_PULSE = 2000
         self.LIQUID_PULSE = 2000
-        self.WAITING_TIME = 5000
+        self.WAITING_TIME = 20000
         self.busy_flag = True
         self.host = host
         self.port = port
@@ -126,6 +126,39 @@ class PumpSample:
 
         return self.send_command(command)
 
+    def wash(self, volume: float):
+        """
+        进行液体注射
+        :param volume: 体积 (mL)
+        :param in_port: 入口端口号
+        :param out_port: 出口端口号
+        """
+        pulse = self.ml_to_pulse(volume)
+        max_pulse_per_injection = self.MAX_PULSE - self.AIR_GAP_PULSE
+        inject_cycles = pulse // max_pulse_per_injection
+        last_time_pulse = pulse % max_pulse_per_injection
+
+        in_speed = 1000
+        out_speed = 1000
+
+        if inject_cycles > 0:
+            # inject_cycles -= 1
+            command = (
+            f'gV{in_speed}A{self.MAX_PULSE}'
+            f'M{self.WAITING_TIME}V{out_speed}A0M{self.WAITING_TIME}'
+            f'G{inject_cycles}'
+            f'V{in_speed}A{last_time_pulse + self.AIR_GAP_PULSE}M{self.WAITING_TIME}'
+            f'{self.SAMPLE_OUTLET_3}V{out_speed}A{self.AIR_GAP_PULSE}M{self.WAITING_TIME}{self.SHORT_PORT}'
+            )
+        else:
+            command = (
+                f'V{in_speed}A{last_time_pulse + self.AIR_GAP_PULSE}'
+                f'M{self.WAITING_TIME}{self.SAMPLE_OUTLET_3}V{out_speed}A0M{self.WAITING_TIME}{self.SHORT_PORT}'
+            )
+
+
+        return self.send_command(command)
+
     def check_state(self):
         """ 查看泵的状态，并更新 busy_flag """
         re = self.send_command("Q")
@@ -177,10 +210,12 @@ class PumpSample:
 
 if __name__ == '__main__':
     ps = PumpSample(mock=False)  # 启用 Mock 模式
-    response = ps.inject(2, 1, 3)
+    # response = ps.inject(2, 1, 3)
     # print(f"Inject Response: {response}")
     # ps.sync()
-    # ps.send_command('I')
+
+
+    ps.send_command('A3000')
     # re = ps.initialization()
     # print("re",re)
     # ps.check_state()

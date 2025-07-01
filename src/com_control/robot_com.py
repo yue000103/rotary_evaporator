@@ -1,6 +1,48 @@
+import logging
 import socket
 import threading
 import time
+import functools
+
+def scenario_exception_handler(func):
+    @functools.wraps(func)
+    def wrapper(self, cmd_full, *args, **kwargs):
+        retry_count = 3
+        while True:
+            try:
+                return func(self, cmd_full, *args, **kwargs)
+            except TimeoutError as e:
+                err_msg = str(e)
+                # 只处理特定超时
+                if err_msg == f"❌ 超时未收到":
+                    # 检查是否断链
+                    if hasattr(self.connect, "is_connected") and not self.is_connected():
+                        print("⚠️ 检测到断链，正在尝试重连...")
+                        for _ in range(retry_count):
+                            try:
+                                self.connect()
+                                print("✅ 重连成功")
+                            except Exception as re:
+                                print(f"重连失败: {re}")
+                                time.sleep(1)
+                        print("❌ 重连3次失败，抛出异常")
+                        raise
+                    # 没断链，用户选择
+                    print("请选择：1.继续（跳过此步） 2.重新执行 3.结束实验")
+                    choice = input("输入选项（1/2/3）：").strip()
+                    if choice == "1":
+                        print("⏭️ 跳过此方法")
+                        return False
+                    elif choice == "2":
+                        print("🔄 重新执行此方法")
+                        return func(self, cmd_full, *args, **kwargs)
+                    else:
+                        print("🛑 结束实验，抛出异常")
+                        raise
+                else:
+                    raise
+    return wrapper
+
 
 
 class RobotConnection:
@@ -14,6 +56,7 @@ class RobotConnection:
         print("self.mock",self.mock)
 
         if not self.mock:
+            print("正在连接到 ABB 控制器...")
             self.connect()
 
     def connect(self):
@@ -48,13 +91,16 @@ class RobotConnection:
                             self.recv_msg = data.decode()
             except:
                 print("⚠️ 接收线程异常")
-                break
-
+                raise
+    @scenario_exception_handler
     def send_command(self, cmd):
         if self.mock:
             print(f"[MOCK] send: {cmd}")
             return
+        print("cmd",cmd)
         self.sock.sendall((cmd + "\n").encode())
+        print(f"✅ 发送命令：{cmd}")
+
 
     def wait_for_response(self, expect, timeout_s=10):
         if self.mock:
@@ -63,11 +109,34 @@ class RobotConnection:
         timeout = time.time() + timeout_s
         while time.time() < timeout:
             with self.lock:
-                if self.recv_msg == expect:
+                if expect in self.recv_msg:
                     print(f"✅ 收到确认：{expect}")
+                    if expect != self.recv_msg:
+                        logging.error('!!!!!!!!!!!!!!!! WRONG MESSAGE !!!!!!!!!!!!!!!!!!')
+                        logging.error(f'Expected: {expect}, Received: {self.recv_msg}')
                     self.recv_msg = ''
                     return True
                 elif self.recv_msg:
                     print(f"message: {self.recv_msg}")
             time.sleep(0.1)
         raise TimeoutError(f"❌ 超时未收到：{expect}")
+
+    def close(self):
+        if self.sock:
+            self.sock.close()
+            print("✅ 机器人连接已关闭")
+        else:
+            print("⚠️ 机器人连接未初始化或已关闭")
+
+    def is_connected(self):
+        try:
+            if self.sock is None:
+                return False
+            self.sock.send(b'')  # 发送空字节检测连接
+            return True
+        except Exception:
+            return False
+
+
+    def __del__(self):
+        self.close()
