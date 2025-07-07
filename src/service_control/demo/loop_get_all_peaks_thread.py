@@ -344,8 +344,8 @@ def main():
     global global_warehouse_id, global_small_position_id
     global_small_position_id = params["small_position_id"]
     global_warehouse_id = params["warehouse_id"]
-
-    for j in range(3):
+    j = 0
+    while input("是否继续检测峰？(y/n): ").strip().lower() == 'y':
 
         print(f"开始第{j+1}个循环 ---------- {datetime.datetime.now()}")
 
