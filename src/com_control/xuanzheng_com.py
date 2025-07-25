@@ -65,30 +65,79 @@ class ConnectionController:
                 time.sleep(0.1)
 
     def _initialize_driver(self):
+        max_retries = 3
+
+        for attempt in range(max_retries):
+            try:
+                print(f"第 {attempt + 1} 次尝试启动Chrome WebDriver...")
+
+                # 清理可能存在的Chrome进程
+                if attempt > 0:
+                    self._cleanup_chrome_processes()
+                    time.sleep(2)
+
+                chrome_options = Options()
+
+                # 基础配置
+                chrome_options.add_argument("--no-sandbox")
+                chrome_options.add_argument("--disable-dev-shm-usage")
+                chrome_options.add_argument("--disable-gpu")
+                chrome_options.add_argument("--disable-extensions")
+                chrome_options.add_argument("--ignore-certificate-errors")
+                chrome_options.add_argument("--ignore-ssl-errors")
+
+                # 避免端口冲突
+                import random
+                debug_port = random.randint(9000, 9999)
+                chrome_options.add_argument(f"--remote-debugging-port={debug_port}")
+
+                # 设置临时用户数据目录
+                import tempfile
+                user_data_dir = tempfile.mkdtemp()
+                chrome_options.add_argument(f"--user-data-dir={user_data_dir}")
+
+                # 如果不需要界面，启用无头模式
+                # chrome_options.add_argument("--headless")
+
+                print(f"使用调试端口: {debug_port}")
+
+                # 使用Service和webdriver-manager
+                try:
+                    from webdriver_manager.chrome import ChromeDriverManager
+                    from selenium.webdriver.chrome.service import Service
+
+                    service = Service(ChromeDriverManager().install())
+                    driver = webdriver.Chrome(service=service, options=chrome_options)
+                except ImportError:
+                    # 如果没有webdriver-manager，使用默认方式
+                    driver = webdriver.Chrome(options=chrome_options)
+
+                print("Chrome WebDriver启动成功！")
+                return driver
+
+            except Exception as e:
+                print(f"第 {attempt + 1} 次启动失败: {str(e)}")
+                if attempt == max_retries - 1:
+                    com_logger.error(f"Failed to initialize Chrome driver after {max_retries} attempts: {str(e)}")
+                    raise
+                time.sleep(2)
+
+    def _cleanup_chrome_processes(self):
+        """清理可能存在的Chrome和ChromeDriver进程"""
+        import psutil
+        import os
+        import signal
+
         try:
-            print("--------------1-------------------")
-            chrome_options = Options()
-            print("--------------2-------------------")
-
-            # 添加必要的Chrome选项
-            # chrome_options.add_argument("--headless")  # 无界面模式
-            chrome_options.add_argument("--ignore-certificate-errors")  # 忽略证书错误
-            chrome_options.add_argument("--ignore-ssl-errors")  # 忽略SSL错误
-            chrome_options.add_argument("--no-sandbox")  # 禁用沙箱
-            chrome_options.add_argument("--disable-dev-shm-usage")  # 禁用/dev/shm使用
-            chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])  # 禁用日志
-
-            print("--------------3-------------------")
-            print(chrome_options)
-
-            # 创建Chrome WebDriver实例
-            driver = webdriver.Chrome(options=chrome_options)
-
-            print("--------------4-------------------")
-            return driver
-        except Exception as e:
-            com_logger.error(f"Failed to initialize Chrome driver: {str(e)}")
-            raise
+            for proc in psutil.process_iter(['pid', 'name']):
+                if proc.info['name'] in ['chrome', 'chromedriver', 'Google Chrome']:
+                    try:
+                        os.kill(proc.info['pid'], signal.SIGTERM)
+                        print(f"已终止进程: {proc.info['name']} (PID: {proc.info['pid']})")
+                    except:
+                        pass
+        except:
+            pass
 
     def _send_request(self, endpoint, method='GET', data=None):
         """ 发送 HTTP 请求 """
@@ -183,6 +232,7 @@ class ConnectionController:
 
 if __name__ == "__main__":
     xuancheng_com = ConnectionController(mock=False)  # 创建实例时会自动启动心跳
+
 
     # 主线程可以做其他事情...
     time.sleep(20)

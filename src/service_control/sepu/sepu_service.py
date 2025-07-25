@@ -140,22 +140,28 @@ class SepuService:
         # retain_tube = self.sepu_api.get_task_list_by_peak_width(peak_id)
         # print("select_retain_tubes 函数开始执行",retain_tube)
         # tube = retain_tube["retain_tubes"]
-        while True:
-            try:
-                tube_input = input(
-                    "请输入峰数据（如：[{'module_id': 1, 'tube_list': [2, 3, 4]}, {'module_id': 2, 'tube_list': [4, 5, 6, 7, 8, 9, 10]}]）：")
-                tube = ast.literal_eval(tube_input)
-                print("你输入的tube数据：", tube)
+        # while True:
+        #     try:
+        #         tube_input = input(
+        #             "请输入峰数据（如：[{'module_id': 1, 'tube_list': [2, 3, 4]}, {'module_id': 2, 'tube_list': [4, 5, 6, 7, 8, 9, 10]}]）：")
+        #         tube = ast.literal_eval(tube_input)
+        #         print("你输入的tube数据：", tube)
+        #
+        #         if input("按Enter键继续收集峰数据..., 输入 exit 重新输入") == 'exit':
+        #             continue
+        #         break
+        #     except Exception as e:
+        #         print("输入错误，请重新输入正确的格式！")
 
-                if input("按Enter键继续收集峰数据..., 输入 exit 重新输入") == 'exit':
-                    continue
-                break
-            except Exception as e:
-                print("输入错误，请重新输入正确的格式！")
-
-
-        if len(tube) == 0:
-            return 600
+        if peak_id == 1:
+            tube = [{'module_id': 1, 'tube_list': [1, 2]}]
+        elif peak_id == 2:
+            tube = [{'module_id': 1, 'tube_list': [4, 5]}]
+        else:
+            tube = [{'module_id': 1, 'tube_list': [4, 5]}]
+        # if len(tube) == 0:
+        #     tube = [{'module_id': 1, 'tube_list': [1,2]}]
+            # return 600
         # self.sepu_api.get_module_dict(tube)
         # self.retain_tube_list = tube
         # self.find_clean_tubes()

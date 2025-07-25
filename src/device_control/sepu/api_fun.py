@@ -164,10 +164,12 @@ class ApiClient:
         返回:
         dict: 接口返回的响应数据
         """
+        self.method_end_time = self.get_current_time()
+
         payload = {
             "experiment_id": int(self.current_experiment_id),
             "method_id": int(self.method_id),
-            "method_start_time": self.method_start_time,
+            "method_start_time": '',
             "method_end_time": self.method_end_time,
             "error_codes": []
         }
@@ -257,7 +259,7 @@ class ApiClient:
     def set_start_tube(self,tube_id,module_id)-> dict:
         payload = {
             "detector_zeroing": True,
-            "pump_pressure_zeroing":True,
+            "waste_mode":False,
             "tube_id":tube_id,
             "module_id":module_id,
         }

@@ -2,6 +2,7 @@ import datetime
 import time
 import threading
 from concurrent.futures import ThreadPoolExecutor
+import logging
 
 from humanfriendly.terminal import ansi_width
 #from scipy.special import kwargs
@@ -104,8 +105,13 @@ def start_experiment(task_ctrl: TaskController, params_1: dict, big_bottle_volum
         sepu_future = executor.submit(sepu_api.sepu_api.update_prep_chrom_params, params_1)
 
         # 等待两个任务完成
+        print("等待注射泵初始化完成")
         pump_future.result()
+        print("注射泵初始化完成")
+
+        print("等待色谱参数设置完成")
         sepu_future.result()
+        print("色谱参数设置完成")
 
     print(f"{datetime.datetime.now()}🧪 1. 开始实验")
     robot_controller.install_column(column_id)
@@ -113,14 +119,16 @@ def start_experiment(task_ctrl: TaskController, params_1: dict, big_bottle_volum
     robot_controller.transfer_to_collect(big_position_id, sample_id)
 
 
-    if solid_sample is True:
-        return
+
     # 使用线程池并行执行洗柱和机器人操作
     with ThreadPoolExecutor(max_workers=2) as executor:
         wash_future = executor.submit(sepu_api.wash_column, wash_time_min, experiment_time_min)
 
         print(f"{datetime.datetime.now()}🧼 2. 润柱")
         wash_future.result()
+
+    if solid_sample is True:
+        return
 
     print(f"{datetime.datetime.now()}💉 3. 进样")
     robot_controller.into_smaple(sample_id)
@@ -143,16 +151,20 @@ def start_experiment(task_ctrl: TaskController, params_1: dict, big_bottle_volum
 
 
 
-def start_in_collect(experiment_time_min):
+def start_in_collect(experiment_time_min,start_flag):
+    if start_flag is False:
+        print(f"{datetime.datetime.now()}🧪 5. 开始色谱实验")
+        sepu_api.set_start_tube(1, 1)
+        sepu_api.start_column(experiment_time_min)
+        sepu_api.update_line_pause()
+    else:
+        print(f"{datetime.datetime.now()}🧪 5. 继续色谱实验")
+        sepu_api.set_start_tube(1, 1)
 
-    print(f"{datetime.datetime.now()}🧼 2. 润柱")
+        sepu_api.update_line_start()
+        sepu_api.start_column(experiment_time_min)
+        sepu_api.update_line_pause()
 
-    sepu_api.wash_column(0.2, experiment_time_min)
-
-    print(f"{datetime.datetime.now()}🧪 5. 开始色谱实验")
-    sepu_api.set_start_tube(1, 1)
-    sepu_api.start_column(experiment_time_min)
-    sepu_api.update_line_terminate()
 
 def small_to_xuanzhegn(task_ctrl: TaskController, params_1: dict, big_bottle_volume, small_bottle_volume, column_id,
                        wash_time_min, experiment_time_min, sample_id, penlin_time_s, peak_number, small_position_id,
@@ -314,7 +326,7 @@ def main():
         "small_bottle_volume": 100,
         "column_id": 5,
         "wash_time_min": 0.2,
-        "experiment_time_min": 20,
+        "experiment_time_min": 999,  # 设置实验时间为999分钟，实际运行时根据需要调整
         "sample_id": 5,
         "sample_volume": 15,
         "penlin_time_s": 3,
@@ -345,11 +357,12 @@ def main():
     global_small_position_id = params["small_position_id"]
     global_warehouse_id = params["warehouse_id"]
     j = 0
+    start_flag = False
     while input("是否继续检测峰？(y/n): ").strip().lower() == 'y':
 
         print(f"开始第{j+1}个循环 ---------- {datetime.datetime.now()}")
-
-        start_in_collect(params["experiment_time_min"])
+        start_in_collect(1,start_flag)
+        start_flag = True
         print("get_detected_peaks:",sepu_api.get_detected_peaks())
         peaks_num = sepu_api.get_peaks_num() - peaks_num
         print("当前检测到的峰数:", peaks_num)
@@ -468,6 +481,7 @@ def main():
     print(f"一共有{PEAKS_NUM}个峰被检测到，实验结束。")
     robot_controller.collect_to_start(params["big_position_id"])
     robot_controller.uninstall_column(params["column_id"])
+    sepu_api.update_line_terminate()
 
 if __name__ == "__main__":
     main()

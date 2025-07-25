@@ -3,6 +3,30 @@ import time
 from src.com_control.xuanzheng_com import ConnectionController
 from src.com_control import plc
 import json
+import signal
+
+from contextlib import contextmanager
+
+
+@contextmanager
+def timeout(seconds):
+    """超时上下文管理器"""
+
+    def timeout_handler(signum, frame):
+        raise TimeoutError(f"操作超时 ({seconds}秒)")
+
+    # 设置信号处理
+    old_handler = signal.signal(signal.SIGABRT, timeout_handler)
+    signal.alarm(seconds)
+
+    try:
+        yield
+    finally:
+        signal.alarm(0)
+        signal.signal(signal.SIGABRT, old_handler)
+
+
+
 
 
 class XuanZHengController:
@@ -16,6 +40,9 @@ class XuanZHengController:
         self.WASTE_LIQUID = 323
         self.WASTE_LIQUID_FINISH = 333
         self.mock = mock
+
+
+
 
 
 
@@ -177,6 +204,22 @@ class XuanZHengController:
         time.sleep(2)
         # self.waste_finish_async()
 
+    def start_waste_liquid_with_timeout(self, timeout_seconds=10):
+        """带超时的废液启动方法"""
+        start_time = time.time()
+        try:
+            # 原来的操作
+            self.start_waste_liquid()
+
+            # 检查是否超时
+            if time.time() - start_time > timeout_seconds:
+                raise TimeoutError(f"废液启动超时: {timeout_seconds}秒")
+
+            return True
+        except Exception as e:
+            print(f"废液启动失败: {e}")
+            return False
+
     def waste_finish_async(self):
         while True:
             done = self.plc.read_coils(self.WASTE_LIQUID_FINISH)[0]
@@ -328,7 +371,8 @@ if __name__ == "__main__":
 
     # 直接初始化 ProcessController，可选择 mock 模式
     controller = XuanZHengController(mock=False)  # mock=True 开启模拟模式
-    controller.get_info()
+    controller.start_waste_liquid_with_timeout()
+    # controller.get_info()
     # controller.
     # controller.xuanzheng_sync()
 
