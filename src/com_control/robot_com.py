@@ -73,6 +73,7 @@ class RobotConnection:
 
     def recv_thread(self):
         buffer = ""
+        retry_count = 3
         while True:
             try:
                 data = self.sock.recv(1024)
@@ -89,20 +90,52 @@ class RobotConnection:
                     else:
                         with self.lock:
                             self.recv_msg = data.decode()
-            except:
-                print("⚠️ 接收线程异常")
+            except (ConnectionAbortedError, ConnectionResetError, OSError) as e:
+                print(f"⚠️ 接收线程异常: {e}")
+                for i in range(retry_count):
+                    print(f"🔄 尝试第{i+1}次重连...")
+                    try:
+                        self.connect()
+                        print("✅ 接收线程重连成功")
+                        break
+                    except Exception as re:
+                        print(f"❌ 接收线程重连失败: {re}")
+                        time.sleep(1)
+                else:
+                    print("❌ 接收线程重连3次失败，抛出异常")
+                    raise
+            except Exception as e:
+                print(f"⚠️ 接收线程其他异常: {e}")
                 raise
+
     @scenario_exception_handler
     def send_command(self, cmd):
         if self.mock:
             print(f"[MOCK] send: {cmd}")
             return
         print("cmd",cmd)
-        self.sock.sendall((cmd + "\n").encode())
-        print(f"✅ 发送命令：{cmd}")
+        retry_count = 3
+        for i in range(retry_count):
+            try:
+                self.sock.sendall((cmd + "\n").encode())
+                print(f"✅ 发送命令：{cmd}")
+                return
+            except (ConnectionAbortedError, ConnectionResetError, OSError) as e:
+                print(f"⚠️ 发送命令异常: {e}")
+                print(f"🔄 尝试第{i+1}次重连...")
+                try:
+                    self.connect()
+                    print("✅ 发送命令重连成功")
+                except Exception as re:
+                    print(f"❌ 发送命令重连失败: {re}")
+                    time.sleep(1)
+            except Exception as e:
+                print(f"⚠️ 发送命令其他异常: {e}")
+                raise
+        print("❌ 发送命令重连3次失败，抛出异常")
+        raise ConnectionError("发送命令重连3次失败")
 
-
-    def wait_for_response(self, expect, timeout_s=10):
+    def wait_for_response(self, expect, timeout_s=50):
         if self.mock:
             print(f"[MOCK] wait_for_response: {expect}")
             return

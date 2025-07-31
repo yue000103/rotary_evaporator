@@ -324,9 +324,9 @@ def main():
         },
         "big_bottle_volume": 1000,
         "small_bottle_volume": 100,
-        "column_id": 5,
+        "column_id": 6,
         "wash_time_min": 0.2,
-        "experiment_time_min": 999,  # 设置实验时间为999分钟，实际运行时根据需要调整
+        "experiment_time_min": 9999,  # 设置实验时间为999分钟，实际运行时根据需要调整
         "sample_id": 5,
         "sample_volume": 15,
         "penlin_time_s": 3,
@@ -361,7 +361,7 @@ def main():
     while input("是否继续检测峰？(y/n): ").strip().lower() == 'y':
 
         print(f"开始第{j+1}个循环 ---------- {datetime.datetime.now()}")
-        start_in_collect(1,start_flag)
+        start_in_collect(3,start_flag)
         start_flag = True
         print("get_detected_peaks:",sepu_api.get_detected_peaks())
         peaks_num = sepu_api.get_peaks_num() - peaks_num

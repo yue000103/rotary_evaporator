@@ -25,6 +25,7 @@ class InjectHeight:
         #写时间
         # self.plc.write_coil(self.REG_START_START, False)
         # time.sleep(1)
+        print("降针  down_height")
         self.plc.write_coil(self.REG_START_START, True)
         time.sleep(1)
 
@@ -35,6 +36,8 @@ class InjectHeight:
         # time.sleep(1)
         # self.plc.write_coil(self.REG_START_STOP, True)
         # time.sleep(1)
+        print("升针  up_height")
+
         self.plc.write_coil(self.REG_START_START, False)
         time.sleep(1)
 
@@ -47,7 +50,7 @@ class InjectHeight:
 if __name__ == '__main__':
     height = InjectHeight(mock=False)  # 启用 Mock 模式测试
 
-    # height.down_height()  # 启动泵
-
+    # height.down_height()
+    # time.sleep(2)
     height.up_height()  #
 

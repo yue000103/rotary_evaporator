@@ -159,8 +159,8 @@ class SepuService:
             tube = [{'module_id': 1, 'tube_list': [4, 5]}]
         else:
             tube = [{'module_id': 1, 'tube_list': [4, 5]}]
-        # if len(tube) == 0:
-        #     tube = [{'module_id': 1, 'tube_list': [1,2]}]
+        if len(tube) == 0:
+            tube = [{'module_id': 1, 'tube_list': [2,3]}]
             # return 600
         # self.sepu_api.get_module_dict(tube)
         # self.retain_tube_list = tube

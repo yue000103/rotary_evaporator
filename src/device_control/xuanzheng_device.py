@@ -202,6 +202,7 @@ class XuanZHengController:
         time.sleep(1)
         self.plc.write_coil(self.WASTE_LIQUID, False)
         time.sleep(2)
+        print("-----stop--------------waste_liquid---------------------------")
         # self.waste_finish_async()
 
     def start_waste_liquid_with_timeout(self, timeout_seconds=10):
@@ -334,7 +335,16 @@ class XuanZHengController:
 
         while True:
             raw_result = self.get_process()
-            result = json.loads(raw_result) if isinstance(raw_result, str) else raw_result
+
+            # 增加空字符串判断
+            if isinstance(raw_result, str):
+                if not raw_result.strip():
+                    # 可以选择抛出异常或返回默认值
+                    result = {}  # 或者 result = {}
+                else:
+                    result = json.loads(raw_result)
+            else:
+                result = raw_result
 
             act = result.get("vacuum", {}).get("act", 0)
             print(f"当前真空值: {act:.1f} mbar")

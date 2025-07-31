@@ -300,7 +300,7 @@ def main():
         "small_bottle_volume": 100,
         "column_id": 6,
         "wash_time_min": 1,
-        "experiment_time_min": 5,
+        "experiment_time_min": 3,
         "sample_id": 1,
         "sample_volume": 5,
         "penlin_time_s": 3,
@@ -332,7 +332,7 @@ def main():
     small_to_xuanzhegn_thread = None
 
     if peaks_num  >= 3:
-        peaks_num = 3
+        peaks_num = 1
     if peaks_num == 0:
         peaks_num = 1
     for i in range(peaks_num):
