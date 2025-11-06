@@ -1,6 +1,6 @@
 import yaml
 import os
-from src.uilt.logs_control.setup import yaml_control_logger
+from src.util.logs_control.setup import yaml_control_logger
 
 
 # 获取当前脚本所在目录

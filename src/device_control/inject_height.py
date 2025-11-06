@@ -2,7 +2,7 @@ import logging
 import time
 
 from src.com_control import plc
-from src.uilt.logs_control.setup import device_control_logger
+from src.util.logs_control.setup import device_control_logger
 
 
 class InjectHeight:

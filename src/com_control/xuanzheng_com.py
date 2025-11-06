@@ -4,8 +4,8 @@ import json
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-from src.uilt.logs_control.setup import com_logger
-from src.uilt.yaml_control.setup import get_base_url
+from src.util.logs_control.setup import com_logger
+from src.util.yaml_control.setup import get_base_url
 import threading
 import time
 from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException

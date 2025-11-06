@@ -2,7 +2,7 @@ from src.com_control.PLC_com import PLCConnection
 import threading
 import time
 import json
-from src.uilt.logs_control.setup import device_control_logger
+from src.util.logs_control.setup import device_control_logger
 
 class RobotPLC:
     def __init__(self, mock=False):

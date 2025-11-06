@@ -1,7 +1,7 @@
 import logging
 import requests
-from src.uilt.yaml_control.setup import get_base_url
-from src.uilt.logs_control.setup import com_logger
+from src.util.yaml_control.setup import get_base_url
+from src.util.logs_control.setup import com_logger
 
 
 class OpentronsConnection:

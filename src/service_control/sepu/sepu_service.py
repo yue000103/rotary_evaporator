@@ -9,7 +9,7 @@ import threading
 
 from PIL.ImagePalette import sepia
 
-from src.uilt.logs_control.setup import service_control_logger
+from src.util.logs_control.setup import service_control_logger
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import (
     QApplication, QDialog

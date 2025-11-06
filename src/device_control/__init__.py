@@ -14,7 +14,7 @@ xuanzheng_controller = XuanZHengController(mock=MOCK)  # mock=True 开启模拟�
 from src.device_control.pump_sample import PumpSample
 pump_sample = PumpSample(mock=MOCK)
 
-from src.device_control.robot_control.robot_device_new import RobotController
+from src.device_control.robot_control.robot_controller import RobotController
 robot_controller = RobotController(mock=MOCK)
 
 from src.device_control.peristaltic_pump import PeristalticPump

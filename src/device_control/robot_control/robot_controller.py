@@ -1,5 +1,5 @@
 from src.com_control.robot_com import RobotConnection
-from src.uilt.logs_control.setup import device_control_logger
+from src.util.logs_control.setup import device_control_logger
 import threading
 import time
 import socket

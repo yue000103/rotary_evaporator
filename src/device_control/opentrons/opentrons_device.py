@@ -1,6 +1,6 @@
 import time
 from src.com_control.opentrons_com import OpentronsConnection
-from src.uilt.logs_control.setup import device_control_logger
+from src.util.logs_control.setup import device_control_logger
 
 class OpentronsDevice:
     def __init__(self, mock=False):

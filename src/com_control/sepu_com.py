@@ -2,7 +2,7 @@ import requests
 import json
 from datetime import datetime
 import time
-from src.uilt.yaml_control.setup import get_base_url
+from src.util.yaml_control.setup import get_base_url
 
 
 class SepuCom:
