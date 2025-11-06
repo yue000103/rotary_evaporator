@@ -2,6 +2,7 @@ import datetime
 import time
 import threading
 from concurrent.futures import ThreadPoolExecutor
+import logging
 
 from humanfriendly.terminal import ansi_width
 #from scipy.special import kwargs
@@ -52,7 +53,8 @@ small_bottle_volume = 100
 big_bottle_volume = 1000
 sample_id = 1
 peak_number = 1
-
+global_warehouse_id = 1
+global_small_position_id = 1
 
 class TaskController:
     def __init__(self):
@@ -90,9 +92,11 @@ def wash_needle():
     robot_controller.task_scara_put_tool()
 
 
+
+
 def start_experiment(task_ctrl: TaskController, params_1: dict, big_bottle_volume, small_bottle_volume, column_id,
                      wash_time_min, experiment_time_min, sample_id, penlin_time_s, peak_number, small_position_id,
-                     big_position_id, warehouse_id, sample_volume, xuanzheng_timeout_min):
+                     big_position_id, warehouse_id, sample_volume, xuanzheng_timeout_min,solid_sample):
     print(f"{datetime.datetime.now()}初始化注射泵")
 
     # 使用线程池并行执行注射泵初始化和色谱参数设置
@@ -101,21 +105,30 @@ def start_experiment(task_ctrl: TaskController, params_1: dict, big_bottle_volum
         sepu_future = executor.submit(sepu_api.sepu_api.update_prep_chrom_params, params_1)
 
         # 等待两个任务完成
+        print("等待注射泵初始化完成")
         pump_future.result()
+        print("注射泵初始化完成")
+
+        print("等待色谱参数设置完成")
         sepu_future.result()
+        print("色谱参数设置完成")
 
     print(f"{datetime.datetime.now()}🧪 1. 开始实验")
     robot_controller.install_column(column_id)
-    time.sleep(40)
+    time.sleep(20)
+    robot_controller.transfer_to_collect(big_position_id, sample_id)
+
+
 
     # 使用线程池并行执行洗柱和机器人操作
     with ThreadPoolExecutor(max_workers=2) as executor:
         wash_future = executor.submit(sepu_api.wash_column, wash_time_min, experiment_time_min)
-        robot_future = executor.submit(robot_controller.transfer_to_collect, big_position_id, sample_id)
 
         print(f"{datetime.datetime.now()}🧼 2. 润柱")
         wash_future.result()
-        robot_future.result()
+
+    if solid_sample is True:
+        return
 
     print(f"{datetime.datetime.now()}💉 3. 进样")
     robot_controller.into_smaple(sample_id)
@@ -133,16 +146,30 @@ def start_experiment(task_ctrl: TaskController, params_1: dict, big_bottle_volum
 
     wash_needle_thread = threading.Thread(target=wash_needle)
     wash_needle_thread.start()
-
-    print(f"{datetime.datetime.now()}🧪 5. 开始色谱实验")
-    sepu_api.set_start_tube(1, 1)
-    sepu_api.start_column(experiment_time_min)
-    sepu_api.update_line_pause()
     wash_needle_thread.join()
+
+
+
+
+def start_in_collect(experiment_time_min,start_flag):
+    if start_flag is False:
+        print(f"{datetime.datetime.now()}🧪 5. 开始色谱实验")
+        sepu_api.set_start_tube(1, 1)
+        sepu_api.start_column(experiment_time_min)
+        sepu_api.update_line_pause()
+    else:
+        print(f"{datetime.datetime.now()}🧪 5. 继续色谱实验")
+        sepu_api.set_start_tube(1, 1)
+
+        sepu_api.update_line_start()
+        sepu_api.start_column(experiment_time_min)
+        sepu_api.update_line_pause()
+
 
 def small_to_xuanzhegn(task_ctrl: TaskController, params_1: dict, big_bottle_volume, small_bottle_volume, column_id,
                        wash_time_min, experiment_time_min, sample_id, penlin_time_s, peak_number, small_position_id,
                        big_position_id, warehouse_id, sample_volume, xuanzheng_timeout_min):
+
     print(f"{datetime.datetime.now()}🚚 12. 清洗完成，返回旋蒸")
     robot_controller.clean_to_xuanzheng()
 
@@ -158,18 +185,16 @@ def small_to_xuanzhegn(task_ctrl: TaskController, params_1: dict, big_bottle_vol
     print(f"{datetime.datetime.now()}📦 14. 入库操作")
     robot_controller.get_xuanzheng()
     xuanzheng_controller.drain_until_above_threshold()
+    xuanzheng_controller.start_waste_liquid()
 
     robot_controller.robot_to_home()
     robot_controller.xuanzheng_to_warehouse(warehouse_id)
-    xuanzheng_controller.start_waste_liquid_with_timeout()
 
 
 
 def big_to_xuanzheng(task_ctrl: TaskController, params_1: dict, big_bottle_volume, small_bottle_volume, column_id,
                      wash_time_min, experiment_time_min, sample_id, penlin_time_s, peak_number, small_position_id,
                      big_position_id, warehouse_id, sample_volume, xuanzheng_timeout_min):
-    inject_height.up_height()
-
     print(f"{datetime.datetime.now()}🧪 7. 收集转移到旋蒸")
     robot_controller.collect_to_xuanzheng(bottle_id)
 
@@ -191,8 +216,7 @@ def big_to_xuanzheng(task_ctrl: TaskController, params_1: dict, big_bottle_volum
     robot_controller.get_xuanzheng()
     xuanzheng_controller.drain_until_above_threshold()
     robot_controller.robot_to_home()
-
-    xuanzheng_controller.start_waste_liquid_with_timeout()
+    xuanzheng_controller.start_waste_liquid()
 
 
 def clean_and_transfer(task_ctrl: TaskController, params_1: dict, big_bottle_volume, small_bottle_volume, column_id,
@@ -251,11 +275,12 @@ def collect(task_ctrl: TaskController, params_1: dict, big_bottle_volume, small_
             wash_time_min, experiment_time_min, sample_id, penlin_time_s, peak_number, small_position_id,
             big_position_id, warehouse_id, sample_volume, xuanzheng_timeout_min):
     try:
-
         task_ctrl.wait_if_paused()
 
         print(f"{datetime.datetime.now()}⬇️ 6. 收集")
         inject_height.down_height()
+
+
         code = sepu_api.select_retain_tubes(peak_number)
         if code == 600:
             print("无峰出现，清空试管")
@@ -273,8 +298,7 @@ def collect(task_ctrl: TaskController, params_1: dict, big_bottle_volume, small_
     except Exception as e:
         print(f"{datetime.datetime.now()}⛔ 任务被终止")
         try:
-            gear_pump.stop_pump()
-            pump_device.stop_pump()
+            pass
         except Exception as e:
             print(f"{datetime.datetime.now()}设备终止异常:", e)
         raise e
@@ -285,12 +309,12 @@ def main():
 
     params = {
         "params": {
-            "start_ratio": 80,
+            "start_ratio": 100,
             "end_ratio": 50,
             "n1_volumes": 2,
-            "gradient_rate": 1.5,
+            "gradient_rate": 1,
             "peak_threshold": 0.1,
-            "column_volume": 34,  # 真实柱体积
+            "column_volume": 17,  # 真实柱体积
             "sg_window": 21,  # 增大平滑窗口，适应更宽的峰q
             "sg_order": 3,
             "baseline_window": 180,  # 增大基线窗口
@@ -298,19 +322,19 @@ def main():
         },
         "big_bottle_volume": 1000,
         "small_bottle_volume": 100,
-        "column_id": 6,
-        "wash_time_min": 1,
-        "experiment_time_min": 3,
-        "sample_id": 1,
+        "column_id": 2,
+        "wash_time_min": 0.2,
+        "experiment_time_min": 9999,  # 设置实验时间为999分钟，实际运行时根据需要调整
+        "sample_id": 2,
         "sample_volume": 3,
-        "penlin_time_s": 3,
+        "penlin_time_s": 2,
         "peak_number": 3,
         "small_position_id": 1,
         "big_position_id": 7,
-        "warehouse_id": 9,
-        "xuanzheng_timeout_min": 20
+        "warehouse_id": 1,
+        "xuanzheng_timeout_min": 5,
+        "solid_sample": False  # 是否为固体样品
     }
-
     start_experiment(task_ctrl=task_ctrl, params_1=params["params"],
                      big_bottle_volume=params["big_bottle_volume"],
                      small_bottle_volume=params["small_bottle_volume"],
@@ -320,129 +344,147 @@ def main():
                      peak_number=params["peak_number"], small_position_id=params["small_position_id"],
                      big_position_id=params["big_position_id"], warehouse_id=params["warehouse_id"],
                      sample_volume=params["sample_volume"],
-                     xuanzheng_timeout_min=params["xuanzheng_timeout_min"])
+                     xuanzheng_timeout_min=params["xuanzheng_timeout_min"],
+                     solid_sample=params["solid_sample"])
     #
-    print("get_detected_peaks:",sepu_api.get_detected_peaks())
-    peaks_num = sepu_api.get_peaks_num()
-    # peaks_num = int(input("请输入峰的数量（peaks_num）："))
-    small_position_id = params["small_position_id"]
-    warehouse_id = params["warehouse_id"]
+    PEAKS_NUM = 0
+    SMALL_NUM = 6
+    loop_num = 0
+    peaks_num = 0
+    global global_warehouse_id, global_small_position_id
+    # global_small_position_id = params["small_position_id"]
+    # global_warehouse_id = params["warehouse_id"]
+    j = 0
+    start_flag = False
+    while input("是否继续检测峰？(y/n): ").strip().lower() == 'y':
+
+        print(f"开始第{j+1}个循环 ---------- {datetime.datetime.now()}")
+        start_in_collect(3,start_flag)
+        start_flag = True
+        print("get_detected_peaks:",sepu_api.get_detected_peaks())
+        peaks_num = sepu_api.get_peaks_num() - peaks_num
+        print("当前检测到的峰数:", peaks_num)
+        peaks_num = int(input("请输入峰的数量（peaks_num）："))
+
+        small_to_xuanzhegn_thread = None
+
+        for i in range(peaks_num):
+
+            # PEAKS_NUM = PEAKS_NUM + 1
+            # if PEAKS_NUM > SMALL_NUM:
+            #     loop_num = loop_num + 1
+            #     print(f"检测到峰数 {PEAKS_NUM} 已达到小瓶旋蒸上限 {SMALL_NUM}，请复位所有小瓶，")
+            #     PEAKS_NUM = 0
+            #     global_small_position_id = params["small_position_id"]
+            #     global_warehouse_id = params["warehouse_id"]
+            #     input("按enter继续执行")
+
+            global_warehouse_id = int(input("请输入当前产物位置（warehouse_id）："))
+            global_warehouse_id = global_warehouse_id
+            print("当前小瓶位置:", global_small_position_id)
+            print("当前产物位置:", global_warehouse_id)
+            peak_number = i + 1  # 假设峰编号从1开始
+
+            args = dict(
+                task_ctrl=task_ctrl,
+                params_1=params["params"],
+                big_bottle_volume=params["big_bottle_volume"],
+                small_bottle_volume=params["small_bottle_volume"],
+                column_id=params["column_id"],
+                wash_time_min=params["wash_time_min"],
+                experiment_time_min=params["experiment_time_min"],
+                sample_id=params["sample_id"],
+                penlin_time_s=params["penlin_time_s"],
+                peak_number=peak_number,
+                small_position_id=global_small_position_id,
+                big_position_id=params["big_position_id"],
+                warehouse_id=global_warehouse_id,
+                sample_volume=params["sample_volume"],
+                xuanzheng_timeout_min=params["xuanzheng_timeout_min"]
+            )
+
+            print(f"开始收集{peak_number}个峰 ---------- {datetime.datetime.now()}")
+
+            if i == 0:
+
+                collect(**args)
 
 
-    small_to_xuanzhegn_thread = None
+                big_to_xuanzheng(**args)
+                clean_and_transfer(**args)
+                if i == peaks_num - 1:
+                    break
+                robot_controller.clean_to_collect()
+            elif i == peaks_num - 1:
+                small_to_xuanzhegn_thread = threading.Thread(target=small_to_xuanzhegn, kwargs=args)
+                small_to_xuanzhegn_thread.start()
 
-    # if peaks_num  >= 3:
-    #     peaks_num = 1
-    # if peaks_num == 0:
-    peaks_num = 1
-    for i in range(peaks_num):
-        peak_number = i + 1  # 假设峰编号从1开始
+                collect(**args)
+                    # 等待前一个小瓶旋蒸任务完成
+                if small_to_xuanzhegn_thread:
+                    small_to_xuanzhegn_thread.join()
+                big_to_xuanzheng(**args)
+                clean_and_transfer(**args)
 
-        args = dict(
-            task_ctrl=task_ctrl,
-            params_1=params["params"],
-            big_bottle_volume=params["big_bottle_volume"],
-            small_bottle_volume=params["small_bottle_volume"],
-            column_id=params["column_id"],
-            wash_time_min=params["wash_time_min"],
-            experiment_time_min=params["experiment_time_min"],
-            sample_id=params["sample_id"],
-            penlin_time_s=params["penlin_time_s"],
-            peak_number= i + 1,
-            small_position_id=small_position_id + i,
-            big_position_id=params["big_position_id"],
-            warehouse_id=warehouse_id + i - 1,
-            sample_volume=params["sample_volume"],
-            xuanzheng_timeout_min=params["xuanzheng_timeout_min"]
-        )
-
-        print(f"开始收集{peak_number}个峰")
-
-        if i == 0:
-            code = collect(**args)
-            # input("请选择收集的试管，按enter继续执行")
-            if code == 600:
                 break
-            big_to_xuanzheng(**args)
-            clean_and_transfer(**args)
-            if i == peaks_num - 1:
-                args["warehouse_id"] = warehouse_id + i
-                small_to_xuanzhegn(**args)
-                break
-            robot_controller.clean_to_collect()
-        elif i == peaks_num - 1:
-            small_to_xuanzhegn_thread = threading.Thread(target=small_to_xuanzhegn, kwargs=args)
-            small_to_xuanzhegn_thread.start()
-            # inject_height.down_height()
+            else:
+                # 创建线程执行小瓶旋蒸任务
+                small_to_xuanzhegn_thread = threading.Thread(target=small_to_xuanzhegn, kwargs=args)
+                small_to_xuanzhegn_thread.start()
+                collect(**args)
 
-            code = collect(**args)
-            # input("请选择收集的试管，按enter继续执行")
-
-            if code == 600:
-                break
                 # 等待前一个小瓶旋蒸任务完成
-            if small_to_xuanzhegn_thread:
-                small_to_xuanzhegn_thread.join()
-            big_to_xuanzheng(**args)
-            clean_and_transfer(**args)
-            break
-        else:
-            # 创建线程执行小瓶旋蒸任务
+                if small_to_xuanzhegn_thread:
+                    small_to_xuanzhegn_thread.join()
+                big_to_xuanzheng(**args)
+                clean_and_transfer(**args)
+                robot_controller.clean_to_collect()
+
+        if peaks_num != 0:
+            global_warehouse_id = int(input("请输入当前产物位置（warehouse_id）："))
+            global_small_position_id = global_warehouse_id
+            args = dict(
+                task_ctrl=task_ctrl,
+                params_1=params["params"],
+                big_bottle_volume=params["big_bottle_volume"],
+                small_bottle_volume=params["small_bottle_volume"],
+                column_id=params["column_id"],
+                wash_time_min=params["wash_time_min"],
+                experiment_time_min=params["experiment_time_min"],
+                sample_id=params["sample_id"],
+                penlin_time_s=params["penlin_time_s"],
+                peak_number=peaks_num,
+                small_position_id=global_small_position_id,
+                big_position_id=params["big_position_id"],
+                warehouse_id=global_warehouse_id,
+                sample_volume=params["sample_volume"],
+                xuanzheng_timeout_min=params["xuanzheng_timeout_min"]
+            )
+
+            # # 创建线程执行小瓶旋蒸任务
             small_to_xuanzhegn_thread = threading.Thread(target=small_to_xuanzhegn, kwargs=args)
             small_to_xuanzhegn_thread.start()
-            code = collect(**args)
-            # input("请选择收集的试管，按enter继续执行")
 
-            if code == 600:
-                break
-            # 等待前一个小瓶旋蒸任务完成
-            if small_to_xuanzhegn_thread:
-                small_to_xuanzhegn_thread.join()
-            big_to_xuanzheng(**args)
-            clean_and_transfer(**args)
+        # 启动数据保存线程
+        sepu_clean_thread = threading.Thread(target=sepu_api.save_experiment_data)
+        sepu_clean_thread.start()
+
+        # 等待小瓶旋蒸任务完成
+        if small_to_xuanzhegn_thread:
+            small_to_xuanzhegn_thread.join()
             robot_controller.clean_to_collect()
 
-    # sepu_api.save_experiment_data()
+        if peaks_num == 0:
+            # robot_controller.collect_to_start(params["big_position_id"])
+            print("没有峰被检测到，跳过小瓶旋蒸任务。")
 
-    robot_controller.get_big_bottle(params["big_position_id"])
+        # 等待数据保存完成
+        sepu_clean_thread.join()
 
-    robot_controller.uninstall_column(column_id)
-
-    if peaks_num != 1:
-        params["warehouse_id"] = warehouse_id + peaks_num - 1
-        args = dict(
-            task_ctrl=task_ctrl,
-            params_1=params["params"],
-            big_bottle_volume=params["big_bottle_volume"],
-            small_bottle_volume=params["small_bottle_volume"],
-            column_id=params["column_id"],
-            wash_time_min=params["wash_time_min"],
-            experiment_time_min=params["experiment_time_min"],
-            sample_id=params["sample_id"],
-            penlin_time_s=params["penlin_time_s"],
-            peak_number=peaks_num,
-            small_position_id=small_position_id,
-            big_position_id=params["big_position_id"],
-            warehouse_id=warehouse_id + peaks_num - 1,
-            sample_volume=params["sample_volume"],
-            xuanzheng_timeout_min=params["xuanzheng_timeout_min"]
-        )
-        # # 创建线程执行小瓶旋蒸任务
-        small_to_xuanzhegn_thread = threading.Thread(target=small_to_xuanzhegn, kwargs=args)
-        small_to_xuanzhegn_thread.start()
-    # 启动数据保存线程
-    sepu_clean_thread = threading.Thread(target=sepu_api.save_experiment_data)
-    sepu_clean_thread.start()
-
-    # 等待小瓶旋蒸任务完成
-    if small_to_xuanzhegn_thread:
-        small_to_xuanzhegn_thread.join()
-
-
-    # 等待数据保存完成
-    sepu_clean_thread.join()
+    print(f"一共有{PEAKS_NUM}个峰被检测到，实验结束。")
+    robot_controller.collect_to_start(params["big_position_id"])
+    robot_controller.uninstall_column(params["column_id"])
     sepu_api.update_line_terminate()
-
 
 if __name__ == "__main__":
     main()

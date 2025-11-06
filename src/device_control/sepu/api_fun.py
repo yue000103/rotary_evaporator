@@ -366,6 +366,16 @@ class ApiClient:
         """
         return self.sepu_com.send_post_request("/eluent_curve/get_detected_peaks", {})
 
+    def get_experiment_status(self) -> dict:
+        """
+        获取实验状态，包括 terminate_flag 和 pause_flag。
+
+        返回:
+        dict: 包含 terminate_flag 和 pause_flag 的状态信息
+        """
+
+        return self.sepu_com.send_get_request("/eluent_curve/get_exeperiment_status")
+
 def main():
     # 创建 ApiClient 实例
     api_client = ApiClient()

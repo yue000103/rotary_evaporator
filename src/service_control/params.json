@@ -1,6 +1,6 @@
 {
     "method": {
-        "samplingTime": 3,
+        "samplingTime": 9999,
         "detectorWavelength": 254,
         "equilibrationColumn": 1,
         "speed": 100,

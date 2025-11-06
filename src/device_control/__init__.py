@@ -7,9 +7,9 @@ from src.device_control.xuanzheng_device import XuanZHengController
 xuanzheng_controller = XuanZHengController(mock=MOCK)  # mock=True 开启模拟模式
 
 
-from src.device_control.sepu.api_fun import ApiClient
-sepu_api = ApiClient()
-sepu_api.init_device(MOCK)
+# from src.device_control.sepu.api_fun import ApiClient
+# sepu_api = ApiClient()
+# sepu_api.init_device(MOCK)
 
 from src.device_control.pump_sample import PumpSample
 pump_sample = PumpSample(mock=MOCK)

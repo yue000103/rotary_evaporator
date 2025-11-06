@@ -1,4 +1,5 @@
 import asyncio
+import time
 
 from src.device_control import (
     robot_controller, pump_sample,
@@ -62,7 +63,8 @@ async def run_lab(task_ctrl: TaskController):
         #
         #
         # print("🧪 1. 开始实验")
-        # await asyncio.to_thread(robot_controller.install_column,column_id)
+        # await asyncio.to_thread(robot_controller.install_column,4)
+
         #
         # task_wash_colum = asyncio.create_task(asyncio.to_thread(sepu_api.wash_column,wash_time_s))
         #
@@ -102,18 +104,19 @@ async def run_lab(task_ctrl: TaskController):
 
         print("🧪 7. 收集转移到旋蒸")
         # await asyncio.gather(task_scara_put_tool,task_start_waste_liquid)
-        # robot_controller.collect_to_xuanzheng(bottle_id)
+        robot_controller.collect_to_xuanzheng(bottle_id)
         # task_clean_tube = asyncio.create_task(asyncio.to_thread(sepu_api.save_experiment_data,clean_tube))
-        #
+
         # sepu_api.save_experiment_data(clean_tube)
-        # print("💨 8. 旋蒸开始")
+        print("💨 8. 旋蒸开始")
         # await asyncio.to_thread(xuanzheng_controller.vacuum_until_below_threshold)
-        # robot_controller.robot_to_home()
-        # xuanzheng_controller.set_height(1000)
-        # xuanzheng_controller.run_evaporation()
-        # xuanzheng_controller.xuanzheng_sync()
-        # xuanzheng_controller.set_height(0)
-        robot_controller.small_big_to_clean()
+        robot_controller.robot_to_home()
+        xuanzheng_controller.set_height(1000)
+        xuanzheng_controller.run_evaporation()
+        xuanzheng_controller.xuanzheng_sync(10)
+
+        xuanzheng_controller.set_height(0)
+        robot_controller.small_big_to_clean(1)
 
 
         # print("🤖 9. 旋蒸结束取瓶,并且排出废液")
@@ -125,7 +128,7 @@ async def run_lab(task_ctrl: TaskController):
 
         print("🚿 10. 喷淋清洗")
         robot_controller.get_penlin_needle()
-        gear_pump.start_pump(penlin_time_s)
+        gear_pump.start_pump(5)
 
         robot_controller.abb_clean_ok()
         robot_controller.clean_to_home()
@@ -169,7 +172,7 @@ async def run_lab(task_ctrl: TaskController):
         xuanzheng_controller.start_waste_liquid()
 
         robot_controller.robot_to_home()
-        robot_controller.xuanzheng_to_warehouse()
+        robot_controller.xuanzheng_to_warehouse(1)
         robot_controller.get_big_bottle()
 
         # robot_controller.uninstall_column(column_id)

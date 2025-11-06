@@ -28,7 +28,7 @@ class PumpSample:
         self.MAX_PULSE = 11000
         self.AIR_GAP_PULSE = 2000
         self.LIQUID_PULSE = 2000
-        self.WAITING_TIME = 20000
+        self.WAITING_TIME = 10000
         self.busy_flag = True
         self.host = host
         self.port = port
@@ -215,7 +215,14 @@ if __name__ == '__main__':
     # ps.sync()
 
 
-    ps.send_command('A3000')
+    ps.send_command('V3000IA11000O')
+    input('輸入enter繼續')
+
+    t = 300
+    v = int(11000/t)
+
+    ps.send_command(f'V{v}A0')
+    # ps.inject(1, 1, 3)
     # re = ps.initialization()
     # print("re",re)
     # ps.check_state()

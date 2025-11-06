@@ -382,6 +382,8 @@ if __name__ == "__main__":
     # 直接初始化 ProcessController，可选择 mock 模式
     controller = XuanZHengController(mock=False)  # mock=True 开启模拟模式
     controller.start_waste_liquid_with_timeout()
+    controller.set_height(0)
+
     # controller.get_info()
     # controller.
     # controller.xuanzheng_sync()
