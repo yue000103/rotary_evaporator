@@ -2,7 +2,7 @@ MOCK = False
 
 
 
-from src.device_control.xuanzheng_device import XuanZHengController
+from src.device_control.rotavap_device import XuanZHengController
 
 xuanzheng_controller = XuanZHengController(mock=MOCK)  # mock=True 开启模拟模式
 
