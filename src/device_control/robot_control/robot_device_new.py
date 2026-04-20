@@ -224,12 +224,13 @@ if __name__ == '__main__':
     controller = RobotController(mock=False)
     # command = f"task_scara_put_tool(1)"
     # controller._execute_scenario(command, "task_scara_put_tool(1)")
-    controller.install_column(4)
-    time.sleep(25)
-    controller.uninstall_column(4)
-    controller.install_column(6)
-    time.sleep(25)
-    controller.uninstall_column(6)
+    # controller.install_column(4)
+    # time.sleep(25)
+    # controller.uninstall_column(4)
+    # controller.install_column(6)
+    # time.sleep(25)
+    # controller.uninstall_column(6)
+    controller.clean_to_xuanzheng()
 
 
 

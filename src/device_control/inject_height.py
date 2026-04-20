@@ -17,7 +17,6 @@ class InjectHeight:
 
         # 定义寄存器地址
         self.REG_START_START = 307
-        self.REG_START_STOP = 306  # 泵启停 (bool)
 
 
     def down_height(self):

@@ -17,8 +17,6 @@ class PeristalticPump:
         # 定义寄存器地址
         self.REG_START_START = 300 # 泵启动
         self.REG_START_STOP = 301  # 泵停 (bool)
-        self.REG_SPEED = 300  # 速度 (int, RPM)
-        self.REG_VOLUME = 305  # 体积 (real, mL)
         self.PUMP_FINISH = 310
         self.WASHING_LIQUID_START = 320
         self.WASHING_LIQUID_STOP = 330

@@ -12,10 +12,10 @@ from src.service_control.sepu.sepu_service import SepuService
 # 初始化参数
 sepu_api = SepuService()
 column_id = 6
-bottle_id = 1
+bottle_id = 7
 wash_time_s = 5
-experiment_time_min = 3
-retain_tube = [{'module_id': 1, 'tube_list': [2]}]
+experiment_time_min = 1
+retain_tube = [{'module_id': 1, 'tube_list': [1, 2]}]
 clean_tube = [{'module_id': 2, 'tube_list': [1,2]}]
 penlin_time_s = 3
 
@@ -55,26 +55,41 @@ async def xuanzheng_sync_until_finish(task_ctrl: TaskController):
 async def run_lab(task_ctrl: TaskController):
     try:
         await task_ctrl.wait_if_paused()
+        params_1 = {
+
+                "start_ratio": 100.0,
+                "end_ratio": 90.0,
+                "n1_volumes": 2.0,
+                "gradient_rate": 0.6,
+                "peak_threshold": 0.1,
+                "column_volume": 35.0,
+                "sg_window": 21,
+                "sg_order": 3,
+                "baseline_window": 180,
+                "k_factor": 10.0
 
 
-        # print("初始化注射泵")
+        },
+
+        print("初始化注射泵")
         #
         # task_pump_init = asyncio.create_task(asyncio.to_thread(pump_sample.initialization))
-        #
-        #
-        # print("🧪 1. 开始实验")
+
+
+        print("🧪 1. 开始实验")
         # await asyncio.to_thread(robot_controller.install_column,4)
+        sepu_api.sepu_api.update_prep_chrom_params(params_1)
+        # await asyncio.sleep(20)
 
-        #
-        # task_wash_colum = asyncio.create_task(asyncio.to_thread(sepu_api.wash_column,wash_time_s))
-        #
-        # await asyncio.to_thread(robot_controller.transfer_to_collect,bottle_id,1)
-        #
-        # print("🧼 2. 润柱")
-        # await asyncio.gather(task_wash_colum)
-        # sepu_api.update_line_pause()
+        task_wash_colum = asyncio.create_task(asyncio.to_thread(sepu_api.wash_column,1,experiment_time_min))
 
-        # print("💉 3. 进样")
+        await asyncio.to_thread(robot_controller.transfer_to_collect,7,7)
+
+        print("🧼 2. 润柱")
+        await asyncio.gather(task_wash_colum)
+        sepu_api.update_line_pause()
+
+        print("💉 3. 进样")
         # await asyncio.gather(task_pump_init)
         # response = pump_sample.inject(4, 1, 3)
         # print(f"Inject Response: {response}")
@@ -82,41 +97,43 @@ async def run_lab(task_ctrl: TaskController):
         # task_start_washing_liquid = asyncio.create_task(asyncio.to_thread(pump_device.start_washing_liquid))
         # await asyncio.to_thread(robot_controller.to_clean_needle)
 
-        # print("🧼 4. 洗针")
+        print("🧼 4. 洗针")
         # await asyncio.gather(task_start_washing_liquid)
         # response = pump_sample.inject(2, 1, 3)
         # print(f"Inject Response: {response}")
         # pump_sample.sync()
         # task_start_waste_liquid = asyncio.create_task(pump_device.start_waste_liquid)
-        #
-        # print("🧪 5. 开始色谱实验")
         # task_scara_put_tool =  asyncio.create_task(robot_controller.task_scara_put_tool)
-        #
-        # await asyncio.to_thread(sepu_api.set_start_tube,1,1)
-        # sepu_api.update_line_start()
-        # sepu_api.start_column(experiment_time_min)
-        # sepu_api.update_line_terminate()
 
-        # print("⬇️ 6. 收集")
-        # inject_height.down_height()
-        # sepu_api.select_retain_tubes(retain_tube)
-        # inject_height.up_height()
+
+        print("🧪 5. 开始色谱实验")
+
+        await asyncio.to_thread(sepu_api.set_start_tube,1,1)
+        sepu_api.update_line_start()
+        sepu_api.start_column(experiment_time_min)
+        sepu_api.update_line_pause()
+
+        print("⬇️ 6. 收集")
+        inject_height.down_height()
+        sepu_api.select_retain_tubes(retain_tube)
+        inject_height.up_height()
+
 
         print("🧪 7. 收集转移到旋蒸")
         # await asyncio.gather(task_scara_put_tool,task_start_waste_liquid)
         robot_controller.collect_to_xuanzheng(bottle_id)
-        # task_clean_tube = asyncio.create_task(asyncio.to_thread(sepu_api.save_experiment_data,clean_tube))
 
-        # sepu_api.save_experiment_data(clean_tube)
+        task_save_experiment_data = asyncio.create_task(asyncio.to_thread(sepu_api.save_experiment_data))
+
         print("💨 8. 旋蒸开始")
-        # await asyncio.to_thread(xuanzheng_controller.vacuum_until_below_threshold)
+        await asyncio.to_thread(xuanzheng_controller.vacuum_until_below_threshold)
         robot_controller.robot_to_home()
         xuanzheng_controller.set_height(1000)
         xuanzheng_controller.run_evaporation()
         xuanzheng_controller.xuanzheng_sync(10)
+        robot_controller.small_big_to_clean(1)
 
         xuanzheng_controller.set_height(0)
-        robot_controller.small_big_to_clean(1)
 
 
         # print("🤖 9. 旋蒸结束取瓶,并且排出废液")
@@ -135,15 +152,15 @@ async def run_lab(task_ctrl: TaskController):
         robot_controller.task_shake_the_flask_py()
         robot_controller.transfer_to_clean()
 
-        for i in range(2):
-            print(f"🧽 11-{i+1}. 清洗轮次")
-            robot_controller.get_transfer_needle()
-            pump_device.start_pump()
-            robot_controller.transfer_finish_flag()
+        # for i in range(2):
+        #     print(f"🧽 11-{i+1}. 清洗轮次")
+        robot_controller.get_transfer_needle()
+        pump_device.start_pump()
+        robot_controller.transfer_finish_flag()
 
-            robot_controller.get_penlin_needle()
-            gear_pump.start_pump(1)
-            robot_controller.abb_clean_ok()
+        robot_controller.get_penlin_needle()
+        gear_pump.start_pump(2)
+        robot_controller.abb_clean_ok()
 
         robot_controller.get_transfer_needle()
         pump_device.start_pump()
@@ -173,11 +190,10 @@ async def run_lab(task_ctrl: TaskController):
 
         robot_controller.robot_to_home()
         robot_controller.xuanzheng_to_warehouse(1)
-        robot_controller.get_big_bottle()
+        robot_controller.get_big_bottle(7)
 
-        # robot_controller.uninstall_column(column_id)
+        robot_controller.uninstall_column(4)
 
-        # await asyncio.gather(task_clean_tube)
 
         # 启动 test_2 后台任务
         # task2 = asyncio.create_task(asyncio.to_thread(xuanzheng_controller.test_2))
@@ -195,12 +211,14 @@ async def run_lab(task_ctrl: TaskController):
 
         # xuanzheng_controller.test_1()
 
+        await asyncio.gather(task_save_experiment_data)
+
+
         print("✅ 全部任务完成")
 
     except asyncio.CancelledError:
         print("⛔ 任务被终止")
         try:
-            await asyncio.to_thread(gear_pump.stop_pump)
             await asyncio.to_thread(pump_device.stop_pump)
         except Exception as e:
             print("设备终止异常:", e)

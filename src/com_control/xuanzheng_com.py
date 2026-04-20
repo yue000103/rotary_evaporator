@@ -101,22 +101,41 @@ class ConnectionController:
 
                 print(f"使用调试端口: {debug_port}")
 
-                # 使用Service和webdriver-manager
+                # 优先使用Selenium 4的自动ChromeDriver管理（支持最新Chrome版本）
+                driver = None
                 try:
-                    from webdriver_manager.chrome import ChromeDriverManager
                     from selenium.webdriver.chrome.service import Service
 
-                    service = Service(ChromeDriverManager().install())
+                    # Selenium 4.6+ 可以自动下载匹配的ChromeDriver
+                    service = Service()
                     driver = webdriver.Chrome(service=service, options=chrome_options)
-                except ImportError:
-                    # 如果没有webdriver-manager，使用默认方式
-                    driver = webdriver.Chrome(options=chrome_options)
+                    print("使用Selenium内置ChromeDriver管理启动成功")
+                except Exception as e1:
+                    print(f"Selenium自动管理失败: {str(e1)}, 尝试webdriver-manager...")
 
-                print("Chrome WebDriver启动成功！")
-                return driver
+                    # 备选方案：使用webdriver-manager
+                    try:
+                        from webdriver_manager.chrome import ChromeDriverManager
+                        from selenium.webdriver.chrome.service import Service
+
+                        service = Service(ChromeDriverManager().install())
+                        driver = webdriver.Chrome(service=service, options=chrome_options)
+                        print("使用webdriver-manager启动成功")
+                    except Exception as e2:
+                        print(f"webdriver-manager失败: {str(e2)}, 尝试默认方式...")
+
+                        # 最后备选：使用系统PATH中的chromedriver
+                        driver = webdriver.Chrome(options=chrome_options)
+                        print("使用系统默认ChromeDriver启动成功")
+
+                if driver:
+                    print("Chrome WebDriver启动成功！")
+                    com_logger.info(f"Chrome WebDriver initialized successfully on attempt {attempt + 1}")
+                    return driver
 
             except Exception as e:
                 print(f"第 {attempt + 1} 次启动失败: {str(e)}")
+                com_logger.error(f"Attempt {attempt + 1} failed: {str(e)}")
                 if attempt == max_retries - 1:
                     com_logger.error(f"Failed to initialize Chrome driver after {max_retries} attempts: {str(e)}")
                     raise

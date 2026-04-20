@@ -136,22 +136,22 @@ class SepuService:
         # # 窗口关闭后，获取 tube_entries
         # tube = window.return_tube()
         # tube = [{'module_id': 1, 'tube_list': [2, 3, 4]}, {'module_id': 2, 'tube_list': [4, 5, 6,7,8,9,10]}]
-        # tube = [{'module_id': 1, 'tube_list': [2, 3, 4]}]
+        tube = [{'module_id': 1, 'tube_list': [1]}]
         # retain_tube = self.sepu_api.get_task_list_by_peak_width(peak_id)
         # print("select_retain_tubes 函数开始执行",retain_tube)
         # tube = retain_tube["retain_tubes"]
-        while True:
-            try:
-                tube_input = input(
-                    "请输入峰数据（如：[{'module_id': 1, 'tube_list': [2, 3, 4]}, {'module_id': 2, 'tube_list': [4, 5, 6, 7, 8, 9, 10]}]）：")
-                tube = ast.literal_eval(tube_input)
-                print("你输入的tube数据：", tube)
-
-                if input("按Enter键继续收集峰数据..., 输入 exit 重新输入") == 'exit':
-                    continue
-                break
-            except Exception as e:
-                print("输入错误，请重新输入正确的格式！")
+        # while True:
+        #     try:
+        #         tube_input = input(
+        #             "请输入峰数据（如：[{'module_id': 1, 'tube_list': [2, 3, 4]}, {'module_id': 2, 'tube_list': [4, 5, 6, 7, 8, 9, 10]}]）：")
+        #         tube = ast.literal_eval(tube_input)
+        #         print("你输入的tube数据：", tube)
+        #
+        #         if input("按Enter键继续收集峰数据..., 输入 exit 重新输入") == 'exit':
+        #             continue
+        #         break
+        #     except Exception as e:
+        #         print("输入错误，请重新输入正确的格式！")
 
         # if peak_id == 1:
         #     tube = [{'module_id': 1, 'tube_list': [1, 2]}]
@@ -367,7 +367,6 @@ class SepuService:
         service_control_logger.info('开始执行 update_line_pause 函数')
 
         self.sepu_api.update_line_pause()
-        time.sleep(5)
 
         service_control_logger.info('结束执行 update_line_pause 函数')
 
@@ -394,8 +393,8 @@ class SepuService:
         # #
         # # self.sepu_api.set_sample_valve()
         # # self.update_line_start()
-        # time.sleep(experiment_time_min*60 + 5)
-        self.waiting_exeperiment_terminating()
+        time.sleep(experiment_time_min*60)
+        # self.waiting_exeperiment_terminating()
 
         service_control_logger.info('结束执行 start_column 函数')
 
@@ -412,16 +411,19 @@ class SepuService:
         print("save_execution_method",result)
 
 
-        clean_tube = self.sepu_api.get_abandon_tube_tasks()
+        # clean_tube = self.sepu_api.get_abandon_tube_tasks()
 
-        print("clean_tube",clean_tube)
+        # print("clean_tube",clean_tube)
         # tube = clean_tube["retain_tubes"]
 
-        if "retain_tubes" in clean_tube:
-            tube = clean_tube["retain_tubes"]
-        else:
-            tube_input = input("未检测到retain_tubes，请手动输入tube（格式如：[{'module_id':1,'tube_list':[1,2,3]}]）：")
-            tube = json.loads(tube_input)
+        # if "retain_tubes" in clean_tube:
+        #     tube = clean_tube["retain_tubes"]
+        # else:
+        #     tube_input = input("未检测到retain_tubes，请手动输入tube（格式如：[{'module_id':1,'tube_list':[1,2,3]}]）：")
+        #     tube = json.loads(tube_input)
+
+        tube = [{'module_id': 1, 'tube_list': [2,3]}]
+
 
         #
         # service_control_logger.info('结束执行 save_experiment_data 函数')
@@ -490,3 +492,9 @@ class SepuService:
         while not self.is_terminated():
             time.sleep(5)
         print("实验已终止")
+
+if __name__ == '__main__':
+    sepu_service = SepuService()
+    # sepu_service.select_retain_tubes(1)
+
+    sepu_service.save_experiment_data()
