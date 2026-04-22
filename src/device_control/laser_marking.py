@@ -1,44 +1,41 @@
 
-# 在 Windows 上，可以通过以下步骤创建共享文件夹：
-#
-# 右键点击你想共享的文件夹 -> 选择 属性 -> 共享 标签 -> 点击 共享。
-# 确保网络发现和文件共享是开启的。
-# 获取该文件夹的共享路径（例如 \\DESKTOP-5TA44U5\python_web）。
+# On Windows, create a shared folder by right-clicking the folder -> Properties -> Sharing tab -> Click Share.
+# Ensure network discovery and file sharing are enabled.
+# Get the shared path (e.g., \\DESKTOP-5TA44U5\python_web).
 import os
 
 
 class LaserMarking:
     def __init__(self, shared_folder_path):
         """
-        初始化 LaserMarking 类，设置共享文件夹路径。
-        :param shared_folder_path: 共享文件夹路径。
+        Initialize LaserMarking class and set shared folder path.
+        :param shared_folder_path: Shared folder path。
         """
         self.shared_folder_path = shared_folder_path
 
-        # 检查共享文件夹路径是否存在
+        # Check if shared folder path exists
         if not os.path.exists(self.shared_folder_path):
-            raise ValueError(f"指定的共享文件夹路径不存在: {self.shared_folder_path}")
+            raise ValueError(f"Specified shared folder path does not exist: {self.shared_folder_path}")
 
     def write_data_to_file(self, data):
         """
-        将数据写入共享文件夹中的 txt 文件。
-        :param data: 需要写入文件的数据（数字）
+        Write data to txt file in shared folder.
+        :param data: Data (number) to write to file
         """
         file_path = os.path.join(self.shared_folder_path, "received_data.txt")
 
-        # 打开文件并写入数据
+        # Open file and write data
         try:
             with open(file_path, "a") as file:
                 file.write(str(data) + "\n")
-            print(f"数据 {data} 已成功写入 {file_path}")
+            print(f"Data {data} has been successfully written to {file_path}")
         except Exception as e:
-            print(f"写入文件时发生错误: {e}")
+            print(f"Error occurred while writing to file: {e}")
 
 
-# 示例使用：
+# Example usage:
 if __name__ == "__main__":
-    shared_folder_path = r"\\192.168.1.3\python_web"  # 替换为实际共享文件夹的路径
+    shared_folder_path = r"\\192.168.1.3\python_web"
     laser_marking = LaserMarking(shared_folder_path)
 
-    # 写入数据
     laser_marking.write_data_to_file(12345)

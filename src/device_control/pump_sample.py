@@ -7,12 +7,11 @@ logger = logging.getLogger("PUMP")
 class PumpSample:
     def  __init__(self, host='192.168.1.207', port=4196, baud_rate=9600, timeout=3, mock=False):
         """
-        泵控制类，支持真实和 Mock 模式
-        :param port: 串口号
-
-        :param baud_rate: 波特率
-        :param timeout: 超时时间
-        :param mock: 是否启用 Mock 模式
+        Pump control class supporting real and Mock modes
+        :param port: Serial port number
+        :param baud_rate: Baud rate
+        :param timeout: Timeout value
+        :param mock: Whether to enable Mock mode
         """
         self.mock = mock
         self.ID = 1
@@ -40,32 +39,30 @@ class PumpSample:
                 self.sock.settimeout(5)
                 self.sock.connect((self.host, self.port))
 
-                logger.info("注射泵串口连接成功")
-                print(f"注射泵串口连接成功")
+                logger.info("Syringe pump serial connection successful")
+                print(f"Syringe pump serial connection successful")
 
             except Exception as e:
-                print(f"无法连接到 注射泵串口: {e}--")
+                print(f"Unable to connect to syringe pump serial: {e}--")
 
-                logger.error(f"无法连接到 注射泵串口: {e}")
+                logger.error(f"Unable to connect to syringe pump serial: {e}")
                 raise e
         else:
-            logger.info("Mock 模式启用，不连接串口")
+            logger.info("Mock mode enabled, no serial connection")
 
     def send_command(self, command: str) -> bytes:
         """
-        发送命令并接收响应
-        :param command: 要发送的命令
-        :return: 设备的响应
+        Send command and receive response
+        :param command: Command to send
+        :return: Device response
         """
         formatted_command = f"/{self.ID}" + command + "R\r\n"
 
-        # formatted_command = f"/{self.ID}{command}R\r\n"
-        logger.info(f"发送命令: {formatted_command.strip()}")
-        # print(f"发送命令: {formatted_command.strip()}")
+        logger.info(f"Sending command: {formatted_command.strip()}")
 
         if self.mock:
             response = f"[Mock Response] {command} OK".encode("utf-8")
-            logger.info(f"Mock 模式返回: {response}")
+            logger.info(f"Mock mode return: {response}")
             return response
 
         self.sock.sendall(formatted_command.encode("utf-8"))
@@ -73,7 +70,7 @@ class PumpSample:
         return response
 
     def _read_response(self, timeout=1):
-        """带超时的响应读取"""
+        """Read response with timeout"""
         try:
             response = self.sock.recv(16)
             if not response:
@@ -83,22 +80,22 @@ class PumpSample:
             raise TimeoutError("Read timeout")
 
     def initialization(self):
-        """ 初始化泵 """
+        """Initialize pump"""
         self.send_command("Z")
         self.sync()
         self.send_command(self.SHORT_PORT)
         # return self.send_command("Z")
 
     def ml_to_pulse(self, ml: float) -> int:
-        """ 根据校准曲线计算所需的脉冲数 """
+        """Calculate required pulses based on calibration curve"""
         return round(self.CALIBRATION_CURVE["k"] * ml + self.CALIBRATION_CURVE["b"])
 
     def inject(self, volume: float, in_port: int, out_port: int):
         """
-        进行液体注射
-        :param volume: 体积 (mL)
-        :param in_port: 入口端口号
-        :param out_port: 出口端口号
+        Perform liquid injection
+        :param volume: Volume (mL)
+        :param in_port: Inlet port number
+        :param out_port: Outlet port number
         """
         pulse = self.ml_to_pulse(volume)
         max_pulse_per_injection = self.MAX_PULSE - self.AIR_GAP_PULSE
@@ -128,10 +125,8 @@ class PumpSample:
 
     def wash(self, volume: float):
         """
-        进行液体注射
-        :param volume: 体积 (mL)
-        :param in_port: 入口端口号
-        :param out_port: 出口端口号
+        Perform liquid washing
+        :param volume: Volume (mL)
         """
         pulse = self.ml_to_pulse(volume)
         max_pulse_per_injection = self.MAX_PULSE - self.AIR_GAP_PULSE

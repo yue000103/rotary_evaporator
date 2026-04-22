@@ -13,12 +13,11 @@ from contextlib import contextmanager
 
 @contextmanager
 def timeout(seconds):
-    """超时上下文管理器"""
+    """Timeout context manager"""
 
     def timeout_handler(signum, frame):
-        raise TimeoutError(f"操作超时 ({seconds}秒)")
+        raise TimeoutError(f"Operation timed out ({seconds}s)")
 
-    # 设置信号处理
     old_handler = signal.signal(signal.SIGABRT, timeout_handler)
     signal.alarm(seconds)
 
@@ -36,7 +35,7 @@ class XuanZHengController:
     def __init__(self,mock=False):
         self.connection = ConnectionController(mock)
         self.plc = plc
-        self.plc.mock = mock  # 设置 PLC 通信是否为 Mock 模式
+        self.plc.mock = mock
         self.HEIGHT_ADDRESS = 502
         self.AUTO_SET = 500
         self.AUTO_FINISH = 501
@@ -56,13 +55,13 @@ class XuanZHengController:
         return self.connection.send_request("/api/v1/process", method='GET')
 
     def start_collect(self, interval=1, save_dir="data_log"):
-        """阻塞式采集 get_process 数据，Ctrl+C 或进程结束时写入 txt 文件"""
+        """Blocking data collection of get_process data, write to txt file on Ctrl+C or process end"""
         os.makedirs(save_dir, exist_ok=True)
         filename = datetime.now().strftime("%Y%m%d_%H%M%S") + ".txt"
         filepath = os.path.join(save_dir, filename)
         buffer = []
 
-        print(f"数据采集已启动，保存路径: {filepath}（Ctrl+C 结束）")
+        print(f"Data collection started, save path: {filepath} (Ctrl+C to exit)")
         try:
             while True:
                 try:
@@ -70,23 +69,23 @@ class XuanZHengController:
                     ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     buffer.append(f"[{ts}] {data}")
                 except Exception as e:
-                    print(f"采集异常: {e}")
+                    print(f"Collection error: {e}")
                 time.sleep(interval)
         except KeyboardInterrupt:
-            print("收到结束信号，正在保存...")
+            print("End signal received, saving...")
         finally:
             with open(filepath, "w", encoding="utf-8") as f:
                 f.write("\n".join(buffer))
-            print(f"采集已停止，共 {len(buffer)} 条，保存至: {filepath}")
+            print(f"Collection stopped, {len(buffer)} records, saved to: {filepath}")
             return filepath
 
     def start_collect_with_plot(self, interval=1, save_dir="data_log",
                                 signals=("vacuum", "heating", "cooling", "rotation"),
                                 max_points=300, save_fig=True):
-        """实时采集并绘制信号曲线。关闭窗口或 Ctrl+C 结束，自动保存数据与图片。
+        """Real-time data collection with signal plotting. Close window or Ctrl+C to end, auto-save data and image.
 
-        signals: 要绘制的字段名（取 result[field]['act']）
-        max_points: 图中最多展示的最近数据点数
+        signals: Field names to plot (use result[field]['act'])
+        max_points: Maximum recent data points to display in chart
         """
         import matplotlib.pyplot as plt
         from collections import deque
@@ -113,7 +112,7 @@ class XuanZHengController:
         fig.canvas.mpl_connect("close_event", lambda e: closed.update(flag=True))
 
         t0 = time.time()
-        print(f"实时绘图采集启动，数据: {txt_path}，图片: {png_path}（Ctrl+C 或关闭窗口结束）")
+        print(f"Real-time plotting started, data: {txt_path}, image: {png_path} (Ctrl+C or close window to exit)")
         try:
             while not closed["flag"]:
                 try:
@@ -138,10 +137,10 @@ class XuanZHengController:
                     fig.canvas.draw_idle()
                     fig.canvas.flush_events()
                 except Exception as e:
-                    print(f"采集/绘图异常: {e}")
+                    print(f"Collection/plotting error: {e}")
                 time.sleep(interval)
         except KeyboardInterrupt:
-            print("收到结束信号，正在保存...")
+            print("End signal received, saving...")
         finally:
             with open(txt_path, "w", encoding="utf-8") as f:
                 f.write("\n".join(buffer))
@@ -149,55 +148,54 @@ class XuanZHengController:
                 try:
                     fig.savefig(png_path, dpi=150, bbox_inches="tight")
                 except Exception as e:
-                    print(f"图片保存失败: {e}")
+                    print(f"Image save failed: {e}")
             plt.ioff()
             plt.close(fig)
-            print(f"采集已停止，共 {len(buffer)} 条，数据: {txt_path}，图片: {png_path}")
+            print(f"Collection stopped, {len(buffer)} records, data: {txt_path}, image: {png_path}")
             return txt_path, png_path
 
     def xuanzheng_sync(self, timeout_min=2):
-        """轮询获取旋蒸当前状态，等待其先运行再结束"""
+        """Poll to get rotary evaporator current state, wait for it to run before ending"""
 
-        has_started = False  # 标志位：是否检测到旋蒸运行开始
+        has_started = False
         timeout = timeout_min * 60
         start_time = time.time()
         try:
             while True:
                 if time.time() - start_time > timeout:
-                    print(f"⏰ 超过超时时间 {timeout_min} 分钟，退出轮询。")
+                    print(f"Exceeded timeout {timeout_min} minutes, exiting poll.")
                     self.stop_evaporation()
                     break
                 raw_result = self.get_process()
-                print("当前状态：", raw_result)
+                print("Current state:", raw_result)
 
-                # 判断数据格式
                 if isinstance(raw_result, str):
                     try:
                         result = json.loads(raw_result)
                     except json.JSONDecodeError as e:
-                        print(f"JSON 解析失败: {e}")
+                        print(f"JSON parsing failed: {e}")
                         break
                 elif isinstance(raw_result, dict):
                     result = raw_result
                 else:
-                    print("未知的返回类型，既不是 str 也不是 dict，退出")
+                    print("Unknown return type, neither str nor dict, exiting")
                     break
 
                 is_running = result.get("globalStatus", {}).get("running", False)
 
                 if is_running:
-                    print("设备正在运行...")
-                    has_started = True  # 标记设备已经开始运行
+                    print("Device is running...")
+                    has_started = True
                 elif has_started:
-                    print("检测到运行结束，退出轮询。")
+                    print("Run end detected, exiting poll.")
                     break
                 else:
-                    print("尚未开始运行，继续等待...")
+                    print("Not yet started, continuing to wait...")
 
                 time.sleep(2)
 
         except Exception as e:
-            print(f"xuanzheng_sync 轮询过程中发生异常: {e}")
+            print(f"Exception during xuanzheng_sync poll: {e}")
         finally:
             print("结束执行 xuanzheng_sync 函数")
 

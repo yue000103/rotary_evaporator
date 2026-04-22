@@ -44,17 +44,16 @@ class SQLiteDB:
     def create_table(self, table_name, columns):
         with self.get_connection() as cursor:
 
-            # 构建CREATE TABLE SQL语句
             create_table_sql = f"CREATE TABLE IF NOT EXISTS {table_name} ({columns})"
             cursor.execute(create_table_sql)
             logger.debug(f"Table created with SQL: {create_table_sql}")
-            cursor.connection.commit()  # 提交事务
+            cursor.connection.commit()
 
     def drop_table(self, table_name):
         with self.get_connection() as cursor:
             cursor.execute(f"DROP TABLE IF EXISTS {table_name}")
             logger.debug(f"Table {table_name} dropped")
-            cursor.connection.commit()  # 提交事务
+            cursor.connection.commit()
 
     def execute_query(self, query, params=None):
         with self.get_connection() as cursor:
@@ -63,7 +62,7 @@ class SQLiteDB:
                 cursor.execute(query, params)
             else:
                cursor.execute(query)
-            cursor.connection.commit()  # 提交事务
+            cursor.connection.commit()
 
             results = cursor.fetchall()
             logger.debug(f"Queried data with query: {query} and params: {params}")
@@ -72,7 +71,7 @@ class SQLiteDB:
 
     def insert_data(self, table_name, columns, data):
         '''
-        注意：columns中不能有多余的逗号，否则placeholders会发生错误
+        Note: columns must not have extra commas, otherwise placeholders will error
         :param table_name:
         :param columns: """name1, name2"""
         :param data: [(name1,name2), (name1,name2)]
@@ -88,7 +87,7 @@ class SQLiteDB:
 
             cursor.executemany(query, data)
             logger.info(f"Inserted data into {table_name}")
-            cursor.connection.commit()  # 提交事务
+            cursor.connection.commit()
 
 
     def update_data(self, table_name, set_clause, condition, params):
@@ -101,11 +100,9 @@ class SQLiteDB:
         '''
         with self.get_connection() as cursor:
             query = f"UPDATE {table_name} SET {set_clause} WHERE {condition}"
-            # print("query", query)
             logger.debug(f"Executing query: {query} with params: {params}")
-            # print("params", params)
             cursor.execute(query, params)
-            cursor.connection.commit()  # 提交事务
+            cursor.connection.commit()
 
 
     def delete_data(self, table_name, condition, params):
@@ -113,7 +110,7 @@ class SQLiteDB:
             query = f"DELETE FROM {table_name} WHERE {condition}"
             cursor.execute(query, params)
             logger.info(f"Deleted data from {table_name} with query: {query}")
-            cursor.connection.commit()  # 提交事务
+            cursor.connection.commit()
 
     def query_data(self, table_name, columns="*", where_clause=None, params=None):
         """
@@ -123,31 +120,19 @@ class SQLiteDB:
         :param params:("value1", 10)
         :return:
         """
-        # print(table_name, columns, where_clause, params)
-        # self.connect()
         with self.get_connection() as cursor:
-                # 构建基本的查询语句
             query = f"SELECT {columns} FROM {table_name}"
 
-            # 如果有条件，则添加 WHERE 子句
             if where_clause:
                 query += f" WHERE {where_clause}"
 
-            # 执行查询
             if params:
-                # print("columns",columns)
-                # print("where_clause",where_clause)
-                # print("params",params)
-                # print("query",query)
-
                 cursor.execute(query, params)
             else:
                 cursor.execute(query)
-            cursor.connection.commit()  # 提交事务
+            cursor.connection.commit()
 
-                # 获取所有结果
             results =cursor.fetchall()
-            # print(results)
             logger.debug(
                 f"Queried data from {table_name} with query: {query} and params: {params}"
             )
@@ -155,34 +140,30 @@ class SQLiteDB:
 
     def query_joined_data(self, table1, table2, join_condition, columns="*", where_clause=None, params=None):
         """
-        :param table1: 第一个表的名称
-        :param table2: 第二个表的名称
-        :param join_condition: 两个表的联接条件, 如 "table1.id = table2.foreign_id"
-        :param columns: 要查询的列, 例如 "table1.column1, table2.column2" 或者 "*"
-        :param where_clause: WHERE 子句条件, 如 "table1.column1 = ? AND table2.column2 > ?"
-        :param params: WHERE 子句对应的参数, 如 ("value1", 10)
-        :return: 查询结果
+        :param table1: Name of the first table
+        :param table2: Name of the second table
+        :param join_condition: Join condition between two tables, e.g., "table1.id = table2.foreign_id"
+        :param columns: Columns to query, e.g., "table1.column1, table2.column2" or "*"
+        :param where_clause: WHERE clause condition, e.g., "table1.column1 = ? AND table2.column2 > ?"
+        :param params: Parameters for WHERE clause, e.g., ("value1", 10)
+        :return: Query results
         """
         print("table1",table1)
         print("table2",table2)
         print("join_condition",join_condition)
         with self.get_connection() as cursor:
-            # 构建联表查询语句
             query = f"SELECT {columns} FROM {table1} JOIN {table2} ON {join_condition}"
 
-            # 如果有条件，则添加 WHERE 子句
             if where_clause:
                 query += f" WHERE {where_clause}"
 
-            # 执行查询
             if params:
                 cursor.execute(query, params)
             else:
                 cursor.execute(query)
 
-            cursor.connection.commit()  # 提交事务
+            cursor.connection.commit()
 
-            # 获取所有结果
             results = cursor.fetchall()
 
             logger.debug(

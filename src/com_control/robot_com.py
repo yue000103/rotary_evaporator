@@ -13,31 +13,28 @@ def scenario_exception_handler(func):
                 return func(self, cmd_full, *args, **kwargs)
             except TimeoutError as e:
                 err_msg = str(e)
-                # 只处理特定超时
-                if err_msg == f"❌ 超时未收到":
-                    # 检查是否断链
+                if err_msg.startswith("❌ Timeout waiting for response:"):
                     if hasattr(self.connect, "is_connected") and not self.is_connected():
-                        print("⚠️ 检测到断链，正在尝试重连...")
+                        print("⚠️ Detected disconnection, attempting to reconnect...")
                         for _ in range(retry_count):
                             try:
                                 self.connect()
-                                print("✅ 重连成功")
+                                print("✅ Reconnection successful")
                             except Exception as re:
-                                print(f"重连失败: {re}")
+                                print(f"Reconnection failed: {re}")
                                 time.sleep(1)
-                        print("❌ 重连3次失败，抛出异常")
+                        print("❌ Failed to reconnect after 3 attempts, raising exception")
                         raise
-                    # 没断链，用户选择
-                    print("请选择：1.继续（跳过此步） 2.重新执行 3.结束实验")
-                    choice = input("输入选项（1/2/3）：").strip()
+                    print("Please select: 1. Continue (skip) 2. Retry 3. End experiment")
+                    choice = input("Enter choice (1/2/3): ").strip()
                     if choice == "1":
-                        print("⏭️ 跳过此方法")
+                        print("⏭️ Skipping this method")
                         return False
                     elif choice == "2":
-                        print("🔄 重新执行此方法")
+                        print("🔄 Retrying this method")
                         return func(self, cmd_full, *args, **kwargs)
                     else:
-                        print("🛑 结束实验，抛出异常")
+                        print("🛑 Ending experiment, raising exception")
                         raise
                 else:
                     raise
@@ -53,22 +50,22 @@ class RobotConnection:
         self.sock = None
         self.recv_msg = ""
         self.lock = threading.Lock()
-        print("self.mock",self.mock)
+        print("mock:", self.mock)
 
         if not self.mock:
-            print("正在连接到 ABB 控制器...")
+            print("Connecting to ABB controller...")
             self.connect()
 
     def connect(self):
         while True:
             try:
                 self.sock = socket.socket()
-                self.sock.connect(("192.168.1.91", 2000))
-                print(f"✅ 已连接到 ABB 控制器 ({self.ip}:{self.port})")
+                self.sock.connect((self.ip, self.port))
+                print(f"✅ Connected to ABB controller ({self.ip}:{self.port})")
                 threading.Thread(target=self.recv_thread, daemon=True).start()
                 return
             except Exception as e:
-                print(f"❌ 机械臂   连接失败：{e}，重试中...")
+                print(f"❌ Robot connection failed: {e}, retrying...")
                 time.sleep(2)
 
     def recv_thread(self):
@@ -91,21 +88,21 @@ class RobotConnection:
                         with self.lock:
                             self.recv_msg = data.decode()
             except (ConnectionAbortedError, ConnectionResetError, OSError) as e:
-                print(f"⚠️ 接收线程异常: {e}")
+                print(f"⚠️ Receive thread error: {e}")
                 for i in range(retry_count):
-                    print(f"🔄 尝试第{i+1}次重连...")
+                    print(f"🔄 Attempt {i+1} to reconnect...")
                     try:
                         self.connect()
-                        print("✅ 接收线程重连成功")
+                        print("✅ Receive thread reconnection successful")
                         break
                     except Exception as re:
-                        print(f"❌ 接收线程重连失败: {re}")
+                        print(f"❌ Receive thread reconnection failed: {re}")
                         time.sleep(1)
                 else:
-                    print("❌ 接收线程重连3次失败，抛出异常")
+                    print("❌ Receive thread failed to reconnect after 3 attempts, raising exception")
                     raise
             except Exception as e:
-                print(f"⚠️ 接收线程其他异常: {e}")
+                print(f"⚠️ Receive thread other exception: {e}")
                 raise
 
     @scenario_exception_handler
@@ -113,27 +110,27 @@ class RobotConnection:
         if self.mock:
             print(f"[MOCK] send: {cmd}")
             return
-        print("cmd",cmd)
+        print("cmd:", cmd)
         retry_count = 3
         for i in range(retry_count):
             try:
                 self.sock.sendall((cmd + "\n").encode())
-                print(f"✅ 发送命令：{cmd}")
+                print(f"✅ Command sent: {cmd}")
                 return
             except (ConnectionAbortedError, ConnectionResetError, OSError) as e:
-                print(f"⚠️ 发送命令异常: {e}")
-                print(f"🔄 尝试第{i+1}次重连...")
+                print(f"⚠️ Send command error: {e}")
+                print(f"🔄 Attempt {i+1} to reconnect...")
                 try:
                     self.connect()
-                    print("✅ 发送命令重连成功")
+                    print("✅ Send command reconnection successful")
                 except Exception as re:
-                    print(f"❌ 发送命令重连失败: {re}")
+                    print(f"❌ Send command reconnection failed: {re}")
                     time.sleep(1)
             except Exception as e:
-                print(f"⚠️ 发送命令其他异常: {e}")
+                print(f"⚠️ Send command other exception: {e}")
                 raise
-        print("❌ 发送命令重连3次失败，抛出异常")
-        raise ConnectionError("发送命令重连3次失败")
+        print("❌ Failed to reconnect after 3 attempts, raising exception")
+        raise ConnectionError("Failed to send command after 3 reconnection attempts")
 
     def wait_for_response(self, expect, timeout_s=50):
         if self.mock:
@@ -143,7 +140,7 @@ class RobotConnection:
         while time.time() < timeout:
             with self.lock:
                 if expect in self.recv_msg:
-                    print(f"✅ 收到确认：{expect}")
+                    print(f"✅ Received acknowledgement: {expect}")
                     if expect != self.recv_msg:
                         logging.error('!!!!!!!!!!!!!!!! WRONG MESSAGE !!!!!!!!!!!!!!!!!!')
                         logging.error(f'Expected: {expect}, Received: {self.recv_msg}')
@@ -152,24 +149,23 @@ class RobotConnection:
                 elif self.recv_msg:
                     print(f"message: {self.recv_msg}")
             time.sleep(0.1)
-        raise TimeoutError(f"❌ 超时未收到：{expect}")
+        raise TimeoutError(f"❌ Timeout waiting for response: {expect}")
 
     def close(self):
         if self.sock:
             self.sock.close()
-            print("✅ 机器人连接已关闭")
+            print("✅ Robot connection closed")
         else:
-            print("⚠️ 机器人连接未初始化或已关闭")
+            print("⚠️ Robot connection not initialized or already closed")
 
     def is_connected(self):
         try:
             if self.sock is None:
                 return False
-            self.sock.send(b'')  # 发送空字节检测连接
+            self.sock.send(b'')
             return True
         except Exception:
             return False
-
 
     def __del__(self):
         self.close()

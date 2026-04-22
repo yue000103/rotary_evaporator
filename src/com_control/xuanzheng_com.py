@@ -14,16 +14,16 @@ from selenium.common.exceptions import StaleElementReferenceException, NoSuchEle
 class ConnectionController:
     def __init__(self,mock=False):
         """
-        :param username: 用户名
-        :param password: 密码
-        :param base_url_key: 在 com_config.yaml 里定义的 base_url key (默认为 "default")
-        :param mock: 是否启用 mock 模式
+        :param username: Username
+        :param password: Password
+        :param base_url_key: base_url key defined in com_config.yaml (default: "default")
+        :param mock: Whether to enable mock mode
         """
         self.username = "rw"
         self.password = "Sg3v2QtR"
         self.base_url = get_base_url("xuanzheng")  # 根据 key 选择 base_url
         self.mock = mock
-        self.running = False  # 心跳线程运行控制标志
+        self.running = False
         self.heartbeat_thread = None
 
         credentials = f"{self.username}:{self.password}"
@@ -31,25 +31,23 @@ class ConnectionController:
         print(f"Initialized ConnectionController with base_url: {self.base_url}")
         com_logger.info(f"Initialized ConnectionController with base_url: {self.base_url}")
 
-
-
         if not self.mock:
-            print("正在连接到 Xuanzheng 控制器...")
+            print("Connecting to Xuanzheng controller...")
             self.driver = self._initialize_driver()
-            self._start_heartbeat()  # 自动启动心跳
+            self._start_heartbeat()
 
     def _start_heartbeat(self):
-        """启动心跳线程"""
+        """Start heartbeat thread"""
         self.running = True
         self.heartbeat_thread = threading.Thread(
             target=self._heartbeat_loop,
-            daemon=True  # 守护线程（主线程退出时自动结束）
+            daemon=True
         )
         self.heartbeat_thread.start()
         com_logger.info("Heartbeat thread started")
 
     def _heartbeat_loop(self):
-        """心跳线程循环"""
+        """Heartbeat loop"""
         while self.running:
             try:
                 response = self.send_request("/api/v1/process", method='GET')
@@ -58,7 +56,6 @@ class ConnectionController:
             except Exception as e:
                 com_logger.error(f"Heartbeat failed: {str(e)}")
 
-            # 等待5秒（包含提前退出的检查）
             for _ in range(50):
                 if not self.running:
                     return
@@ -69,16 +66,14 @@ class ConnectionController:
 
         for attempt in range(max_retries):
             try:
-                print(f"第 {attempt + 1} 次尝试启动Chrome WebDriver...")
+                print(f"Attempt {attempt + 1} to start Chrome WebDriver...")
 
-                # 清理可能存在的Chrome进程
                 if attempt > 0:
                     self._cleanup_chrome_processes()
                     time.sleep(2)
 
                 chrome_options = Options()
 
-                # 基础配置
                 chrome_options.add_argument("--no-sandbox")
                 chrome_options.add_argument("--disable-dev-shm-usage")
                 chrome_options.add_argument("--disable-gpu")
@@ -86,55 +81,46 @@ class ConnectionController:
                 chrome_options.add_argument("--ignore-certificate-errors")
                 chrome_options.add_argument("--ignore-ssl-errors")
 
-                # 避免端口冲突
                 import random
                 debug_port = random.randint(9000, 9999)
                 chrome_options.add_argument(f"--remote-debugging-port={debug_port}")
 
-                # 设置临时用户数据目录
                 import tempfile
                 user_data_dir = tempfile.mkdtemp()
                 chrome_options.add_argument(f"--user-data-dir={user_data_dir}")
 
-                # 如果不需要界面，启用无头模式
-                # chrome_options.add_argument("--headless")
+                print(f"Using debug port: {debug_port}")
 
-                print(f"使用调试端口: {debug_port}")
-
-                # 优先使用Selenium 4的自动ChromeDriver管理（支持最新Chrome版本）
                 driver = None
                 try:
                     from selenium.webdriver.chrome.service import Service
 
-                    # Selenium 4.6+ 可以自动下载匹配的ChromeDriver
                     service = Service()
                     driver = webdriver.Chrome(service=service, options=chrome_options)
-                    print("使用Selenium内置ChromeDriver管理启动成功")
+                    print("Successfully started with Selenium built-in ChromeDriver")
                 except Exception as e1:
-                    print(f"Selenium自动管理失败: {str(e1)}, 尝试webdriver-manager...")
+                    print(f"Selenium auto-management failed: {str(e1)}, trying webdriver-manager...")
 
-                    # 备选方案：使用webdriver-manager
                     try:
                         from webdriver_manager.chrome import ChromeDriverManager
                         from selenium.webdriver.chrome.service import Service
 
                         service = Service(ChromeDriverManager().install())
                         driver = webdriver.Chrome(service=service, options=chrome_options)
-                        print("使用webdriver-manager启动成功")
+                        print("Successfully started with webdriver-manager")
                     except Exception as e2:
-                        print(f"webdriver-manager失败: {str(e2)}, 尝试默认方式...")
+                        print(f"webdriver-manager failed: {str(e2)}, trying default method...")
 
-                        # 最后备选：使用系统PATH中的chromedriver
                         driver = webdriver.Chrome(options=chrome_options)
-                        print("使用系统默认ChromeDriver启动成功")
+                        print("Successfully started with system default ChromeDriver")
 
                 if driver:
-                    print("Chrome WebDriver启动成功！")
+                    print("Chrome WebDriver started successfully!")
                     com_logger.info(f"Chrome WebDriver initialized successfully on attempt {attempt + 1}")
                     return driver
 
             except Exception as e:
-                print(f"第 {attempt + 1} 次启动失败: {str(e)}")
+                print(f"Attempt {attempt + 1} failed: {str(e)}")
                 com_logger.error(f"Attempt {attempt + 1} failed: {str(e)}")
                 if attempt == max_retries - 1:
                     com_logger.error(f"Failed to initialize Chrome driver after {max_retries} attempts: {str(e)}")
@@ -142,7 +128,7 @@ class ConnectionController:
                 time.sleep(2)
 
     def _cleanup_chrome_processes(self):
-        """清理可能存在的Chrome和ChromeDriver进程"""
+        """Clean up Chrome and ChromeDriver processes"""
         import psutil
         import os
         import signal
@@ -152,18 +138,16 @@ class ConnectionController:
                 if proc.info['name'] in ['chrome', 'chromedriver', 'Google Chrome']:
                     try:
                         os.kill(proc.info['pid'], signal.SIGTERM)
-                        print(f"已终止进程: {proc.info['name']} (PID: {proc.info['pid']})")
+                        print(f"Killed process: {proc.info['name']} (PID: {proc.info['pid']})")
                     except:
                         pass
         except:
             pass
 
     def _send_request(self, endpoint, method='GET', data=None):
-        """ 发送 HTTP 请求 """
-        get_url = f"https://{self.username}:{self.password}@{self.base_url}{endpoint}"  # 组合 URL
+        """Send HTTP request"""
+        get_url = f"https://{self.username}:{self.password}@{self.base_url}{endpoint}"
         put_url = f"https://{self.base_url}{endpoint}"
-        # print("get_url", get_url)
-        # print("put_url", put_url)
 
         if self.mock:
             log_message = f"[Mock Mode] {method} request to {get_url} with data: {data}"
@@ -171,8 +155,6 @@ class ConnectionController:
             return "Mock Response"
 
         if method == 'GET':
-            # print("full_url",get_url)
-            # self.driver.get("https://rw:Sg3v2QtR@192.168.1.20/api/v1/info")
             self.driver.get(get_url)
             page_text = self.driver.find_element("tag name", "body").text
             com_logger.info(page_text)
@@ -190,7 +172,7 @@ class ConnectionController:
             }}).then(response => response.text());
             '''
             com_logger.info(json.dumps(data))
-            print("put",json.dumps(data))
+            print("put", json.dumps(data))
 
             return self.driver.execute_script(script)
 
@@ -205,19 +187,18 @@ class ConnectionController:
             return "Mock Response"
 
         if method == 'GET':
-            for attempt in range(3):  # 最多重试3次
+            for attempt in range(3):
                 try:
                     self.driver.get(get_url)
-                    # 每次都重新查找元素，避免 stale
                     body = self.driver.find_element("tag name", "body")
                     page_text = body.text
                     com_logger.info(page_text)
                     return page_text
                 except (StaleElementReferenceException, NoSuchElementException) as e:
-                    print(f"第 {attempt + 1} 次尝试失败: {e}, 正在重试...")
+                    print(f"Attempt {attempt + 1} failed: {e}, retrying...")
                     time.sleep(1)
 
-            raise RuntimeError("多次重试后仍未成功获取页面内容")
+            raise RuntimeError("Failed to retrieve page content after multiple retries")
 
         elif method == 'PUT':
             script = f'''
@@ -235,12 +216,12 @@ class ConnectionController:
             return self.driver.execute_script(script)
 
     def close(self):
-        """关闭连接和心跳"""
+        """Close connection and heartbeat"""
         if not self.mock:
-            self.running = False  # 停止心跳循环
+            self.running = False
 
             if self.heartbeat_thread and self.heartbeat_thread.is_alive():
-                self.heartbeat_thread.join(timeout=2)  # 等待线程结束
+                self.heartbeat_thread.join(timeout=2)
 
             if self.driver:
                 self.driver.quit()
@@ -250,10 +231,8 @@ class ConnectionController:
 
 
 if __name__ == "__main__":
-    xuancheng_com = ConnectionController(mock=False)  # 创建实例时会自动启动心跳
+    xuancheng_com = ConnectionController(mock=False)
 
-
-    # 主线程可以做其他事情...
     time.sleep(20)
 
-    xuancheng_com.close()  # 关闭时会自动停止心跳
+    xuancheng_com.close()

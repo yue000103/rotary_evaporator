@@ -7,18 +7,18 @@ from src.uilt.logs_control.setup import com_logger
 class OpentronsConnection:
     def __init__(self, mock=False):
         """
-        Opentrons 机器人通信控制
-        :param mock: 是否启用 Mock 模式
+        Opentrons robot communication control
+        :param mock: Whether to enable Mock mode
         """
         self.host = get_base_url("robot_com")
-        self.port = 31950  # Opentrons API 端口
+        self.port = 31950
         self.mock = mock
         self.base_url = f"http://{self.host}:{self.port}"
 
         com_logger.info(f"OpentronsConnection initialized on {self.base_url}")
 
     def get(self, endpoint):
-        """ 发送 GET 请求 """
+        """Send GET request"""
         if self.mock:
             com_logger.info(f"[Mock Mode] GET {endpoint} simulated response.")
             return {}
@@ -30,7 +30,7 @@ class OpentronsConnection:
         return None
 
     def post(self, endpoint, data):
-        """ 发送 POST 请求 """
+        """Send POST request"""
         if self.mock:
             com_logger.info(f"[Mock Mode] POST {endpoint} with data {data} simulated response.")
             return {}
@@ -42,7 +42,7 @@ class OpentronsConnection:
         return None
 
     def delete(self, endpoint):
-        """ 发送 DELETE 请求 """
+        """Send DELETE request"""
         if self.mock:
             com_logger.info(f"[Mock Mode] DELETE {endpoint} simulated response.")
             return True
@@ -54,7 +54,7 @@ class OpentronsConnection:
         return False
 
     def close(self):
-        """ 关闭连接 """
+        """Close connection"""
         com_logger.info("Opentrons Connection closed.")
 
 
