@@ -4,6 +4,9 @@ from src.com_control.xuanzheng_com import ConnectionController
 from src.com_control import plc
 import json
 import signal
+import os
+import threading
+from datetime import datetime
 
 from contextlib import contextmanager
 
@@ -51,6 +54,106 @@ class XuanZHengController:
 
     def get_process(self):
         return self.connection.send_request("/api/v1/process", method='GET')
+
+    def start_collect(self, interval=1, save_dir="data_log"):
+        """阻塞式采集 get_process 数据，Ctrl+C 或进程结束时写入 txt 文件"""
+        os.makedirs(save_dir, exist_ok=True)
+        filename = datetime.now().strftime("%Y%m%d_%H%M%S") + ".txt"
+        filepath = os.path.join(save_dir, filename)
+        buffer = []
+
+        print(f"数据采集已启动，保存路径: {filepath}（Ctrl+C 结束）")
+        try:
+            while True:
+                try:
+                    data = self.get_process()
+                    ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    buffer.append(f"[{ts}] {data}")
+                except Exception as e:
+                    print(f"采集异常: {e}")
+                time.sleep(interval)
+        except KeyboardInterrupt:
+            print("收到结束信号，正在保存...")
+        finally:
+            with open(filepath, "w", encoding="utf-8") as f:
+                f.write("\n".join(buffer))
+            print(f"采集已停止，共 {len(buffer)} 条，保存至: {filepath}")
+            return filepath
+
+    def start_collect_with_plot(self, interval=1, save_dir="data_log",
+                                signals=("vacuum", "heating", "cooling", "rotation"),
+                                max_points=300, save_fig=True):
+        """实时采集并绘制信号曲线。关闭窗口或 Ctrl+C 结束，自动保存数据与图片。
+
+        signals: 要绘制的字段名（取 result[field]['act']）
+        max_points: 图中最多展示的最近数据点数
+        """
+        import matplotlib.pyplot as plt
+        from collections import deque
+
+        os.makedirs(save_dir, exist_ok=True)
+        stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        txt_path = os.path.join(save_dir, stamp + ".txt")
+        png_path = os.path.join(save_dir, stamp + ".png")
+
+        buffer = []
+        times = deque(maxlen=max_points)
+        series = {s: deque(maxlen=max_points) for s in signals}
+
+        plt.ion()
+        fig, ax = plt.subplots(figsize=(10, 5))
+        lines = {s: ax.plot([], [], label=s)[0] for s in signals}
+        ax.set_xlabel("time (s)")
+        ax.set_ylabel("act value")
+        ax.set_title("XuanZheng realtime signals")
+        ax.legend(loc="upper right")
+        ax.grid(True)
+
+        closed = {"flag": False}
+        fig.canvas.mpl_connect("close_event", lambda e: closed.update(flag=True))
+
+        t0 = time.time()
+        print(f"实时绘图采集启动，数据: {txt_path}，图片: {png_path}（Ctrl+C 或关闭窗口结束）")
+        try:
+            while not closed["flag"]:
+                try:
+                    raw = self.get_process()
+                    ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    buffer.append(f"[{ts}] {raw}")
+
+                    if isinstance(raw, str):
+                        result = json.loads(raw) if raw.strip() else {}
+                    else:
+                        result = raw or {}
+
+                    t = time.time() - t0
+                    times.append(t)
+                    for s in signals:
+                        val = result.get(s, {}).get("act")
+                        series[s].append(val if isinstance(val, (int, float)) else float("nan"))
+                        lines[s].set_data(list(times), list(series[s]))
+
+                    ax.relim()
+                    ax.autoscale_view()
+                    fig.canvas.draw_idle()
+                    fig.canvas.flush_events()
+                except Exception as e:
+                    print(f"采集/绘图异常: {e}")
+                time.sleep(interval)
+        except KeyboardInterrupt:
+            print("收到结束信号，正在保存...")
+        finally:
+            with open(txt_path, "w", encoding="utf-8") as f:
+                f.write("\n".join(buffer))
+            if save_fig:
+                try:
+                    fig.savefig(png_path, dpi=150, bbox_inches="tight")
+                except Exception as e:
+                    print(f"图片保存失败: {e}")
+            plt.ioff()
+            plt.close(fig)
+            print(f"采集已停止，共 {len(buffer)} 条，数据: {txt_path}，图片: {png_path}")
+            return txt_path, png_path
 
     def xuanzheng_sync(self, timeout_min=2):
         """轮询获取旋蒸当前状态，等待其先运行再结束"""
@@ -381,7 +484,7 @@ if __name__ == "__main__":
 
     # 直接初始化 ProcessController，可选择 mock 模式
     controller = XuanZHengController(mock=False)  # mock=True 开启模拟模式
-    controller.start_waste_liquid_with_timeout()
+    controller.start_collect_with_plot()
     # controller.set_height(0)
 
     # controller.get_info()
