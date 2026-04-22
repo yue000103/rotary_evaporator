@@ -4,7 +4,8 @@
       "Bash(grep -E \"\\\\.py$\")",
       "Bash(cat)",
       "Bash(python /tmp/translations.py)",
-      "Bash(python -m py_compile src/com_control/xuanzheng_com.py src/com_control/PLC_com.py src/com_control/robot_com.py src/device_control/xuanzheng_device.py src/device_control/sqlite/SQLiteDB.py)"
+      "Bash(python -m py_compile src/com_control/xuanzheng_com.py src/com_control/PLC_com.py src/com_control/robot_com.py src/device_control/xuanzheng_device.py src/device_control/sqlite/SQLiteDB.py)",
+      "Bash(git add *)"
     ]
   }
 }
